@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import Ecosystem from '../components/Ecosystem';
+import Differentiator from '../components/Differentiator';
 import Capabilities from '../components/Capabilities';
 import Certifications from '../components/Certifications';
 import IdentityPurpose from '../components/IdentityPurpose';
@@ -24,16 +25,19 @@ export default function Home() {
       {/* 2. EL ECOSISTEMA (Integración 360) */}
       <Ecosystem />
 
-      {/* 3. EL CÓMO LO HACEMOS (Infraestructura Técnica) */}
+      {/* 3. EL DIFERENCIADOR (SOCIO ESTRATÉGICO) */}
+      <Differentiator />
+
+      {/* 4. EL CÓMO LO HACEMOS (Infraestructura Técnica) */}
       <Capabilities />
 
-      {/* 4. LA GARANTÍA (Escudo de Validación) */}
+      {/* 5. LA GARANTÍA (Escudo de Validación) */}
       <Certifications />
       
-      {/* 5. QUIÉNES SOMOS (Misión y Valores) */}
+      {/* 6. QUIÉNES SOMOS (Misión y Valores) */}
       <IdentityPurpose />
 
-      {/* 6. CONTACTO Y CIERRE */}
+      {/* 7. CONTACTO Y CIERRE */}
       <AboutContact />
       <Footer />
     </main>
