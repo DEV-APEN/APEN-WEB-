@@ -17,7 +17,7 @@ export default function Header({ visible }: HeaderProps) {
         visible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
         <div className="absolute inset-0 bg-white border-b border-gray-100 pointer-events-none"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 w-full">
             {/* Logo a la izquierda */}
             <div className="flex-shrink-0 flex items-center h-16 w-32 md:w-72 transform transition-transform hover:scale-105">

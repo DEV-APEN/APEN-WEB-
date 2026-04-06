@@ -110,115 +110,112 @@ export default function Differentiator() {
           </motion.div>
 
           {/* LADO DERECHO: THE SYSTEM CORE (Kinetic Visual) */}
-          <div className="relative h-[400px] md:h-[600px] flex items-center justify-center [perspective:1000px]">
+          {/* LADO DERECHO: THE SYSTEM CORE (Kinetic Visual) */}
+          <div className="relative min-h-[500px] lg:h-[600px] flex items-center justify-center [perspective:1000px]">
             
-            {/* CENTRAL REACTOR CORE */}
-            <motion.div 
-               animate={{ 
-                 rotate: 0, 
-                 scale: view === 'apen' ? [0.8, 0.82, 0.8] : 0.7, 
-                 opacity: view === 'apen' ? 1 : 0.3 
-               }}
-               className="md:scale-125 relative w-56 h-56 md:w-80 md:h-80 rounded-full border border-[#005BB5]/30 flex items-center justify-center group"
-            >
-               <div className="absolute inset-0 border-2 border-dashed border-[#005BB5]/10 rounded-full"></div>
-               {/* Inner Nucleus */}
-               <div className="relative z-20 w-28 h-28 md:w-44 md:h-44 bg-[#061528] rounded-full border border-white/10 shadow-[0_0_100px_rgba(0,91,181,0.3)] flex flex-col items-center justify-center overflow-hidden">
-                  <div className="absolute inset-0 bg-[#005BB5]/20 blur-2xl rounded-full scale-50"></div>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={view}
-                      className="text-center"
-                    >
-                       {view === 'apen' ? (
-                          <div className="space-y-1">
-                             <div className="text-[8px] md:text-[10px] font-black text-[#005BB5] tracking-[0.6em] uppercase">Status</div>
-                             <div className="text-xl md:text-3xl font-black text-white tracking-widest italic">ACTIVE</div>
-                          </div>
-                       ) : (
-                          <div className="space-y-1">
-                             <div className="text-[8px] md:text-[10px] font-black text-red-500 tracking-[0.6em] uppercase">Status</div>
-                             <div className="text-xl md:text-3xl font-black text-red-500/50 tracking-widest italic">ERROR</div>
-                          </div>
-                       )}
-                    </motion.div>
-                  </AnimatePresence>
+            {/* VERSION MOBILE: HUD LIST (Solo visible en mobile) */}
+            <div className="lg:hidden w-full space-y-6">
+               {/* Central Status Mini-Core */}
+               <div className="flex items-center justify-between p-6 bg-[#061528] border border-[#005BB5]/40 rounded-xl shadow-[0_0_20px_rgba(0,91,181,0.2)] mb-8">
+                  <div className="space-y-1">
+                     <span className="text-[10px] font-black text-[#005BB5] tracking-widest uppercase">System Core</span>
+                     <h3 className="text-xl font-black text-white italic">ACTIVE_PROTOCOL</h3>
+                  </div>
+                  <div className="w-12 h-12 rounded-full border-2 border-dashed border-[#005BB5] flex items-center justify-center animate-spin-slow">
+                     <div className="w-6 h-6 bg-[#005BB5] rounded-full blur-sm"></div>
+                  </div>
                </div>
-            </motion.div>
 
-            {/* SATELLITE MODULES */}
-            <div className="absolute inset-0 pointer-events-none">
-               {technicalModules.map((mod, idx) => {
-                  const angle = (idx / technicalModules.length) * Math.PI * 2;
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
-
-                  return (
-                    <motion.div
+               {/* Modules Grid (Mobile) */}
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {technicalModules.map((mod) => (
+                    <motion.div 
                       key={mod.id}
-                      animate={view === 'apen' ? {
-                        opacity: 1,
-                        x: x,
-                        y: y,
-                        scale: 1,
-                        z: 0,
-                        rotateX: 0
-                      } : {
-                        opacity: 0.4,
-                        x: x * 1.4,
-                        y: y * 0.5,
-                        scale: 0.7,
-                        z: -200,
-                        rotateX: 45
-                      }}
-                      transition={{ delay: idx * 0.05, type: 'spring', stiffness: 70 }}
-                      className="absolute left-1/2 top-1/2 -ml-20 -mt-10 w-40 h-20"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      className={`p-5 rounded-lg border flex flex-col justify-between h-40 ${view === 'apen' ? 'bg-[#061528]/80 border-[#005BB5]/30' : 'bg-red-950/20 border-red-500/20'}`}
                     >
-                       {/* Connection Laser (Only APEN) */}
-                       <motion.div 
-                         animate={view === 'apen' ? { width: radius - 60, opacity: 0.4 } : { width: 0, opacity: 0 }}
-                         className="absolute right-full top-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#005BB5] to-[#005BB5] origin-right"
-                       />
-                       
-                       {/* Technical Module HUD */}
-                       <div className={`p-4 border rounded shadow-2xl backdrop-blur-md flex flex-col justify-between h-full group ${view === 'apen' ? 'bg-[#061528]/80 border-blue-500/20' : 'bg-red-950/20 border-red-500/20'}`}>
-                          <div className="flex justify-between items-start">
-                             <span className={`text-[8px] font-mono ${view === 'apen' ? 'text-blue-400' : 'text-red-500'}`}>MOD_{mod.id}</span>
-                             <mod.icon size={14} className={view === 'apen' ? 'text-blue-500' : 'text-red-500/40'} />
-                          </div>
-                          <div>
-                             <h4 className={`text-[10px] font-black uppercase tracking-tighter ${view === 'apen' ? 'text-white' : 'text-slate-500'}`}>{mod.title}</h4>
-                             <p className={`text-[8px] font-bold uppercase tracking-widest ${view === 'apen' ? 'text-blue-300/40' : 'text-red-500/20'}`}>
-                                {view === 'apen' ? mod.detail : 'Signal Lost'}
-                             </p>
-                          </div>
-                          {/* Alert Badge for Tradicional */}
-                          {view === 'tradicional' && (
-                             <div className="absolute -top-2 -right-2 w-4 h-4 bg-red-600 rounded-full flex items-center justify-center animate-pulse">
-                                <AlertCircle size={10} className="text-white" />
-                             </div>
-                          )}
-                       </div>
+                      <div className="flex justify-between items-start mb-4">
+                         <span className={`text-[10px] font-mono ${view === 'apen' ? 'text-blue-400' : 'text-red-500'}`}>MOD_{mod.id}</span>
+                         <mod.icon size={18} className={view === 'apen' ? 'text-blue-500' : 'text-red-500/40'} />
+                      </div>
+                      <div>
+                         <h4 className={`text-sm font-black uppercase tracking-tight ${view === 'apen' ? 'text-white' : 'text-slate-500'}`}>{mod.title}</h4>
+                         <p className={`text-[10px] font-bold uppercase tracking-widest leading-none mt-2 ${view === 'apen' ? 'text-blue-300/40' : 'text-red-500/20'}`}>
+                            {view === 'apen' ? mod.detail : 'SIGNAL_LOST'}
+                         </p>
+                      </div>
                     </motion.div>
-                  );
-               })}
+                  ))}
+               </div>
             </div>
 
-            {/* WARNING OVERLAY FOR TRADICIONAL */}
-            <AnimatePresence>
-              {view === 'tradicional' && (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 flex items-center justify-center bg-red-600/5 [mask-image:radial-gradient(circle_at_center,transparent_0%,black_100%)] pointer-events-none"
-                >
-                   <div className="absolute top-10 w-full text-center">
-                      <p className="text-red-500 font-mono text-[9px] tracking-[1em] animate-pulse">CRITICAL_SYSTEM_FRAGMENTATION_DETECTOR</p>
-                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* VERSION DESKTOP: KINETIC REACTOR (Solo visible en lg+) */}
+            <div className="hidden lg:flex relative w-full h-full items-center justify-center">
+              {/* CENTRAL REACTOR CORE */}
+              <motion.div 
+                animate={{ 
+                  rotate: 0, 
+                  scale: view === 'apen' ? [0.8, 0.82, 0.8] : 0.7, 
+                  opacity: view === 'apen' ? 1 : 0.3 
+                }}
+                className="scale-125 relative w-80 h-80 rounded-full border border-[#005BB5]/30 flex items-center justify-center group"
+              >
+                <div className="absolute inset-0 border-2 border-dashed border-[#005BB5]/10 rounded-full"></div>
+                {/* Inner Nucleus */}
+                <div className="relative z-20 w-44 h-44 bg-[#061528] rounded-full border border-white/10 shadow-[0_0_100px_rgba(0,91,181,0.3)] flex flex-col items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-[#005BB5]/20 blur-2xl rounded-full scale-50"></div>
+                    <AnimatePresence mode="wait">
+                      <motion.div key={view} className="text-center">
+                        {view === 'apen' ? (
+                            <div className="space-y-1">
+                              <div className="text-[10px] font-black text-[#005BB5] tracking-[0.6em] uppercase">Status</div>
+                              <div className="text-3xl font-black text-white tracking-widest italic">ACTIVE</div>
+                            </div>
+                        ) : (
+                            <div className="space-y-1">
+                              <div className="text-[10px] font-black text-red-500 tracking-[0.6em] uppercase">Status</div>
+                              <div className="text-3xl font-black text-red-500/50 tracking-widest italic">ERROR</div>
+                            </div>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+                </div>
+              </motion.div>
+
+              {/* SATELLITE MODULES (Circular motion) */}
+              <div className="absolute inset-0 pointer-events-none">
+                {technicalModules.map((mod, idx) => {
+                    const angle = (idx / technicalModules.length) * Math.PI * 2;
+                    const x = Math.cos(angle) * radius;
+                    const y = Math.sin(angle) * radius;
+
+                    return (
+                      <motion.div
+                        key={mod.id}
+                        animate={view === 'apen' ? {
+                          opacity: 1, x: x, y: y, scale: 1, z: 0, rotateX: 0
+                        } : {
+                          opacity: 0.4, x: x * 1.4, y: y * 0.5, scale: 0.7, z: -200, rotateX: 45
+                        }}
+                        transition={{ delay: idx * 0.05, type: 'spring', stiffness: 70 }}
+                        className="absolute left-1/2 top-1/2 -ml-20 -mt-10 w-40 h-20"
+                      >
+                        <div className={`p-4 border rounded shadow-2xl backdrop-blur-md flex flex-col justify-between h-full group ${view === 'apen' ? 'bg-[#061528]/80 border-blue-500/20' : 'bg-red-950/20 border-red-500/20'}`}>
+                            <div className="flex justify-between items-start">
+                              <span className={`text-[8px] font-mono ${view === 'apen' ? 'text-blue-400' : 'text-red-500'}`}>MOD_{mod.id}</span>
+                              <mod.icon size={14} className={view === 'apen' ? 'text-blue-500' : 'text-red-500/40'} />
+                            </div>
+                            <div>
+                                <h4 className={`text-[10px] font-black uppercase tracking-tighter ${view === 'apen' ? 'text-white' : 'text-slate-500'}`}>{mod.title}</h4>
+                                <p className={`text-[8px] font-bold uppercase tracking-widest ${view === 'apen' ? 'text-blue-300/40' : 'text-red-500/20'}`}>{view === 'apen' ? mod.detail : 'Signal Lost'}</p>
+                            </div>
+                        </div>
+                      </motion.div>
+                    );
+                })}
+              </div>
+            </div>
 
           </div>
 
