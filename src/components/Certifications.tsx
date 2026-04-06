@@ -61,10 +61,10 @@ export default function Certifications() {
            </h2>
         </div>
 
-        {/* FLOW ARCHITECTURE - Final Precision Alignment */}
-        <div className="relative py-20 flex min-h-[500px] items-center">
+        {/* FLOW ARCHITECTURE - Responsive Adaptation */}
+        <div className="relative md:py-20 flex min-h-auto md:min-h-[500px] items-center">
            
-           {/* THE ELECTRIC CORE LINE (Central Reference) */}
+           {/* THE ELECTRIC CORE LINE - Only Desktop */}
            <div className="absolute top-1/2 left-0 w-full h-[2px] bg-slate-100 -translate-y-1/2 hidden lg:block overflow-visible">
               <motion.div 
                 animate={{ opacity: [0.3, 0.8, 0.3] }}
@@ -79,30 +79,30 @@ export default function Certifications() {
               />
            </div>
 
-           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-0 relative w-full items-center">
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 lg:gap-0 relative w-full items-center">
               {flowItems.map((item, idx) => (
-                <div key={item.id} className="relative flex flex-col items-center justify-center h-px group">
+                <div key={item.id} className="relative flex flex-col items-center justify-center lg:h-px group">
                    
-                   {/* NODE ANCHOR (Locked exactly on the Central Line) */}
+                   {/* NODE ANCHOR - Only Desktop */}
                    <div className="absolute w-4 h-4 rounded-full border-2 border-[#008CDE]/20 bg-white z-30 hidden lg:flex items-center justify-center shadow-lg transition-transform group-hover:scale-125 duration-500">
                       <div className="w-1.5 h-1.5 bg-[#008CDE] rounded-full"></div>
                    </div>
 
-                   {/* VERTICAL STEM (High Contrast connectivity) */}
+                   {/* VERTICAL STEM - Only Desktop */}
                    <div className={`absolute w-[2px] bg-[#008CDE]/20 hidden lg:block ${idx % 2 === 0 ? 'bottom-0 h-[100px]' : 'top-0 h-[100px]'}`}></div>
 
-                   {/* THE CARD (Locked Blue Border - Permanent) */}
+                   {/* THE CARD */}
                    <motion.div
                      initial={{ opacity: 0, scale: 0.95 }}
                      whileInView={{ opacity: 1, scale: 1 }}
                      transition={{ duration: 0.6, ease: "easeOut" }}
-                     className={`absolute w-[180px] min-h-[160px] bg-white border-[1.5px] border-[#008CDE] rounded-[2.5rem] p-6 flex flex-col items-center justify-between text-center shadow-[0_12px_45px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_45px_100px_-30px_rgba(0,140,222,0.2)] transition-all duration-500 z-10 ${
+                     className={`w-full lg:absolute lg:w-[180px] min-h-[160px] bg-white border-[1.5px] border-[#008CDE] rounded-[2.5rem] p-6 flex flex-col items-center justify-between text-center shadow-[0_12px_45px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_45px_100px_-30px_rgba(0,140,222,0.2)] transition-all duration-500 z-10 ${
                        idx % 2 === 0 
-                       ? '-top-[280px]' 
-                       : 'top-[110px]' 
+                       ? 'lg:-top-[280px]' 
+                       : 'lg:top-[110px]' 
                      }`}
                    >
-                      {/* Logo Engine (Static & Real Colors) */}
+                      {/* Logo Engine */}
                       <div className="flex-grow flex flex-col items-center justify-center space-y-4 w-full">
                          <div className="h-12 w-full flex items-center justify-center transition-transform hover:scale-110 duration-500">
                              <img 
@@ -135,10 +135,10 @@ export default function Certifications() {
         </div>
 
         {/* ALCANCE MARKER - Precision Footer */}
-        <div className="mt-40 text-center">
-           <div className="inline-flex items-center gap-6 py-2 px-10 bg-white border-[1.5px] border-[#008CDE] rounded-full shadow-sm hover:scale-[1.02] transition-transform duration-500">
-              <span className="text-[8px] font-black text-[#008CDE] uppercase tracking-[0.6em] border-r border-[#008CDE]/30 pr-6">Alcance Registrado</span>
-              <p className="text-gray-400 text-[10px] font-extrabold uppercase tracking-widest italic leading-relaxed">
+        <div className="mt-24 md:mt-40 text-center">
+           <div className="inline-flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 md:py-2 px-8 md:px-10 bg-white border-[1.5px] border-[#008CDE] rounded-3xl md:rounded-full shadow-sm hover:scale-[1.02] transition-transform duration-500">
+              <span className="text-[8px] font-black text-[#008CDE] uppercase tracking-[0.6em] md:border-r md:border-[#008CDE]/30 md:pr-6">Alcance Registrado</span>
+              <p className="text-gray-400 text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest italic leading-relaxed text-center">
                  Hidrocarburos • Civil • Eléctrica • Electromecánica
               </p>
            </div>

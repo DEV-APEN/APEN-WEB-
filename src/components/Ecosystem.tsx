@@ -40,10 +40,10 @@ export default function Ecosystem() {
         </div>
 
         {/* ESTRUCTURA DE INTEGRACIÓN 360 */}
-        <div className="relative min-h-[600px] flex items-center justify-center">
+        <div className="relative min-h-[500px] md:min-h-[600px] flex flex-col md:items-center md:justify-center">
           
-          {/* EL CORE CENTRAL: INTEGRACIÓN 360 */}
-          <div className="absolute z-30 w-40 h-40 md:w-56 md:h-56 bg-white rounded-full shadow-[0_20px_50px_rgba(0,140,222,0.2)] border border-slate-100 flex items-center justify-center text-center p-6">
+          {/* EL CORE CENTRAL: INTEGRACIÓN 360 (Oculto o simplificado en mobile extremo, presente en md) */}
+          <div className="hidden md:flex absolute z-30 w-40 h-40 md:w-56 md:h-56 bg-white rounded-full shadow-[0_20px_50px_rgba(0,140,222,0.2)] border border-slate-100 items-center justify-center text-center p-6 translate-y-[-50%] top-1/2">
             <div className="space-y-1">
               <span className="text-[12px] md:text-[14px] font-black text-[#0B2341] uppercase tracking-tighter leading-tight block">
                 Integración
@@ -60,35 +60,35 @@ export default function Ecosystem() {
             ></motion.div>
           </div>
 
-          {/* LAS CRUCETAS DE SEPARACIÓN (DIAGRAMA) */}
-          <div className="absolute inset-0 flex items-center justify-center">
+        {/* LAS CRUCETAS DE SEPARACIÓN (DIAGRAMA) - Solo Desktop */}
+        <div className="hidden md:flex absolute inset-0 items-center justify-center max-w-full overflow-hidden">
             {/* Línea Horizontal */}
-            <div className="w-full h-[2px] bg-[#0B2341]/10 px-10"></div>
+            <div className="w-full max-w-full h-[2px] bg-[#0B2341]/10 px-10"></div>
             {/* Línea Vertical */}
             <div className="absolute h-full w-[4px] bg-[#0B2341] rounded-full"></div>
           </div>
 
-          {/* LAS SOLUCIONES (DISTRIBUCIÓN EN LOS 4 CUADRANTES) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20 w-full relative z-20">
+          {/* LAS SOLUCIONES */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-12 md:gap-y-20 w-full relative z-20">
             {ecosystemItems.map((item, idx) => (
               <motion.div 
                 key={item.number}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: idx * 0.1 }}
-                className={`flex items-center gap-6 p-4 ${idx % 2 === 1 ? 'md:flex-row-reverse text-right md:text-right' : 'text-left'}`}
+                className={`flex items-start md:items-center gap-4 md:gap-6 p-4 ${idx % 2 === 1 ? 'md:flex-row-reverse md:text-right text-left' : 'text-left'}`}
               >
-                {/* NUMERACIÓN GIGANTE EN GRADIENTE AZUL APEN (Más Notoria) */}
-                <span className="text-[85px] md:text-[140px] font-black text-transparent bg-clip-text bg-gradient-to-b from-[#008CDE]/25 to-transparent leading-none select-none drop-shadow-sm">
+                {/* NUMERACIÓN GIGANTE */}
+                <span className="text-[40px] md:text-[140px] font-black text-transparent bg-clip-text bg-gradient-to-b from-[#008CDE]/25 to-transparent leading-none select-none shrink-0">
                   {item.number}
                 </span>
-
+                
                 {/* CONTENIDO TÉCNICO */}
                 <div className="max-w-[280px] space-y-2">
-                  <h3 className="text-lg md:text-xl font-black text-[#0B2341] uppercase leading-tight tracking-tighter">
+                  <h3 className="text-base md:text-xl font-black text-[#0B2341] uppercase leading-tight tracking-tighter">
                     {item.title}
                   </h3>
-                  <p className="text-[11px] md:text-[13px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed">
+                  <p className="text-[10px] md:text-[13px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed">
                     {item.description}
                   </p>
                 </div>

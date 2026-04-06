@@ -8,6 +8,7 @@ import Differentiator from '../components/Differentiator';
 import Capabilities from '../components/Capabilities';
 import Certifications from '../components/Certifications';
 import IdentityPurpose from '../components/IdentityPurpose';
+import FAQ from '../components/FAQ';
 import AboutContact from '../components/AboutContact';
 import Footer from '../components/Footer';
 
@@ -36,6 +37,9 @@ export default function Home() {
       
       {/* 6. QUIÉNES SOMOS (Misión y Valores) */}
       <IdentityPurpose />
+
+      {/* 6.5. PREGUNTAS FRECUENTES (FAQ) */}
+      <FAQ />
 
       {/* 7. CONTACTO Y CIERRE */}
       <AboutContact />

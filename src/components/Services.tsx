@@ -92,7 +92,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-black text-[#0B2341] tracking-tighter uppercase leading-[0.85] mb-4"
+              className="text-2xl md:text-5xl font-black text-[#0B2341] tracking-tighter uppercase leading-[0.85] mb-4"
             >
               Soluciones <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] via-[#0B2341] to-[#0B2341]">Especializadas</span>
@@ -110,39 +110,38 @@ export default function Services() {
         </div>
 
         {/* Dynamic Service Interactor */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-gray-100 rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_-20px_rgba(0,0,0,0.05)] bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-gray-100 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_-20px_rgba(0,0,0,0.05)] bg-white">
           {/* Navigation Column */}
-          <div className="lg:col-span-5 border-r border-gray-100 bg-[#F8FAFC]">
+          <div className="lg:col-span-5 border-r border-gray-100 bg-[#F8FAFC] flex lg:flex-col overflow-x-auto lg:overflow-x-visible no-scrollbar">
             {services.map((service, idx) => (
               <button
                 key={service.id}
                 onClick={() => setActiveTab(idx)}
-                onMouseEnter={() => setActiveTab(idx)}
-                className={`w-full flex items-center justify-between p-6 text-left transition-all duration-300 group relative border-b border-gray-50 last:border-0 ${activeTab === idx ? 'bg-white' : 'hover:bg-gray-50/50'}`}
+                className={`flex-shrink-0 lg:flex-shrink-1 w-[260px] lg:w-full flex items-center justify-between p-5 md:p-6 text-left transition-all duration-300 group relative border-b border-r lg:border-r-0 border-gray-50 last:border-0 ${activeTab === idx ? 'bg-white' : 'hover:bg-gray-50/50'}`}
               >
                 {activeTab === idx && (
                   <motion.div 
                     layoutId="activeGlow"
-                    className="absolute left-0 top-0 w-1.5 h-full bg-[#008CDE]"
+                    className="absolute left-0 top-0 lg:h-full w-full lg:w-1.5 h-1 lg:h-auto bg-[#008CDE]"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
                 
-                <div className="flex items-center gap-5">
-                  <span className={`text-lg font-black transition-colors ${activeTab === idx ? 'text-[#008CDE]' : 'text-gray-300 group-hover:text-gray-400'}`}>
+                <div className="flex items-center gap-4 md:gap-5">
+                  <span className={`text-base md:text-lg font-black transition-colors ${activeTab === idx ? 'text-[#008CDE]' : 'text-gray-300 group-hover:text-gray-400'}`}>
                     {service.id}
                   </span>
                   <div>
-                    <h3 className={`text-md font-bold transition-colors ${activeTab === idx ? 'text-[#0B2341]' : 'text-gray-400 group-hover:text-gray-500'}`}>
+                    <h3 className={`text-sm md:text-md font-bold transition-colors mb-1 ${activeTab === idx ? 'text-[#0B2341]' : 'text-gray-400 group-hover:text-gray-500'}`}>
                       {service.title}
                     </h3>
-                    <p className={`text-[9px] font-bold uppercase tracking-widest transition-colors ${activeTab === idx ? 'text-[#008CDE]' : 'text-gray-300'}`}>
+                    <p className={`text-[8px] md:text-[9px] font-bold uppercase tracking-widest transition-colors ${activeTab === idx ? 'text-[#008CDE]' : 'text-gray-300'}`}>
                       {service.subtitle}
                     </p>
                   </div>
                 </div>
 
-                <div className={`transition-all duration-300 ${activeTab === idx ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-3'}`}>
+                <div className={`hidden lg:block transition-all duration-300 ${activeTab === idx ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-3'}`}>
                   <ChevronRight size={16} className="text-[#008CDE]" />
                 </div>
               </button>
