@@ -19,17 +19,29 @@ export default function Header({ visible }: HeaderProps) {
         <div className="absolute inset-0 bg-white border-b border-gray-100 pointer-events-none"></div>
         <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 w-full">
-            {/* Logo a la izquierda */}
-            <div className="flex-shrink-0 flex items-center h-16 w-32 md:w-72 transform transition-transform hover:scale-105">
-              <Link href="/" className="relative h-full w-full">
-                <Image 
-                  src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png" 
-                  alt="APEN Logo" 
-                  fill
-                  className="object-contain scale-[1.1] md:scale-[2.2] transform origin-left"
-                  priority
-                />
-              </Link>
+            <div className="flex items-center gap-6">
+              {/* Logo a la izquierda */}
+              <div className="flex-shrink-0 flex items-center h-16 w-32 md:w-72 transform transition-transform hover:scale-105">
+                <Link href="/" className="relative h-full w-full">
+                  <Image 
+                    src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png" 
+                    alt="APEN Logo" 
+                    fill
+                    className="object-contain scale-[1.1] md:scale-[2.2] transform origin-left"
+                    priority
+                  />
+                </Link>
+              </div>
+
+              {/* Burger Button (Mobile Only) - Ahora al lado del logo */}
+              <button 
+                onClick={() => setIsMenuOpen(true)}
+                className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.2 focus:outline-none bg-apen-blue/5 rounded-lg border border-apen-blue/10"
+              >
+                <div className="w-5 h-[2px] bg-apen-blue" />
+                <div className="w-5 h-[2px] bg-apen-blue" />
+                <div className="w-5 h-[2px] bg-apen-blue" />
+              </button>
             </div>
             
             {/* Navigation en el medio (Desktop) */}
@@ -46,26 +58,14 @@ export default function Header({ visible }: HeaderProps) {
               ))}
             </nav>
 
-            {/* Acciones derecha */}
-            <div className="flex items-center gap-4">
-              <div className="hidden md:flex">
+            {/* Acciones derecha (Desktop) */}
+            <div className="hidden md:flex items-center">
                 <a 
                   href="#contacto" 
                   className="relative overflow-hidden inline-flex items-center justify-center px-8 py-2.5 bg-apen-blue text-white text-[10px] font-black uppercase tracking-widest rounded-sm transition-all duration-500 hover:bg-apen-electric hover:shadow-[0_0_20px_rgba(0,91,181,0.4)] active:scale-95 group"
                 >
                   <span className="relative z-10">Contacto Técnico</span>
                 </a>
-              </div>
-
-              {/* Burger Button (Mobile Only) */}
-              <button 
-                onClick={() => setIsMenuOpen(true)}
-                className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.2 focus:outline-none bg-apen-blue/5 rounded-lg border border-apen-blue/10"
-              >
-                <div className="w-5 h-[2px] bg-apen-blue" />
-                <div className="w-5 h-[2px] bg-apen-blue" />
-                <div className="w-5 h-[2px] bg-apen-blue" />
-              </button>
             </div>
           </div>
         </div>
