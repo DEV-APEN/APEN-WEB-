@@ -20,7 +20,17 @@ export default function Header({ visible }: HeaderProps) {
         <div className="relative max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 w-full">
             <div className="flex items-center gap-6">
-              {/* Logo a la izquierda */}
+              {/* Burger Button (Mobile Only) - A la IZQUIERDA del logo */}
+              <button 
+                onClick={() => setIsMenuOpen(true)}
+                className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.2 focus:outline-none bg-apen-blue/5 rounded-lg border border-apen-blue/10"
+              >
+                <div className="w-5 h-[2px] bg-apen-blue" />
+                <div className="w-5 h-[2px] bg-apen-blue" />
+                <div className="w-5 h-[2px] bg-apen-blue" />
+              </button>
+
+              {/* Logo */}
               <div className="flex-shrink-0 flex items-center h-16 w-32 md:w-72 transform transition-transform hover:scale-105">
                 <Link href="/" className="relative h-full w-full">
                   <Image 
@@ -32,16 +42,6 @@ export default function Header({ visible }: HeaderProps) {
                   />
                 </Link>
               </div>
-
-              {/* Burger Button (Mobile Only) - Ahora al lado del logo */}
-              <button 
-                onClick={() => setIsMenuOpen(true)}
-                className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.2 focus:outline-none bg-apen-blue/5 rounded-lg border border-apen-blue/10"
-              >
-                <div className="w-5 h-[2px] bg-apen-blue" />
-                <div className="w-5 h-[2px] bg-apen-blue" />
-                <div className="w-5 h-[2px] bg-apen-blue" />
-              </button>
             </div>
             
             {/* Navigation en el medio (Desktop) */}
