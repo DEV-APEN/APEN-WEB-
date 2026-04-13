@@ -43,6 +43,12 @@ export default function Differentiator() {
       
       {/* ... (background remains the same) ... */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          style={{ backgroundImage: "url('/visual/imagenes/home dif.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(11,35,65,0.96)_0%,rgba(11,35,65,0.88)_38%,rgba(11,35,65,0.8)_68%,rgba(11,35,65,0.9)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_32%,rgba(0,91,181,0.16),transparent_38%),radial-gradient(circle_at_78%_42%,rgba(0,140,222,0.12),transparent_34%)]" />
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
         <motion.div 
@@ -221,30 +227,7 @@ export default function Differentiator() {
 
         </div>
 
-        {/* CIERRE DE SECCIÓN (HUD FOOTER) */}
-        <div className="mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-end gap-16">
-           <div className="flex flex-col gap-6">
-              <p className="text-[#F8FAFC]/50 text-base md:text-2xl font-black leading-tight uppercase tracking-tighter max-w-xl">
-                 El resultado: proyectos ejecutados con <span className="text-white">precisión quirúrgica</span> y <span className="text-white">control absoluto</span> de la trazabilidad técnica.
-              </p>
-              <div className="flex gap-10">
-                 <div>
-                    <p className="text-[9px] font-black text-white/30 uppercase mb-2">Auth Code</p>
-                    <p className="text-[14px] font-black text-[#005BB5] tracking-widest">APEN_X001</p>
-                 </div>
-                 <div>
-                    <p className="text-[9px] font-black text-white/30 uppercase mb-2">Protocol</p>
-                    <p className="text-[14px] font-black text-[#005BB5] tracking-widest italic">MAX_INTEGRITY</p>
-                 </div>
-              </div>
-           </div>
 
-           <div className="w-full md:w-auto p-8 border border-white/5 bg-[#061528]/30 backdrop-blur-md rounded-sm text-center md:text-right group">
-              <span className="text-[10px] font-black text-white/30 uppercase mb-4 block tracking-widest">Certificación Operativa</span>
-              <p className="text-3xl font-black text-white leading-none mb-2 italic">100%</p>
-              <p className="text-[11px] font-black text-[#005BB5] uppercase tracking-widest">Certeza Técnica APEN</p>
-           </div>
-        </div>
 
       </div>
     </section>

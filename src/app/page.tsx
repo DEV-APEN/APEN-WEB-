@@ -1,21 +1,32 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
-import Ecosystem from '../components/Ecosystem';
+import CredentialsCarousel from '../components/CredentialsCarousel';
 import Differentiator from '../components/Differentiator';
-import Capabilities from '../components/Capabilities';
-import Certifications from '../components/Certifications';
-import IdentityPurpose from '../components/IdentityPurpose';
 import FAQ from '../components/FAQ';
 import AboutContact from '../components/AboutContact';
+import CorporateMetrics from '../components/CorporateMetrics';
 import Footer from '../components/Footer';
+import ChatBot from '../components/ChatBot';
+import Link from 'next/link';
 
 export default function Home() {
   const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // EFECTO DE VISIBILIDAD POR SCROLL
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50 && !showNav) {
+        setShowNav(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showNav]);
 
   return (
     <main className="min-h-screen bg-white relative overflow-x-hidden w-full max-w-full">
@@ -26,32 +37,19 @@ export default function Home() {
       
       <Hero onVideoEnd={() => setShowNav(true)} showIndicator={showNav} />
       
-      {/* 1. EL QUÉ HACEMOS (Portafolio General) */}
       <Services />
 
-      {/* 2. EL ECOSISTEMA (Integración 360) */}
-      <Ecosystem />
+      <CredentialsCarousel />
 
-      {/* 3. EL DIFERENCIADOR (SOCIO ESTRATÉGICO) */}
-      <Differentiator />
+      <CorporateMetrics />
 
-      {/* 4. EL CÓMO LO HACEMOS (Infraestructura Técnica) */}
-      <Capabilities />
-
-      {/* 5. LA GARANTÍA (Escudo de Validación) */}
-      <Certifications />
-      
-      {/* 6. QUIÉNES SOMOS (Misión y Valores) */}
-      <IdentityPurpose />
-
-      {/* 6.5. PREGUNTAS FRECUENTES (FAQ) */}
       <FAQ />
 
-      {/* 7. CONTACTO Y CIERRE */}
       <AboutContact />
+      
       <Footer />
+      <ChatBot visible={showNav} />
 
-      {/* MOBILE MENU OVERLAY - ROOT LEVEL FIX */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
@@ -75,15 +73,20 @@ export default function Home() {
             </div>
             
             <div className="flex-grow flex flex-col items-center justify-center space-y-12 px-6">
-              {['Servicios', 'Capacidades', 'Nosotros', 'Contacto'].map((item, idx) => (
-                <a 
-                  key={item}
-                  href={`#${item.toLowerCase()}`} 
+              {[
+                { name: 'Servicios', path: '/servicios' },
+                { name: 'Nosotros', path: '/nosotros' },
+                { name: 'Certificaciones', path: '/certificaciones' },
+                { name: 'Contacto', path: '/contacto' }
+              ].map((item) => (
+                <Link 
+                  key={item.name}
+                  href={item.path} 
                   onClick={() => setIsMenuOpen(false)}
                   className="text-4xl font-black uppercase tracking-[0.4em] text-white hover:text-[#008CDE] transition-all"
                 >
-                  {item}
-                </a>
+                  {item.name}
+                </Link>
               ))}
             </div>
             

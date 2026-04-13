@@ -1,213 +1,166 @@
 "use client";
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FileText, 
-  Construction, 
-  Zap, 
-  Droplets, 
-  Leaf, 
-  Cpu,
-  ChevronRight,
-  ShieldCheck,
-  Target
-} from 'lucide-react';
 
-const services = [
+import { motion } from "framer-motion";
+import { ArrowRight, Droplets, Gavel, ShieldCheck, Zap } from "lucide-react";
+import Link from "next/link";
+
+const serviceSections = [
   {
-    id: '01',
-    title: 'Regulación y Normatividad',
-    subtitle: 'Cumplimiento ASEA / CRE / SENER',
-    description: 'Gestión de permisos y asesoría legal especializada para evitar sanciones operativas en toda la cadena de valor.',
-    icon: FileText,
-    color: 'from-blue-600 to-[#008CDE]'
-  },
-  {
-    id: '02',
-    title: 'Ingeniería y Obras',
-    subtitle: 'Diseño y Supervisión QA/QC',
-    description: 'Diseño conceptual, básico y de detalle. Gerencia de proyectos de infraestructura energética con rigor técnico.',
-    icon: Construction,
-    color: 'from-[#0B2341] to-blue-900'
-  },
-  {
-    id: '03',
-    title: 'Energía Eléctrica y Renovables',
-    subtitle: 'Interconexión al SEN',
-    description: 'Estudios eléctricos y soluciones de eficiencia energética para el sector industrial y proyectos de generación.',
-    icon: Zap,
-    color: 'from-blue-400 to-[#008CDE]'
-  },
-  {
-    id: '04',
-    title: 'Upstream y Downstream',
-    subtitle: 'Hidrocarburos y Petrolíferos',
-    description: 'Consultoría en exploración, extracción, almacenamiento y comercialización de recursos energéticos.',
+    id: "01",
+    title: "Hidrocarburos",
+    label: "Energía & Regulación",
+    subtitle: "Maestría en procesos de infraestructura e hidrocarburos.",
+    description: "Operamos bajo los más estrictos estándares de seguridad y cumplimiento normativo, gestionando trámites complejos ante la CNE y ASEA con certeza técnica absoluta.",
+    image: "/hidro.jpg",
     icon: Droplets,
-    color: 'from-blue-800 to-[#0B2341]'
+    color: "#008CDE",
+    accent: "from-blue-600 to-cyan-500",
+    items: [
+      "Trámites integrales ante OPE y CNE.",
+      "Permisos para Estaciones de Servicio y Autoconsumo.",
+      "Logística de Almacenamiento y Distribución.",
+      "Dictámenes SASISOPA, MIA y NOM-016-CRE.",
+      "Monitoreo de trazabilidad y calidad de producto."
+    ],
+    reverse: false,
+    url: "/servicios/hidrocarburos"
   },
   {
-    id: '05',
-    title: 'Sostenibilidad',
-    subtitle: 'Impacto Ambiental y Social',
-    description: 'Evaluaciones EIA/EVIS, planes de remediación y estrategias de descarbonización corporativa certificada.',
-    icon: Leaf,
-    color: 'from-green-600 to-blue-600'
+    id: "02",
+    title: "Sector Energético",
+    label: "Infraestructura Eléctrica",
+    subtitle: "Ingeniería de alta tensión y gestión de mercado.",
+    description: "Desarrollo de infraestructura eléctrica institucional. Especialistas en interconexión y obra de subestaciones de media y alta tensión hasta 230 kV.",
+    image: "/ener.jpg",
+    icon: Zap,
+    color: "#D97706",
+    accent: "from-amber-400 to-orange-500",
+    items: [
+      "Permisos CNE de Generación y Suministro.",
+      "Gestión de Interconexión al Mercado Eléctrico.",
+      "Ingeniería Detallada de Subestaciones 230 kV.",
+      "Asesoría Técnica en Normas DCCSED01/DCCSET01.",
+      "Licitaciones Estratégicas y Padrón CFE."
+    ],
+    reverse: true,
+    url: "/servicios/energia"
   },
   {
-    id: '06',
-    title: 'Innovación Tecnológica',
-    subtitle: 'Digitalización Operativa',
-    description: 'Implementación de tecnologías de monitoreo y optimización de recursos mediante digitalización avanzada.',
-    icon: Cpu,
-    color: 'from-blue-900 to-[#008CDE]'
-  },
+    id: "03",
+    title: "Defensa Legal",
+    label: "Certeza Jurídica",
+    subtitle: "Blindaje legal y regularización ante autoridades.",
+    description: "Representación jurídica especializada para la defensa de proyectos críticos. Resolvemos actos de autoridad, clausuras e inspecciones con rigor normativo.",
+    image: "/legal.jpg",
+    icon: Gavel,
+    color: "#EF4444",
+    accent: "from-rose-600 to-red-500",
+    items: [
+      "Defensa legal especializada en proyectos energéticos.",
+      "Levantamiento de clausuras e impugnación de multas.",
+      "Demandas de Nulidad y Recursos de Revisión.",
+      "Atención a requerimientos ASEA, CNE y SENER.",
+      "Regularización integral de expedientes técnicos."
+    ],
+    reverse: false,
+    url: "/servicios/legal"
+  }
 ];
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState(0);
-
   return (
-    <section id="servicios" className="py-16 md:py-20 bg-white relative overflow-hidden">
-      {/* BACKGROUND GRADIENT TRANSITION */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-slate-50/50 to-white" />
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-slate-50/30 to-white" />
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        {/* Header Block */}
-        <div className="mb-12 border-b border-gray-100 pb-10">
-          <div className="max-w-3xl">
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-4 mb-4"
-            >
-              <div className="w-8 h-[2px] bg-[#008CDE]" />
-              <span className="text-[#008CDE] font-bold tracking-[0.3em] uppercase text-[9px]">Especialización 360°</span>
-            </motion.div>
-            
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-2xl md:text-5xl font-black text-[#0B2341] tracking-tighter uppercase leading-[0.85] mb-4"
-            >
-              Soluciones <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] via-[#0B2341] to-[#0B2341]">Especializadas</span>
-            </motion.h2>
-
-            <motion.p 
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               transition={{ delay: 0.2 }}
-               className="text-gray-400 text-sm md:text-base font-medium max-w-lg leading-relaxed mt-4"
-            >
-              Un portafolio diseñado para cubrir el ciclo de vida completo de los proyectos del sector energético e hidrocarburos.
-            </motion.p>
-          </div>
-        </div>
-
-        {/* Dynamic Service Interactor */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-gray-100 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_-20px_rgba(0,0,0,0.05)] bg-white">
-          {/* Navigation Column */}
-          <div className="lg:col-span-5 border-r border-gray-100 bg-[#F8FAFC] flex lg:flex-col overflow-x-auto lg:overflow-x-visible no-scrollbar">
-            {services.map((service, idx) => (
-              <button
-                key={service.id}
-                onClick={() => setActiveTab(idx)}
-                className={`flex-shrink-0 lg:flex-shrink-1 w-[260px] lg:w-full flex items-center justify-between p-5 md:p-6 text-left transition-all duration-300 group relative border-b border-r lg:border-r-0 border-gray-50 last:border-0 ${activeTab === idx ? 'bg-white' : 'hover:bg-gray-50/50'}`}
+    <section id="servicios" className="bg-white">
+      {serviceSections.map((service, index) => (
+        <div 
+          key={service.id} 
+          className={`py-24 md:py-40 relative flex items-center overflow-hidden border-t border-slate-50 ${index === serviceSections.length - 1 ? 'border-b' : ''}`}
+        >
+          {/* Fondo Dinámico Sutil */}
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+          
+          <div className="mx-auto max-w-7xl px-6">
+            <div className={`flex flex-col gap-16 md:gap-24 items-center ${service.reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+              
+              {/* Contenido Visual (Columna Imagen) */}
+              <motion.div 
+                initial={{ opacity: 0, x: service.reverse ? 40 : -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-full md:w-1/2 relative group"
               >
-                {activeTab === idx && (
-                  <motion.div 
-                    layoutId="activeGlow"
-                    className="absolute left-0 top-0 lg:h-full w-full lg:w-1.5 h-1 lg:h-auto bg-[#008CDE]"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[3rem] shadow-2xl">
+                   <img 
+                     src={service.image} 
+                     alt={service.title} 
+                     className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B2341]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                   
+                   {/* Inset Icon Overlay */}
+                   <div className={`absolute top-10 right-10 flex h-20 w-20 items-center justify-center rounded-[2rem] bg-gradient-to-br ${service.accent} text-white shadow-2xl backdrop-blur-md`}>
+                      <service.icon size={36} />
+                   </div>
+                </div>
+
+                {/* Floating Big Number Background */}
+                <div className="absolute -bottom-10 -left-10 md:-bottom-20 md:-left-20 z-0 pointer-events-none">
+                   <span className="text-[180px] md:text-[280px] font-black text-slate-100 leading-none select-none italic tracking-tighter">
+                     {service.id}
+                   </span>
+                </div>
+              </motion.div>
+
+              {/* Contenido Texto (Columna Info) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="w-full md:w-1/2 flex flex-col items-start"
+              >
+                <div className="mb-4 flex items-center gap-3">
+                   <span className="text-[11px] font-black uppercase tracking-[0.5em] text-apen-blue">{service.label}</span>
+                </div>
                 
-                <div className="flex items-center gap-4 md:gap-5">
-                  <span className={`text-base md:text-lg font-black transition-colors ${activeTab === idx ? 'text-[#008CDE]' : 'text-gray-300 group-hover:text-gray-400'}`}>
-                    {service.id}
-                  </span>
-                  <div>
-                    <h3 className={`text-sm md:text-md font-bold transition-colors mb-1 ${activeTab === idx ? 'text-[#0B2341]' : 'text-gray-400 group-hover:text-gray-500'}`}>
-                      {service.title}
-                    </h3>
-                    <p className={`text-[8px] md:text-[9px] font-bold uppercase tracking-widest transition-colors ${activeTab === idx ? 'text-[#008CDE]' : 'text-gray-300'}`}>
-                      {service.subtitle}
-                    </p>
-                  </div>
+                <h3 className="text-4xl font-black uppercase tracking-tighter text-[#0B2341] md:text-5xl lg:text-6xl mb-6">
+                  {service.title}
+                </h3>
+
+                <p className="text-xl font-bold italic text-slate-400 mb-8 leading-tight">
+                  "{service.subtitle}"
+                </p>
+
+                <p className="text-sm font-semibold text-slate-500 mb-10 leading-relaxed max-w-xl">
+                  {service.description}
+                </p>
+
+                {/* Lista de Puntos Estratégicos */}
+                <div className="grid grid-cols-1 gap-4 mb-12 w-full">
+                  {service.items.map((item, i) => (
+                    <div key={i} className="flex items-center gap-4 group/item cursor-default">
+                       <div className="h-2 w-2 rounded-full bg-slate-200 transition-all duration-300 group-hover/item:bg-apen-blue group-hover/item:scale-150" />
+                       <span className="text-[12px] md:text-[13px] font-black uppercase tracking-tight text-[#0B2341] group-hover/item:translate-x-2 transition-transform duration-300">
+                         {item}
+                       </span>
+                    </div>
+                  ))}
                 </div>
 
-                <div className={`hidden lg:block transition-all duration-300 ${activeTab === idx ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-3'}`}>
-                  <ChevronRight size={16} className="text-[#008CDE]" />
-                </div>
-              </button>
-            ))}
-          </div>
+                {/* Link Detalle Sector */}
+                <Link
+                  href={service.url}
+                  className="group/btn inline-flex items-center gap-6 rounded-full bg-[#0B2341] py-4 px-10 text-[10px] font-black uppercase tracking-[0.4em] text-white shadow-xl transition-all hover:bg-apen-blue hover:scale-105"
+                >
+                  Expediente Completo
+                  <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-2" />
+                </Link>
+              </motion.div>
 
-          {/* Display Stage */}
-          <div className="lg:col-span-7 bg-white relative overflow-hidden flex items-center justify-center min-h-[400px]">
-             <AnimatePresence mode="wait">
-               <motion.div
-                 key={activeTab}
-                 initial={{ opacity: 0, x: 30 }}
-                 animate={{ opacity: 1, x: 0 }}
-                 exit={{ opacity: 0, x: -30 }}
-                 transition={{ duration: 0.4, ease: "circOut" }}
-                 className="p-10 md:p-14 w-full relative z-10"
-               >
-                 <div className="flex flex-col md:flex-row md:items-center gap-8 mb-10">
-                   <div className={`w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-gradient-to-br ${services[activeTab].color} flex items-center justify-center text-white shadow-xl shadow-blue-900/10 shrink-0`}>
-                      {React.createElement(services[activeTab].icon, { size: 40, strokeWidth: 1.2 })}
-                   </div>
-                   <div className="space-y-3">
-                      <h4 className="text-2xl md:text-4xl font-black text-[#0B2341] tracking-tighter uppercase leading-none">
-                         {services[activeTab].title}
-                      </h4>
-                      <div className="flex items-center gap-3 text-[#008CDE]">
-                         <Target size={14} />
-                         <span className="text-[10px] font-black uppercase tracking-[0.2em]">{services[activeTab].subtitle}</span>
-                      </div>
-                   </div>
-                 </div>
-
-                 <p className="text-gray-500 text-base md:text-lg font-medium leading-relaxed mb-10 border-l-4 border-gray-50 pl-6 italic">
-                   "{services[activeTab].description}"
-                 </p>
-
-                 <div className="grid grid-cols-2 gap-6 pt-8 border-t border-gray-50">
-                    <div className="flex items-start gap-3">
-                       <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-[#008CDE]">
-                          <ShieldCheck size={16} />
-                       </div>
-                       <div>
-                          <p className="text-[9px] font-black text-gray-300 uppercase tracking-widest mb-1">Certificación</p>
-                          <p className="text-[11px] font-bold text-[#0B2341]">Acreditada ante ASEA e ISO</p>
-                       </div>
-                    </div>
-                    <div className="flex items-start gap-3 text-left">
-                       <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-[#0B2341]">
-                          <Target size={16} />
-                       </div>
-                       <div>
-                          <p className="text-[9px] font-black text-gray-300 uppercase tracking-widest mb-1">Alcance</p>
-                          <p className="text-[11px] font-bold text-[#0B2341]">Nacional // Internacional</p>
-                       </div>
-                    </div>
-                 </div>
-               </motion.div>
-             </AnimatePresence>
-
-             {/* BACKGROUND BRANDING DETAIL */}
-             <div className="absolute bottom-[-2%] right-[-2%] text-[8rem] font-black text-gray-100/50 pointer-events-none select-none">
-                {services[activeTab].id}
-             </div>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </section>
   );
 }

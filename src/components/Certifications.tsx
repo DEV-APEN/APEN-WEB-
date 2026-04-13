@@ -43,11 +43,19 @@ const flowItems = [
 
 export default function Certifications() {
   return (
-    <section className="py-24 md:py-32 bg-[#FBFDFF] relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-[#FBFDFF] relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-22"
+          style={{ backgroundImage: "url('/visual/imagenes/certe.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,253,255,0.9)_0%,rgba(251,253,255,0.82)_28%,rgba(244,250,255,0.84)_62%,rgba(251,253,255,0.92)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_22%,rgba(0,140,222,0.08),transparent_30%),radial-gradient(circle_at_80%_68%,rgba(11,35,65,0.05),transparent_28%)]" />
+      </div>
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* HEADER: ELITE MINIMALISM */}
-        <div className="mb-40 text-center max-w-xl mx-auto">
+        <div className="mb-24 text-center max-w-xl mx-auto">
            <motion.div 
              initial={{ opacity: 0, y: -5 }}
              whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +70,7 @@ export default function Certifications() {
         </div>
 
         {/* FLOW ARCHITECTURE - Responsive Adaptation */}
-        <div className="relative md:py-20 flex min-h-auto md:min-h-[500px] items-center">
+        <div className="relative md:py-12 flex min-h-auto md:min-h-[420px] items-center">
            
            {/* THE ELECTRIC CORE LINE - Only Desktop */}
            <div className="absolute top-1/2 left-0 w-full h-[2px] bg-slate-100 -translate-y-1/2 hidden lg:block overflow-visible">
@@ -98,8 +106,8 @@ export default function Certifications() {
                      transition={{ duration: 0.6, ease: "easeOut" }}
                      className={`w-full lg:absolute lg:w-[180px] min-h-[160px] bg-white border-[1.5px] border-[#008CDE] rounded-[2.5rem] p-6 flex flex-col items-center justify-between text-center shadow-[0_12px_45px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_45px_100px_-30px_rgba(0,140,222,0.2)] transition-all duration-500 z-10 ${
                        idx % 2 === 0 
-                       ? 'lg:-top-[280px]' 
-                       : 'lg:top-[110px]' 
+                       ? 'lg:-top-[240px]' 
+                       : 'lg:top-[90px]' 
                      }`}
                    >
                       {/* Logo Engine */}
@@ -135,7 +143,7 @@ export default function Certifications() {
         </div>
 
         {/* ALCANCE MARKER - Precision Footer */}
-        <div className="mt-24 md:mt-40 text-center">
+        <div className="mt-16 md:mt-24 text-center">
            <div className="inline-flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 md:py-2 px-8 md:px-10 bg-white border-[1.5px] border-[#008CDE] rounded-3xl md:rounded-full shadow-sm hover:scale-[1.02] transition-transform duration-500">
               <span className="text-[8px] font-black text-[#008CDE] uppercase tracking-[0.6em] md:border-r md:border-[#008CDE]/30 md:pr-6">Alcance Registrado</span>
               <p className="text-gray-400 text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest italic leading-relaxed text-center">

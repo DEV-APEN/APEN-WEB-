@@ -23,41 +23,41 @@ export default function IdentityPurpose() {
       title: 'Gestión de Proyectos', 
       desc: 'Administración integral de contratos, estimaciones y avances físico-financieros.', 
       icon: LayoutDashboard, 
-      pos: 'md:bottom-[-15%] md:left-1/2 md:-translate-x-1/2', 
+      pos: 'md:bottom-[-22%] md:left-1/2 md:-translate-x-1/2', 
       delay: 2 
     }
   ];
 
   return (
-    <section id="capacidades" className="bg-white py-20 md:py-32 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 relative min-h-[600px] md:min-h-[750px] flex items-center justify-center scale-90 md:scale-100">
+    <section id="capacidades" className="bg-white pt-16 pb-32 md:pt-24 md:pb-48 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 relative min-h-[500px] md:min-h-[600px] flex items-center justify-center scale-85 md:scale-90">
         
         {/* ORBITAL RINGS - DECORATIVE ANIMATION */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <motion.div 
             animate={{ rotate: 360 }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="w-[450px] h-[450px] border-2 border-[#008CDE]/20 rounded-full shadow-[0_0_30px_rgba(0,140,222,0.1)]"
+            className="w-[400px] h-[400px] border-2 border-[#008CDE]/20 rounded-full shadow-[0_0_30px_rgba(0,140,222,0.1)]"
           />
           <motion.div 
             animate={{ rotate: -360 }}
             transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="w-[600px] h-[600px] border-2 border-[#008CDE]/10 rounded-full absolute"
+            className="w-[550px] h-[550px] border-2 border-[#008CDE]/10 rounded-full absolute"
           />
         </div>
 
         {/* NUCLEUS - STATIC HUB WITH ONE-SIDE GRADIENT SHADOW */}
-        <div className="z-20 w-64 h-64 md:w-[380px] md:h-[380px] bg-white rounded-full flex flex-col items-center justify-center relative p-1 text-center overflow-hidden shadow-[0_30px_100px_-20px_rgba(0,0,0,0.15)]">
+        <div className="z-20 w-56 h-56 md:w-[320px] md:h-[320px] bg-white rounded-full flex flex-col items-center justify-center relative p-1 text-center overflow-hidden shadow-[0_30px_100px_-20px_rgba(0,0,0,0.15)]">
           {/* Subtle Side Gradient Glow for Nucleus */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#008CDE]/15 to-transparent rounded-full blur-3xl"></div>
           
           <div className="relative z-10 flex flex-col items-center justify-center">
-            <span className="text-[#008CDE]/50 font-mono text-[10px] tracking-[0.4em] mb-3 uppercase block scale-90">APEN Group</span>
-            <h2 className="text-2xl md:text-[3.8rem] font-black text-[#0B2341] uppercase leading-none tracking-tighter mb-4 px-4">
+            <span className="text-[#008CDE]/50 font-mono text-[10px] tracking-[0.4em] mb-2 uppercase block scale-90">APEN Group</span>
+            <h2 className="text-2xl md:text-[3.2rem] font-black text-[#0B2341] uppercase leading-none tracking-tighter mb-4 px-4">
               Certeza <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] to-[#0B2341]">Operativa</span>
             </h2>
-            <div className="w-12 h-1 bg-[#008CDE] mb-6 rounded-full"></div>
+            <div className="w-10 h-0.5 bg-[#008CDE] mb-5 rounded-full"></div>
             <p className="text-gray-400 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] scale-90">Rigor Técnico Certificado</p>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function IdentityPurpose() {
                 ease: "easeInOut",
                 delay: idx * 0.4
               }}
-              className={`absolute ${p.pos} bg-white p-10 border border-[#008CDE]/20 shadow-[0_25px_60px_-15px_rgba(140,222,255,0.15)] w-full md:w-[300px] pointer-events-auto rounded-3xl hidden md:block overflow-hidden transition-none`}
+              className={`absolute ${p.pos} bg-white p-8 border border-[#008CDE]/20 shadow-[0_25px_60px_-15px_rgba(140,222,255,0.15)] w-full md:w-[280px] pointer-events-auto rounded-3xl hidden md:block overflow-hidden transition-none`}
             >
               {/* Persistent Corner Gradient Glow (#008CDE to Transparent) */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br from-[#008CDE]/20 to-transparent rounded-full blur-3xl opacity-100"></div>

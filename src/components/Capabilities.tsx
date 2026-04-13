@@ -1,95 +1,175 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Ruler, Layout, ShieldCheck, Zap } from 'lucide-react';
 
-const competitiveAdvantages = [
-  { 
-    title: 'Dominio Normativo CFE', 
-    desc: 'Conocimiento profundo de especificaciones técnicas: DCCSED01, DCCSET01, PYCON-SE-01.',
-    icon: Ruler
+import React, { useState } from "react";
+import { Ruler, Layout, ShieldCheck, Zap } from "lucide-react";
+
+const advantages = [
+  {
+    number: "01",
+    title: "Dominio Normativo CFE",
+    desc: "Dominio experto de especificaciones institucionales: DCCSED01, DCCSET01, PYCON-SE-01. Garantizamos exito en las revisiones e inspecciones federales desde el primer intento.",
+    icon: Ruler,
+    image: "/visual/imagenes/v1.jpg",
+    activeOverlay:
+      "bg-[linear-gradient(180deg,rgba(11,35,65,0.26)_0%,rgba(11,35,65,0.74)_58%,rgba(11,35,65,0.94)_100%)]",
+    inactiveOverlay:
+      "bg-[linear-gradient(180deg,rgba(255,255,255,0.82)_0%,rgba(248,250,252,0.88)_42%,rgba(241,245,249,0.92)_100%)]",
   },
-  { 
-    title: 'Capacidad Multidisciplinaria', 
-    desc: 'Integración total: ingeniería + obra civil + electromecánica + consultoría en un solo frente.',
-    icon: Layout
+  {
+    number: "02",
+    title: "Integracion Multidisciplinaria",
+    desc: "Un unico interlocutor con control absoluto: fusionamos ingenieria civil, infraestructura electromecanica y gestion de permisos en un equipo operativo unico.",
+    icon: Layout,
+    image: "/visual/imagenes/v2.jpg",
+    activeOverlay:
+      "bg-[linear-gradient(180deg,rgba(11,35,65,0.24)_0%,rgba(11,35,65,0.74)_58%,rgba(11,35,65,0.94)_100%)]",
+    inactiveOverlay:
+      "bg-[linear-gradient(180deg,rgba(255,255,255,0.8)_0%,rgba(243,248,253,0.86)_44%,rgba(233,243,252,0.9)_100%)]",
   },
-  { 
-    title: 'Certeza Internacional', 
-    desc: 'Procesos auditados y respaldados por los más altos estándares ISO (9001, 14001, 45001).',
-    icon: ShieldCheck
+  {
+    number: "03",
+    title: "Certeza Internacional ISO",
+    desc: "Procesos auditados bajo los mas rigurosos estandares globales de calidad, ambiental y seguridad (ISO 9001, 14001, 45001).",
+    icon: ShieldCheck,
+    image: "/visual/imagenes/v3.jpg",
+    activeOverlay:
+      "bg-[linear-gradient(180deg,rgba(11,35,65,0.22)_0%,rgba(11,35,65,0.72)_58%,rgba(11,35,65,0.94)_100%)]",
+    inactiveOverlay:
+      "bg-[linear-gradient(180deg,rgba(255,255,255,0.78)_0%,rgba(242,248,252,0.86)_44%,rgba(234,242,248,0.9)_100%)]",
   },
-  { 
-    title: 'Estructura de Alta Eficiencia', 
-    desc: 'Red de especialistas y aliados estratégicos que permite alta eficiencia en costos y tiempos de entrega.',
-    icon: Zap
-  }
+  {
+    number: "04",
+    title: "Eficiencia Fast-Track",
+    desc: "Red operativa tactica de despliegue inmediato. Optimizamos costos improductivos y aseguramos contractualmente tu tiempo de entrega.",
+    icon: Zap,
+    image: "/visual/imagenes/v4.jpg",
+    activeOverlay:
+      "bg-[linear-gradient(180deg,rgba(11,35,65,0.3)_0%,rgba(11,35,65,0.82)_60%,rgba(11,35,65,0.96)_100%)]",
+    inactiveOverlay:
+      "bg-[linear-gradient(180deg,rgba(255,255,255,0.8)_0%,rgba(238,245,252,0.86)_44%,rgba(227,237,248,0.9)_100%)]",
+  },
 ];
 
 export default function Capabilities() {
+  const [activePanel, setActivePanel] = useState(0);
+
   return (
-    <section id="capacidades" className="bg-white py-20 md:py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        
-        {/* Header Section (Synced with Image Title) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-l-8 border-[#008CDE] pl-8">
-          <div className="max-w-2xl">
-            <span className="text-[#008CDE] font-bold tracking-[0.25em] uppercase text-[10px] mb-4 block">Propuesta de Valor</span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0B2341] tracking-tighter uppercase leading-[0.9] mb-4">
-              Ventajas <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] to-[#0B2341]">Competitivas</span>
+    <section id="capacidades" className="relative overflow-hidden bg-white py-20 md:py-24">
+      <div className="relative z-10 mx-auto max-w-[1300px] px-4 md:px-8">
+        <div className="mb-12 flex flex-col gap-6 border-l-4 border-[#0B2341] pl-6 md:flex-row md:items-end md:justify-between md:pl-8">
+          <div>
+            <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#008CDE]">
+              Certeza Operativa
+            </span>
+            <h2 className="text-3xl font-black uppercase leading-[0.9] tracking-tighter text-[#0B2341] md:text-5xl">
+              Ventajas <br /> Competitivas
             </h2>
           </div>
-          
-          <div className="max-w-md">
-            <p className="text-gray-400 text-base font-medium leading-relaxed italic">
-              "Ingeniería y cumplimiento regulatorio integrados para garantizar la viabilidad técnica de su infraestructura."
-            </p>
-          </div>
+          <p className="max-w-sm text-xs font-medium italic text-gray-500 md:text-right md:text-sm">
+            "Ingenieria y cumplimiento regulatorio integrados en un frente inquebrantable."
+          </p>
         </div>
 
-        {/* Global Glassmorphic Container (Simulating the shared light glow in the image) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {competitiveAdvantages.map((advantage, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className="relative h-full"
-            >
-              {/* GLASSMORMIC CARD DESIGN WITH NOTICEABLE REFINED BORDERS */}
-              <div className="h-full relative p-8 rounded-[2.5rem] border border-[#008CDE]/10 shadow-[0_20px_40px_-15px_rgba(0,140,222,0.08)] flex flex-col items-center text-center overflow-hidden backdrop-blur-sm bg-gradient-to-b from-[#008CDE]/5 via-[#008CDE]/[0.02] to-white/95 transition-all duration-500">
-                
-                {/* Visual Glass Accent Spot (Enhanced Reflection) */}
-                <div className="absolute -top-12 -left-12 w-32 h-32 bg-white/40 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="flex h-[600px] w-full flex-col gap-3 md:h-[450px] md:flex-row lg:h-[500px]">
+          {advantages.map((item, idx) => {
+            const isActive = activePanel === idx;
 
-                {/* Icon Hub (Compact Size) */}
-                <div className="mb-8 relative">
-                  <div className="w-16 h-16 bg-white shadow-md flex items-center justify-center rounded-full border border-gray-100 text-[#008CDE]">
-                    <advantage.icon size={26} strokeWidth={1.5} />
+            return (
+              <div
+                key={item.number}
+                onMouseEnter={() => setActivePanel(idx)}
+                onClick={() => setActivePanel(idx)}
+                className={`group relative flex cursor-pointer flex-col justify-end overflow-hidden rounded-[1.5rem] p-6 transition-all duration-[600ms] ease-[cubic-bezier(0.25,1,0.5,1)] md:p-8 ${
+                  isActive
+                    ? "flex-[4] bg-[#0B2341] shadow-2xl shadow-blue-900/20 lg:flex-[5]"
+                    : "flex-1 border border-gray-200 bg-gray-50 hover:border-gray-300 hover:bg-gray-100/80"
+                }`}
+              >
+                <div
+                  className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[900ms] ${
+                    isActive ? "scale-105" : "scale-100"
+                  }`}
+                  style={{ backgroundImage: `url('${item.image}')` }}
+                />
+                <div
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    isActive ? item.activeOverlay : item.inactiveOverlay
+                  }`}
+                />
+                <div
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    isActive ? "bg-[#0B2341]/16" : "bg-white/10"
+                  }`}
+                />
+
+                {isActive && (
+                  <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#008CDE] opacity-20 blur-[100px]" />
+                )}
+
+                <span
+                  className={`pointer-events-none absolute select-none font-black italic leading-none transition-all duration-700 ${
+                    isActive
+                      ? "-top-8 right-2 text-[180px] text-white/[0.20]"
+                      : "right-4 top-4 text-[70px] text-[#0B2341]/15 md:left-1/2 md:right-auto md:top-20 md:-translate-x-1/2"
+                  }`}
+                >
+                  {item.number}
+                </span>
+
+                <div
+                  className={`absolute top-6 transition-all duration-500 md:top-8 ${
+                    isActive ? "left-6 md:left-10" : "left-6 md:left-1/2 md:-translate-x-1/2"
+                  }`}
+                >
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center rounded-2xl shadow-sm transition-all duration-500 md:h-14 md:w-14 ${
+                      isActive
+                        ? "border border-white/20 bg-white/10 text-[#008CDE] backdrop-blur-md"
+                        : "border border-gray-200 bg-white text-[#0B2341]"
+                    }`}
+                  >
+                    <item.icon size={24} strokeWidth={1.5} />
                   </div>
                 </div>
 
-                {/* Content (Directly from Image) */}
-                <div className="flex-grow flex flex-col items-center justify-start">
-                  <h3 className="text-xs md:text-sm font-black text-[#0B2341] mb-5 tracking-tight uppercase leading-tight min-h-[2.5rem] flex items-center justify-center px-2">
-                    {advantage.title}
-                  </h3>
-                  
-                  {/* Subtle Separator Line (Light Blue) */}
-                  <div className="w-8 h-[1px] bg-[#008CDE]/20 mb-6"></div>
-                  
-                  <p className="text-[#0B2341]/60 text-[11px] md:text-xs leading-relaxed font-bold max-w-[90%]">
-                    {advantage.desc}
-                  </p>
+                <div
+                  className={`absolute left-0 right-0 top-[140px] hidden justify-center transition-all duration-300 md:flex ${
+                    isActive ? "pointer-events-none opacity-0" : "opacity-100 delay-200"
+                  }`}
+                  style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                >
+                  <span className="whitespace-nowrap text-xs font-black uppercase tracking-[0.2em] text-gray-500 lg:text-sm">
+                    {item.title}
+                  </span>
                 </div>
 
-                {/* Blue Interaction Bar (From the bottom of the image cards) */}
-                <div className="w-8 h-1.5 bg-[#008CDE] rounded-full mt-8 shadow-sm"></div>
+                <div
+                  className={`absolute left-20 right-4 top-8 transition-all duration-300 md:hidden ${
+                    isActive ? "pointer-events-none opacity-0" : "opacity-100 delay-200"
+                  }`}
+                >
+                  <span className="block truncate text-xs font-black uppercase tracking-widest text-gray-600">
+                    {item.title}
+                  </span>
+                </div>
+
+                <div
+                  className={`relative z-10 flex w-full flex-col justify-end transition-all duration-500 md:max-w-[400px] lg:max-w-[500px] ${
+                    isActive
+                      ? "translate-y-0 opacity-100 delay-150"
+                      : "pointer-events-none absolute bottom-8 translate-y-12 opacity-0"
+                  }`}
+                >
+                  <h3 className="mb-4 text-2xl font-black uppercase leading-[1.1] tracking-tighter text-white md:text-3xl lg:text-4xl">
+                    {item.title}
+                  </h3>
+                  <p className="border-l-[3px] border-[#008CDE] pl-4 text-sm font-medium leading-relaxed text-blue-100/90 md:pl-5 md:text-base">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
