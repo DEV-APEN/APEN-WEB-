@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { Mail, Phone, MapPin, ShieldCheck, Award, Target, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import { Mail, Phone, MapPin, ShieldCheck, Award, Target } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,136 +11,152 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#061427] text-white pt-20 pb-12 relative overflow-hidden border-t border-white/5">
-      
-      {/* Background Decor */}
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#061427] pb-12 pt-20 text-white">
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:40px_40px]"></div>
+        <div className="absolute right-0 top-0 h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:40px_40px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-20 mb-20">
-          
-          {/* COLUMN 1: BRAND IDENTITY */}
-          <div className="lg:col-span-4 flex flex-col gap-8">
-            <div className="h-16 w-48 relative transform origin-left scale-150">
-               <Image 
-                  src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png" 
-                  alt="APEN Logo" 
-                  fill
-                  className="object-contain brightness-0 invert"
-                />
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        <div className="mb-20 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-20">
+          <div className="flex flex-col gap-8 lg:col-span-4">
+            <div className="relative h-16 w-48 origin-left scale-150 transform">
+              <Image
+                src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png"
+                alt="APEN Logo"
+                fill
+                className="object-contain brightness-0 invert"
+              />
             </div>
-            <p className="text-gray-400 text-sm md:text-base font-bold leading-relaxed max-w-sm">
-              Administradora de Proyectos Energéticos. Especialistas en cumplimiento regulatorio y alta ingeniería para la cadena de valor de hidrocarburos y electricidad en México.
+            <p className="max-w-sm text-sm font-bold leading-relaxed text-gray-400 md:text-base">
+              Administradora de Proyectos Energéticos. Especialistas en cumplimiento regulatorio y alta ingeniería
+              para la cadena de valor de hidrocarburos y electricidad en México.
             </p>
             <div className="flex gap-4">
-               <div className="flex flex-col">
-                  <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Padrón CFE</span>
-                  <span className="text-xs font-black">No. 4493015</span>
-               </div>
-               <div className="w-[1px] h-10 bg-white/10"></div>
-               <div className="flex flex-col">
-                  <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Achilles ID</span>
-                  <span className="text-xs font-black">00249023</span>
-               </div>
+              <div className="flex flex-col">
+                <span className="mb-1 text-[10px] font-black uppercase tracking-widest text-blue-400">Padrón CFE</span>
+                <span className="text-xs font-black">No. 4493015</span>
+              </div>
+              <div className="h-10 w-[1px] bg-white/10" />
+              <div className="flex flex-col">
+                <span className="mb-1 text-[10px] font-black uppercase tracking-widest text-blue-400">Achilles ID</span>
+                <span className="text-xs font-black">00249023</span>
+              </div>
             </div>
           </div>
 
-          {/* COLUMN 2: QUICK NAVIGATION */}
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-white border-b border-white/10 pb-4 mb-6">Navegación</h4>
+            <h4 className="mb-6 border-b border-white/10 pb-4 text-[11px] font-black uppercase tracking-[0.3em] text-white">
+              Navegación
+            </h4>
             <ul className="space-y-4">
               {navItems.map((item) => (
                 <li key={item.label}>
-                  <a
+                  <Link
                     href={item.href}
-                    className="text-gray-400 hover:text-white text-xs font-black uppercase tracking-widest transition-all inline-flex items-center gap-2 group"
+                    className="group inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-gray-400 transition-all hover:text-white"
                   >
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="h-1.5 w-1.5 rounded-full bg-blue-500 opacity-0 transition-opacity group-hover:opacity-100" />
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
-                <a
+                <Link
                   href="/contacto"
-                  className="text-gray-400 hover:text-white text-xs font-black uppercase tracking-widest transition-all"
+                  className="text-xs font-black uppercase tracking-widest text-gray-400 transition-all hover:text-white"
                 >
                   Contacto Técnico
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* COLUMN 3: EXPERTISE BREADTH */}
           <div className="lg:col-span-3">
-             <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-white border-b border-white/10 pb-4 mb-6">Especialización</h4>
-             <ul className="space-y-4">
-                {[
-                  'Consultoría CRE / CNE',
-                  'Normatividad ASEA',
-                  'Ingeniería CFE / SENER',
-                  'Gestión SASISOPA',
-                  'Código de Red 2.0'
-                ].map((service) => (
-                  <li key={service} className="text-gray-400 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
-                     <Target size={12} className="text-blue-500/50" />
-                     {service}
-                  </li>
-                ))}
-             </ul>
+            <h4 className="mb-6 border-b border-white/10 pb-4 text-[11px] font-black uppercase tracking-[0.3em] text-white">
+              Especialización
+            </h4>
+            <ul className="space-y-4">
+              {[
+                'Consultoría CRE / CNE',
+                'Normatividad ASEA',
+                'Ingeniería CFE / SENER',
+                'Gestión SASISOPA',
+                'Código de Red 2.0',
+              ].map((service) => (
+                <li
+                  key={service}
+                  className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400"
+                >
+                  <Target size={12} className="text-blue-500/50" />
+                  {service}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* COLUMN 4: GLOBAL HEADQUARTERS */}
           <div className="lg:col-span-3">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-white border-b border-white/10 pb-4 mb-6">Sede Central</h4>
+            <h4 className="mb-6 border-b border-white/10 pb-4 text-[11px] font-black uppercase tracking-[0.3em] text-white">
+              Sede Central
+            </h4>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <MapPin size={22} className="text-blue-500 shrink-0" />
-                <p className="text-gray-400 text-xs font-black uppercase tracking-tight leading-loose">
+                <MapPin size={22} className="shrink-0 text-blue-500" />
+                <p className="text-xs font-black uppercase leading-loose tracking-tight text-gray-400">
                   Av. Miguel Ángel de Quevedo 961, <br />
                   El Rosedal, Coyoacán, <br />
                   C.P. 04330, CDMX.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                 <a href="tel:+525500000000" className="flex items-center gap-4 text-xs font-black text-gray-400 hover:text-white transition-colors">
-                    <Phone size={18} className="text-blue-500" /> +52 (55) 0000 0000
-                 </a>
-                 <a href="mailto:contacto@apen.mx" className="flex items-center gap-4 text-xs font-black text-gray-400 hover:text-white transition-colors">
-                    <Mail size={18} className="text-blue-500" /> contacto@apen.mx
-                 </a>
+                <a
+                  href="tel:+525500000000"
+                  className="flex items-center gap-4 text-xs font-black text-gray-400 transition-colors hover:text-white"
+                >
+                  <Phone size={18} className="text-blue-500" /> +52 (55) 0000 0000
+                </a>
+                <a
+                  href="mailto:contacto@apen.mx"
+                  className="flex items-center gap-4 text-xs font-black text-gray-400 transition-colors hover:text-white"
+                >
+                  <Mail size={18} className="text-blue-500" /> contacto@apen.mx
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* BOTTOM STRIP: ACCREDITATIONS & LEGAL */}
-        <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-8">
-          
-          <div className="flex flex-wrap justify-center lg:justify-start gap-10 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-             <div className="flex items-center gap-2">
-                <ShieldCheck size={20} />
-                <span className="text-[9px] font-black uppercase tracking-widest">ISO 9001:2015</span>
-             </div>
-             <div className="flex items-center gap-2">
-                <Award size={20} />
-                <span className="text-[9px] font-black uppercase tracking-widest">ISO 14001:2015</span>
-             </div>
-             <div className="flex items-center gap-2">
-                <ShieldCheck size={20} />
-                <span className="text-[9px] font-black uppercase tracking-widest">ISO 45001:2018</span>
-             </div>
+        <div className="flex flex-col items-center justify-between gap-8 border-t border-white/5 pt-12 lg:flex-row">
+          <div className="flex flex-wrap justify-center gap-10 opacity-40 grayscale transition-all duration-700 hover:grayscale-0 lg:justify-start">
+            <div className="flex items-center gap-2">
+              <ShieldCheck size={20} />
+              <span className="text-[9px] font-black uppercase tracking-widest">ISO 9001:2015</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Award size={20} />
+              <span className="text-[9px] font-black uppercase tracking-widest">ISO 14001:2015</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <ShieldCheck size={20} />
+              <span className="text-[9px] font-black uppercase tracking-widest">ISO 45001:2018</span>
+            </div>
           </div>
 
           <div className="text-center lg:text-right">
-             <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">
-                &copy; {currentYear} APEN Group - Administradora de Proyectos Energéticos S.A. de C.V.
-             </p>
-             <p className="text-[8px] font-black text-gray-600 uppercase tracking-widest">
-                Certeza Jurídica y Técnica en el Sector Energía. México.
-             </p>
+            <p className="mb-1 text-[10px] font-black uppercase tracking-widest text-gray-500">
+              &copy; {currentYear} APEN Group - Administradora de Proyectos Energéticos S.A. de C.V.
+            </p>
+            <div className="mb-2 flex flex-wrap items-center justify-center gap-3 text-[9px] font-black uppercase tracking-[0.22em] text-gray-500 lg:justify-end">
+              <Link href="/terminos-y-condiciones" className="transition-colors hover:text-white">
+                Términos y Condiciones
+              </Link>
+              <span className="text-white/20">|</span>
+              <Link href="/politica-de-privacidad" className="transition-colors hover:text-white">
+                Política de Privacidad
+              </Link>
+            </div>
+            <p className="text-[8px] font-black uppercase tracking-widest text-gray-600">
+              Certeza jurídica y técnica en el sector energía. México.
+            </p>
           </div>
         </div>
       </div>
