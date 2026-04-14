@@ -9,7 +9,7 @@ const advantages = [
     title: "Dominio Normativo CFE",
     desc: "Dominio experto de especificaciones institucionales: DCCSED01, DCCSET01, PYCON-SE-01. Garantizamos exito en las revisiones e inspecciones federales desde el primer intento.",
     icon: Ruler,
-    image: "/visual/imagenes/v1.jpg",
+    image: "/visual/imagenes/v1.webp",
     activeOverlay:
       "bg-[linear-gradient(180deg,rgba(11,35,65,0.26)_0%,rgba(11,35,65,0.74)_58%,rgba(11,35,65,0.94)_100%)]",
     inactiveOverlay:
@@ -20,7 +20,7 @@ const advantages = [
     title: "Integracion Multidisciplinaria",
     desc: "Un unico interlocutor con control absoluto: fusionamos ingenieria civil, infraestructura electromecanica y gestion de permisos en un equipo operativo unico.",
     icon: Layout,
-    image: "/visual/imagenes/v2.jpg",
+    image: "/visual/imagenes/v2.webp",
     activeOverlay:
       "bg-[linear-gradient(180deg,rgba(11,35,65,0.24)_0%,rgba(11,35,65,0.74)_58%,rgba(11,35,65,0.94)_100%)]",
     inactiveOverlay:
@@ -31,7 +31,7 @@ const advantages = [
     title: "Certeza Internacional ISO",
     desc: "Procesos auditados bajo los mas rigurosos estandares globales de calidad, ambiental y seguridad (ISO 9001, 14001, 45001).",
     icon: ShieldCheck,
-    image: "/visual/imagenes/v3.jpg",
+    image: "/visual/imagenes/v3.webp",
     activeOverlay:
       "bg-[linear-gradient(180deg,rgba(11,35,65,0.22)_0%,rgba(11,35,65,0.72)_58%,rgba(11,35,65,0.94)_100%)]",
     inactiveOverlay:
@@ -42,7 +42,7 @@ const advantages = [
     title: "Eficiencia Fast-Track",
     desc: "Red operativa tactica de despliegue inmediato. Optimizamos costos improductivos y aseguramos contractualmente tu tiempo de entrega.",
     icon: Zap,
-    image: "/visual/imagenes/v4.jpg",
+    image: "/visual/imagenes/v4.webp",
     activeOverlay:
       "bg-[linear-gradient(180deg,rgba(11,35,65,0.3)_0%,rgba(11,35,65,0.82)_60%,rgba(11,35,65,0.96)_100%)]",
     inactiveOverlay:

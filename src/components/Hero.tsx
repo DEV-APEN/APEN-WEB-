@@ -13,11 +13,14 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
           muted 
           playsInline 
           onEnded={onVideoEnd}
-          className="w-full h-full md:h-full object-contain md:object-cover scale-100 md:scale-105"
+          className="h-full w-full object-contain object-center scale-[1.12] md:scale-100 md:object-cover"
         >
           <source src="/videos/hero-video.mp4" type="video/mp4" />
           Tu navegador no es compatible con videos.
         </video>
+        
+        {/* Capas para ocultar marca de agua en mobile */}
+        <div className="md:hidden absolute bottom-0 left-0 w-full h-[8%] bg-white z-20" />
       </div>
       
       {/* SEO Title - Visually Hidden but readable by search engines */}
