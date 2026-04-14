@@ -36,6 +36,7 @@ import AboutContact from "@/components/AboutContact";
 import ChatBot from "@/components/ChatBot";
 import Ecosystem from "@/components/Ecosystem";
 import OperationalArchitecture from "@/components/OperationalArchitecture";
+import MobileMenu from "@/components/MobileMenu";
 
 const authorities = [
   ["01", "CNE", "Permisos, OPE y cumplimiento regulatorio", "Gestión integral de actividades reguladas en hidrocarburos, petrolíferos, petroquímicos y mercado eléctrico.", Landmark, "from-sky-500 to-cyan-400", ["Pre-registro ante OPE", "Estaciones de servicio, autoconsumo y carburación", "Almacenamiento, licuefacción, regasificación y comercialización", "Generación, transmisión, distribución, suministro e interconexión"]],
@@ -85,6 +86,7 @@ const flowData = [
 
 export default function ServicesPage() {
   const [isHeaderVisible, setHeaderVisible] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTrack, setActiveTrack] = useState(0);
 
   useEffect(() => {
@@ -143,7 +145,7 @@ export default function ServicesPage() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
-      <Header visible={isHeaderVisible} onOpenMenu={() => {}} />
+      <Header visible={isHeaderVisible} onOpenMenu={() => setIsMenuOpen(true)} />
 
       {/* 1. HERO */}
       <section className="relative overflow-hidden bg-[#061528] pb-14 pt-32 md:pb-20 md:pt-40">
@@ -351,6 +353,7 @@ export default function ServicesPage() {
       <AboutContact />
       <Footer />
       <ChatBot visible={isHeaderVisible} />
+      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );
 }

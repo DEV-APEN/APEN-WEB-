@@ -20,11 +20,11 @@ export default function Header({ visible, onOpenMenu = () => {} }: HeaderProps) 
             {/* Burger Button (Mobile Only) - A la IZQUIERDA del logo */}
             <button 
               onClick={onOpenMenu}
-              className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.2 focus:outline-none bg-apen-blue/5 rounded-lg border border-apen-blue/10"
+              className="md:hidden relative w-12 h-12 flex flex-col items-center justify-center gap-1.5 focus:outline-none bg-gradient-to-br from-white to-slate-50 hover:from-slate-50 hover:to-slate-100 rounded-xl border border-slate-200 shadow-[0_4px_10px_-2px_rgba(0,0,0,0.05)] transition-all duration-300 group"
             >
-              <div className="w-5 h-[2px] bg-apen-blue" />
-              <div className="w-5 h-[2px] bg-apen-blue" />
-              <div className="w-5 h-[2px] bg-apen-blue" />
+              <div className="w-5 h-[2px] bg-[#0B2341] rounded-full transform transition-all duration-300 group-hover:bg-[#008CDE] group-hover:w-6 origin-right" />
+              <div className="w-5 h-[2px] bg-[#008CDE] rounded-full transform transition-all duration-300 group-hover:w-4" />
+              <div className="w-5 h-[2px] bg-[#0B2341] rounded-full transform transition-all duration-300 group-hover:bg-[#008CDE] group-hover:w-6 origin-left" />
             </button>
 
             {/* Logo */}
