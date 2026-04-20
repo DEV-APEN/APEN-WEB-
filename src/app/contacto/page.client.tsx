@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 import { MapPin, Phone, Mail, Clock, ArrowRight, ShieldCheck, Send } from 'lucide-react';
+import StoreLocator from '@/components/StoreLocator';
 
 export default function ContactoPage() {
   const [showNav, setShowNav] = useState(false);
@@ -132,19 +133,9 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              {/* Mapa embebido */}
-              <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 shadow-sm h-80 bg-slate-200 relative group">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.9967675669145!2d-99.1481541!3d19.3456363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce006a86fbeb63%3A0xe96cbaf388835d0b!2sAv.%20Miguel%20%C3%81ngel%20de%20Quevedo%20961%2C%20El%20Rosedal%2C%20Coyoac%C3%81n%2C%2004330%20Ciudad%20de%20M%C3%A9xico%2C%20CDMX!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen={false} 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full"
-                ></iframe>
-                <div className="absolute inset-0 pointer-events-none border-2 border-[#008CDE]/0 group-hover:border-[#008CDE]/20 transition-all duration-500 rounded-2xl" />
+              {/* Mapa Store Locator */}
+              <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 shadow-sm h-80 bg-slate-100 relative">
+                <StoreLocator />
               </div>
             </div>
 
