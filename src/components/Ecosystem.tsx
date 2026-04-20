@@ -1,6 +1,5 @@
 "use client";
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const ecosystemItems = [
   {
@@ -61,22 +60,15 @@ export default function Ecosystem() {
                 360°
               </span>
             </div>
-            {/* Anillos rotativos de efecto tech */}
-            <motion.div 
-              animate={{ rotate: 360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 border-2 border-dashed border-[#008CDE]/20 rounded-full scale-110"
-            ></motion.div>
+            {/* Anillos rotativos de efecto tech — CSS puro, sin JS */}
+            <div className="absolute inset-0 border-2 border-dashed border-[#008CDE]/20 rounded-full scale-110 animate-spin [animation-duration:25s]" />
           </div>
 
           {/* LAS SOLUCIONES */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 lg:gap-x-32 gap-y-12 md:gap-y-32 w-full relative z-20">
             {ecosystemItems.map((item, idx) => (
-              <motion.div 
+              <div
                 key={item.number}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className={`flex items-start md:items-center gap-6 md:gap-8 p-4 ${idx % 2 === 1 ? 'md:flex-row-reverse md:text-right text-left text-right' : 'text-left'}`}
               >
                 {/* NUMERACIÓN GIGANTE */}
@@ -93,7 +85,7 @@ export default function Ecosystem() {
                     {item.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

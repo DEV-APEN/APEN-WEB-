@@ -39,9 +39,11 @@ export default function CorporateMetrics() {
     <section className="relative bg-[#040D1D] py-24 md:py-36 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img 
-          src="/visual/imagenes/metricas.jpg" 
-          alt="Métricas de fondo" 
+        <img
+          src="/visual/imagenes/metricas.jpg"
+          alt="Métricas de fondo"
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,13,29,0.95)_0%,rgba(4,13,29,0.5)_50%,rgba(4,13,29,0.95)_100%)]" />

@@ -8,10 +8,11 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
     <section className="relative bg-white w-full h-[70vh] md:h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full bg-white overflow-hidden flex items-center justify-center">
-        <video 
-          autoPlay 
-          muted 
-          playsInline 
+        <video
+          autoPlay
+          muted
+          playsInline
+          preload="metadata"
           onEnded={onVideoEnd}
           className="h-full w-full object-contain object-center scale-[1.12] md:scale-100 md:object-cover"
         >

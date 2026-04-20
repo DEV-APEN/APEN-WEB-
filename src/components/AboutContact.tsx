@@ -19,9 +19,10 @@ export default function AboutContact() {
           {/* LEFT: THE TECHNICAL LEGACY */}
           <div className="space-y-10">
             <div className="space-y-4">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 className="flex items-center gap-3"
               >
                 <div className="w-6 h-[2px] bg-blue-500"></div>
@@ -84,10 +85,11 @@ export default function AboutContact() {
           </div>
 
           {/* RIGHT: THE CONVERSION CARD */}
-          <motion.div 
+          <motion.div
             id="contacto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] relative overflow-hidden"
           >
             {/* Status Decoration */}

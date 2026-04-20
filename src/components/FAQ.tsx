@@ -52,9 +52,10 @@ export default function FAQ() {
         
         {/* Header Block */}
         <div className="mb-16 text-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="flex items-center justify-center gap-4 mb-4"
           >
             <div className="w-8 h-[2px] bg-[#008CDE]" />
@@ -73,10 +74,11 @@ export default function FAQ() {
         {/* FAQ Accordion */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={`border border-slate-100 rounded-3xl overflow-hidden shadow-sm transition-all duration-300 ${activeIndex === index ? 'shadow-xl shadow-blue-900/5 bg-slate-50/30' : 'bg-white hover:border-blue-500/20'}`}
             >

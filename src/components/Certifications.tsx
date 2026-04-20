@@ -56,9 +56,10 @@ export default function Certifications() {
         
         {/* HEADER: ELITE MINIMALISM */}
         <div className="mb-24 text-center max-w-xl mx-auto">
-           <motion.div 
+           <motion.div
              initial={{ opacity: 0, y: -5 }}
              whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
              className="flex items-center justify-center gap-3 mb-2"
            >
               <div className="w-8 h-[1px] bg-[#008CDE]"></div>
@@ -103,6 +104,7 @@ export default function Certifications() {
                    <motion.div
                      initial={{ opacity: 0, scale: 0.95 }}
                      whileInView={{ opacity: 1, scale: 1 }}
+                     viewport={{ once: true }}
                      transition={{ duration: 0.6, ease: "easeOut" }}
                      className={`w-full lg:absolute lg:w-[180px] min-h-[160px] bg-white border-[1.5px] border-[#008CDE] rounded-[2.5rem] p-6 flex flex-col items-center justify-between text-center shadow-[0_12px_45px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_45px_100px_-30px_rgba(0,140,222,0.2)] transition-all duration-500 z-10 ${
                        idx % 2 === 0 

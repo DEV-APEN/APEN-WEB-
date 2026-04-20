@@ -90,10 +90,12 @@ export default function Services() {
                 className="w-full md:w-1/2 relative group"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[3rem] shadow-2xl">
-                   <img 
-                     src={service.image} 
-                     alt={service.title} 
-                     className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                   <img
+                     src={service.image}
+                     alt={service.title}
+                     loading="lazy"
+                     decoding="async"
+                     className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B2341]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                    

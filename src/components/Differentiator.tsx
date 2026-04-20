@@ -67,9 +67,10 @@ export default function Differentiator() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
           
           {/* LADO IZQUIERDO: HUD TEXTUAL */}
-          <motion.div 
+          <motion.div
              initial={{ opacity: 0, x: -50 }}
              whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
              className="space-y-8 md:space-y-12"
           >
             <div>
@@ -135,10 +136,11 @@ export default function Differentiator() {
                {/* Modules Grid (Mobile) */}
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {technicalModules.map((mod) => (
-                    <motion.div 
+                    <motion.div
                       key={mod.id}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       className={`p-5 rounded-lg border flex flex-col justify-between h-40 ${view === 'apen' ? 'bg-[#061528]/80 border-[#005BB5]/30' : 'bg-red-950/20 border-red-500/20'}`}
                     >
                       <div className="flex justify-between items-start mb-4">

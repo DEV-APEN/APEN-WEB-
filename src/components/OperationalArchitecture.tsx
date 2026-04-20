@@ -112,7 +112,7 @@ export default function OperationalArchitecture() {
               <motion.div key="p1" variants={panelTransition} initial="initial" animate="animate" exit="exit">
                 <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-12 pb-16 pt-8 lg:flex-row">
                   <div className="relative flex w-full justify-center lg:w-[55%]">
-                    <img src="/visual/imagenes/diagrama servicios.jpeg" alt="Diagrama" className="max-h-[400px] h-auto w-full object-contain" />
+                    <img src="/visual/imagenes/diagrama servicios.jpeg" alt="Diagrama" loading="lazy" decoding="async" className="max-h-[400px] h-auto w-full object-contain" />
                   </div>
                   <div className="relative flex w-full flex-col gap-4 lg:w-[45%]">
                     {serviceNodes.map((node, i) => (
@@ -246,22 +246,14 @@ export default function OperationalArchitecture() {
                   {/* Centro: Mecanismo Asimétrico */}
                   <div className="relative flex h-[320px] w-full items-center justify-center md:w-[40%]">
                     {/* Engranaje Principal (Arriba - Izquierda) */}
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                      className="absolute left-6 top-4 z-10 h-40 w-40 md:h-48 md:w-48"
-                    >
-                      <img src="/visual/imagenes/gear1 (1).png" className="h-full w-full object-contain filter drop-shadow-xl" alt="Gear Primary" />
-                    </motion.div>
+                    <div className="absolute left-6 top-4 z-10 h-40 w-40 md:h-48 md:w-48 animate-spin [animation-duration:25s]">
+                      <img src="/visual/imagenes/gear1 (1).png" loading="lazy" decoding="async" className="h-full w-full object-contain filter drop-shadow-xl" alt="Gear Primary" />
+                    </div>
 
                     {/* Engranaje Secundario (Abajo - Derecha - Chico) */}
-                    <motion.div
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="absolute bottom-4 right-6 z-10 h-32 w-32 md:h-36 md:w-36"
-                    >
-                      <img src="/visual/imagenes/gear1 (2).png" className="h-full w-full object-contain opacity-90 filter drop-shadow-lg" alt="Gear Secondary" />
-                    </motion.div>
+                    <div className="absolute bottom-4 right-6 z-10 h-32 w-32 md:h-36 md:w-36 animate-spin [animation-duration:20s] [animation-direction:reverse]">
+                      <img src="/visual/imagenes/gear1 (2).png" loading="lazy" decoding="async" className="h-full w-full object-contain opacity-90 filter drop-shadow-lg" alt="Gear Secondary" />
+                    </div>
 
                     {/* Esfera de Cristal Central */}
                     <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
