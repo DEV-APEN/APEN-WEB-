@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useState, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
-import { ShieldCheck, Leaf, HeartPulse, Shield, FileCheck2, Fingerprint, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Leaf, HeartPulse, Shield, FileCheck2, Fingerprint, ArrowRight, X, ExternalLink, FileText, ZoomIn } from 'lucide-react';
 
 const isoCards = [
   {
@@ -16,7 +16,9 @@ const isoCards = [
     subtitle: 'Calidad Organizacional',
     desc: 'Sistema de Gestión de la Calidad. Garantiza la estandarización de procesos, trazabilidad técnica rigurosa y mejora continua para maximizar la satisfacción y certeza del cliente.',
     icon: ShieldCheck,
-    color: 'from-blue-600 to-cyan-400'
+    color: 'from-blue-600 to-cyan-400',
+    pdfFile: '/certificados/iso9001.pdf',
+    pdfLabel: 'Certificado ISO 9001:2015'
   },
   {
     id: '14001',
@@ -24,7 +26,9 @@ const isoCards = [
     subtitle: 'Gestión Ambiental',
     desc: 'Marco internacional de responsabilidad ambiental. Asegura operaciones sostenibles, mitigación de riesgos ecológicos y cumplimiento estricto con los requerimientos ambientales.',
     icon: Leaf,
-    color: 'from-emerald-500 to-teal-400'
+    color: 'from-emerald-500 to-teal-400',
+    pdfFile: '/certificados/iso14001.pdf',
+    pdfLabel: 'Certificado ISO 14001:2015'
   },
   {
     id: '45001',
@@ -32,7 +36,9 @@ const isoCards = [
     subtitle: 'Seguridad Ocupacional',
     desc: 'Sistema de Seguridad y Salud en el Trabajo. Implementa protocolos para la reducción de riesgos laborales, logrando entornos de trabajo de tolerancia cero a accidentes.',
     icon: HeartPulse,
-    color: 'from-blue-500 to-indigo-500'
+    color: 'from-blue-500 to-indigo-500',
+    pdfFile: '/certificados/iso45001.pdf',
+    pdfLabel: 'Certificado ISO 45001:2018'
   }
 ];
 
@@ -42,34 +48,141 @@ const regulatoryLogos = [
     name: 'ASEA',
     subtitle: 'Seguridad industrial, operativa y protección ambiental.',
     image: 'https://www.gob.mx/cms/uploads/article/main_image/16073/logo_asea.jpg',
-    accent: 'from-sky-500/20 to-cyan-500/10'
+    accent: 'from-sky-500/20 to-cyan-500/10',
+    pdfFile: null
   },
   {
     id: 'cne',
     name: 'CNE',
     subtitle: 'Marco técnico para decisiones regulatorias y energía.',
     image: 'https://static.wixstatic.com/media/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg/v1/fill/w_568,h_210,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg',
-    accent: 'from-slate-400/20 to-slate-200/10'
+    accent: 'from-slate-400/20 to-slate-200/10',
+    pdfFile: null
   },
   {
     id: 'sener',
     name: 'SENER',
     subtitle: 'Política energética, trazabilidad institucional y sectorial.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SENER_Logo_2019.svg/1280px-SENER_Logo_2019.svg.png',
-    accent: 'from-cyan-500/20 to-blue-500/10'
+    accent: 'from-cyan-500/20 to-blue-500/10',
+    pdfFile: null
   },
   {
     id: 'stps',
     name: 'STPS',
     subtitle: 'Cumplimiento laboral, seguridad y gestión preventiva.',
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/STPS_Logo_2019.svg/1280px-STPS_Logo_2019.svg.png',
-    accent: 'from-indigo-500/20 to-sky-500/10'
+    accent: 'from-indigo-500/20 to-sky-500/10',
+    pdfFile: null
   }
 ];
 
+// ─── PDF Viewer Modal ────────────────────────────────────────────────────────
+interface PdfModalProps {
+  pdfUrl: string;
+  label: string;
+  onClose: () => void;
+}
+
+function PdfModal({ pdfUrl, label, onClose }: PdfModalProps) {
+  // Close on Escape key
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  // Prevent body scroll while open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
+  }, []);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+      >
+        {/* Backdrop */}
+        <motion.div
+          className="absolute inset-0 bg-[#061528]/90 backdrop-blur-md"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        />
+
+        {/* Modal panel */}
+        <motion.div
+          className="relative z-10 flex w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0B2341] shadow-[0_30px_100px_rgba(0,0,0,0.6)]"
+          style={{ height: 'calc(100vh - 4rem)', maxHeight: '900px' }}
+          initial={{ opacity: 0, scale: 0.94, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.94, y: 24 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Header bar */}
+          <div className="flex shrink-0 items-center justify-between border-b border-white/10 bg-[#061528] px-5 py-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#008CDE]/30 bg-[#008CDE]/10">
+                <FileText size={18} className="text-[#008CDE]" />
+              </div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#008CDE]">Documento Oficial</p>
+                <p className="text-sm font-bold uppercase tracking-tight text-white">{label}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-lg border border-[#008CDE]/30 bg-[#008CDE]/10 px-3 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-[#008CDE] transition-colors hover:bg-[#008CDE]/20"
+              >
+                <ExternalLink size={13} />
+                Abrir en nueva pestaña
+              </a>
+              <button
+                onClick={onClose}
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-400 transition-all hover:border-white/20 hover:bg-white/10 hover:text-white"
+                aria-label="Cerrar visor"
+              >
+                <X size={18} />
+              </button>
+            </div>
+          </div>
+
+          {/* PDF iframe */}
+          <div className="relative flex-1 bg-slate-800">
+            <iframe
+              src={`${pdfUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
+              className="h-full w-full border-0"
+              title={label}
+            />
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+// ─── Main Page ───────────────────────────────────────────────────────────────
 export default function CertificacionesPage() {
   const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activePdf, setActivePdf] = useState<{ url: string; label: string } | null>(null);
+
+  const openPdf = useCallback((url: string, label: string) => {
+    setActivePdf({ url, label });
+  }, []);
+
+  const closePdf = useCallback(() => {
+    setActivePdf(null);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowNav(true), 250);
@@ -87,6 +200,15 @@ export default function CertificacionesPage() {
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
       <Header visible={showNav} onOpenMenu={() => setIsMenuOpen(true)} />
+
+      {/* PDF Modal */}
+      {activePdf && (
+        <PdfModal
+          pdfUrl={activePdf.url}
+          label={activePdf.label}
+          onClose={closePdf}
+        />
+      )}
 
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-20 pt-32 md:pb-32 md:pt-48">
         <div className="absolute inset-0">
@@ -119,6 +241,7 @@ export default function CertificacionesPage() {
         </div>
       </section>
 
+      {/* ── ISO Cards ─────────────────────────────────────────────────────────── */}
       <section className="border-b border-slate-100 bg-slate-50 py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-16 flex flex-col justify-between gap-8 md:mb-24 md:flex-row md:items-end">
@@ -129,39 +252,57 @@ export default function CertificacionesPage() {
               <p className="max-w-xl text-sm font-semibold uppercase tracking-tight leading-relaxed text-slate-500">
                 Nuestros procesos están estandarizados para asegurar calidad, protección ambiental y prevención de riesgos laborales.
               </p>
+              <p className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#008CDE]">
+                <ZoomIn size={13} />
+                Haz clic en cualquier certificado para verlo
+              </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
             {isoCards.map((card, idx) => (
-              <motion.div
+              <motion.button
                 key={card.id}
+                onClick={() => openPdf(card.pdfFile, card.pdfLabel)}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.15, duration: 0.6 }}
-                className="group relative rounded-2xl border border-slate-100 bg-white p-10 shadow-[0_10px_40px_rgba(0,0,0,0.03)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,140,222,0.08)]"
+                className="group relative w-full cursor-pointer rounded-2xl border border-slate-100 bg-white p-10 text-left shadow-[0_10px_40px_rgba(0,0,0,0.03)] transition-all duration-500 hover:border-[#008CDE]/30 hover:shadow-[0_20px_50px_rgba(0,140,222,0.12)]"
               >
-                <div className="mb-8 flex items-start justify-between">
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${card.color} text-white shadow-lg`}>
-                    <card.icon size={28} strokeWidth={1.5} />
+                {/* Hover glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#008CDE]/0 to-[#008CDE]/0 opacity-0 transition-opacity duration-500 group-hover:from-[#008CDE]/5 group-hover:to-transparent group-hover:opacity-100" />
+
+                <div className="relative">
+                  <div className="mb-8 flex items-start justify-between">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${card.color} text-white shadow-lg`}>
+                      <card.icon size={28} strokeWidth={1.5} />
+                    </div>
+                    <img src="/visual/imagenes/isologo.svg" alt="ISO Logo" className="h-10 object-contain" />
                   </div>
-                  <img src="/visual/imagenes/isologo.svg" alt="ISO Logo" className="h-10 object-contain" />
+
+                  <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-[#008CDE]">Normativa</p>
+                  <h3 className="mb-1 text-3xl font-black tracking-tighter text-[#0B2341]">{card.title}</h3>
+                  <p className="mb-6 border-b border-slate-100 pb-6 text-xs font-bold uppercase tracking-widest text-slate-400">
+                    {card.subtitle}
+                  </p>
+
+                  <p className="mb-8 text-sm font-medium leading-relaxed text-slate-500">{card.desc}</p>
+
+                  {/* CTA row */}
+                  <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#008CDE] opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1">
+                    <FileText size={13} />
+                    Ver certificado
+                    <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                  </div>
                 </div>
-
-                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-[#008CDE]">Normativa</p>
-                <h3 className="mb-1 text-3xl font-black tracking-tighter text-[#0B2341]">{card.title}</h3>
-                <p className="mb-6 border-b border-slate-100 pb-6 text-xs font-bold uppercase tracking-widest text-slate-400">
-                  {card.subtitle}
-                </p>
-
-                <p className="text-sm font-medium leading-relaxed text-slate-500">{card.desc}</p>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ── Registros y Acreditaciones ────────────────────────────────────────── */}
       <section className="bg-white py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto mb-20 max-w-3xl text-center">
@@ -174,7 +315,11 @@ export default function CertificacionesPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
-            <div className="group relative overflow-hidden rounded-3xl bg-[#061528] p-10">
+            {/* PEMEX / Achilles */}
+            <button
+              onClick={() => openPdf('/certificados/cert-pemex.pdf', 'Registro Achilles — PEMEX')}
+              className="group relative cursor-pointer overflow-hidden rounded-3xl bg-[#061528] p-10 text-left transition-transform duration-300 hover:-translate-y-1"
+            >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,140,222,0.15),transparent_60%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
               <div className="relative z-10">
                 <div className="mb-8 flex items-start justify-between">
@@ -197,10 +342,20 @@ export default function CertificacionesPage() {
                   <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">ID Padrón</p>
                   <p className="text-xl font-black italic tracking-widest text-white">00249023</p>
                 </div>
+                {/* hover cta */}
+                <div className="mt-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#35b8ff] opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <FileText size={13} />
+                  Ver certificado
+                  <ArrowRight size={12} />
+                </div>
               </div>
-            </div>
+            </button>
 
-            <div className="group relative overflow-hidden rounded-3xl bg-[#0B2341] p-10">
+            {/* CFE */}
+            <button
+              onClick={() => openPdf('/certificados/cert-cfe.pdf', 'Registro Proveedor — CFE')}
+              className="group relative cursor-pointer overflow-hidden rounded-3xl bg-[#0B2341] p-10 text-left transition-transform duration-300 hover:-translate-y-1"
+            >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,140,222,0.15),transparent_60%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
               <div className="relative z-10">
                 <div className="mb-8 flex items-start justify-between">
@@ -223,12 +378,19 @@ export default function CertificacionesPage() {
                   <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">Status</p>
                   <p className="text-xl font-black uppercase italic tracking-widest text-white">Activo</p>
                 </div>
+                {/* hover cta */}
+                <div className="mt-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#35b8ff] opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  <FileText size={13} />
+                  Ver certificado
+                  <ArrowRight size={12} />
+                </div>
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </section>
 
+      {/* ── Alineación Reguladora ─────────────────────────────────────────────── */}
       <section className="border-y border-slate-200 bg-[linear-gradient(180deg,#f8fbff_0%,#eef4fa_100%)] py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,1.18fr)] lg:gap-16">
@@ -324,6 +486,7 @@ export default function CertificacionesPage() {
         </div>
       </section>
 
+      {/* ── CTA ───────────────────────────────────────────────────────────────── */}
       <section className="bg-white py-24 text-center md:py-32">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="mb-8 text-3xl font-black uppercase leading-tight tracking-tighter text-[#0B2341] md:text-5xl">
