@@ -16,6 +16,11 @@ export const metadata: Metadata = {
     'gestión de calidad sector energético',
     'acreditaciones energéticas México',
     'trazabilidad técnica ISO',
+    'cumplimiento regulatorio energético',
+    'normativas energéticas México',
+    'regulación energética México',
+    'consultoría en cumplimiento energético',
+    'control de proyectos energéticos certificado',
   ],
   alternates: {
     canonical: 'https://apen.mx/certificaciones',

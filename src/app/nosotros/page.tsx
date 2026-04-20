@@ -15,6 +15,12 @@ export const metadata: Metadata = {
     'empresa CFE ASEA acreditada',
     'Padrón CFE proveedores',
     'Achilles PEMEX proveedor',
+    'empresa de ingeniería energética en México',
+    'administración de proyectos energéticos',
+    'gestión de proyectos energéticos',
+    'empresa de proyectos energéticos México',
+    'ingeniería energética CDMX',
+    'consultoría energética CDMX',
   ],
   alternates: {
     canonical: 'https://apen.mx/nosotros',

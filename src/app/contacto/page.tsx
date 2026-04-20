@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     'solicitar cotización energía',
     'consultoría regulatoria energética',
     'contacto defensa legal energética',
+    'ingeniería energética CDMX',
+    'proyectos energéticos en Ciudad de México',
+    'consultoría energética CDMX',
+    'servicios energéticos México CDMX',
+    'administración de proyectos energéticos CDMX',
+    'empresa de ingeniería energética en México',
   ],
   alternates: {
     canonical: 'https://apen.mx/contacto',
