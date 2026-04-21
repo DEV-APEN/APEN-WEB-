@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
@@ -212,10 +213,13 @@ export default function CertificacionesPage() {
 
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-20 pt-32 md:pb-32 md:pt-48">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/visual/imagenes/cer.jpg"
             alt="Certificaciones APEN"
-            className="absolute inset-0 h-full w-full object-cover opacity-30"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.15),transparent_40%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(6,21,40,0.9)_0%,rgba(11,35,65,0.8)_46%,rgba(0,140,222,0.2)_100%)]" />
@@ -278,7 +282,7 @@ export default function CertificacionesPage() {
                     <div className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${card.color} text-white shadow-lg`}>
                       <card.icon size={28} strokeWidth={1.5} />
                     </div>
-                    <img src="/visual/imagenes/isologo.svg" alt="ISO Logo" className="h-10 object-contain" />
+                    <img src="/visual/imagenes/isologo.svg" alt="ISO Logo" width={80} height={40} loading="lazy" className="h-10 w-auto object-contain" />
                   </div>
 
                   <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-[#008CDE]">Normativa</p>
@@ -327,7 +331,7 @@ export default function CertificacionesPage() {
                     <FileCheck2 size={24} className="text-white" />
                   </div>
                   <div className="rounded-lg bg-white p-2">
-                    <img src="https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp" alt="Achilles" className="h-10 object-contain" />
+                    <img src="https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp" alt="Achilles" width={100} height={40} loading="lazy" className="h-10 w-auto object-contain" />
                   </div>
                 </div>
                 <h3 className="mb-2 text-2xl font-black uppercase tracking-tight text-white">Red Achilles // PEMEX</h3>
@@ -366,7 +370,7 @@ export default function CertificacionesPage() {
                     <Fingerprint size={24} className="text-white" />
                   </div>
                   <div className="rounded-lg bg-white p-2">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg" alt="CFE" className="h-10 object-contain" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg" alt="CFE" width={100} height={40} loading="lazy" className="h-10 w-auto object-contain" />
                   </div>
                 </div>
                 <h3 className="mb-2 text-2xl font-black uppercase tracking-tight text-white">Proveeduría CFE</h3>
@@ -469,7 +473,10 @@ export default function CertificacionesPage() {
                       <img
                         src={logo.image}
                         alt={`Logo ${logo.name}`}
-                        className="max-h-16 w-full object-contain object-left"
+                        width={200}
+                        height={64}
+                        loading="lazy"
+                        className="max-h-16 w-auto object-contain object-left"
                       />
                     </div>
 

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
@@ -103,10 +104,13 @@ export default function CapacidadEjecutivaClient() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-20 pt-32 md:pb-32 md:pt-48">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/visual/imagenes/metricas.jpg"
             alt="Capacidad Ejecutiva APEN"
-            className="absolute inset-0 h-full w-full object-cover opacity-25"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.18),transparent_40%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(6,21,40,0.92)_0%,rgba(11,35,65,0.82)_50%,rgba(0,140,222,0.18)_100%)]" />

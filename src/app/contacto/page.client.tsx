@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
@@ -34,10 +35,13 @@ export default function ContactoPage() {
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-16 pt-32 md:pb-24 md:pt-40">
         <div className="absolute inset-0">
-          <img 
+          <Image 
             src="/visual/imagenes/contact.jpg" 
             alt="Contacto APEN" 
-            className="absolute inset-0 w-full h-full object-cover opacity-20"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.1),transparent_40%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />

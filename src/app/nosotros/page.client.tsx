@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/Header';
 import AboutWho from '@/components/AboutWho';
 import Differentiator from '@/components/Differentiator';
@@ -39,10 +40,13 @@ export default function NosotrosPage() {
 
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-16 pt-32 md:pb-24 md:pt-40">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/visual/imagenes/nosotros.jpg"
             alt="Oficinas corporativas de APEN"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(109,201,255,0.18),transparent_34%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(6,21,40,0.72)_0%,rgba(11,35,65,0.58)_46%,rgba(0,140,222,0.36)_100%)]" />

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
@@ -150,10 +151,13 @@ export default function ServicesPage() {
       {/* 1. HERO */}
       <section className="relative overflow-hidden bg-[#061528] pb-14 pt-32 md:pb-20 md:pt-40">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/visual/imagenes/heroserv.jpg"
             alt="Fondo de servicios"
-            className="absolute inset-0 h-full w-full object-cover opacity-60"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0B2341]/95 via-[#0B2341]/80 to-[#008CDE]/40" />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,#071424_0%,transparent_50%,#061528_100%)]" />
@@ -256,7 +260,7 @@ export default function ServicesPage() {
                    >
                       <div className="h-56 md:h-64 overflow-hidden relative shrink-0">
                          <div className="absolute inset-0 bg-[#0B2341]/50 group-hover:bg-[#0B2341]/20 transition-colors z-10 duration-500" />
-                         <img src={portal.img} alt={portal.title} className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-700" />
+                        <Image src={portal.img} alt={portal.title} fill sizes="(max-width: 768px) 100vw, 50vw" loading="lazy" className="object-cover scale-100 group-hover:scale-110 transition-transform duration-700" />
                          <div className="absolute top-6 left-6 z-20 flex items-center justify-center w-14 h-14 rounded-2xl bg-white shadow-2xl">
                             <portal.icon className={portal.textColor} size={28} />
                          </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, ArrowLeft, Droplets, ShieldCheck, FileText, BarChart3, Globe, Zap, Settings, Truck, ClipboardCheck, Microscope, Database, BadgeCheck, FileSearch, HardHat } from "lucide-react";
 import Link from "next/link";
 import Header from "../../../components/Header";
@@ -14,9 +15,12 @@ export default function HidrocarburosPage() {
 
       {/* Hero Sector */}
       <section className="relative min-h-[70vh] pt-40 pb-32 flex items-center overflow-hidden bg-[#0B2341]">
-        <img
+        <Image
           src="/hidro.jpg"
-          className="absolute inset-0 w-full h-full object-cover opacity-50 scale-105"
+          className="object-cover opacity-50 scale-105"
+          fill
+          sizes="100vw"
+          priority
           alt="Hidrocarburos"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B2341] via-[#0B2341]/80 to-transparent" />
