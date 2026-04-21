@@ -33,8 +33,8 @@ export default function Ecosystem() {
         {/* TITULO DE SECCIÓN */}
         <div className="mb-20">
             <h2 className="text-3xl md:text-5xl font-black text-[#0B2341] tracking-tighter uppercase leading-[0.85] mb-6">
-              Integración <br />
-              <span className="text-[#008CDE]">Técnica</span> 360°
+              Capacidad de <br />
+              <span className="text-[#008CDE]">Ejecución</span>
             </h2>
             <p className="text-gray-400 text-sm md:text-lg font-medium leading-relaxed mb-8 max-w-md italic">
               "Garantizamos la viabilidad técnica y el cumplimiento normativo preventivo en cada fase crítica del proyecto."

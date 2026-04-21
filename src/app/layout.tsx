@@ -222,6 +222,120 @@ const professionalServiceJsonLd = {
   },
 };
 
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://apen.mx/#localbusiness',
+  name: 'APEN — Administradora de Proyectos Energéticos',
+  image: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+  url: 'https://apen.mx',
+  telephone: '+52-55-0000-0000',
+  email: 'contacto@apen.mx',
+  priceRange: '$$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Av. Miguel Ángel de Quevedo 961, El Rosedal',
+    addressLocality: 'Coyoacán',
+    addressRegion: 'Ciudad de México',
+    postalCode: '04330',
+    addressCountry: 'MX',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 19.3456363,
+    longitude: -99.1481541,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  areaServed: {
+    '@type': 'Country',
+    name: 'México',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios APEN',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Ingeniería Eléctrica y Subestaciones CFE' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Gestión de Permisos de Hidrocarburos ante CNE y ASEA' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Defensa Legal y Técnica Energética ante TFJA' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Administración Integral de Proyectos Industriales' } },
+    ],
+  },
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué es APEN y a qué se dedica?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'APEN (Administradora de Proyectos Energéticos) es una empresa mexicana especializada en ingeniería eléctrica, gestión de hidrocarburos y defensa legal técnica para el sector energético. Ofrece servicios de cumplimiento normativo ante ASEA y CFE, diseño de subestaciones, tramitación de permisos CNE y representación legal ante el TFJA.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuáles son los servicios principales de APEN?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'APEN ofrece tres unidades estratégicas: (1) Ingeniería Eléctrica y Obra Civil con subestaciones hasta 230 kV bajo estándares CFE. (2) Gestión y Regulación de Hidrocarburos con permisos ante CNE y ASEA. (3) Defensa Legal y Técnica Energética con levantamiento de clausuras y demandas ante el TFJA.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿APEN está certificada o registrada ante organismos gubernamentales?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. APEN cuenta con certificaciones ISO 9001, ISO 14001 e ISO 45001. Además está registrada como proveedor certificado en el Padrón CFE con el número 4493015 y en la Red Achilles PEMEX con el ID 00249023.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿En qué estados de México opera APEN?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'APEN tiene oficinas en Ciudad de México (Coyoacán) y opera proyectos en toda la República Mexicana, incluyendo estados con alta actividad en el sector energético como Veracruz, Tabasco, Tamaulipas, Sinaloa y el Valle de México.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué es la consultoría energética en México y cómo puede ayudar APEN?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La consultoría energética en México abarca el cumplimiento de regulaciones ante ASEA, CFE, SENER y CNE, así como la gestión de infraestructura eléctrica e hidrocarburos. APEN ayuda a empresas del sector a obtener permisos, cumplir normativas, construir infraestructura y resolver conflictos legales de manera integral.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo contactar a APEN?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Puede contactar a APEN a través de su sitio web https://apen.mx/contacto, por correo electrónico a contacto@apen.mx o visitando sus oficinas en Av. Miguel Ángel de Quevedo 961, Coyoacán, Ciudad de México. Horario de atención: lunes a viernes de 9:00 a 18:00 hrs.',
+      },
+    },
+  ],
+};
+
+const speakableJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'APEN — Administradora de Proyectos Energéticos',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.speakable'],
+  },
+  url: 'https://apen.mx',
+};
+
+
 export default function RootLayout({
   children,
 }: {
@@ -254,6 +368,18 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }}
         />
       </body>
     </html>

@@ -49,9 +49,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {[
               { name: 'Portada', path: '/', id: '00' },
               { name: 'Servicios', path: '/servicios', id: '01' },
-              { name: 'Nosotros', path: '/nosotros', id: '02' },
-              { name: 'Normativa', path: '/certificaciones', id: '03' },
-              { name: 'Contacto', path: '/contacto', id: '04' }
+              { name: 'Capacidad Ejecutiva', path: '/capacidad-ejecutiva', id: '02' },
+              { name: 'Nosotros', path: '/nosotros', id: '03' },
+              { name: 'Normativa', path: '/certificaciones', id: '04' },
+              { name: 'Diagnóstico', path: '/diagnostico', id: '05' },
+              { name: 'Contacto', path: '/contacto', id: '06' }
             ].map((item, i) => (
               <motion.div
                 initial={{ opacity: 0, x: -30 }}

@@ -27,8 +27,11 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
       
       {/* SEO Title - Visually Hidden but readable by search engines */}
       <h1 className="sr-only">
-        APEN | Administradora de Proyectos Energéticos - Consultoría e Ingeniería Especializada en Hidrocarburos y Electricidad en México
+        Estructuración, ejecución y blindaje regulatorio de proyectos energéticos críticos en México.
       </h1>
+      <p className="sr-only">
+        Proveedor con contratos ejecutados ante CFE y PEMEX. Operador integral: del permiso a la obra, en un solo equipo con registro activo Achilles 00249023.
+      </p>
 
       {/* Smooth transition to content */}
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>

@@ -1,69 +1,57 @@
-import type { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://apen.mx';
-  const lastModified = new Date('2026-04-14');
+  const now = new Date();
 
   return [
     {
       url: baseUrl,
-      lastModified,
-      changeFrequency: 'monthly',
+      lastModified: now,
+      changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/servicios`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/servicios/energia`,
-      lastModified,
-      changeFrequency: 'monthly',
+      lastModified: now,
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/servicios/hidrocarburos`,
-      lastModified,
+      lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.9,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/servicios/energia`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/servicios/legal`,
-      lastModified,
+      lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.9,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/nosotros`,
-      lastModified,
-      changeFrequency: 'yearly',
+      lastModified: now,
+      changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/certificaciones`,
-      lastModified,
-      changeFrequency: 'yearly',
+      lastModified: now,
+      changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contacto`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/politica-de-privacidad`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terminos-y-condiciones`,
-      lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
   ];
 }

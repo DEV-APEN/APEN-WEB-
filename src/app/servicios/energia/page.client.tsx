@@ -39,11 +39,11 @@ export default function EnergiaPage() {
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-amber-400">Expediente 02 / Energía</span>
             </div>
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
-              Potencia e<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Infraestructura</span>
+              Infraestructura eléctrica y<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">consultoría regulatoria.</span>
             </h1>
             <p className="max-w-2xl text-blue-50/70 text-sm md:text-base font-medium leading-relaxed mb-10 border-l-2 border-amber-500 pl-6">
-              Diseño, desarrollo y cumplimiento normativo para subestaciones, líneas de conducción eléctrica y gestión ante el Mercado Eléctrico Nacional.
+              Ante CFE y CNE. Gestionamos permisos CNE de generación, transmisión y suministro. Ejecutamos obras de infraestructura eléctrica hasta 230 kV bajo dirección técnica propia, con Padrón CFE No. 4493015 activo.
             </p>
           </motion.div>
         </div>
@@ -98,7 +98,7 @@ export default function EnergiaPage() {
 
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
 
-            {/* Bloque 1: CFE e Ingeniería */}
+            {/* Bloque A: Consultoría CNE */}
             <motion.div
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
@@ -106,26 +106,27 @@ export default function EnergiaPage() {
                className="bg-[#f8f9fc] p-10 md:p-14 rounded-[3rem] border border-slate-200/60 relative overflow-hidden group hover:border-amber-200 transition-colors"
             >
               <div className="absolute top-0 right-0 p-8 opacity-5 transition-opacity group-hover:opacity-10 text-amber-600">
-                <TowerControl size={160} strokeWidth={1} />
+                <FileText size={160} strokeWidth={1} />
               </div>
 
               <div className="h-16 w-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-                 <HardHat className="text-amber-500" size={32} />
+                 <FileText className="text-amber-500" size={32} />
               </div>
 
               <h3 className="text-2xl md:text-3xl font-black text-[#0B2341] uppercase tracking-tighter mb-4 relative z-10">
-                 Ingeniería y<br/>Obra Eléctrica
+                 Consultoría CNE
               </h3>
               <p className="text-slate-500 mb-10 leading-relaxed font-bold text-sm relative z-10">
-                 Ejecución técnica respaldada en el Padrón CFE para el despliegue de infraestructura crítica en media y alta tensión.
+                 Gestión integral de permisos regulatorios ante la Comisión Nacional de Energía para todos los segmentos del sector eléctrico.
               </p>
 
               <ul className="space-y-5 relative z-10">
                 {[
-                  "Ingeniería y obra de subestaciones hasta 230 kV.",
-                  "Líneas de transmisión y tableros de control.",
-                  "Cumplimiento en especificaciones DCCSED01.",
-                  "Lineamientos constructivos PYCON-SE-01."
+                  "Permisos de Generación eléctrica.",
+                  "Permisos de Transmisión y Distribución.",
+                  "Permisos de Suministro e Interconexión.",
+                  "Gestión ante el Mercado Eléctrico Mayorista (MEM).",
+                  "Código de Red 2.0 — cumplimiento y actualización."
                 ].map(i =>(
                    <li key={i} className="flex items-start gap-4">
                      <PlugZap className="text-amber-500 shrink-0" size={20}/>
@@ -135,7 +136,7 @@ export default function EnergiaPage() {
               </ul>
             </motion.div>
 
-            {/* Bloque 2: CNE y SENER Regulaciones */}
+            {/* Bloque B: Ejecución técnica */}
             <motion.div
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
@@ -145,26 +146,27 @@ export default function EnergiaPage() {
             >
               <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-transparent opacity-60" />
               <div className="absolute bottom-0 right-0 p-8 opacity-10 text-white">
-                <Briefcase size={160} strokeWidth={1} />
+                <TowerControl size={160} strokeWidth={1} />
               </div>
 
               <div className="h-16 w-16 bg-white/10 border border-white/5 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm relative z-10">
-                 <FileText className="text-amber-400" size={32} />
+                 <HardHat className="text-amber-400" size={32} />
               </div>
 
               <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-4 relative z-10">
-                 Mercado Eléctrico<br/>Mayorista y SENER
+                 Ejecución Técnica<br/>Certificada
               </h3>
-              <p className="text-blue-100/70 mb-10 leading-relaxed font-bold text-sm relative z-10">
-                 Soporte regulatorio y validación documental para proyectos de generación e intercambio dentro del Sistema Eléctrico Nacional.
+              <p className="text-blue-100/70 mb-6 leading-relaxed font-bold text-sm relative z-10">
+                 Ejecutado bajo dirección técnica de APEN con red de especialistas certificados. Padrón CFE No. 4493015 activo.
               </p>
 
               <ul className="space-y-5 relative z-10">
                 {[
-                  "Gestión de permisos de Generación y Suministro.",
-                  "Trámites de Interconexión Eléctrica Comercial.",
-                  "Elaboración de MISSE previo a EVIS.",
-                  "Permisos de Importación ante la SENER."
+                  "Subestaciones hasta 230 kV — obra integral.",
+                  "Tableros de control y distribución eléctrica.",
+                  "Montaje electromecánico y líneas de transmisión.",
+                  "Normas DCCSED01, DCCSET01 y PYCON-SE-01.",
+                  "Licitaciones CFE — estructura y seguimiento."
                 ].map(i =>(
                    <li key={i} className="flex items-start gap-4">
                      <ArrowRight className="text-amber-400 shrink-0 mt-0.5" size={18}/>

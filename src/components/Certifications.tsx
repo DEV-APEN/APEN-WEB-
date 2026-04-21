@@ -149,7 +149,7 @@ export default function Certifications() {
            <div className="inline-flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 md:py-2 px-8 md:px-10 bg-white border-[1.5px] border-[#008CDE] rounded-3xl md:rounded-full shadow-sm hover:scale-[1.02] transition-transform duration-500">
               <span className="text-[8px] font-black text-[#008CDE] uppercase tracking-[0.6em] md:border-r md:border-[#008CDE]/30 md:pr-6">Alcance Registrado</span>
               <p className="text-gray-400 text-[9px] md:text-[10px] font-extrabold uppercase tracking-widest italic leading-relaxed text-center">
-                 Hidrocarburos • Civil • Eléctrica • Electromecánica
+                 Hidrocarburos • Civil • Eléctrica • Electromecánica • Gas e Instalaciones Especiales
               </p>
            </div>
         </div>

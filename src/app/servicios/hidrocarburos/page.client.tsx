@@ -39,11 +39,11 @@ export default function HidrocarburosPage() {
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#4fc3ff]">Expediente 01 / Hidrocarburos</span>
             </div>
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
-              Gestión<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4fc3ff] to-[#008CDE]">& Regulación</span>
+              Consultoría regulatoria<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4fc3ff] to-[#008CDE]">en hidrocarburos.</span>
             </h1>
             <p className="max-w-2xl text-blue-50/70 text-sm md:text-base font-medium leading-relaxed mb-10 border-l-2 border-[#008CDE] pl-6">
-              Acreditación integral y desarrollo operativo para instalaciones del sector hidrocarburos, petrolíferos y petroquímicos bajo los lineamientos de CNE, ASEA y PEMEX.
+              CNE, ASEA y SENER. Acompañamos a empresarios del sector desde el pre-registro hasta la operación continua. Gestionamos permisos, cumplimiento ambiental, SASISOPA y defensa ante requerimientos de autoridad.
             </p>
           </motion.div>
         </div>
@@ -114,18 +114,20 @@ export default function HidrocarburosPage() {
               </div>
 
               <h3 className="text-2xl md:text-3xl font-black text-[#0B2341] uppercase tracking-tighter mb-4 relative z-10">
-                 Cumplimiento<br/>CNE & ASEA
+                 Permisos y cumplimiento<br/>regulatorio ante CNE y ASEA
               </h3>
               <p className="text-slate-500 mb-10 leading-relaxed font-bold text-sm relative z-10">
-                 Integración documental y gestión técnica para permisos, impacto ambiental y operación continua ante las autoridades reguladoras federales.
+                 Gestión documental completa desde el pre-registro hasta la operación continua. Acompañamos cada etapa ante las autoridades reguladoras federales.
               </p>
 
               <ul className="space-y-5 relative z-10">
                 {[
-                  "Registro en Oficialía de Partes Electrónicas (OPE).",
-                  "Permisos para Estaciones de Servicio y Autoconsumo.",
-                  "Estudios de Riesgo, MIA y Licencias Ambientales.",
-                  "Diseño e Implementación de Sistemas SASISOPA."
+                  "Pre-registro y gestión ante Oficialía de Partes Electrónicas (OPE).",
+                  "Permisos CNE: Estaciones de Servicio, Autoconsumo, Carburación, Almacenamiento, Distribución y Comercialización.",
+                  "Cumplimiento ASEA: MIA, Informe Preventivo, Estudios de Riesgo, NOM-003 y NOM-005.",
+                  "Diseño e Implementación de Sistemas SASISOPA.",
+                  "Licencias ambientales, COA y pago de supervisión anual.",
+                  "Trámites SENER: MISSE previa a EVIS y permisos de importación."
                 ].map(i =>(
                    <li key={i} className="flex items-start gap-4">
                      <FileSearch className="text-[#008CDE] shrink-0" size={20}/>
@@ -135,7 +137,7 @@ export default function HidrocarburosPage() {
               </ul>
             </motion.div>
 
-            {/* Bloque 2: Suministros y Obra */}
+            {/* Bloque 2: SENER */}
             <motion.div
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
@@ -145,26 +147,26 @@ export default function HidrocarburosPage() {
             >
               <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#008CDE]/20 via-transparent to-transparent opacity-60" />
               <div className="absolute bottom-0 right-0 p-8 opacity-10 text-white">
-                <HardHat size={160} strokeWidth={1} />
+                <Globe size={160} strokeWidth={1} />
               </div>
 
               <div className="h-16 w-16 bg-white/10 border border-white/5 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm relative z-10">
-                 <Settings className="text-[#4fc3ff]" size={32} />
+                 <BarChart3 className="text-[#4fc3ff]" size={32} />
               </div>
 
               <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-4 relative z-10">
-                 Infraestructura y<br/>Suministro PEMEX
+                 Trámites SENER e<br/>Impacto Social
               </h3>
               <p className="text-blue-100/70 mb-10 leading-relaxed font-bold text-sm relative z-10">
-                 Capacidad logística e ingeniería aplicada bajo los estándares Achilles - Pemex. Abarcamos desde equipo especializado hasta obra civil.
+                 Gestión especializada para proyectos que requieren autorización social y permisos energéticos ante la Secretaría de Energía.
               </p>
 
               <ul className="space-y-5 relative z-10">
                 {[
-                  "Provisión de Unidades Tanque y Autotanques.",
-                  "Limpieza y Montaje de Tanques / Estructuras.",
-                  "Mantenimiento Civil y Mecánico.",
-                  "Registro Achilles ID: 00249023 (Vigencia 2026)."
+                  "Manifestación de Impacto Social (MISSE) previa a la Evaluación de Impacto Social (EVIS).",
+                  "Gestión de permisos de importación ante SENER.",
+                  "Ruta documental para nuevos desarrollos energéticos.",
+                  "Soporte técnico ante requerimientos sectoriales."
                 ].map(i =>(
                    <li key={i} className="flex items-start gap-4">
                      <ArrowRight className="text-[#4fc3ff] shrink-0 mt-0.5" size={18}/>

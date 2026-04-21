@@ -63,13 +63,52 @@ export default function NosotrosPage() {
               </span>
             </h1>
             <p className="mt-6 max-w-2xl border-l-4 border-[#00a6ff] pl-5 text-sm font-medium leading-relaxed text-[#d8e9ff] md:text-base">
-              APEN combina ingeniería, cumplimiento regulatorio y ejecución operativa para sostener proyectos energéticos con certeza documental y capacidad de respuesta.
+              APEN es un consorcio técnico 100% mexicano, registrado y precalificado como proveedor estratégico de PEMEX (ID Achilles 00249023), con presencia en eléctrico, hidrocarburos e ingeniería de procesos bajo una sola dirección ejecutiva.
             </p>
           </div>
         </div>
       </section>
 
       <AboutWho />
+
+      {/* Leadership Section */}
+      <section className="bg-[#061528] py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-16 text-center">
+            <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.5em] text-[#008CDE]">Dirección Ejecutiva</span>
+            <h2 className="text-3xl font-black uppercase leading-tight tracking-tighter text-white md:text-5xl">
+              Liderazgo <span className="text-[#008CDE]">Técnico</span>
+            </h2>
+          </div>
+
+          <div className="mx-auto max-w-2xl">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.12),transparent_50%)]" />
+              <div className="relative flex flex-col items-center text-center gap-6">
+                <div className="h-20 w-20 rounded-full border-2 border-[#008CDE]/40 bg-[#008CDE]/10 flex items-center justify-center">
+                  <span className="text-2xl font-black text-[#008CDE]">IGB</span>
+                </div>
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-2">Socio Director, Grupo APEN</p>
+                  <h3 className="text-2xl font-black uppercase tracking-tighter text-white md:text-3xl">Izanami García Bravo</h3>
+                </div>
+                <div className="max-w-xl space-y-4 text-sm font-medium leading-relaxed text-slate-400 text-left">
+                  <p>Abogado litigante especializado en derecho energético. Trayectoria en litigio complejo ante autoridades federales del sector energético e hidrocarburos en México.</p>
+                  <p>Fundador de Grupo APEN, Dynavolt y ORMSA — tres empresas registradas como proveedores ante CFE, con presencia en hidrocarburos, infraestructura eléctrica y proyectos de inversión energética a escala nacional.</p>
+                  <p>Candidato al grado de MEDEX en IPADE Business School, institución reconocida entre las escuelas de negocios líderes de América Latina.</p>
+                  <p className="border-l-2 border-[#008CDE] pl-4 italic text-slate-300">"En energía, el que no entiende la norma pierde el permiso. El que no puede ejecutar, pierde el contrato. Nosotros hacemos las dos."</p>
+                </div>
+                <div className="flex flex-wrap justify-center gap-3 pt-2">
+                  {['CFE', 'ASEA', 'CNE', 'PEMEX', 'ISO 9001/14001/45001'].map((tag) => (
+                    <span key={tag} className="rounded-full border border-[#008CDE]/20 bg-[#008CDE]/10 px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-[#008CDE]">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Differentiator />
       <Capabilities />
       <Certifications />

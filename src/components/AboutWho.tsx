@@ -21,10 +21,10 @@ export default function AboutWho() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] to-[#0B2341]">APEN?</span>
             </h3>
             <p className="text-base text-slate-500 font-medium leading-relaxed mb-6">
-              APEN (Administradora de Proyectos Energéticos) es una plataforma técnica mexicana de alto desempeño especializada en la integración de ingeniería estratégica y regulación federal para el sector de Hidrocarburos y Electricidad.
+              APEN es el operador integral del sector energético mexicano. No somos un despacho que asesora desde afuera, ni un contratista que ejecuta sin entender la norma. Somos el equipo que hace las dos cosas bajo el mismo techo.
             </p>
             <p className="text-base text-slate-500 font-medium leading-relaxed">
-              Nuestra estructura operativa está diseñada para proporcionar certeza técnica y jurídica absoluta, actuando como el brazo derecho operativo para empresas que requieren normalización, defensa y ejecución de infraestructura bajo los más estrictos estándares de CFE, ASEA y PEMEX.
+              Operamos con contratos ejecutados ante PEMEX, registro Achilles activo en más de 120 categorías, y Padrón CFE No. 4493015. Nuestra estructura está habilitada para participar en licitaciones, armar consorcios y ejecutar proyectos desde el permiso hasta la puesta en operación.
             </p>
           </motion.div>
 

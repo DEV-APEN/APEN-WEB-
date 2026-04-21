@@ -124,7 +124,7 @@ export default function AboutContact() {
                     <div className="relative">
                       <select className="w-full bg-slate-50 border border-gray-100 rounded-xl px-5 py-3 text-[10px] font-black text-[#0B2341] outline-none focus:ring-2 focus:ring-blue-500 appearance-none shadow-sm uppercase tracking-tight">
                         <option>Seleccione protocolo...</option>
-                        <option>Regulación CRE / CNE</option>
+                        <option>Regulación CNE</option>
                         <option>Normatividad ASEA</option>
                         <option>Ingeniería CFE</option>
                         <option>Defensa Legal</option>
@@ -136,7 +136,7 @@ export default function AboutContact() {
                   </div>
 
                   <button type="button" className="w-full bg-[#0B2341] hover:bg-blue-600 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 transition-all shadow-lg active:scale-[0.98] group mt-4">
-                    <span>Solicitar Contacto</span>
+                    <span>Solicitar Diagnóstico de Proyecto</span>
                     <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </button>
                </form>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Ruler, Layout, ShieldCheck, Zap } from "lucide-react";
+import { Ruler, Layout, ShieldCheck, Zap, BadgeCheck } from "lucide-react";
 
 const advantages = [
   {
@@ -39,14 +39,25 @@ const advantages = [
   },
   {
     number: "04",
-    title: "Eficiencia Fast-Track",
-    desc: "Red operativa tactica de despliegue inmediato. Optimizamos costos improductivos y aseguramos contractualmente tu tiempo de entrega.",
+    title: "Capacidad de Consorcio",
+    desc: "Capacidad de consorcio: participamos como líderes técnico-jurídicos en licitaciones CFE y PEMEX. Estructuramos SPVs y convenios de participación para proyectos de gran escala.",
     icon: Zap,
     image: "/visual/imagenes/v4.webp",
     activeOverlay:
       "bg-[linear-gradient(180deg,rgba(11,35,65,0.3)_0%,rgba(11,35,65,0.82)_60%,rgba(11,35,65,0.96)_100%)]",
     inactiveOverlay:
       "bg-[linear-gradient(180deg,rgba(255,255,255,0.8)_0%,rgba(238,245,252,0.86)_44%,rgba(227,237,248,0.9)_100%)]",
+  },
+  {
+    number: "05",
+    title: "Operador habilitado PEMEX",
+    desc: "Operador habilitado ante PEMEX — con contratos ejecutados. Registro Extendido Achilles ID 00249023, vigente 2026. Proveedor activo, no aspirante.",
+    icon: ShieldCheck,
+    image: "/visual/imagenes/metricas.jpg",
+    activeOverlay:
+      "bg-[linear-gradient(180deg,rgba(0,91,181,0.3)_0%,rgba(0,91,181,0.82)_60%,rgba(0,91,181,0.96)_100%)]",
+    inactiveOverlay:
+      "bg-[linear-gradient(180deg,rgba(255,255,255,0.8)_0%,rgba(235,245,255,0.86)_44%,rgba(220,238,255,0.9)_100%)]",
   },
 ];
 

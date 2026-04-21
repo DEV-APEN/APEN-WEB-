@@ -43,9 +43,10 @@ export default function Header({ visible, onOpenMenu = () => {} }: HeaderProps) 
           
           {/* Navigation en el medio (Desktop) - PERFECTAMENTE CENTRADO */}
           <nav className="hidden md:flex absolute inset-x-0 items-center justify-center pointer-events-none z-10">
-            <div className="pointer-events-auto flex items-center space-x-16">
+            <div className="pointer-events-auto flex items-center space-x-10">
               {[
                 { name: 'Servicios', path: '/servicios' },
+                { name: 'Capacidad Ejecutiva', path: '/capacidad-ejecutiva' },
                 { name: 'Nosotros', path: '/nosotros' },
                 { name: 'Certificaciones', path: '/certificaciones' }
               ].map((item) => (
@@ -62,9 +63,15 @@ export default function Header({ visible, onOpenMenu = () => {} }: HeaderProps) 
           </nav>
 
           {/* Acciones derecha (Desktop) */}
-          <div className="hidden md:flex items-center z-20">
-              <a 
-                href="/contacto" 
+          <div className="hidden md:flex items-center gap-3 z-20">
+              <a
+                href="/diagnostico"
+                className="relative overflow-hidden inline-flex items-center justify-center px-6 py-2.5 bg-transparent text-[#008CDE] text-[10px] font-black uppercase tracking-widest rounded-sm border border-[#008CDE]/40 transition-all duration-500 hover:bg-[#008CDE]/10 active:scale-95"
+              >
+                Diagnóstico
+              </a>
+              <a
+                href="/contacto"
                 className="relative overflow-hidden inline-flex items-center justify-center px-8 py-2.5 bg-apen-blue text-white text-[10px] font-black uppercase tracking-widest rounded-sm transition-all duration-500 hover:bg-apen-electric hover:shadow-[0_0_20px_rgba(0,91,181,0.4)] active:scale-95 group"
               >
                 <span className="relative z-10">Contacto Técnico</span>

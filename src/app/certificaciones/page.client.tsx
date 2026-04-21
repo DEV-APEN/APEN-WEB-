@@ -335,9 +335,12 @@ export default function CertificacionesPage() {
                   <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
                   <span className="text-[10px] font-bold uppercase tracking-widest text-green-400">Validación Vigente</span>
                 </div>
-                <p className="mb-8 text-sm font-medium leading-relaxed text-slate-400">
-                  Registrados y precalificados como proveedores estratégicos con acreditación integral de capacidades técnicas, financieras y de cumplimiento HSEQ.
+                <p className="mb-6 text-sm font-medium leading-relaxed text-slate-400">
+                  El Registro Extendido ante PEMEX a través de Achilles certifica que APEN ha completado el proceso de due diligence técnico, financiero y operativo exigido por Petróleos Mexicanos. No es un trámite administrativo. Es la validación institucional de que APEN puede operar en el ecosistema energético más exigente de México — y ya lo hace, con contratos ejecutados.
                 </p>
+                <div className="mb-6 rounded-xl border border-[#008CDE]/20 bg-[#008CDE]/5 px-4 py-3">
+                  <p className="text-[11px] font-black uppercase tracking-tight text-[#35b8ff]">APEN no aspira a ser proveedor PEMEX. Ya lo es. Contratos ejecutados, registro activo, estructura habilitada.</p>
+                </div>
                 <div className="border-t border-white/10 pt-6">
                   <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">ID Padrón</p>
                   <p className="text-xl font-black italic tracking-widest text-white">00249023</p>
@@ -482,6 +485,54 @@ export default function CertificacionesPage() {
                 </motion.article>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Achilles Clusters ────────────────────────────────────────────────── */}
+      <section className="bg-[#040D1D] py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-16 text-center">
+            <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.5em] text-[#008CDE]">Clasificación Achilles</span>
+            <h2 className="text-3xl font-black uppercase leading-tight tracking-tighter text-white md:text-4xl">
+              Clusters de <span className="text-[#008CDE]">Capacidad</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-slate-400">
+              La precalificación Achilles PEMEX certifica las capacidades de APEN en cinco categorías de ejecución técnica.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              { id: 'A', title: 'Eléctrico y Electromecánico', desc: 'Media y alta tensión, subestaciones, tableros, instrumentación.' },
+              { id: 'B', title: 'Infraestructura Civil', desc: 'Obra civil industrial, estructuras metálicas, fundaciones especiales.' },
+              { id: 'C', title: 'Hidrocarburos y Proceso', desc: 'Instalaciones de proceso, tuberías, sistemas contra incendio.' },
+              { id: 'D', title: 'Seguridad Industrial HSEQ', desc: 'Gestión integral de riesgos, cumplimiento NOM, SASISOPA.' },
+              { id: 'E', title: 'Consultoría y Normatividad', desc: 'Gestión de permisos, trámites regulatorios, auditorías técnicas.' },
+            ].map((cluster) => (
+              <div key={cluster.id} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                <div className="absolute -top-4 -right-4 text-[80px] font-black text-white/3 leading-none select-none">{cluster.id}</div>
+                <div className="relative">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-[#008CDE]/30 bg-[#008CDE]/10">
+                    <span className="text-sm font-black text-[#008CDE]">{cluster.id}</span>
+                  </div>
+                  <h3 className="mb-2 text-[11px] font-black uppercase leading-tight tracking-tight text-white">{cluster.title}</h3>
+                  <p className="text-[10px] font-medium leading-relaxed text-slate-500">{cluster.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <a
+              href="/certificados/cert-pemex.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full border border-[#008CDE]/30 bg-[#008CDE]/10 px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-[#008CDE] transition-colors hover:bg-[#008CDE]/20"
+            >
+              <FileText size={14} />
+              Ver Registro Completo Achilles
+            </a>
           </div>
         </div>
       </section>

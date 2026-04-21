@@ -168,15 +168,15 @@ export default function ServicesPage() {
                 <span className="text-[10px] font-black uppercase tracking-[0.35em] text-blue-50/95">Portafolio técnico</span>
               </div>
 
-              <h1 className="max-w-[13ch] text-[1.8rem] font-black uppercase leading-[0.95] tracking-[-0.03em] text-white md:text-[2.6rem] lg:text-[3.2rem]">
-                Servicios con
+              <h1 className="max-w-[16ch] text-[1.8rem] font-black uppercase leading-[0.95] tracking-[-0.03em] text-white md:text-[2.6rem] lg:text-[3.2rem]">
+                Consultoría especializada y
                 <span className="block bg-gradient-to-r from-[#61d4ff] via-[#7ec8ff] to-white bg-clip-text text-transparent">
-                  precisión técnica y legal
+                  ejecución de proyectos energéticos en México.
                 </span>
               </h1>
 
               <p className="mt-6 max-w-lg border-l-4 border-[#00a6ff] pl-5 text-[12px] font-medium leading-relaxed text-[#d8e9ff] md:text-[14px]">
-                APEN integra ingeniería y regulación para proyectos críticos de hidrocarburos y electricidad.
+                Somos el único operador en México que integra consultoría regulatoria, ejecución técnica y acceso directo al ecosistema CFE y PEMEX bajo un mismo equipo. No vendemos servicios aislados. Entregamos operaciones funcionando.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-2.5">
@@ -192,49 +192,25 @@ export default function ServicesPage() {
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="relative rounded-[2.25rem] p-6 md:p-8"
-              style={{ perspective: "1200px" }}
+              className="relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
             >
-              <div className="relative z-10 mb-6 flex items-center justify-between">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#8fe1ff]">Radar</p>
-                  <h2 className="mt-2 text-xl font-black uppercase tracking-tight text-white md:text-2xl">Gestión Operativa</h2>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/10 p-3 text-[#79d4ff]">
-                  <Layers3 size={26} />
-                </div>
-              </div>
-
-              <div className="relative z-10 mt-8 space-y-2.5">
-                {tracks.map(([title, description, Icon], index) => (
-                  <button
-                    key={title}
-                    type="button"
-                    onMouseEnter={() => setActiveTrack(index)}
-                    onFocus={() => setActiveTrack(index)}
-                    onClick={() => setActiveTrack(index)}
-                    className={`relative w-full rounded-xl pl-8 pr-3 text-left transition-all ${
-                      activeTrack === index ? "bg-cyan-300/10" : "hover:bg-white/5"
-                    }`}
-                  >
-                    {index < tracks.length - 1 && <div className="absolute left-[10px] top-9 h-[calc(100%+0.35rem)] w-px bg-gradient-to-b from-cyan-300/60 to-transparent" />}
-                    <div className={`absolute left-0 top-2 flex h-5 w-5 items-center justify-center rounded-full border ${activeTrack === index ? "border-cyan-200 bg-[#0b2942] text-[#9be7ff] shadow-[0_0_18px_rgba(103,214,255,0.35)]" : "border-cyan-300/50 bg-[#08192b] text-[#6fd5ff]"}`}>
-                      <Icon size={11} />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.12),transparent_50%)]" />
+              <div className="relative space-y-6">
+                {[
+                  { id: '01', label: 'CFE', value: 'Padrón No. 4493015 — activo' },
+                  { id: '02', label: 'PEMEX', value: 'Achilles ID 00249023 — contratos ejecutados' },
+                  { id: '03', label: 'CNE', value: 'Permisos de generación, transmisión y suministro' },
+                  { id: '04', label: 'ASEA', value: 'SASISOPA, MIA, auditorías ambientales' },
+                ].map((item) => (
+                  <div key={item.id} className="flex items-start gap-4 border-b border-white/5 pb-5 last:border-0 last:pb-0">
+                    <span className="text-[10px] font-mono text-[#008CDE]/60 font-black tracking-widest shrink-0 pt-0.5">{item.id}</span>
+                    <div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#008CDE] block mb-1">{item.label}</span>
+                      <p className="text-[12px] font-bold text-slate-300 leading-tight">{item.value}</p>
                     </div>
-                    <div className={`pb-4 ${activeTrack === index ? "border-cyan-300/35" : "border-white/10"}`}>
-                      <div className="flex items-center gap-3 mb-1">
-                        <span className={`text-[10px] font-black uppercase tracking-[0.28em] ${activeTrack === index ? "text-[#b8efff]" : "text-[#8fe1ff]"}`}>0{index + 1}</span>
-                        <h3 className="text-xs font-black uppercase tracking-[0.18em] text-white md:text-sm">{title}</h3>
-                      </div>
-                      <p className={`text-[11px] leading-relaxed transition-opacity duration-300 ${activeTrack === index ? "text-[#dcecff] opacity-100" : "text-white/40 opacity-0 h-0 overflow-hidden"}`}>
-                        {description}
-                      </p>
-                    </div>
-                  </button>
+                  </div>
                 ))}
               </div>
-
-
             </motion.div>
           </div>
 
@@ -298,6 +274,35 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+      {/* ¿Por qué APEN? */}
+      <section className="bg-[#040D1D] py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-16 max-w-3xl">
+            <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.5em] text-[#008CDE]">Posicionamiento</span>
+            <h2 className="text-3xl font-black uppercase leading-[0.92] tracking-tighter text-white md:text-5xl">
+              El mercado tiene consultores.<br />
+              Tiene contratistas.<br />
+              <span className="text-[#008CDE]">No tiene operadores integrales.</span>
+            </h2>
+          </div>
+          <p className="mb-16 max-w-3xl text-sm font-medium leading-relaxed text-slate-400 md:text-base">
+            El sector energético en México enfrenta un problema estructural: regulación, operación y ejecución fragmentadas entre actores distintos que no se coordinan. Eso genera proyectos detenidos, sobrecostos y riesgo regulatorio mal gestionado. APEN resuelve eso de raíz. Somos el equipo que conoce la norma porque la litiga, que tiene los registros porque los ejecutó, y que puede construir porque tiene la red técnica certificada para hacerlo.
+          </p>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { label: 'Problema del mercado', text: 'Fragmentación: regulación, operación y ejecución en manos distintas', accent: 'border-red-500/30 bg-red-500/5' },
+              { label: 'Nuestra posición', text: 'Operador integral con acceso real a CFE y PEMEX — no intermediario', accent: 'border-[#008CDE]/30 bg-[#008CDE]/5' },
+              { label: 'Resultado para el cliente', text: 'Proyecto estructurado, habilitado y ejecutado por un solo equipo responsable', accent: 'border-green-500/30 bg-green-500/5' },
+            ].map((col) => (
+              <div key={col.label} className={`rounded-2xl border p-8 ${col.accent}`}>
+                <p className="mb-4 text-[10px] font-black uppercase tracking-[0.35em] text-slate-400">{col.label}</p>
+                <p className="text-sm font-bold leading-relaxed text-white">{col.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <Ecosystem />
 

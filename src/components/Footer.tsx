@@ -77,7 +77,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                'Consultoría CRE / CNE',
+                'Consultoría CNE',
                 'Normatividad ASEA',
                 'Ingeniería CFE / SENER',
                 'Gestión SASISOPA',
@@ -109,10 +109,10 @@ export default function Footer() {
               </div>
               <div className="flex flex-col gap-3">
                 <a
-                  href="tel:+525500000000"
+                  href="tel:+525574793873"
                   className="flex items-center gap-4 text-xs font-black text-gray-400 transition-colors hover:text-white"
                 >
-                  <Phone size={18} className="text-blue-500" /> +52 (55) 0000 0000
+                  <Phone size={18} className="text-blue-500" /> 55 7479 3873
                 </a>
                 <a
                   href="mailto:contacto@apen.mx"

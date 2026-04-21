@@ -8,6 +8,7 @@ import FAQ from '../components/FAQ';
 import AboutContact from '../components/AboutContact';
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
+import PemexBanner from '../components/PemexBanner';
 
 // Carga diferida — estos componentes no son necesarios en el primer render
 const CredentialsCarousel = dynamic(() => import('../components/CredentialsCarousel'), { ssr: false });
@@ -39,6 +40,8 @@ export default function Home() {
       <CorporateMetrics />
 
       <FAQ />
+
+      <PemexBanner />
 
       <AboutContact />
 
