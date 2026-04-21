@@ -23,20 +23,7 @@ const technicalModules = [
 
 export default function Differentiator() {
   const [view, setView] = useState<'apen' | 'tradicional'>('apen');
-  const [mounted, setMounted] = React.useState(false);
-  const [radius, setRadius] = React.useState(250);
-
-  React.useEffect(() => {
-    setMounted(true);
-    const handleResize = () => {
-      setRadius(window.innerWidth < 768 ? 100 : 250);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  if (!mounted) return null;
+  const radius = 250;
 
   return (
     <section className="relative min-h-screen bg-[#0B2341] py-16 md:py-24 flex flex-col justify-center overflow-x-clip">
@@ -54,7 +41,7 @@ export default function Differentiator() {
         <motion.div 
           animate={{ x: ['-100%', '200%'] }}
           transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-[#005BB5]/10 to-transparent skew-x-12"
+          className="absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-[#005BB5]/10 to-transparent skew-x-12 transform-gpu"
         />
 
         <div className="absolute bottom-0 left-0 w-full h-[50%] bg-[#005BB5]/5 [mask-image:linear-gradient(to_top,black,transparent)] rotate-x-60 origin-bottom transform-gpu">
