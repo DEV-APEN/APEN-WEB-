@@ -19,14 +19,24 @@ export default function ContactoPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
+    
     const formData = new FormData(e.currentTarget);
+    formData.append("access_key", "b6daf502-85e9-44e5-a260-cc506e17a443");
+    formData.append("subject", "Nuevo Contacto desde Página de Contacto");
+    formData.append("from_name", "APEN Web Bot");
+
     try {
-      await fetch("/", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
       });
-      setFormStatus('success');
+      
+      const result = await response.json();
+      if (result.success) {
+        setFormStatus('success');
+      } else {
+        setFormStatus('error');
+      }
     } catch (error) {
       console.error(error);
       setFormStatus('error');
@@ -190,13 +200,12 @@ export default function ContactoPage() {
                   </motion.div>
                 ) : (
                   <form 
-                    name="contacto-page"
+                    action="https://api.web3forms.com/submit"
                     method="POST"
-                    data-netlify="true"
                     onSubmit={handleSubmit}
                     className="space-y-6"
                   >
-                    <input type="hidden" name="form-name" value="contacto-page" />
+                    <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">

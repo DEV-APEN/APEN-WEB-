@@ -12,14 +12,22 @@ export default function AboutContact() {
     setFormState('submitting');
     
     const formData = new FormData(e.currentTarget);
-    
+    formData.append("access_key", "b6daf502-85e9-44e5-a260-cc506e17a443");
+    formData.append("subject", "Nuevo Contacto desde APEN Home");
+    formData.append("from_name", "APEN Web Bot");
+
     try {
-      await fetch("/", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
       });
-      setFormState('success');
+      
+      const result = await response.json();
+      if (result.success) {
+        setFormState('success');
+      } else {
+        setFormState('error');
+      }
     } catch (error) {
       console.error(error);
       setFormState('error');
@@ -144,14 +152,13 @@ export default function AboutContact() {
                      <button onClick={() => setFormState('idle')} className="text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-blue-600 transition-colors">Enviar otra solicitud</button>
                    </motion.div>
                  ) : (
-                   <form 
-                    name="contacto-home" 
-                    method="POST" 
-                    data-netlify="true"
-                    className="space-y-4" 
-                    onSubmit={handleSubmit}
-                   >
-                      <input type="hidden" name="form-name" value="contacto-home" />
+                    <form 
+                     action="https://api.web3forms.com/submit"
+                     method="POST" 
+                     className="space-y-4" 
+                     onSubmit={handleSubmit}
+                    >
+                      <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
                       
                       <div className="space-y-1.5">
                         <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Nombre y Empresa</label>

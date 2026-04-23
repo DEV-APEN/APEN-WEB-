@@ -26,14 +26,22 @@ export default function DiagnosticoClient() {
     setFormStatus('submitting');
     
     const formData = new FormData(e.currentTarget);
-    
+    formData.append("access_key", "b6daf502-85e9-44e5-a260-cc506e17a443");
+    formData.append("subject", "Nuevo Diagnóstico de Proyecto - APEN");
+    formData.append("from_name", "APEN Diagnóstico Bot");
+
     try {
-      await fetch("/", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
       });
-      setFormStatus('success');
+      
+      const result = await response.json();
+      if (result.success) {
+        setFormStatus('success');
+      } else {
+        setFormStatus('error');
+      }
     } catch (error) {
       console.error(error);
       setFormStatus('error');
@@ -133,13 +141,12 @@ export default function DiagnosticoClient() {
                   </div>
 
                   <form 
-                    name="contacto-diagnostico"
+                    action="https://api.web3forms.com/submit"
                     method="POST"
-                    data-netlify="true"
                     onSubmit={handleSubmit} 
                     className="space-y-5"
                   >
-                    <input type="hidden" name="form-name" value="contacto-diagnostico" />
+                    <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
                     
                     {/* Field 1: Name & Company */}
                     <div className="space-y-1.5">
