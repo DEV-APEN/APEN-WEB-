@@ -19,7 +19,26 @@ const benefits = [
 export default function DiagnosticoClient() {
   const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+      setFormStatus('success');
+    } catch (error) {
+      console.error(error);
+      setFormStatus('error');
+    }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setShowNav(true), 250);
@@ -27,11 +46,6 @@ export default function DiagnosticoClient() {
     window.addEventListener('scroll', handleScroll);
     return () => { clearTimeout(timer); window.removeEventListener('scroll', handleScroll); };
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
 
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-[#040D1D]">
@@ -87,7 +101,7 @@ export default function DiagnosticoClient() {
             >
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.1),transparent_50%)]" />
 
-              {submitted ? (
+              {formStatus === 'success' ? (
                 <div className="relative flex flex-col items-center justify-center py-16 text-center">
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-green-500/30 bg-green-500/10">
                     <CheckCircle2 size={40} className="text-green-400" />
@@ -118,13 +132,22 @@ export default function DiagnosticoClient() {
                     </div>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form 
+                    name="contacto-diagnostico"
+                    method="POST"
+                    data-netlify="true"
+                    onSubmit={handleSubmit} 
+                    className="space-y-5"
+                  >
+                    <input type="hidden" name="form-name" value="contacto-diagnostico" />
+                    
                     {/* Field 1: Name & Company */}
                     <div className="space-y-1.5">
                       <label className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
                         Nombre y Empresa <span className="text-[#008CDE]">*</span>
                       </label>
                       <input
+                        name="nombre-empresa"
                         type="text"
                         required
                         placeholder="Ej: Ing. Ricardo Sánchez — Energía Industrial S.A."
@@ -138,6 +161,7 @@ export default function DiagnosticoClient() {
                         Correo Corporativo <span className="text-[#008CDE]">*</span>
                       </label>
                       <input
+                        name="email"
                         type="email"
                         required
                         placeholder="correo@empresa.com"
@@ -152,6 +176,7 @@ export default function DiagnosticoClient() {
                       </label>
                       <div className="relative">
                         <select
+                          name="tipo-proyecto"
                           required
                           className="w-full appearance-none rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-[11px] font-black uppercase tracking-tight text-white outline-none transition-all focus:border-[#008CDE]/50 focus:ring-1 focus:ring-[#008CDE]/30"
                           defaultValue=""
@@ -178,6 +203,7 @@ export default function DiagnosticoClient() {
                       </label>
                       <div className="relative">
                         <select
+                          name="escala"
                           className="w-full appearance-none rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-[11px] font-black uppercase tracking-tight text-white outline-none transition-all focus:border-[#008CDE]/50 focus:ring-1 focus:ring-[#008CDE]/30"
                           defaultValue=""
                         >
@@ -201,6 +227,7 @@ export default function DiagnosticoClient() {
                         Descripción del Requerimiento <span className="text-[#008CDE]">*</span>
                       </label>
                       <textarea
+                        name="mensaje"
                         required
                         rows={4}
                         placeholder="Describa brevemente su proyecto: ubicación, estado actual, objetivo principal y plazo tentativo de ejecución..."
@@ -210,10 +237,11 @@ export default function DiagnosticoClient() {
 
                     <button
                       type="submit"
-                      className="group mt-2 flex w-full items-center justify-center gap-3 rounded-xl bg-[#008CDE] py-4 text-[11px] font-black uppercase tracking-[0.3em] text-white shadow-xl transition-all duration-300 hover:bg-white hover:text-[#0B2341] active:scale-[0.98]"
+                      disabled={formStatus === 'submitting'}
+                      className="group mt-2 flex w-full items-center justify-center gap-3 rounded-xl bg-[#008CDE] py-4 text-[11px] font-black uppercase tracking-[0.3em] text-white shadow-xl transition-all duration-300 hover:bg-white hover:text-[#0B2341] active:scale-[0.98] disabled:bg-slate-500"
                     >
-                      Enviar Diagnóstico
-                      <Send size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      {formStatus === 'submitting' ? 'Transmitiendo...' : 'Enviar Diagnóstico'}
+                      <Send size={16} className={formStatus === 'submitting' ? 'animate-pulse' : 'transition-transform group-hover:translate-x-1 group-hover:-translate-y-1'} />
                     </button>
                   </form>
                 </div>

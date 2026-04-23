@@ -16,7 +16,6 @@
             <option>Ingeniería CFE</option>
             <option>Defensa Legal</option>
         </select>
-        <textarea name="mensaje"></textarea>
     </form>
 
     <!-- Formulario de la Página de Contacto -->
@@ -31,6 +30,26 @@
             <option>mantenimiento</option>
             <option>ventas</option>
             <option>otro</option>
+        </select>
+        <textarea name="mensaje"></textarea>
+    </form>
+
+    <!-- Formulario de Diagnóstico -->
+    <form name="contacto-diagnostico" data-netlify="true" hidden>
+        <input type="text" name="nombre-empresa" />
+        <input type="email" name="email" />
+        <select name="tipo-proyecto">
+            <option>electrico</option>
+            <option>hidrocarburos</option>
+            <option>normativo</option>
+            <option>legal</option>
+            <option>mantenimiento</option>
+        </select>
+        <select name="escala">
+            <option>consulta</option>
+            <option>pequeno</option>
+            <option>mediano</option>
+            <option>grande</option>
         </select>
         <textarea name="mensaje"></textarea>
     </form>
