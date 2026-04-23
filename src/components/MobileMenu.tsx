@@ -35,6 +35,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </span>
               <button 
                 onClick={onClose} 
+                aria-label="Cerrar menú"
                 className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-[#008CDE]/20 rounded-xl border border-white/10 transition-all duration-300"
               >
                   <div className="relative w-5 h-5">

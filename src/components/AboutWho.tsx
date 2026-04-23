@@ -15,11 +15,11 @@ export default function AboutWho() {
             className="relative"
           >
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-50 rounded-full blur-3xl opacity-60" />
-            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-4">Identidad Institucional</h2>
-            <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#0B2341] leading-[0.9] mb-8">
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-4">Identidad Institucional</p>
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#0B2341] leading-[0.9] mb-8">
               ¿Quién es <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] to-[#0B2341]">APEN?</span>
-            </h3>
+            </h2>
             <p className="text-base text-slate-500 font-medium leading-relaxed mb-6">
               APEN es el operador integral del sector energético mexicano. No somos un despacho que asesora desde afuera, ni un contratista que ejecuta sin entender la norma. Somos el equipo que hace las dos cosas bajo el mismo techo.
             </p>

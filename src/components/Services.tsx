@@ -125,9 +125,9 @@ export default function Services() {
                    <span className="text-[11px] font-black uppercase tracking-[0.5em] text-apen-blue">{service.label}</span>
                 </div>
                 
-                <h3 className="text-4xl font-black uppercase tracking-tighter text-[#0B2341] md:text-5xl lg:text-6xl mb-6">
+                <h2 className="text-4xl font-black uppercase tracking-tighter text-[#0B2341] md:text-5xl lg:text-6xl mb-6">
                   {service.title}
-                </h3>
+                </h2>
 
                 <p className="text-xl font-bold italic text-slate-400 mb-8 leading-tight">
                   "{service.subtitle}"

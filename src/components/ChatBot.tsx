@@ -285,13 +285,16 @@ export default function ChatBot({ visible = true }: { visible?: boolean }) {
               >
                  <input 
                    type="text" 
+                   id="chat-input"
                    value={inputValue}
                    onChange={(e) => setInputValue(e.target.value)}
                    placeholder="Escriba su consulta..."
+                   aria-label="Escribir mensaje al asistente"
                    className="flex-grow bg-transparent border border-gray-300 rounded-md px-3 py-2 text-[13px] text-gray-700 outline-none focus:border-[#008CDE] transition-colors"
                  />
                  <button 
                    type="submit" 
+                   aria-label="Enviar mensaje"
                    className="w-10 h-10 bg-[#0B2341] hover:bg-blue-900 text-white rounded-md flex items-center justify-center transition-colors shadow-sm shrink-0 disabled:opacity-50"
                    disabled={!inputValue.trim()}
                  >
