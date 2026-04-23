@@ -20,20 +20,28 @@ export default function DiagnosticoClient() {
   const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
     
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "b6daf502-85e9-44e5-a260-cc506e17a443");
-    formData.append("subject", "Nuevo Diagnóstico de Proyecto - APEN");
-    formData.append("from_name", "APEN Diagnóstico Bot");
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
       });
       
       const result = await response.json();
@@ -54,6 +62,8 @@ export default function DiagnosticoClient() {
     window.addEventListener('scroll', handleScroll);
     return () => { clearTimeout(timer); window.removeEventListener('scroll', handleScroll); };
   }, []);
+
+  if (!mounted) return null;
 
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-[#040D1D]">
@@ -147,6 +157,8 @@ export default function DiagnosticoClient() {
                     className="space-y-5"
                   >
                     <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
+                    <input type="hidden" name="subject" value="Nuevo Diagnóstico de Proyecto - APEN" />
+                    <input type="hidden" name="from_name" value="APEN Diagnóstico Bot" />
                     
                     {/* Field 1: Name & Company */}
                     <div className="space-y-1.5">

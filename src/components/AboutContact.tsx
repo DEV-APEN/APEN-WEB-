@@ -6,20 +6,28 @@ import Image from 'next/image';
 
 export default function AboutContact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState('submitting');
     
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "b6daf502-85e9-44e5-a260-cc506e17a443");
-    formData.append("subject", "Nuevo Contacto desde APEN Home");
-    formData.append("from_name", "APEN Web Bot");
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
       });
       
       const result = await response.json();
@@ -33,6 +41,8 @@ export default function AboutContact() {
       setFormState('error');
     }
   };
+
+  if (!mounted) return null;
 
   return (
     <section id="nosotros" className="bg-[#0B2341] text-white py-16 md:py-20 relative overflow-hidden border-t border-white/5">
@@ -159,6 +169,8 @@ export default function AboutContact() {
                      onSubmit={handleSubmit}
                     >
                       <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
+                      <input type="hidden" name="subject" value="Nuevo Contacto desde APEN Home" />
+                      <input type="hidden" name="from_name" value="APEN Web Bot" />
                       
                       <div className="space-y-1.5">
                         <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Nombre y Empresa</label>

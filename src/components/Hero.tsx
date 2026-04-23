@@ -1,9 +1,22 @@
+import { useEffect, useState } from "react";
+
 interface HeroProps {
   onVideoEnd: () => void;
   showIndicator?: boolean;
 }
 
 export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return (
+    <section className="relative bg-[#061528] w-full h-[70vh] md:h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-[#061528]" />
+    </section>
+  );
+
   return (
     <section className="relative bg-white w-full h-[70vh] md:h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}

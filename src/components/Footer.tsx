@@ -1,14 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ShieldCheck, Award, Target } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const currentYear = new Date().getFullYear();
   const navItems = [
     { label: 'Servicios', href: '/servicios' },
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Certificaciones', href: '/certificaciones' },
   ];
+
+  if (!mounted) return null;
 
   return (
     <footer className="relative overflow-hidden border-t border-white/5 bg-[#061427] pb-12 pt-20 text-white">
