@@ -16,7 +16,6 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
           onEnded={onVideoEnd}
           className="h-full w-full object-contain object-center scale-[1.12] md:scale-100 md:object-cover"
         >
-          <source src="/videos/hero-video.webm" type="video/webm" />
           <source src="/videos/hero-video.mp4" type="video/mp4" />
           Tu navegador no es compatible con videos.
         </video>
