@@ -73,10 +73,12 @@ export default function ChatBot({ visible = true }: { visible?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Inicializar Bot
   useEffect(() => {
+    setMounted(true);
     if (isOpen && messages.length === 0) {
       setMessages([{
         isBot: true,
@@ -145,6 +147,8 @@ export default function ChatBot({ visible = true }: { visible?: boolean }) {
       }
     }, 600);
   };
+
+  if (!mounted) return null;
 
   return (
     <AnimatePresence>

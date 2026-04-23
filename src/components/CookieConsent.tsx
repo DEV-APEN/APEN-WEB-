@@ -7,7 +7,10 @@ import { ShieldCheck, X } from 'lucide-react';
 export default function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const consent = localStorage.getItem('apen-cookie-consent');
     if (!consent) {
       const timer = setTimeout(() => setIsVisible(true), 2000);
@@ -19,6 +22,8 @@ export default function CookieConsent() {
     localStorage.setItem('apen-cookie-consent', 'true');
     setIsVisible(false);
   };
+
+  if (!mounted) return null;
 
   return (
     <AnimatePresence>

@@ -97,7 +97,7 @@ const organizationJsonLd = {
   },
   image: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
   description: 'Consultoría avanzada en cumplimiento normativo ASEA/CFE e ingeniería integral para infraestructura energética e hidrocarburos en México.',
-  foundingDate: '2015',
+  foundingDate: '2024',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'MX',
