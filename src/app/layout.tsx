@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
+import CookieConsent from '../components/CookieConsent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -291,6 +292,7 @@ export default function RootLayout({
     <html lang="es" className="scroll-smooth">
       <body className={`${inter.className} overflow-x-hidden w-full`}>
         {children}
+        <CookieConsent />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-YXR1JYJ5C4"
           strategy="afterInteractive"
