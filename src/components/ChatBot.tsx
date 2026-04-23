@@ -21,7 +21,7 @@ const KNOWLEDGE_BASE = [
   {
     category: "Nosotros",
     keys: ["nosotros", "quienes", "empresa", "trayectoria", "historia"],
-    botMessage: "APEN (Administradora de Proyectos Energéticos) es una firma 100% mexicana con **+10 Años de Trayectoria**, estructurada bajo estándares internacionales:",
+    botMessage: "APEN (Administradora de Proyectos Energéticos) es una firma 100% mexicana establecida en **Julio de 2024**, estructurada bajo estándares internacionales:",
     details: [
       { t: "Autoridad Técnica", desc: "Combina ingeniería, cumplimiento regulatorio y ejecución operativa." },
       { t: "Modelo APEN", desc: "Unificación de áreas (Ingeniería, Legal, Auditoría) en un solo gabinete técnico." },
@@ -228,13 +228,13 @@ export default function ChatBot({ visible = true }: { visible?: boolean }) {
                         {msg.details && (
                           <div className="w-full space-y-2 bg-white border border-gray-200 p-3 rounded-lg shadow-sm">
                              {msg.details.map((detail, dIdx) => (
-                                <div key={dIdx} className="flex items-start gap-2">
+                                 <div key={dIdx} className="flex items-start gap-2">
                                    <CornerDownRight size={12} className="text-gray-400 mt-1 shrink-0" />
                                    <div>
                                      <p className="text-[11px] font-bold text-[#0B2341] uppercase">{detail.t}</p>
                                      <p className="text-[11px] text-gray-500">{detail.desc}</p>
                                    </div>
-                                </div>
+                                 </div>
                              ))}
                           </div>
                         )}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify Forms Proxy</title>
+</head>
+<body>
+    <!-- Formulario de la Home / Footer -->
+    <form name="contacto-home" data-netlify="true" hidden>
+        <input type="text" name="nombre-empresa" />
+        <input type="email" name="email" />
+        <select name="area-tecnica">
+            <option>Regulación CNE</option>
+            <option>Normatividad ASEA</option>
+            <option>Ingeniería CFE</option>
+            <option>Defensa Legal</option>
+        </select>
+        <textarea name="mensaje"></textarea>
+    </form>
+
+    <!-- Formulario de la Página de Contacto -->
+    <form name="contacto-page" data-netlify="true" hidden>
+        <input type="text" name="nombre" />
+        <input type="text" name="empresa" />
+        <input type="email" name="email" />
+        <input type="tel" name="telefono" />
+        <select name="tipo-consulta">
+            <option>ingenieria</option>
+            <option>legal</option>
+            <option>mantenimiento</option>
+            <option>ventas</option>
+            <option>otro</option>
+        </select>
+        <textarea name="mensaje"></textarea>
+    </form>
+</body>
+</html>

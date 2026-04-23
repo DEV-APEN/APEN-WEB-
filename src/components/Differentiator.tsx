@@ -62,13 +62,13 @@ export default function Differentiator() {
           >
             <div>
               <div className="flex items-center gap-4 mb-4 md:mb-8">
-                <div className="w-2 h-2 bg-[#005BB5] shadow-[0_0_10px_#005BB5]"></div>
-                <span className="text-[#005BB5] font-black text-[10px] md:text-[12px] tracking-[0.5em] uppercase border-l border-white/10 pl-4">Operating Interface 01_Diff</span>
+                <div className="w-2 h-2 bg-[#4fc3ff] shadow-[0_0_10px_#4fc3ff]"></div>
+                <span className="text-[#4fc3ff] font-black text-[10px] md:text-[12px] tracking-[0.5em] uppercase border-l border-white/10 pl-4">Operating Interface 01_Diff</span>
               </div>
               
               <h2 className="text-3xl md:text-7xl font-black text-white tracking-tighter uppercase leading-[0.85] mb-6 md:mb-8">
                 Un paso <br />
-                <span className="text-[#005BB5]">más allá</span> del <br />
+                <span className="text-[#4fc3ff]">más allá</span> del <br />
                 contratista.
               </h2>
 
@@ -78,7 +78,7 @@ export default function Differentiator() {
 
               <div className="flex flex-wrap gap-4 pt-6 md:pt-8 border-t border-white/5">
                 {['Socio Estratégico', 'Integración 360°', 'Trazabilidad Técnica'].map((tag) => (
-                   <span key={tag} className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-[#005BB5]/70 flex items-center gap-2">
+                   <span key={tag} className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-[#4fc3ff]/70 flex items-center gap-2">
                      <ChevronRight size={14} /> {tag}
                    </span>
                 ))}
@@ -112,11 +112,11 @@ export default function Differentiator() {
                {/* Central Status Mini-Core */}
                <div className="flex items-center justify-between p-6 bg-[#061528] border border-[#005BB5]/40 rounded-xl shadow-[0_0_20px_rgba(0,91,181,0.2)] mb-8">
                   <div className="space-y-1">
-                     <span className="text-[10px] font-black text-[#005BB5] tracking-widest uppercase">System Core</span>
+                     <span className="text-[10px] font-black text-[#4fc3ff] tracking-widest uppercase">System Core</span>
                      <h3 className="text-xl font-black text-white italic">ACTIVE_PROTOCOL</h3>
                   </div>
-                  <div className="w-12 h-12 rounded-full border-2 border-dashed border-[#005BB5] flex items-center justify-center animate-spin-slow">
-                     <div className="w-6 h-6 bg-[#005BB5] rounded-full blur-sm"></div>
+                  <div className="w-12 h-12 rounded-full border-2 border-dashed border-[#4fc3ff] flex items-center justify-center animate-spin-slow">
+                     <div className="w-6 h-6 bg-[#4fc3ff] rounded-full blur-sm"></div>
                   </div>
                </div>
 
@@ -164,7 +164,7 @@ export default function Differentiator() {
                       <motion.div key={view} className="text-center">
                         {view === 'apen' ? (
                             <div className="space-y-1">
-                              <div className="text-[10px] font-black text-[#005BB5] tracking-[0.6em] uppercase">Status</div>
+                              <div className="text-[10px] font-black text-[#4fc3ff] tracking-[0.6em] uppercase">Status</div>
                               <div className="text-3xl font-black text-white tracking-widest italic">ACTIVE</div>
                             </div>
                         ) : (

@@ -53,7 +53,7 @@ export default function CorporateMetrics() {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <div className="mb-20 text-center md:text-left">
           <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter leading-tight">
-            Sólidez <span className="text-[#008CDE]">Operativa</span>
+            Sólidez <span className="text-[#4fc3ff]">Operativa</span>
           </h2>
         </div>
 
@@ -68,12 +68,12 @@ export default function CorporateMetrics() {
               className="group p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors duration-500"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-[#008CDE]/20 border border-[#008CDE]/30 flex items-center justify-center text-[#008CDE]">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-[#4fc3ff]">
                    <item.icon size={24} />
                 </div>
                 <div className="flex items-baseline gap-1">
                    <span className="text-4xl md:text-5xl font-black text-white italic tracking-tighter leading-none">{item.value}</span>
-                   <span className="text-xl font-black text-[#008CDE]">{item.suffix}</span>
+                   <span className="text-xl font-black text-[#4fc3ff]">{item.suffix}</span>
                 </div>
               </div>
 
@@ -102,9 +102,9 @@ export default function CorporateMetrics() {
                 Certeza técnica institucional que impulsa la continuidad de activos energéticos.
               </h4>
            </div>
-           <div className="flex items-center gap-4 px-8 py-4 rounded-xl bg-[#008CDE]/10 border border-[#008CDE]/30 backdrop-blur-sm">
+           <div className="flex items-center gap-4 px-8 py-4 rounded-xl bg-blue-500/10 border border-blue-500/30 backdrop-blur-sm">
               <div className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-[9px] font-black text-[#008CDE] uppercase tracking-[0.4em]">Capacidad Ejecutiva Certificada</span>
+              <span className="text-[9px] font-black text-[#4fc3ff] uppercase tracking-[0.4em]">Capacidad Ejecutiva Certificada</span>
            </div>
         </div>
       </div>

@@ -1,10 +1,31 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ShieldCheck, Award, Zap, Phone, Mail, Clock, Send, Globe, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldCheck, Award, Zap, Phone, Mail, Clock, Send, Globe, CheckCircle2, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 
 export default function AboutContact() {
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState('submitting');
+    
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+      setFormState('success');
+    } catch (error) {
+      console.error(error);
+      setFormState('error');
+    }
+  };
+
   return (
     <section id="nosotros" className="bg-[#0B2341] text-white py-16 md:py-20 relative overflow-hidden border-t border-white/5">
       
@@ -25,7 +46,7 @@ export default function AboutContact() {
                 viewport={{ once: true }}
                 className="flex items-center gap-3"
               >
-                <div className="w-6 h-[2px] bg-blue-500"></div>
+                <div className="w-6 h-[2px] bg-[#4fc3ff]"></div>
                 <span className="text-blue-400 font-black text-[10px] tracking-[0.4em] uppercase">Eminencia Institucional</span>
               </motion.div>
               
@@ -43,13 +64,13 @@ export default function AboutContact() {
             <div className="grid grid-cols-2 gap-6 border-y border-white/10 py-8">
                <div className="space-y-1">
                   <div className="text-4xl font-black text-white tracking-tighter flex items-center gap-2">
-                     10<span className="text-blue-500 text-2xl">+</span>
+                     2024
                   </div>
-                  <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest">Años de Trayectoria</p>
+                  <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest">Fundación Constitutiva</p>
                </div>
                <div className="space-y-1">
                   <div className="text-4xl font-black text-white tracking-tighter flex items-center gap-2">
-                     100<span className="text-blue-500 text-2xl">%</span>
+                     100<span className="text-[#4fc3ff] text-2xl">%</span>
                   </div>
                   <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest">Rigor Normativo</p>
                </div>
@@ -60,21 +81,21 @@ export default function AboutContact() {
                <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em] mb-2">Acreditaciones y Respaldos:</p>
                <div className="flex flex-wrap gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
                   <div className="flex items-center gap-2.5 group">
-                     <ShieldCheck className="text-blue-500 group-hover:scale-110 transition-transform" size={20} />
+                     <ShieldCheck className="text-[#4fc3ff] group-hover:scale-110 transition-transform" size={20} />
                      <div className="flex flex-col">
                         <span className="text-[10px] font-black uppercase text-white">Certificación ISO</span>
                         <span className="text-[8px] text-gray-500 font-bold leading-none">9001/14001/45001</span>
                      </div>
                   </div>
                   <div className="flex items-center gap-2.5 group">
-                     <Award className="text-blue-500 group-hover:scale-110 transition-transform" size={20} />
+                     <Award className="text-[#4fc3ff] group-hover:scale-110 transition-transform" size={20} />
                      <div className="flex flex-col">
                         <span className="text-[10px] font-black uppercase text-white">Achilles ID</span>
                         <span className="text-[8px] text-gray-500 font-bold leading-none">ID: 00249023</span>
                      </div>
                   </div>
                   <div className="flex items-center gap-2.5 group">
-                     <Zap className="text-blue-500 group-hover:scale-110 transition-transform" size={20} />
+                     <Zap className="text-[#4fc3ff] group-hover:scale-110 transition-transform" size={20} />
                      <div className="flex flex-col">
                         <span className="text-[10px] font-black uppercase text-white">Padrón CFE</span>
                         <span className="text-[8px] text-gray-500 font-bold leading-none">No. 4493015</span>
@@ -108,38 +129,67 @@ export default function AboutContact() {
                   </p>
                </div>
 
-               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                  <div className="space-y-1.5">
-                    <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Nombre y Empresa</label>
-                    <input type="text" className="w-full bg-slate-50 border border-gray-100 rounded-xl px-5 py-3 text-[11px] font-bold text-[#0B2341] outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all shadow-inner" placeholder="P. Ej: Ing. Ricardo Sánchez" />
-                  </div>
-                  
-                  <div className="space-y-1.5">
-                    <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Enlace Corporativo</label>
-                    <input type="email" className="w-full bg-slate-50 border border-gray-100 rounded-xl px-5 py-3 text-[11px] font-bold text-[#0B2341] outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all shadow-inner" placeholder="ejemplo@organizacion.com" />
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Área Técnica</label>
-                    <div className="relative">
-                      <select className="w-full bg-slate-50 border border-gray-100 rounded-xl px-5 py-3 text-[10px] font-black text-[#0B2341] outline-none focus:ring-2 focus:ring-blue-500 appearance-none shadow-sm uppercase tracking-tight">
-                        <option>Seleccione protocolo...</option>
-                        <option>Regulación CNE</option>
-                        <option>Normatividad ASEA</option>
-                        <option>Ingeniería CFE</option>
-                        <option>Defensa Legal</option>
-                      </select>
-                      <div className="absolute top-1/2 right-5 -translate-y-1/2 pointer-events-none text-[#0B2341] opacity-30">
-                        <Clock size={14} />
+               <AnimatePresence mode="wait">
+                 {formState === 'success' ? (
+                   <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="py-12 text-center space-y-4"
+                   >
+                     <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto text-emerald-500">
+                       <CheckCircle size={40} />
+                     </div>
+                     <h4 className="text-xl font-black text-[#0B2341] uppercase tracking-tighter">Solicitud Enviada</h4>
+                     <p className="text-sm text-gray-500 font-medium max-w-xs mx-auto">Su requerimiento ha sido registrado en nuestro sistema técnico. Un enlace se contactará en breve.</p>
+                     <button onClick={() => setFormState('idle')} className="text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-blue-600 transition-colors">Enviar otra solicitud</button>
+                   </motion.div>
+                 ) : (
+                   <form 
+                    name="contacto-home" 
+                    method="POST" 
+                    data-netlify="true"
+                    className="space-y-4" 
+                    onSubmit={handleSubmit}
+                   >
+                      <input type="hidden" name="form-name" value="contacto-home" />
+                      
+                      <div className="space-y-1.5">
+                        <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Nombre y Empresa</label>
+                        <input name="nombre-empresa" required type="text" className="w-full bg-slate-50 border border-gray-100 rounded-xl px-5 py-3 text-[11px] font-bold text-[#0B2341] outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all shadow-inner" placeholder="P. Ej: Ing. Ricardo Sánchez" />
                       </div>
-                    </div>
-                  </div>
+                      
+                      <div className="space-y-1.5">
+                        <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Enlace Corporativo</label>
+                        <input name="email" required type="email" className="w-full bg-slate-50 border border-gray-100 rounded-xl px-5 py-3 text-[11px] font-bold text-[#0B2341] outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all shadow-inner" placeholder="ejemplo@organizacion.com" />
+                      </div>
 
-                  <button type="button" className="w-full bg-[#0B2341] hover:bg-blue-600 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 transition-all shadow-lg active:scale-[0.98] group mt-4">
-                    <span>Solicitar Diagnóstico de Proyecto</span>
-                    <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </button>
-               </form>
+                      <div className="space-y-1.5">
+                        <label className="text-[9px] font-black text-[#0B2341] uppercase tracking-widest">Área Técnica</label>
+                        <div className="relative">
+                          <select name="area-tecnica" required className="w-full bg-slate-50 border border-gray-100 rounded-xl px-5 py-3 text-[10px] font-black text-[#0B2341] outline-none focus:ring-2 focus:ring-blue-500 appearance-none shadow-sm uppercase tracking-tight">
+                            <option value="">Seleccione protocolo...</option>
+                            <option>Regulación CNE</option>
+                            <option>Normatividad ASEA</option>
+                            <option>Ingeniería CFE</option>
+                            <option>Defensa Legal</option>
+                          </select>
+                          <div className="absolute top-1/2 right-5 -translate-y-1/2 pointer-events-none text-[#0B2341] opacity-30">
+                            <Clock size={14} />
+                          </div>
+                        </div>
+                      </div>
+
+                      <button 
+                        type="submit" 
+                        disabled={formState === 'submitting'}
+                        className="w-full bg-[#0B2341] hover:bg-blue-600 disabled:bg-gray-400 text-white py-4 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 transition-all shadow-lg active:scale-[0.98] group mt-4"
+                      >
+                        <span>{formState === 'submitting' ? 'Transmitiendo...' : 'Solicitar Diagnóstico de Proyecto'}</span>
+                        <Send size={16} className={formState === 'submitting' ? 'animate-pulse' : 'group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform'} />
+                      </button>
+                   </form>
+                 )}
+               </AnimatePresence>
 
                <div className="flex items-center justify-between pt-6 border-t border-gray-100">
                   <div className="flex gap-4">

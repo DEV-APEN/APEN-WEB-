@@ -14,6 +14,24 @@ import StoreLocator from '@/components/StoreLocator';
 export default function ContactoPage() {
   const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    const formData = new FormData(e.currentTarget);
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+      setFormStatus('success');
+    } catch (error) {
+      console.error(error);
+      setFormStatus('error');
+    }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setShowNav(true), 250);
@@ -148,54 +166,90 @@ export default function ContactoPage() {
               <h2 className="text-2xl font-black text-[#0B2341] uppercase tracking-tighter mb-8">
                 Formulario de Atención
               </h2>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Nombre Completo *</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su nombre" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Empresa u Organización *</label>
-                    <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su empresa" />
-                  </div>
-                </div>
+              
+              <AnimatePresence mode="wait">
+                {formStatus === 'success' ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="py-20 text-center space-y-6"
+                  >
+                    <div className="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto text-emerald-500 shadow-sm border border-emerald-100">
+                      <ShieldCheck size={48} />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-black text-[#0B2341] uppercase tracking-tighter">Protocolo Recibido</h3>
+                      <p className="text-sm text-slate-500 font-medium max-w-sm mx-auto">Su solicitud ha sido registrada exitosamente. Un especialista técnico revisará su requerimiento en un plazo máximo de 24 horas.</p>
+                    </div>
+                    <button 
+                      onClick={() => setFormStatus('idle')}
+                      className="px-8 py-3 rounded-xl border border-slate-200 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-[#0B2341] hover:border-[#0B2341] transition-all"
+                    >
+                      Enviar otro mensaje
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form 
+                    name="contacto-page"
+                    method="POST"
+                    data-netlify="true"
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                  >
+                    <input type="hidden" name="form-name" value="contacto-page" />
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Nombre Completo *</label>
+                        <input name="nombre" required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su nombre" />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Empresa u Organización *</label>
+                        <input name="empresa" required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su empresa" />
+                      </div>
+                    </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Correo Institucional *</label>
-                    <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="correo@empresa.com" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Teléfono *</label>
-                    <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="+52" />
-                  </div>
-                </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Correo Institucional *</label>
+                        <input name="email" required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="correo@empresa.com" />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Teléfono *</label>
+                        <input name="telefono" required type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="+52" />
+                      </div>
+                    </div>
 
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Tipo de Consulta *</label>
-                  <select className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
-                    <option value="" disabled selected>Seleccione área de interés</option>
-                    <option value="ingenieria">Ingeniería y Construcción</option>
-                    <option value="legal">Materia Regulatoria / Legal</option>
-                    <option value="mantenimiento">Mantenimiento y Auditorías</option>
-                    <option value="ventas">Contacto Comercial</option>
-                    <option value="otro">Otro</option>
-                  </select>
-                </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Tipo de Consulta *</label>
+                      <select name="tipo-consulta" required className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
+                        <option value="" disabled selected>Seleccione área de interés</option>
+                        <option value="ingenieria">Ingeniería y Construcción</option>
+                        <option value="legal">Materia Regulatoria / Legal</option>
+                        <option value="mantenimiento">Mantenimiento y Auditorías</option>
+                        <option value="ventas">Contacto Comercial</option>
+                        <option value="otro">Otro</option>
+                      </select>
+                    </div>
 
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Detalle del Requerimiento *</label>
-                  <textarea rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors resize-none" placeholder="Describa su proyecto o solicitud..."></textarea>
-                </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Detalle del Requerimiento *</label>
+                      <textarea name="mensaje" required rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors resize-none" placeholder="Describa su proyecto o solicitud..."></textarea>
+                    </div>
 
-                <div className="pt-4">
-                  <button type="button" className="w-full bg-[#0B2341] text-white py-4 rounded-xl flex items-center justify-center gap-3 text-xs font-black uppercase tracking-[0.3em] hover:bg-[#008CDE] transition-colors duration-300 shadow-lg group">
-                    Enviar Solicitud
-                    <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </button>
-                </div>
-
-              </form>
+                    <div className="pt-4">
+                      <button 
+                        type="submit" 
+                        disabled={formStatus === 'submitting'}
+                        className="w-full bg-[#0B2341] text-white py-4 rounded-xl flex items-center justify-center gap-3 text-xs font-black uppercase tracking-[0.3em] hover:bg-[#008CDE] transition-colors duration-300 shadow-lg group disabled:bg-slate-400"
+                      >
+                        {formStatus === 'submitting' ? 'Transmitiendo...' : 'Enviar Solicitud'}
+                        <Send size={16} className={formStatus === 'submitting' ? 'animate-pulse' : 'group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform'} />
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </AnimatePresence>
             </div>
             
           </div>
