@@ -62,7 +62,7 @@ export default function EnergiaPage() {
                     <HardHat className="text-amber-500" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Acreditación Oficial</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Acreditación Oficial</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Padrón CFE 4493015</p>
                  </div>
               </div>
@@ -72,7 +72,7 @@ export default function EnergiaPage() {
                     <Zap className="text-amber-500" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Ingeniería & Obra</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Ingeniería & Obra</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Potencia Hasta 230kV</p>
                  </div>
               </div>
@@ -82,7 +82,7 @@ export default function EnergiaPage() {
                     <ShieldCheck className="text-amber-500" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Desarrollo Aprobado</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Desarrollo Aprobado</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Normativa PYCON-SE-01</p>
                  </div>
               </div>
@@ -206,9 +206,9 @@ export default function EnergiaPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
              {/* Regulacion CNE Electrica */}
              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h4 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
+                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
                    <Zap className="text-amber-500" size={18} /> Mercado Eléctrico
-                </h4>
+                </h3>
                 <div className="space-y-4 text-sm font-semibold text-slate-600">
                    {["Generación eléctrica", "Transmisión eléctrica", "Distribución eléctrica", "Suministro e interconexión", "Comercialización"].map(i => (
                      <div key={i} className="flex items-start gap-3">
@@ -220,9 +220,9 @@ export default function EnergiaPage() {
 
              {/* Evaluacion SENER */}
              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h4 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
+                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
                    <FileSearch className="text-amber-500" size={18} /> Impacto Social y Permisos
-                </h4>
+                </h3>
                 <div className="space-y-4 text-sm font-semibold text-slate-600">
                    {["MISSE previa a EVIS", "Gestión de permisos de importación", "Ruta documental para nuevos desarrollos", "Alineación para evaluación social", "Acompañamiento en revisiones preventivas"].map(i => (
                      <div key={i} className="flex items-start gap-3">
@@ -234,9 +234,9 @@ export default function EnergiaPage() {
 
              {/* Obra Civil Electrica CFE */}
              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h4 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
+                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
                    <TowerControl className="text-amber-500" size={18} /> Ingeniería Electromecánica
-                </h4>
+                </h3>
                 <div className="space-y-4 text-sm font-semibold text-slate-600">
                    {["Ingeniería y obra hasta 230 kV", "Licitaciones y cumplimiento CFE", "Montaje electromecánico", "Subestaciones y líneas de conducción", "Obra civil y mantenimiento asociado"].map(i => (
                      <div key={i} className="flex items-start gap-3">

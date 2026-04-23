@@ -62,7 +62,7 @@ export default function HidrocarburosPage() {
                     <BadgeCheck className="text-[#008CDE]" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Acreditación Oficial</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Acreditación Oficial</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">ID Achilles 00249023</p>
                  </div>
               </div>
@@ -72,7 +72,7 @@ export default function HidrocarburosPage() {
                     <ShieldCheck className="text-[#008CDE]" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Gestión Verificada</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Gestión Verificada</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Registros OPE & ASEA</p>
                  </div>
               </div>
@@ -82,7 +82,7 @@ export default function HidrocarburosPage() {
                     <Globe className="text-[#008CDE]" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Impacto Federal</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Impacto Federal</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Cobertura Nacional</p>
                  </div>
               </div>
@@ -206,9 +206,9 @@ export default function HidrocarburosPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
              {/* Regulacion (COMBINED CNE / ASEA) */}
              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h4 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
+                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
                    <FileText className="text-[#008CDE]" size={18} /> Permisos (CNE / ASEA)
-                </h4>
+                </h3>
                 <div className="space-y-4 text-sm font-semibold text-slate-600">
                    {["Pre-registro y gestión ante OPE", "Estaciones de servicio y carburación", "Plantas de distribución y almacenamiento", "Licuefacción y regasificación", "Transporte y distribución por ductos", "Licencias ambientales y COA", "Dictámenes NOM-003 y NOM-005"].map(i => (
                      <div key={i} className="flex items-start gap-3">
@@ -220,9 +220,9 @@ export default function HidrocarburosPage() {
 
              {/* Cumplimiento Ambiental */}
              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h4 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
+                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
                    <Globe className="text-[#008CDE]" size={18} /> Continuidad Ambiental
-                </h4>
+                </h3>
                 <div className="space-y-4 text-sm font-semibold text-slate-600">
                    {["Manifestación de Impacto Ambiental (MIA)", "Informe Preventivo y Estudios de Riesgo", "Diseño e Implementación de SASISOPA", "Acompañamiento en auditorías", "Informe y dictamen NOM-016", "Registro de pólizas de seguros", "Pago de supervisión anual"].map(i => (
                      <div key={i} className="flex items-start gap-3">
@@ -234,9 +234,9 @@ export default function HidrocarburosPage() {
 
              {/* Suministros Físicos */}
              <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h4 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
+                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
                    <Truck className="text-[#008CDE]" size={18} /> Infraestructura Operativa
-                </h4>
+                </h3>
                 <div className="space-y-4 text-sm font-semibold text-slate-600">
                    {["Unidades Tanque y Autotanques", "Combustibles (Diesel, Gasolina, Gas)", "Turbinas de gas y combustión interna", "Mantenimiento / Limpieza de tanques", "Montaje y estructuras metálicas", "Obra Civil", "Instalaciones de Gas"].map(i => (
                      <div key={i} className="flex items-start gap-3">

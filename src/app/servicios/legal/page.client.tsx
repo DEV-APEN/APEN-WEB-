@@ -62,7 +62,7 @@ export default function LegalPage() {
                     <Scale className="text-rose-600" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Contención Técnica</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Contención Técnica</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Impacto TFJA y CRE</p>
                  </div>
               </div>
@@ -72,7 +72,7 @@ export default function LegalPage() {
                     <ShieldCheck className="text-rose-600" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Resolutivos</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Resolutivos</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Levantamiento Inmediato</p>
                  </div>
               </div>
@@ -82,7 +82,7 @@ export default function LegalPage() {
                     <Hammer className="text-rose-600" size={28} />
                  </div>
                  <div>
-                    <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Ingeniería Correctiva</h4>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Ingeniería Correctiva</h3>
                     <p className="text-lg font-black text-[#0B2341] tracking-tight">Planos y Dictámenes</p>
                  </div>
               </div>
