@@ -46,8 +46,8 @@ export default function Header({ visible, onOpenMenu = () => {} }: HeaderProps) 
           <nav className="hidden md:flex absolute inset-x-0 items-center justify-center pointer-events-none z-10">
             <div className="pointer-events-auto flex items-center space-x-10">
               {[
-                { name: 'Servicios', path: '/servicios' },
-                { name: 'Capacidad Ejecutiva', path: '/capacidad-ejecutiva' },
+                { name: 'Consultorías', path: '/servicios' },
+                { name: 'Ejecución de Proyectos', path: '/capacidad-ejecutiva' },
                 { name: 'Nosotros', path: '/nosotros' },
                 { name: 'Certificaciones', path: '/certificaciones' }
               ].map((item) => (

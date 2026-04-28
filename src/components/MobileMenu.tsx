@@ -49,8 +49,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="flex-grow flex flex-col items-start justify-center space-y-8 px-8 relative z-10">
             {[
               { name: 'Portada', path: '/', id: '00' },
-              { name: 'Servicios', path: '/servicios', id: '01' },
-              { name: 'Capacidad Ejecutiva', path: '/capacidad-ejecutiva', id: '02' },
+              { name: 'Consultorías', path: '/servicios', id: '01' },
+              { name: 'Ejecución de Proyectos', path: '/capacidad-ejecutiva', id: '02' },
               { name: 'Nosotros', path: '/nosotros', id: '03' },
               { name: 'Normativa', path: '/certificaciones', id: '04' },
               { name: 'Diagnóstico', path: '/diagnostico', id: '05' },

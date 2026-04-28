@@ -156,7 +156,7 @@ export default function ContactoPage() {
                    <div>
                      <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Contacto Telefónico</p>
                      <p className="text-sm font-bold text-[#0B2341] leading-relaxed">
-                       +52 (55) 0000 0000
+                       55 7479 3873
                      </p>
                    </div>
                 </div>

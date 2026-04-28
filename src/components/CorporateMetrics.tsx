@@ -5,31 +5,31 @@ import { CheckCircle2, Users2, Award, Building2 } from 'lucide-react';
 
 const trustStats = [
   { 
-    label: "Proyectos Industriales", 
-    value: "140", 
-    suffix: "+",
-    desc: "Infraestructura crítica operando.",
+    label: "Trámites Realizados", 
+    value: "94", 
+    suffix: "",
+    desc: "Gestiones integrales ante autoridades.",
     icon: CheckCircle2
   },
   { 
-    label: "Clientes Corporativos", 
-    value: "60", 
-    suffix: "+",
-    desc: "Empresas líderes del sector energético.",
-    icon: Users2
-  },
-  { 
-    label: "Certeza Normativa", 
-    value: "100", 
-    suffix: "%",
-    desc: "Cumplimiento ante CFE/ASEA.",
+    label: "Concluidos Exitosamente", 
+    value: "79", 
+    suffix: "",
+    desc: "Resoluciones positivas obtenidas.",
     icon: Award
   },
   { 
-    label: "Presencia Nacional", 
-    value: "32", 
+    label: "Clientes Atendidos", 
+    value: "82", 
     suffix: "",
-    desc: "Cobertura total de la república.",
+    desc: "Empresas con certeza operativa.",
+    icon: Users2
+  },
+  { 
+    label: "Tasa de Conclusión", 
+    value: "84", 
+    suffix: "%",
+    desc: "Eficacia en resolución de trámites.",
     icon: Building2
   }
 ];
@@ -96,11 +96,61 @@ export default function CorporateMetrics() {
           ))}
         </div>
 
-        <div className="mt-24 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-24">
+          {/* Authority Breakdown */}
+          <div className="space-y-8">
+            <h3 className="text-sm font-black text-[#4fc3ff] uppercase tracking-[0.4em] mb-8">Por Autoridad</h3>
+            {[
+              { label: 'CNE', value: 72, color: 'bg-orange-500' },
+              { label: 'ASEA', value: 11, color: 'bg-cyan-400' },
+              { label: 'SENER', value: 11, color: 'bg-lime-400' }
+            ].map((auth) => (
+              <div key={auth.label} className="space-y-2">
+                <div className="flex justify-between items-end">
+                  <span className="text-xs font-black text-white uppercase tracking-widest">{auth.label}</span>
+                  <span className="text-xs font-black text-[#4fc3ff]">{auth.value}</span>
+                </div>
+                <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${(auth.value / 94) * 100}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className={`h-full ${auth.color} shadow-[0_0_10px_rgba(0,0,0,0.5)]`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Team Breakdown */}
+          <div className="space-y-8">
+            <h3 className="text-sm font-black text-[#4fc3ff] uppercase tracking-[0.4em] mb-8">Equipo Responsable</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                { name: 'Lic. Izanami', value: 74, color: 'bg-orange-500' },
+                { name: 'Ing. Guillermo', value: 11, color: 'bg-cyan-400' },
+                { name: 'Ing. Carlos', value: 7, color: 'bg-lime-400' },
+                { name: 'Ing. Jessica', value: 2, color: 'bg-rose-500' }
+              ].map((member) => (
+                <div key={member.name} className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-2 h-2 rounded-full ${member.color}`} />
+                    <span className="text-[10px] font-black text-white uppercase tracking-widest">{member.name}</span>
+                  </div>
+                  <span className="text-xs font-black text-[#4fc3ff]">{member.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-24 flex flex-col md:flex-row justify-between items-center gap-10 border-t border-white/5 pt-12">
            <div className="max-w-2xl">
               <h4 className="text-xl md:text-2xl font-black text-white/80 uppercase tracking-tighter italic">
                 Certeza técnica institucional que impulsa la continuidad de activos energéticos.
               </h4>
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mt-4 italic">Datos Actualizados · 2025</p>
            </div>
            <div className="flex items-center gap-4 px-8 py-4 rounded-xl bg-blue-500/10 border border-blue-500/30 backdrop-blur-sm">
               <div className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
