@@ -19,14 +19,9 @@ export default function AboutContact() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
         body: formData,
-        mode: 'cors',
-        cache: 'no-cache'
       });
       
       const result = await response.json();
@@ -162,10 +157,8 @@ export default function AboutContact() {
                      <button onClick={() => setFormState('idle')} className="text-[10px] font-black uppercase tracking-widest text-blue-500 hover:text-blue-600 transition-colors">Enviar otra solicitud</button>
                    </motion.div>
                  ) : (
-                    <form 
-                     action="https://api.web3forms.com/submit"
-                     method="POST" 
-                     className="space-y-4" 
+                    <form
+                     className="space-y-4"
                      onSubmit={handleSubmit}
                     >
                       <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />

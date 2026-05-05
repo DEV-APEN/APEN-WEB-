@@ -33,14 +33,9 @@ export default function DiagnosticoClient() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
         body: formData,
-        mode: 'cors',
-        cache: 'no-cache'
       });
       
       const result = await response.json();
@@ -150,10 +145,8 @@ export default function DiagnosticoClient() {
                     </div>
                   </div>
 
-                  <form 
-                    action="https://api.web3forms.com/submit"
-                    method="POST"
-                    onSubmit={handleSubmit} 
+                  <form
+                    onSubmit={handleSubmit}
                     className="space-y-5"
                   >
                     <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />

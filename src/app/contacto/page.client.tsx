@@ -28,14 +28,9 @@ export default function ContactoPage() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
         body: formData,
-        mode: 'cors',
-        cache: 'no-cache'
       });
       
       const result = await response.json();
@@ -209,9 +204,7 @@ export default function ContactoPage() {
                     </button>
                   </motion.div>
                 ) : (
-                  <form 
-                    action="https://api.web3forms.com/submit"
-                    method="POST"
+                  <form
                     onSubmit={handleSubmit}
                     className="space-y-6"
                   >

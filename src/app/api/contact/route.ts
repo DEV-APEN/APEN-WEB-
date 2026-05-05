@@ -1,16 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 
+const DEFAULT_ACCESS_KEY = "6b5951be-932d-4173-a85c-f14d2c05a2c4";
+
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
 
-    const payload: Record<string, string> = {
-      access_key: "6b5951be-932d-4173-a85c-f14d2c05a2c4",
-    };
-
+    const payload: Record<string, string> = {};
     formData.forEach((value, key) => {
       payload[key] = value.toString();
     });
+
+    if (!payload["access_key"]) {
+      payload["access_key"] = DEFAULT_ACCESS_KEY;
+    }
 
     const resp = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
