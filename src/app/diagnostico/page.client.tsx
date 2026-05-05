@@ -31,27 +31,27 @@ export default function DiagnosticoClient() {
     setFormStatus('submitting');
     
     const formData = new FormData(e.currentTarget);
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
-        body: json,
+        body: formData,
+        mode: 'cors',
+        cache: 'no-cache'
       });
       
       const result = await response.json();
       if (result.success) {
         setFormStatus('success');
       } else {
+        console.error("Error Web3Forms:", result);
         setFormStatus('error');
       }
     } catch (error) {
-      console.error(error);
+      console.error("Fallo de red en diagnóstico:", error);
       setFormStatus('error');
     }
   };

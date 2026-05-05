@@ -32,6 +32,7 @@ export default function Footer() {
                 src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png"
                 alt="APEN Logo"
                 fill
+                sizes="192px"
                 className="object-contain brightness-0 invert"
               />
             </div>

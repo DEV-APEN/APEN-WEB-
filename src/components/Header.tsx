@@ -25,6 +25,7 @@ export default function Header({ visible, onOpenMenu = () => {} }: HeaderProps) 
                 src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png" 
                 alt="APEN Logo" 
                 fill
+                sizes="(max-width: 768px) 140px, 260px"
                 className="origin-left scale-[1.5] object-contain object-left md:scale-[1.8]"
                 priority
               />

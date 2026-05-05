@@ -72,6 +72,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png" 
                     alt="APEN Logo" 
                     fill
+                    sizes="(max-width: 768px) 120px, 240px"
                     className="origin-left scale-[1.5] object-contain object-left md:scale-[1.8] brightness-0 invert"
                     priority
                   />

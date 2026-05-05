@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function AboutWho() {
@@ -36,13 +36,15 @@ export default function AboutWho() {
           >
             <div className="relative group p-12 bg-[#F8FAFC] rounded-[3rem] border border-slate-100 shadow-xl overflow-hidden flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <img
-                src="/visual/imagenes/Logo de APEN con texto fondo transparente.png"
-                alt="APEN Logo"
-                loading="lazy"
-                decoding="async"
-                className="relative z-10 w-full max-w-[400px] h-auto object-contain transition-transform duration-700 group-hover:scale-105"
-              />
+              <div className="relative z-10 w-full max-w-[400px] aspect-[2/1]">
+                <Image
+                  src="/visual/imagenes/Logo de APEN con texto fondo transparente.png"
+                  alt="APEN Logo"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  className="object-contain transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
             </div>
           </motion.div>
 
