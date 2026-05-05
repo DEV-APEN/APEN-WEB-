@@ -141,6 +141,16 @@ export default function ServicesPage() {
       textColor: "text-rose-600",
       icon: Gavel,
       img: "/legal.jpg"
+    },
+    {
+      id: "04",
+      title: "Project Finance",
+      subtitle: "Capital & Fondeo",
+      desc: "Estructuración financiera y fondeo estratégico para proyectos.",
+      url: "/servicios/project-finance",
+      textColor: "text-emerald-500",
+      icon: Landmark,
+      img: "/visual/imagenes/project-finance.webp"
     }
   ];
 
@@ -248,7 +258,7 @@ export default function ServicesPage() {
               </h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                {portals.map((portal, i) => (
                  <Link href={portal.url} key={i}>
                    <motion.div 

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ShieldCheck, ArrowRight } from "lucide-react";
 
 interface HeroProps {
   onVideoEnd: () => void;
@@ -24,31 +26,28 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
         <video
           autoPlay
           muted
+          loop
           playsInline
           preload="metadata"
-          onEnded={onVideoEnd}
-          className="h-full w-full object-contain object-center scale-[1.12] md:scale-100 md:object-cover"
+          className="h-full w-full object-cover"
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          <source src="/videos/hero_new.mp4" type="video/mp4" />
           Tu navegador no es compatible con videos.
         </video>
         
-        {/* Capas para ocultar marca de agua en mobile */}
+        {/* Capa de protección mobile */}
         <div className="md:hidden absolute bottom-0 left-0 w-full h-[8%] bg-white z-20" />
       </div>
       
-      {/* SEO Title - Visually Hidden but readable by search engines */}
+      {/* SEO Title - Visually Hidden */}
       <h1 className="sr-only">
         Estructuración, ejecución y blindaje regulatorio de proyectos energéticos críticos en México.
       </h1>
-      <p className="sr-only">
-        Proveedor con contratos ejecutados ante CFE y PEMEX. Operador integral: del permiso a la obra, en un solo equipo con registro activo Achilles 00249023.
-      </p>
 
       {/* Smooth transition to content */}
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>
 
-      {/* Scroll indicator - Relative to Hero only */}
+      {/* Scroll indicator */}
       {showIndicator && (
         <a 
           href="#servicios"

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Droplets, Gavel, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Droplets, Gavel, ShieldCheck, Zap, Landmark } from "lucide-react";
 import Link from "next/link";
 
 const serviceSections = [
@@ -64,6 +64,26 @@ const serviceSections = [
     ],
     reverse: false,
     url: "/servicios/legal"
+  },
+  {
+    id: "04",
+    title: "Project Finance",
+    label: "Capital & Fondeo",
+    subtitle: "Estructuración financiera y fondeo para activos críticos.",
+    description: "Modelado financiero, sindicación de deuda, SPVs y enlace con fondos de capital privado y banca de desarrollo.",
+    image: "/visual/imagenes/project-finance.webp",
+    icon: Landmark,
+    color: "#10B981",
+    accent: "from-emerald-500 to-teal-400",
+    items: [
+      "Estructuración de Capital y Deuda (Equity & Debt).",
+      "Modelado Financiero y Evaluación de Riesgos.",
+      "Fondeo Estratégico y SPVs de Infraestructura.",
+      "Gestión de Garantías y Blindaje de Capital.",
+      "Conexión con Fondos de Inversión Institucionales."
+    ],
+    reverse: true,
+    url: "/servicios/project-finance"
   }
 ];
 

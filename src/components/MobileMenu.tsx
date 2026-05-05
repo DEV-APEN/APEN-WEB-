@@ -1,7 +1,9 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldCheck, Zap, Droplet, Scale, ArrowRight, FileText, Mail, Phone, MapPin, X, MessageSquare, CircleDollarSign, LayoutGrid } from 'lucide-react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -9,102 +11,184 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  const menuCategories = [
+    {
+      title: "Unidades Estratégicas",
+      id: "01",
+      links: [
+        { name: 'Nuestros Servicios', path: '/servicios', icon: LayoutGrid },
+        { name: 'Consultoría en Energía', path: '/servicios/energia', icon: Zap },
+        { name: 'Gestión de Hidrocarburos', path: '/servicios/hidrocarburos', icon: Droplet },
+        { name: 'Project Finance', path: '/servicios/project-finance', icon: CircleDollarSign },
+        { name: 'Defensa Legal Técnica', path: '/servicios/legal', icon: Scale },
+      ]
+    },
+    {
+      title: "Corporativo",
+      id: "02",
+      links: [
+        { name: 'Nuestra Firma', path: '/nosotros' },
+        { name: 'Ejecución de Proyectos', path: '/capacidad-ejecutiva' },
+        { name: 'Certificaciones ISO', path: '/certificaciones' },
+      ]
+    }
+  ];
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div 
-          initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-          animate={{ opacity: 1, backdropFilter: 'blur(20px)' }}
-          exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-          transition={{ duration: 0.4 }}
-          className="fixed inset-0 bg-[#061528]/95 z-[10000] flex flex-col md:hidden w-full h-[100dvh]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-[#040D1D] z-[10000] overflow-y-auto overflow-x-hidden"
         >
-          {/* Background Ambient Accents */}
+          {/* Futuristic Background Accents */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.15),transparent_50%)]" />
-            <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-[#008CDE] to-transparent opacity-50" />
-            {/* Tech grid texture overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px] opacity-20 mask-image-[linear-gradient(to_bottom,black,transparent)]" />
+            <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[radial-gradient(circle_at_center,rgba(0,140,222,0.08),transparent_70%)]" />
+            <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-[radial-gradient(circle_at_center,rgba(0,140,222,0.05),transparent_70%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
           </div>
 
-          {/* Header Mobile Menu */}
-          <div className="flex justify-between items-center p-6 border-b border-white/5 relative z-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#008CDE] shadow-[0_0_8px_#008CDE] animate-pulse" />
-                Interface
-              </span>
-              <button 
-                onClick={onClose} 
-                aria-label="Cerrar menú"
-                className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-[#008CDE]/20 rounded-xl border border-white/10 transition-all duration-300"
-              >
-                  <div className="relative w-5 h-5">
-                    <div className="absolute top-1/2 left-0 w-5 h-[2px] bg-white rotate-45 transform origin-center shadow-[0_0_5px_white]" />
-                    <div className="absolute top-1/2 left-0 w-5 h-[2px] bg-white -rotate-45 transform origin-center shadow-[0_0_5px_white]" />
-                  </div>
-              </button>
-          </div>
-          
-          {/* Menu Items */}
-          <div className="flex-grow flex flex-col items-start justify-center space-y-8 px-8 relative z-10">
-            {[
-              { name: 'Portada', path: '/', id: '00' },
-              { name: 'Consultorías', path: '/servicios', id: '01' },
-              { name: 'Ejecución de Proyectos', path: '/capacidad-ejecutiva', id: '02' },
-              { name: 'Nosotros', path: '/nosotros', id: '03' },
-              { name: 'Normativa', path: '/certificaciones', id: '04' },
-              { name: 'Diagnóstico', path: '/diagnostico', id: '05' },
-              { name: 'Contacto', path: '/contacto', id: '06' }
-            ].map((item, i) => (
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.08 + 0.1, type: 'spring', stiffness: 200, damping: 20 }}
-                key={item.name}
-                className="w-full"
-              >
-                <Link 
-                  href={item.path} 
-                  onClick={onClose}
-                  className="group flex flex-col w-full relative py-2"
-                >
-                  <div className="flex items-end gap-5 mb-3">
-                    <span className="text-sm font-mono text-[#008CDE]/60 font-black tracking-widest group-hover:text-cyan-400 transition-colors">{item.id}</span>
-                    <span className="text-3xl sm:text-4xl font-black uppercase tracking-[0.25em] text-white/90 group-hover:text-white transition-colors duration-300">
-                      {item.name}
-                    </span>
-                  </div>
-                  {/* Neon Underline animation */}
-                  <div className="h-[2px] w-full bg-white/5 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 h-full w-0 bg-gradient-to-r from-cyan-400 to-[#008CDE] group-hover:w-full transition-all duration-700 ease-out shadow-[0_0_10px_rgba(0,140,222,0.8)]" />
-                  </div>
+          <div className="relative z-10 min-h-screen flex flex-col">
+            
+            {/* Header: Logo & Close */}
+            <div className="flex justify-between items-center px-6 py-8 md:px-16 md:py-12">
+              <div className="flex items-center gap-10">
+                <Link href="/" onClick={onClose} className="relative block h-[40px] w-[120px] md:h-[60px] md:w-[240px]">
+                  <Image 
+                    src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png" 
+                    alt="APEN Logo" 
+                    fill
+                    className="origin-left scale-[1.5] object-contain object-left md:scale-[1.8] brightness-0 invert"
+                    priority
+                  />
                 </Link>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Footer Mobile Menu */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="p-8 border-t border-white/5 bg-[#030b14] relative z-10"
-          >
-              <div className="flex justify-between items-end">
-                <div>
-                  <div className="w-8 h-1 bg-gradient-to-r from-cyan-400 to-[#008CDE] mb-5 rounded-full shadow-[0_0_10px_rgba(0,140,222,0.8)]"></div>
-                  <p className="text-[9px] font-black text-gray-500 uppercase tracking-[0.4em] mb-1.5">APEN Strategic Partner</p>
-                  <p className="text-[12px] font-black text-white tracking-[0.2em] italic uppercase">Certeza Operativa</p>
-                </div>
-                <div className="flex gap-3">
-                   <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-cyan-500">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                   </div>
+              </div>
+              <button 
+                onClick={onClose}
+                className="group flex items-center gap-4 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-full border border-white/10 transition-all active:scale-95"
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white">Cerrar</span>
+                <X size={20} className="text-[#008CDE] group-hover:rotate-90 transition-transform duration-500" />
+              </button>
+            </div>
+
+            {/* Main Grid Content */}
+            <div className="flex-grow flex items-center">
+              <div className="max-w-[1600px] mx-auto w-full px-6 md:px-16 py-12 md:py-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
+                  
+                  {/* CATEGORIES COLUMN */}
+                  <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+                    {menuCategories.map((cat, catIdx) => (
+                      <div key={cat.title} className="space-y-10">
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 + (catIdx * 0.1) }}
+                          className="flex items-center gap-4"
+                        >
+                          <span className="text-[10px] font-black text-[#008CDE] font-mono tracking-widest">{cat.id}</span>
+                          <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-slate-500 border-l border-white/10 pl-4">{cat.title}</h3>
+                        </motion.div>
+
+                        <div className="flex flex-col space-y-6 md:space-y-8">
+                          {cat.links.map((link, linkIdx) => (
+                            <motion.div
+                              key={link.name}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.2 + (catIdx * 0.1) + (linkIdx * 0.05) }}
+                            >
+                              <Link 
+                                href={link.path}
+                                onClick={onClose}
+                                className="group inline-flex flex-col"
+                              >
+                                <div className="flex items-center gap-4 mb-2">
+                                  {link.icon && <link.icon size={18} className="text-[#008CDE] opacity-40 group-hover:opacity-100 transition-opacity" />}
+                                  <span className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white/80 group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
+                                    {link.name}
+                                  </span>
+                                </div>
+                                <div className="h-px w-0 bg-gradient-to-r from-[#008CDE] to-transparent group-hover:w-full transition-all duration-700 delay-100" />
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CONTACT & CTAS COLUMN */}
+                  <div className="lg:col-span-4 flex flex-col justify-between space-y-16">
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="p-8 md:p-10 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 backdrop-blur-xl"
+                    >
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-8">Canales de Enlace</h4>
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4 group cursor-pointer">
+                          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#008CDE] group-hover:text-white transition-all">
+                            <Phone size={18} />
+                          </div>
+                          <div>
+                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Atención_MX</p>
+                            <p className="text-sm font-bold text-white">55 7479 3873</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4 group cursor-pointer">
+                          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#008CDE] group-hover:text-white transition-all">
+                            <Mail size={18} />
+                          </div>
+                          <div>
+                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Protocolo_Email</p>
+                            <p className="text-sm font-bold text-white">contacto@apen.mx</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-12 space-y-4">
+                        <Link 
+                          href="/diagnostico" 
+                          onClick={onClose}
+                          className="w-full flex items-center justify-between p-5 bg-[#008CDE] hover:bg-[#005B97] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all group"
+                        >
+                          Iniciar Diagnóstico
+                          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                        <Link 
+                          href="/contacto" 
+                          onClick={onClose}
+                          className="w-full flex items-center justify-between p-5 bg-white/5 hover:bg-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all border border-white/10 group"
+                        >
+                          Página de Contacto
+                          <MessageSquare size={16} />
+                        </Link>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                      className="space-y-4 opacity-50"
+                    >
+                      <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.5em] leading-relaxed">
+                        Administradora de Proyectos Energéticos S.A. de C.V. <br />
+                        © 2025 ALL RIGHTS RESERVED
+                      </p>
+                    </motion.div>
+                  </div>
+
                 </div>
               </div>
-          </motion.div>
+            </div>
+
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

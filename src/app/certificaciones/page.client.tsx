@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
-import { ShieldCheck, Leaf, HeartPulse, Shield, FileCheck2, Fingerprint, ArrowRight, X, ExternalLink, FileText, ZoomIn } from 'lucide-react';
+import { ShieldCheck, Leaf, HeartPulse, Shield, FileCheck2, Fingerprint, ArrowRight, X, ExternalLink, FileText, ZoomIn, Zap, Building2, Scale } from 'lucide-react';
 
 const isoCards = [
   {
@@ -496,51 +496,112 @@ export default function CertificacionesPage() {
         </div>
       </section>
 
-      {/* ── Achilles Clusters ────────────────────────────────────────────────── */}
-      <section className="bg-[#040D1D] py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-16 text-center">
-            <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.5em] text-[#008CDE]">Clasificación Achilles</span>
-            <h2 className="text-3xl font-black uppercase leading-tight tracking-tighter text-white md:text-4xl">
-              Clusters de <span className="text-[#008CDE]">Capacidad</span>
+      {/* ── Achilles Clusters: The Capacity Hub ────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-[#040D1D] py-24 md:py-40">
+        {/* Cinematic Background elements */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#008CDE]/50 to-transparent opacity-30" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#008CDE]/50 to-transparent opacity-30" />
+          {/* Vertical scan lines */}
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,140,222,0.03)_1px,transparent_1px)] bg-[size:15%_100%] opacity-20" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <div className="mb-24 text-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-[#008CDE] animate-pulse" />
+              <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.5em]">Clasificación Achilles PEMEX</span>
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-7xl font-black uppercase leading-[0.85] tracking-tighter text-white mb-8">
+              Clusters de <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] to-cyan-300 italic">Capacidad</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-slate-400">
-              La precalificación Achilles PEMEX certifica las capacidades de APEN en cinco categorías de ejecución técnica.
+            
+            <p className="mx-auto max-w-2xl text-slate-400 text-sm md:text-lg font-medium leading-relaxed italic border-t border-white/10 pt-8">
+              La precalificación Achilles PEMEX certifica nuestras facultades operativas <br className="hidden md:block" /> 
+              en cinco dimensiones críticas de ejecución técnica y administrativa.
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
-              { id: 'A', title: 'Eléctrico y Electromecánico', desc: 'Media y alta tensión, subestaciones, tableros, instrumentación.' },
-              { id: 'B', title: 'Infraestructura Civil', desc: 'Obra civil industrial, estructuras metálicas, fundaciones especiales.' },
-              { id: 'C', title: 'Hidrocarburos y Proceso', desc: 'Instalaciones de proceso, tuberías, sistemas contra incendio.' },
-              { id: 'D', title: 'Seguridad Industrial HSEQ', desc: 'Gestión integral de riesgos, cumplimiento NOM, SASISOPA.' },
-              { id: 'E', title: 'Consultoría y Normatividad', desc: 'Gestión de permisos, trámites regulatorios, auditorías técnicas.' },
-            ].map((cluster) => (
-              <div key={cluster.id} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                <div className="absolute -top-4 -right-4 text-[80px] font-black text-white/3 leading-none select-none">{cluster.id}</div>
-                <div className="relative">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-[#008CDE]/30 bg-[#008CDE]/10">
-                    <span className="text-sm font-black text-[#008CDE]">{cluster.id}</span>
+              { id: 'A', icon: Zap, title: 'Eléctrico y Electromecánico', desc: 'Media y alta tensión, subestaciones, tableros e instrumentación.', tag: 'Nivel_Industrial' },
+              { id: 'B', icon: Building2, title: 'Infraestructura Civil', desc: 'Obra civil industrial, estructuras metálicas y fundaciones.', tag: 'Ejecución_Civil' },
+              { id: 'C', icon: ShieldCheck, title: 'Hidrocarburos y Proceso', desc: 'Instalaciones de proceso, ductos y sistemas contra incendio.', tag: 'Oil_&_Gas' },
+              { id: 'D', icon: HeartPulse, title: 'Seguridad Industrial HSEQ', desc: 'Gestión de riesgos, cumplimiento NOM y SASISOPA.', tag: 'Riesgo_Cero' },
+              { id: 'E', icon: Scale, title: 'Consultoría y Normatividad', desc: 'Permisos, trámites regulatorios y auditorías técnicas.', tag: 'Blindaje_Legal' },
+            ].map((cluster, idx) => (
+              <motion.div 
+                key={cluster.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.8 }}
+                className="group relative"
+              >
+                <div className="h-full relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:border-[#008CDE]/30 hover:shadow-[0_20px_50px_-20px_rgba(0,140,222,0.3)]">
+                  {/* Floating Number Decor */}
+                  <div className="absolute -top-6 -right-6 text-[100px] font-black text-white/[0.03] italic leading-none select-none transition-all duration-700 group-hover:text-[#008CDE]/10 group-hover:scale-110">
+                    {cluster.id}
                   </div>
-                  <h3 className="mb-2 text-[11px] font-black uppercase leading-tight tracking-tight text-white">{cluster.title}</h3>
-                  <p className="text-[10px] font-medium leading-relaxed text-slate-500">{cluster.desc}</p>
+
+                  <div className="relative">
+                    <div className="mb-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[#008CDE]/30 bg-[#008CDE]/10 text-[#008CDE] transition-transform duration-500 group-hover:rotate-[360deg]">
+                      <cluster.icon size={28} strokeWidth={1.5} />
+                    </div>
+
+                    <div className="mb-4">
+                      <p className="text-[9px] font-black text-[#008CDE] uppercase tracking-widest mb-1 italic">Cluster_{cluster.id}</p>
+                      <h3 className="text-sm md:text-base font-black uppercase leading-tight tracking-tight text-white group-hover:text-[#008CDE] transition-colors">
+                        {cluster.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-[11px] font-medium leading-relaxed text-slate-400 mb-8">
+                      {cluster.desc}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                      <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">{cluster.tag}</span>
+                      <div className="w-6 h-[1px] bg-white/10 group-hover:w-12 group-hover:bg-[#008CDE] transition-all duration-500" />
+                    </div>
+                  </div>
+
+                  {/* Corner Accent */}
+                  <div className="absolute bottom-0 right-0 w-8 h-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-4 right-4 w-4 h-px bg-[#008CDE]" />
+                    <div className="absolute bottom-4 right-4 h-4 w-px bg-[#008CDE]" />
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="mt-20 text-center"
+          >
             <a
               href="/certificados/cert-pemex.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-full border border-[#008CDE]/30 bg-[#008CDE]/10 px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-[#008CDE] transition-colors hover:bg-[#008CDE]/20"
+              className="group relative inline-flex items-center gap-4 rounded-xl border border-[#008CDE]/30 bg-[#008CDE]/10 px-10 py-5 text-[11px] font-black uppercase tracking-[0.4em] text-[#008CDE] transition-all hover:bg-[#008CDE]/20 hover:scale-105 active:scale-95 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)]"
             >
-              <FileText size={14} />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <FileText size={16} />
               Ver Registro Completo Achilles
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
 

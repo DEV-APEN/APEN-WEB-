@@ -71,16 +71,12 @@ const CorporateMetrics = dynamic(() => import('../components/CorporateMetrics'),
 const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false });
 
 export default function Home() {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50 && !showNav) setShowNav(true);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [showNav]);
+    // Nav visibility is now persistent from start as requested
+  }, []);
 
   return (
     <main className="min-h-screen bg-white relative overflow-x-hidden w-full max-w-full">
