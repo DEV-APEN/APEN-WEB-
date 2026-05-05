@@ -172,40 +172,25 @@ function ChatForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('loading');
-    
-    // Validar conexión antes de intentar
-    if (!window.navigator.onLine) {
-      setStatus('error');
-      return;
-    }
-    
+
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", "6b5951be-932d-4173-a85c-f14d2c05a2c4");
     formData.append("subject", "Nuevo Lead desde CHAT BOT - APEN");
     formData.append("from_name", "Asistente ChatBot");
 
     try {
-      const resp = await fetch("https://api.web3forms.com/submit", {
+      const resp = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Accept": "application/json",
-        },
         body: formData,
-        // Añadir modo cors explícito y caché deshabilitada para evitar problemas de red
-        mode: 'cors',
-        cache: 'no-cache'
       });
-      
+
       const result = await resp.json();
-      
+
       if (result.success) {
         onSubmitSuccess();
       } else {
-        console.error("Web3Forms Error:", result);
         setStatus('error');
       }
-    } catch (err) {
-      console.error("Error crítico en ChatBot Form:", err);
+    } catch {
       setStatus('error');
     }
   };
