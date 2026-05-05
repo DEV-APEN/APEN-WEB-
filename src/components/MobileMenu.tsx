@@ -10,8 +10,20 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
+interface MenuLink {
+  name: string;
+  path: string;
+  icon?: React.ElementType;
+}
+
+interface MenuCategory {
+  title: string;
+  id: string;
+  links: MenuLink[];
+}
+
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  const menuCategories = [
+  const menuCategories: MenuCategory[] = [
     {
       title: "Unidades Estratégicas",
       id: "01",
@@ -107,7 +119,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                 className="group inline-flex flex-col"
                               >
                                 <div className="flex items-center gap-4 mb-2">
-                                  {link.icon && <link.icon size={18} className="text-[#008CDE] opacity-40 group-hover:opacity-100 transition-opacity" />}
+                                  {link.icon && (() => {
+                                    const Icon = link.icon;
+                                    return <Icon size={18} className="text-[#008CDE] opacity-40 group-hover:opacity-100 transition-opacity" />;
+                                  })()}
                                   <span className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white/80 group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
                                     {link.name}
                                   </span>
