@@ -17,13 +17,15 @@ export default function AboutContact() {
     setFormState('submitting');
     
     const formData = new FormData(e.currentTarget);
+    const payload = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/submit-protocol", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
       });
-      
+
       const result = await response.json();
       if (result.success) {
         setFormState('success');

@@ -174,13 +174,17 @@ function ChatForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
     setStatus('loading');
 
     const formData = new FormData(e.currentTarget);
-    formData.append("subject", "Nuevo Lead desde CHAT BOT - APEN");
-    formData.append("from_name", "Asistente ChatBot");
+    const payload: Record<string, string> = Object.fromEntries(
+      Array.from(formData.entries()).map(([k, v]) => [k, v.toString()])
+    );
+    payload["subject"] = "Nuevo Lead desde CHAT BOT - APEN";
+    payload["from_name"] = "Asistente ChatBot";
 
     try {
-      const resp = await fetch("/api/contact", {
+      const resp = await fetch("/api/submit-protocol", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
       });
 
       const result = await resp.json();

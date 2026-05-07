@@ -34,17 +34,14 @@ export default function AboutWho() {
             viewport={{ once: true }}
             className="flex justify-center items-center"
           >
-            <div className="relative group p-12 bg-[#F8FAFC] rounded-[3rem] border border-slate-100 shadow-xl overflow-hidden flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-white via-transparent to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="relative z-10 w-full max-w-[400px] aspect-[2/1]">
-                <Image
-                  src="/visual/imagenes/Logo de APEN con texto fondo transparente.png"
-                  alt="APEN Logo"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-contain transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
+            <div className="relative w-full rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/3]">
+              <Image
+                src="/visual/imagenes/quien-es-apen.png"
+                alt="Equipo APEN"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
           </motion.div>
 
