@@ -68,7 +68,6 @@ const faqJsonLd = {
 // Carga diferida — estos componentes no son necesarios en el primer render
 const CredentialsCarousel = dynamic(() => import('../components/CredentialsCarousel'), { ssr: false });
 const CorporateMetrics = dynamic(() => import('../components/CorporateMetrics'), { ssr: false });
-const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false });
 
 export default function Home() {
   const [showNav, setShowNav] = useState(true);
@@ -101,7 +100,6 @@ export default function Home() {
       <AboutContact />
 
       <Footer />
-      <ChatBot visible={showNav} />
 
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>

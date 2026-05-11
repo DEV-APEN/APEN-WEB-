@@ -124,7 +124,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                     const Icon = link.icon;
                                     return <Icon size={18} className="text-[#008CDE] opacity-40 group-hover:opacity-100 transition-opacity" />;
                                   })()}
-                                  <span className="text-2xl md:text-5xl font-black uppercase tracking-tight text-white/80 group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
+                                  <span className="text-xl md:text-3xl font-black uppercase tracking-tight text-white/80 group-hover:text-white group-hover:translate-x-2 transition-all duration-500">
                                     {link.name}
                                   </span>
                                 </div>

@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 import './globals.css';
 import CookieConsent from '../components/CookieConsent';
+
+const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false });
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +31,14 @@ export const metadata: Metadata = {
     'administración de proyectos energéticos CDMX',
     'empresa de ingeniería energética en México',
     'cumplimiento normativo ASEA CFE',
+    'orton',
+    'clausura asea',
+    'clausura cfe',
+    'levantamiento de clausura',
+    'multa asea',
+    'multa cfe',
+    'defensa legal tecnica',
+    'defensa legal energetica',
   ],
   authors: [{ name: 'APEN Technical Team', url: 'https://apen.mx' }],
   creator: 'APEN',
@@ -152,6 +163,7 @@ const websiteJsonLd = {
   },
   inLanguage: 'es-MX',
   potentialAction: {
+    '@context': 'https://schema.org',
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
@@ -230,7 +242,7 @@ const localBusinessJsonLd = {
   name: 'APEN — Administradora de Proyectos Energéticos',
   image: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
   url: 'https://apen.mx',
-  telephone: '+52-55-0000-0000',
+  telephone: '+52-55-7479-3873',
   email: 'contacto@apen.mx',
   priceRange: '$$$',
   address: {
@@ -325,6 +337,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }}
         />
+        <ChatBot visible={true} />
       </body>
     </html>
   );
