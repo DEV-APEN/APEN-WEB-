@@ -14,13 +14,13 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
   }, []);
 
   if (!mounted) return (
-    <section className="relative bg-[#061528] w-full h-[70vh] md:h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative bg-[#061528] w-full h-[65vh] md:h-screen pt-20 md:pt-0 flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-[#061528]" />
     </section>
   );
 
   return (
-    <section className="relative bg-white w-full h-[70vh] md:h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative bg-white w-full h-[65vh] md:h-screen pt-20 md:pt-0 flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full bg-white overflow-hidden flex items-center justify-center">
         <video
@@ -29,14 +29,11 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
           loop
           playsInline
           preload="metadata"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain md:object-cover"
         >
           <source src="/videos/hero_new.mp4" type="video/mp4" />
           Tu navegador no es compatible con videos.
         </video>
-        
-        {/* Capa de protección mobile */}
-        <div className="md:hidden absolute bottom-0 left-0 w-full h-[8%] bg-white z-20" />
       </div>
       
       {/* SEO Title - Visually Hidden */}
@@ -45,13 +42,13 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
       </h1>
 
       {/* Smooth transition to content */}
-      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-full h-16 md:h-40 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>
 
       {/* Scroll indicator */}
       {showIndicator && (
         <a 
           href="#servicios"
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center animate-in fade-in duration-[2500ms] delay-500"
+          className="absolute bottom-4 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center animate-in fade-in duration-[2500ms] delay-500"
         >
           <div className="animate-bounce flex flex-col items-center cursor-pointer group">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-apen-blue/60 group-hover:text-apen-blue transition-colors mb-2">
