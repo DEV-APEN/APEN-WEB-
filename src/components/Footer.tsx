@@ -19,7 +19,14 @@ export default function Footer() {
   if (!mounted) return null;
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-[#061427] pb-12 pt-20 text-white">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#061427] pb-12 pt-10 text-white">
+      {/* TOP CERTAINTY BANNER */}
+      <div className="mb-12 border-b border-white/5 pb-8 text-center">
+         <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/40">
+           Certeza jurídica y técnica en el sector energía · México
+         </span>
+      </div>
+
       <div className="absolute inset-0 pointer-events-none opacity-[0.02]">
         <div className="absolute right-0 top-0 h-full w-full bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:40px_40px]" />
       </div>
@@ -37,8 +44,7 @@ export default function Footer() {
               />
             </div>
             <p className="max-w-sm text-sm font-bold leading-relaxed text-gray-400 md:text-base">
-              Administradora de Proyectos Energéticos. Especialistas en cumplimiento regulatorio y alta ingeniería
-              para la cadena de valor de hidrocarburos y electricidad en México.
+              Especialistas en cumplimiento regulatorio e ingeniería de proyectos para la cadena de valor de hidrocarburos y electricidad en México.
             </p>
             <div className="flex gap-4">
               <div className="flex flex-col">
@@ -88,9 +94,9 @@ export default function Footer() {
               {[
                 'Consultoría CNE',
                 'Normatividad ASEA',
-                'Ingeniería CFE / SENER',
-                'Gestión SASISOPA',
-                'Código de Red 2.0',
+                'Autorizaciones y permisos SENER',
+                'Capacidad ejecutiva',
+                'Proyect finance',
               ].map((service) => (
                 <li
                   key={service}
@@ -163,9 +169,6 @@ export default function Footer() {
                 Política de Privacidad
               </Link>
             </div>
-            <p className="text-[8px] font-black uppercase tracking-widest text-gray-600">
-              Certeza jurídica y técnica en el sector energía. México.
-            </p>
           </div>
         </div>
       </div>

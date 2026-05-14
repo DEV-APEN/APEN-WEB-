@@ -320,9 +320,8 @@ export default function CertificacionesPage() {
 
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:gap-16">
             {/* PEMEX / Achilles */}
-            <button
-              onClick={() => openPdf('/certificados/cert-pemex.pdf', 'Registro Achilles — PEMEX')}
-              className="group relative cursor-pointer overflow-hidden rounded-3xl bg-[#061528] p-10 text-left transition-transform duration-300 hover:-translate-y-1"
+            <div
+              className="group relative overflow-hidden rounded-3xl bg-[#061528] p-10 text-left transition-transform duration-300 hover:-translate-y-1 shadow-2xl"
             >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,140,222,0.15),transparent_60%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
               <div className="relative z-10">
@@ -349,14 +348,29 @@ export default function CertificacionesPage() {
                   <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-slate-500">ID Padrón</p>
                   <p className="text-xl font-black italic tracking-widest text-white">00249023</p>
                 </div>
-                {/* hover cta */}
-                <div className="mt-6 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#35b8ff] opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  <FileText size={13} />
-                  Ver certificado
-                  <ArrowRight size={12} />
+
+                {/* Document Action Links (Hover Style) */}
+                <div className="mt-8 flex flex-col gap-3 relative z-20">
+                  <div 
+                    onClick={() => openPdf('/certificados/cert-pemex.pdf', 'Registro Achilles — PEMEX')}
+                    className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#35b8ff] opacity-0 transition-all duration-300 group-hover:opacity-100 cursor-pointer hover:translate-x-1"
+                  >
+                    <FileText size={13} />
+                    Ver Certificado Achilles
+                    <ArrowRight size={12} />
+                  </div>
+
+                  <div 
+                    onClick={() => openPdf('/docs/Registro_HIIP_APEN.pdf', 'Registro HIIP — PEMEX')}
+                    className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.28em] text-white/70 hover:text-white opacity-0 transition-all duration-300 group-hover:opacity-100 cursor-pointer hover:translate-x-1"
+                  >
+                    <FileText size={13} />
+                    Ver Registro HIIP
+                    <ArrowRight size={12} />
+                  </div>
                 </div>
               </div>
-            </button>
+            </div>
 
             {/* CFE */}
             <button

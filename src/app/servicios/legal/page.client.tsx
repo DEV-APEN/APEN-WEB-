@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft, Gavel, ShieldCheck, Scale, Landmark, Briefcase, FileSearch, AlertCircle, CheckSquare, Hammer, Search, ShieldAlert, FileText, CheckCircle2 } from "lucide-react";
@@ -7,11 +8,14 @@ import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import AboutContact from "@/components/AboutContact";
+import MobileMenu from "@/components/MobileMenu";
 
 export default function LegalPage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-white">
-      <Header visible={true} onOpenMenu={() => {}} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       {/* Hero Sector */}
       <section className="relative min-h-[70vh] pt-40 pb-32 flex items-center overflow-hidden bg-[#0B2341]">
@@ -228,6 +232,7 @@ export default function LegalPage() {
 
       <AboutContact />
       <Footer />
+      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );
 }

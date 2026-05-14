@@ -6,28 +6,28 @@ import { CheckCircle2, Users2, Award, Building2 } from 'lucide-react';
 const trustStats = [
   { 
     label: "Trámites Realizados", 
-    value: "94", 
-    suffix: "",
+    value: "3,000", 
+    suffix: "+",
     desc: "Gestiones integrales ante autoridades.",
     icon: CheckCircle2
   },
   { 
     label: "Concluidos Exitosamente", 
-    value: "79", 
-    suffix: "",
+    value: "2,500", 
+    suffix: "+",
     desc: "Resoluciones positivas obtenidas.",
     icon: Award
   },
   { 
     label: "Clientes Atendidos", 
-    value: "82", 
-    suffix: "",
+    value: "2,800", 
+    suffix: "+",
     desc: "Empresas con certeza operativa.",
     icon: Users2
   },
   { 
     label: "Tasa de Conclusión", 
-    value: "84", 
+    value: "83", 
     suffix: "%",
     desc: "Eficacia en resolución de trámites.",
     icon: Building2
@@ -101,9 +101,9 @@ export default function CorporateMetrics() {
           <div className="space-y-8">
             <h3 className="text-sm font-black text-[#4fc3ff] uppercase tracking-[0.4em] mb-8">Por Autoridad</h3>
             {[
-              { label: 'CNE', value: 72, color: 'bg-orange-500' },
-              { label: 'ASEA', value: 11, color: 'bg-cyan-400' },
-              { label: 'SENER', value: 11, color: 'bg-lime-400' }
+              { label: 'CNE', value: 2297, color: 'bg-orange-500' },
+              { label: 'ASEA', value: 352, color: 'bg-cyan-400' },
+              { label: 'SENER', value: 351, color: 'bg-lime-400' }
             ].map((auth) => (
               <div key={auth.label} className="space-y-2">
                 <div className="flex justify-between items-end">
@@ -113,7 +113,7 @@ export default function CorporateMetrics() {
                 <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
-                    whileInView={{ width: `${(auth.value / 94) * 100}%` }}
+                    whileInView={{ width: `${(auth.value / 3000) * 100}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.5 }}
                     className={`h-full ${auth.color} shadow-[0_0_10px_rgba(0,0,0,0.5)]`}
@@ -128,10 +128,10 @@ export default function CorporateMetrics() {
             <h3 className="text-sm font-black text-[#4fc3ff] uppercase tracking-[0.4em] mb-8">Equipo Responsable</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
-                { name: 'Lic. Izanami', value: 74, color: 'bg-orange-500' },
-                { name: 'Ing. Guillermo', value: 11, color: 'bg-cyan-400' },
-                { name: 'Ing. Carlos', value: 7, color: 'bg-lime-400' },
-                { name: 'Ing. Jessica', value: 2, color: 'bg-rose-500' }
+                { name: 'Lic. Izanami', value: 2362, color: 'bg-orange-500' },
+                { name: 'Ing. Guillermo', value: 351, color: 'bg-cyan-400' },
+                { name: 'Ing. Carlos', value: 223, color: 'bg-lime-400' },
+                { name: 'Ing. Jessica', value: 64, color: 'bg-rose-500' }
               ].map((member) => (
                 <div key={member.name} className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                   <div className="flex items-center gap-3">

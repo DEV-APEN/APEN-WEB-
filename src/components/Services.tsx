@@ -9,18 +9,16 @@ const serviceSections = [
     id: "01",
     title: "Hidrocarburos",
     label: "Energía & Regulación",
-    subtitle: "Consultoría regulatoria integral para empresarios del sector.",
-    description: "Permisos CNE, cumplimiento ASEA, regularización y defensa ante autoridades. Acompañamos desde la idea hasta la operación.",
+    subtitle: "Ventanilla única de cumplimiento regulatorio para empresarios del sector.",
+    description: "Acompañamos desde la idea hasta la operación.",
     image: "/hidro.jpg",
     icon: Droplets,
     color: "#008CDE",
     accent: "from-blue-600 to-cyan-500",
     items: [
-      "Trámites integrales ante OPE y CNE.",
-      "Permisos para Estaciones de Servicio y Autoconsumo.",
-      "Logística de Almacenamiento y Distribución.",
-      "Dictámenes SASISOPA, MIA y NOM-016-CRE.",
-      "Monitoreo de trazabilidad y calidad de producto."
+      "Cumplimiento ASEA — Sin multas, sin clausuras, sin proyectos frenados.",
+      "Permisos y cumplimiento CNE — Hidrocarburos y sector eléctrico.",
+      "Autorizaciones SENER — Viabilidad social y acceso a mercados de importación."
     ],
     reverse: false,
     url: "/servicios/hidrocarburos"
@@ -158,13 +156,15 @@ export default function Services() {
                 </p>
 
                 {/* Lista de Puntos Estratégicos */}
-                <div className="grid grid-cols-1 gap-4 mb-12 w-full">
-                  {service.items.map((item, i) => (
-                    <div key={i} className="flex items-center gap-4 group/item cursor-default">
-                       <div className="h-2 w-2 rounded-full bg-slate-200 transition-all duration-300 group-hover/item:bg-apen-blue group-hover/item:scale-150" />
-                       <span className="text-[12px] md:text-[13px] font-black uppercase tracking-tight text-[#0B2341] group-hover/item:translate-x-2 transition-transform duration-300">
-                         {item}
-                       </span>
+                <div className="grid grid-cols-1 gap-6 mb-12 w-full">
+                  {service.items.map((item: any, i) => (
+                    <div key={i} className="flex items-start gap-4 group/item cursor-default">
+                       <div className="h-2 w-2 rounded-full bg-slate-200 mt-1.5 transition-all duration-300 group-hover/item:bg-apen-blue group-hover/item:scale-150 shrink-0" />
+                       <div className="flex flex-col gap-1 group-hover/item:translate-x-2 transition-transform duration-300">
+                          <span className="text-[12px] md:text-[13px] font-black uppercase tracking-tight text-[#0B2341]">
+                            {item.title || item}
+                          </span>
+                       </div>
                     </div>
                   ))}
                 </div>

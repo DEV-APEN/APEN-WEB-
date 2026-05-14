@@ -206,8 +206,8 @@ function ChatForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
         <input name="name" required type="text" className="w-full bg-gray-50 border border-gray-200 rounded px-3 py-2 text-xs outline-none focus:border-[#008CDE]" placeholder="Su nombre" />
       </div>
       <div className="space-y-1">
-        <label className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Correo Corporativo</label>
-        <input name="email" required type="email" className="w-full bg-gray-50 border border-gray-200 rounded px-3 py-2 text-xs outline-none focus:border-[#008CDE]" placeholder="correo@empresa.com" />
+        <label className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Celular</label>
+        <input name="phone" required type="tel" className="w-full bg-gray-50 border border-gray-200 rounded px-3 py-2 text-xs outline-none focus:border-[#008CDE]" placeholder="10 dígitos" />
       </div>
       <div className="space-y-1">
         <label className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Breve Requerimiento</label>

@@ -3,16 +3,21 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
-  const host = request.headers.get('host');
+  const host = request.headers.get('host') ?? '';
   const protocol = request.headers.get('x-forwarded-proto') || 'http';
+
+  // Skip redirects in local development
+  if (host.startsWith('localhost') || host.startsWith('127.0.0.1')) {
+    return NextResponse.next();
+  }
 
   // 1. Forzar HTTPS
   // 2. Forzar No-WWW (apen.mx en lugar de www.apen.mx)
-  const isWww = host?.startsWith('www.');
+  const isWww = host.startsWith('www.');
   const isHttp = protocol === 'http';
 
   if (isHttp || isWww) {
-    const newHost = isWww ? host?.replace('www.', '') : host;
+    const newHost = isWww ? host.replace('www.', '') : host;
     const newUrl = `https://${newHost}${url.pathname}${url.search}`;
     
     return NextResponse.redirect(newUrl, {

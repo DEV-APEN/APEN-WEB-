@@ -1,15 +1,18 @@
 "use client";
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ZapOff } from 'lucide-react';
 import Header from '@/components/Header';
+import MobileMenu from '@/components/MobileMenu';
 
 export default function NotFound() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-[#061528] flex flex-col relative overflow-hidden w-full">
-      <Header visible={true} onOpenMenu={() => {}} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -141,6 +144,7 @@ export default function NotFound() {
           </span>
         </div>
       </div>
+      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );
 }
