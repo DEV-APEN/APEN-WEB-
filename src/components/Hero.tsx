@@ -29,7 +29,7 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
           loop
           playsInline
           preload="metadata"
-          className="h-full w-full object-contain md:object-cover"
+          className="h-full w-full object-contain lg:object-cover"
         >
           <source src="/videos/hero_new.mp4" type="video/mp4" />
           Tu navegador no es compatible con videos.

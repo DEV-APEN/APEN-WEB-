@@ -68,10 +68,10 @@ export default function CredentialsCarousel() {
     <section id="certificaciones" className="relative overflow-hidden py-24 md:py-32">
       {/* Background with fixed overlay */}
       <div 
-        className="absolute inset-0 bg-center bg-cover opacity-40 transition-transform duration-[15s] linear infinite"
+        className="absolute inset-0 bg-center bg-cover opacity-60 transition-transform duration-[15s] linear infinite"
         style={{ backgroundImage: "url('/visual/imagenes/certifondo.jpg')" }}
       />
-      <div className="absolute inset-0 bg-white/90" />
+      <div className="absolute inset-0 bg-white/75" />
 
       <div className="relative mx-auto max-w-7xl px-6">
         {/* Header Section */}
@@ -90,7 +90,7 @@ export default function CredentialsCarousel() {
 
         {/* Carousel Container */}
         <div className="relative max-w-4xl mx-auto px-4">
-          <div className="relative overflow-hidden h-[460px] md:h-[400px]">
+          <div className="relative overflow-hidden h-[460px] md:h-[420px] lg:h-[400px]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={current}
@@ -165,21 +165,21 @@ export default function CredentialsCarousel() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+               </motion.div>
             </AnimatePresence>
           </div>
 
           {/* Navigation Buttons */}
           <button
             onClick={() => paginate(-1)}
-            className="absolute -left-2 md:-left-24 top-1/2 -translate-y-1/2 z-30 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0B2341] shadow-lg hover:shadow-xl hover:bg-slate-50 transition-all active:scale-95"
+            className="absolute -left-2 md:-left-6 lg:-left-20 top-1/2 -translate-y-1/2 z-30 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0B2341] shadow-lg hover:shadow-xl hover:bg-slate-50 transition-all active:scale-95"
             aria-label="Anterior"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="absolute -right-2 md:-right-24 top-1/2 -translate-y-1/2 z-30 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0B2341] shadow-lg hover:shadow-xl hover:bg-slate-50 transition-all active:scale-95"
+            className="absolute -right-2 md:-right-6 lg:-right-20 top-1/2 -translate-y-1/2 z-30 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white border border-slate-200 text-[#0B2341] shadow-lg hover:shadow-xl hover:bg-slate-50 transition-all active:scale-95"
             aria-label="Siguiente"
           >
             <ChevronRight size={24} />

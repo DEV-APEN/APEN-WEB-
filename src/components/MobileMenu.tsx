@@ -42,6 +42,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         { name: 'Nuestra Firma', path: '/nosotros' },
         { name: 'Ejecución de Proyectos', path: '/capacidad-ejecutiva' },
         { name: 'Certificaciones ISO', path: '/certificaciones' },
+        { name: 'Centro de FAQs', path: '/faqs', icon: FileText },
       ]
     }
   ];

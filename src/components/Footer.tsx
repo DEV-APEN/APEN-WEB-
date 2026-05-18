@@ -14,6 +14,7 @@ export default function Footer() {
     { label: 'Servicios', href: '/servicios' },
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Certificaciones', href: '/certificaciones' },
+    { label: 'Centro de FAQs', href: '/faqs' },
   ];
 
   if (!mounted) return null;

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, HelpCircle, ShieldCheck, Globe, Zap, Clock, Target, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 const faqs = [
   {
@@ -130,15 +131,23 @@ export default function FAQ() {
           className="mt-16 text-center p-8 border border-dashed border-slate-200 rounded-3xl"
         >
            <HelpCircle className="mx-auto text-[#008CDE]/30 mb-4" size={32} />
-           <p className="text-[12px] font-black text-slate-400 uppercase tracking-widest mb-4 italic">
-             ¿Tiene alguna duda técnica específica no mencionada aquí?
+           <p className="text-[12px] font-black text-slate-400 uppercase tracking-widest mb-6 italic">
+             ¿Tiene alguna duda técnica específica o requiere asistencia normativa?
            </p>
-           <a 
-             href="#contacto"
-             className="text-[#008CDE] text-[10px] font-black uppercase tracking-[0.3em] hover:tracking-[0.4em] transition-all"
-           >
-             Contactar al Departamento Técnico <ChevronRight className="inline-block" size={14} />
-           </a>
+           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+             <Link 
+               href="/faqs"
+               className="bg-[#008CDE] text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-[#0B2341] shadow-lg shadow-blue-900/10 transition-all flex items-center justify-center gap-2"
+             >
+               Ver Base de Conocimiento (FAQs) <ChevronRight size={14} />
+             </Link>
+             <a 
+               href="#contacto"
+               className="text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] hover:text-[#008CDE] transition-all px-4 py-3"
+             >
+               Contactar al Gabinete Técnico
+             </a>
+           </div>
         </motion.div>
 
       </div>

@@ -362,9 +362,14 @@ export default function FAQsPageClient() {
                    <div className="relative z-10">
                      <p className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-2">¿Duda Específica?</p>
                      <p className="text-sm font-bold mb-4">Consulte a nuestro gabinete técnico directo.</p>
-                     <button className="flex items-center gap-2 text-xs font-black uppercase tracking-widest bg-[#008CDE] px-5 py-3 rounded-xl hover:bg-blue-600 transition-colors">
+                     <a 
+                       href="https://wa.me/525574793873?text=Hola,%20requiero%20asistencia%20técnica%20del%20gabinete%20APEN." 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest bg-[#008CDE] px-5 py-3 rounded-xl hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20"
+                     >
                         <MessageSquare size={14} /> Chatear ahora
-                     </button>
+                     </a>
                    </div>
                    <AlertCircle className="absolute -bottom-4 -right-4 text-white/5 w-24 h-24" />
                 </div>
@@ -436,11 +441,18 @@ export default function FAQsPageClient() {
                                <p className="text-slate-600 text-sm md:text-base font-medium leading-relaxed mb-6">
                                   {q.a}
                                </p>
-                               <div className="flex items-center gap-4">
-                                  <button className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#008CDE] hover:text-[#0B2341] transition-colors group">
-                                     Consultar sobre este tema <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                  </button>
-                               </div>
+                               {q.type === 'critical' && (
+                                 <div className="flex items-center gap-4">
+                                    <a 
+                                      href={`https://wa.me/525574793873?text=${encodeURIComponent(`🚨 URGENTE: Requiero asistencia técnica sobre: "${q.q}"`)}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest px-5 py-3 rounded-xl transition-all group bg-rose-500 text-white hover:bg-rose-600 shadow-lg shadow-rose-500/20"
+                                    >
+                                       Atender urgencia regulatoria ahora <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                    </a>
+                                 </div>
+                               )}
                             </div>
                           </motion.div>
                         )}
