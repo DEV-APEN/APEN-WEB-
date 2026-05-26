@@ -9,7 +9,7 @@ import Image from 'next/image';
 // ─────────────────────────────────────────────
 const SERVICIOS_MENU = [
   "Hidrocarburos",
-  "Sector Energético",
+  "Sector Eléctrico",
   "Defensa Legal",
   "Project Finance",
 ];
@@ -48,7 +48,7 @@ const KNOWLEDGE_BASE = [
     actionLinks: [{ label: "Expediente Hidrocarburos", target: "/servicios/hidrocarburos" }]
   },
   {
-    category: "Sector Energético",
+    category: "Sector Eléctrico",
     keys: [
       "electricidad", "electrico", "subestacion", "tension", "kv", "transformador",
       "tablero", "media tension", "alta tension", "linea transmision", "conduccion",
@@ -64,7 +64,7 @@ const KNOWLEDGE_BASE = [
       { t: "Commissioning", desc: "Protocolos FAT/SAT, ajuste de relés de protección, pruebas de energización, verificación SCADA y expediente técnico final auditado." },
       { t: "Licitaciones CFE", desc: "Estructura, seguimiento y participación en licitaciones bajo Padrón CFE 4493015." }
     ],
-    actionLinks: [{ label: "Expediente Sector Energético", target: "/servicios/energia" }]
+    actionLinks: [{ label: "Expediente Sector Eléctrico", target: "/servicios/energia" }]
   },
   {
     category: "Defensa Legal",

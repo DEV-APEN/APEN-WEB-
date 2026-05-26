@@ -7,11 +7,11 @@ import Link from "next/link";
 const serviceSections = [
   {
     id: "01",
-    title: "Hidrocarburos",
-    label: "Energía & Regulación",
+    title: "Sector Hidrocarburos",
+    label: "consultoría regulatoria",
     subtitle: "Ventanilla única de cumplimiento regulatorio para empresarios del sector.",
-    description: "Acompañamos desde la idea hasta la operación.",
-    image: "/hidro.jpg",
+    description: "Garantizamos tu autorización ante ASEA — si el expediente entra bien, la ley la concede. Más de 200 juicios ganados lo prueban.",
+    image: "/visual/imagenes/hidro.jpg",
     icon: Droplets,
     color: "#008CDE",
     accent: "from-blue-600 to-cyan-500",
@@ -25,20 +25,18 @@ const serviceSections = [
   },
   {
     id: "02",
-    title: "Sector Energético",
-    label: "Infraestructura Eléctrica",
-    subtitle: "Infraestructura eléctrica hasta 230 kV bajo dirección técnica propia.",
-    description: "Subestaciones, tableros, montaje electromecánico y licitaciones CFE. Padrón No. 4493015 activo.",
-    image: "/ener.jpg",
+    title: "Sector Eléctrico",
+    label: "Energía & Regulación eléctrica",
+    subtitle: "Permisos, interconexión y cumplimiento regulatorio ante la CNE para participantes del mercado eléctrico mexicano.",
+    description: "Gestionamos los permisos y obligaciones regulatorias que habilitan tu participación en el sector eléctrico — desde la autorización de generación hasta la interconexión con el CENACE y el cumplimiento continuo ante la CNE.",
+    image: "/visual/imagenes/ener.jpg",
     icon: Zap,
     color: "#D97706",
     accent: "from-amber-400 to-orange-500",
     items: [
-      "Permisos CNE de Generación y Suministro.",
-      "Gestión de Interconexión al Mercado Eléctrico.",
-      "Ingeniería Detallada de Subestaciones 230 kV.",
-      "Asesoría Técnica en Normas DCCSED01/DCCSET01.",
-      "Licitaciones Estratégicas y Padrón CFE."
+      "Permisos de generación, autoabasto, comercialización e importación/exportación de energía",
+      "Interconexión ante CENACE, acceso al MEM y contratos de tensión",
+      "Representación ante Código de Red y cumplimiento regulatorio ante CNE"
     ],
     reverse: true,
     url: "/servicios/energia"
@@ -48,17 +46,18 @@ const serviceSections = [
     title: "Defensa Legal",
     label: "Certeza Jurídica",
     subtitle: "Dirección jurídica especializada en energía desde el origen.",
-    description: "Amparo, nulidad, clausuras e impugnaciones con conocimiento técnico-operativo de primera mano. No como servicio externo.",
-    image: "/legal.jpg",
+    description: "Garantizamos tu autorización ante ASEA — si el expediente entra bien, la ley la concede. Más de 200 juicios ganados lo prueban.",
+    image: "/visual/imagenes/legal.jpg",
     icon: Gavel,
     color: "#EF4444",
     accent: "from-rose-600 to-red-500",
     items: [
-      "Defensa legal especializada en proyectos energéticos.",
       "Levantamiento de clausuras e impugnación de multas.",
-      "Demandas de Nulidad y Recursos de Revisión.",
       "Atención a requerimientos ASEA, CNE y SENER.",
-      "Regularización integral de expedientes técnicos."
+      "Juicio de amparo contra resoluciones de ASEA, CNE y SENER.",
+      "Demandas de nulidad y recursos de revisión.",
+      "Defensa legal especializada en proyectos energéticos.",
+      "Integración y regularización de expedientes técnicos."
     ],
     reverse: false,
     url: "/servicios/legal"

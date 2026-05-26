@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, ArrowLeft, Zap, ShieldCheck, HardHat, TowerControl, Layers3, Briefcase, FileText, FileSearch, PlugZap } from "lucide-react";
+import { ArrowLeft, ArrowRight, Zap, ShieldCheck, HardHat, TowerControl, Briefcase, FileText, FileSearch } from "lucide-react";
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
@@ -20,7 +20,7 @@ export default function EnergiaPage() {
       {/* Hero Sector */}
       <section className="relative min-h-[70vh] pt-40 pb-32 flex items-center overflow-hidden bg-[#0B2341]">
         <Image
-          src="/ener.jpg"
+          src="/visual/imagenes/ener.jpg"
           className="object-cover opacity-50 scale-105"
           fill
           sizes="100vw"
@@ -47,11 +47,11 @@ export default function EnergiaPage() {
               <span className="text-[10px] font-black uppercase tracking-[0.5em] text-amber-400">Expediente 02 / Energía</span>
             </div>
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
-              Infraestructura eléctrica y<br />
+              Sector eléctrico<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">consultoría regulatoria.</span>
             </h1>
             <p className="max-w-2xl text-blue-50/70 text-sm md:text-base font-medium leading-relaxed mb-10 border-l-2 border-amber-500 pl-6">
-              Ante CFE y CNE. Gestionamos permisos CNE de generación, transmisión y suministro. Ejecutamos obras de infraestructura eléctrica hasta 230 kV bajo dirección técnica propia, con Padrón CFE No. 4493015 activo.
+              Ante CNE y CENACE. Gestionamos permisos de generación, interconexión y cumplimiento regulatorio para participantes del mercado eléctrico mexicano.
             </p>
           </motion.div>
         </div>
@@ -66,8 +66,9 @@ export default function EnergiaPage() {
                     <HardHat className="text-amber-500" size={28} />
                  </div>
                  <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Acreditación Oficial</h3>
-                    <p className="text-lg font-black text-[#0B2341] tracking-tight">Padrón CFE 4493015</p>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Gestión Verificada</h3>
+                    <p className="text-lg font-black text-[#0B2341] tracking-tight">+1,000 trámites</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">eléctricos resueltos</p>
                  </div>
               </div>
 
@@ -76,8 +77,9 @@ export default function EnergiaPage() {
                     <Zap className="text-amber-500" size={28} />
                  </div>
                  <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Ingeniería & Obra</h3>
-                    <p className="text-lg font-black text-[#0B2341] tracking-tight">Potencia Hasta 230kV</p>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Autoridades Cubiertas</h3>
+                    <p className="text-lg font-black text-[#0B2341] tracking-tight">CNE · CENACE</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">sector eléctrico</p>
                  </div>
               </div>
 
@@ -86,170 +88,380 @@ export default function EnergiaPage() {
                     <ShieldCheck className="text-amber-500" size={28} />
                  </div>
                  <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Desarrollo Aprobado</h3>
-                    <p className="text-lg font-black text-[#0B2341] tracking-tight">Normativa PYCON-SE-01</p>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Impacto Federal</h3>
+                    <p className="text-lg font-black text-[#0B2341] tracking-tight">Cobertura Nacional</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">República Mexicana</p>
                  </div>
               </div>
            </div>
         </div>
       </section>
 
-      {/* Main Content Blocks */}
-      <section className="py-24 md:py-32 bg-white relative z-20">
+      {/* Pilares de Regularización — diseño estilo hidrocarburos */}
+      <section className="py-24 md:py-32 bg-[#F8FAFC] relative z-20 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6">
+
+          {/* Encabezado centrado */}
           <div className="text-center mb-16 md:mb-24">
-             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-600 mb-4">Intervención Especializada</p>
-             <h2 className="text-3xl md:text-5xl font-black text-[#0B2341] uppercase tracking-tighter leading-[0.95]">
-                Pilares de <span className="text-slate-400">Regularización</span>
-             </h2>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-500 mb-4">Intervención Especializada</p>
+            <h2 className="text-4xl md:text-6xl font-black text-[#0B2341] uppercase tracking-tighter leading-[0.9]">
+              Pilares de <span className="text-slate-400">Regularización</span>
+            </h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
+          <div className="flex flex-col gap-16">
 
-            {/* Bloque A: Consultoría CNE */}
+            {/* BLOQUE 1: CNE */}
             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               className="bg-[#f8f9fc] p-10 md:p-14 rounded-[3rem] border border-slate-200/60 relative overflow-hidden group hover:border-amber-200 transition-colors"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-8 opacity-5 transition-opacity group-hover:opacity-10 text-amber-600">
-                <FileText size={160} strokeWidth={1} />
+              <div className="absolute top-0 right-0 p-8 opacity-5 transition-opacity group-hover:opacity-10 text-[#0B2341]">
+                <FileText size={200} strokeWidth={1} />
               </div>
 
-              <div className="h-16 w-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-                 <FileText className="text-amber-500" size={32} />
+              <div className="mb-10 flex flex-col md:flex-row md:items-center gap-6 justify-between relative z-10">
+                <div className="flex items-center gap-6">
+                  <div className="h-20 w-auto bg-white rounded-xl p-2 shadow-sm border border-slate-100 overflow-hidden">
+                    <img
+                      src="https://static.wixstatic.com/media/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg/v1/fill/w_568,h_210,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg"
+                      alt="CNE"
+                      className="h-full object-contain mix-blend-multiply"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-black text-[#0B2341] uppercase tracking-tight leading-none mb-2">
+                      Permisos & Consultoría <span className="text-amber-500">CNE</span>
+                    </h3>
+                    <p className="text-[12px] font-black uppercase tracking-[0.2em] text-slate-400">
+                      Tramitación, vigencia y cumplimiento ante la Comisión Nacional de Energía
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-[#0B2341] uppercase tracking-tighter mb-4 relative z-10">
-                 Consultoría CNE
-              </h3>
-              <p className="text-slate-500 mb-10 leading-relaxed font-bold text-sm relative z-10">
-                 Gestión integral de permisos regulatorios ante la Comisión Nacional de Energía para todos los segmentos del sector eléctrico.
+              <p className="text-slate-500 text-sm md:text-base font-bold leading-relaxed mb-12 max-w-4xl relative z-10">
+                Gestionamos cada permiso y trámite ante la CNE para que operes con plena certeza regulatoria — desde el primer permiso hasta el cumplimiento continuo de obligaciones durante toda la vida del proyecto.
               </p>
 
-              <ul className="space-y-5 relative z-10">
-                {[
-                  "Permisos de Generación eléctrica.",
-                  "Permisos de Transmisión y Distribución.",
-                  "Permisos de Suministro e Interconexión.",
-                  "Gestión ante el Mercado Eléctrico Mayorista (MEM).",
-                  "Código de Red 2.0 — cumplimiento y actualización."
-                ].map(i =>(
-                   <li key={i} className="flex items-start gap-4">
-                     <PlugZap className="text-amber-500 shrink-0" size={20}/>
-                     <span className="text-sm font-black uppercase tracking-tight text-[#0B2341]">{i}</span>
-                   </li>
-                ))}
-              </ul>
+              <div className="grid md:grid-cols-2 gap-12 relative z-10">
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-amber-500" /> Permisos para operar
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-6 italic">Lo que necesitas antes de iniciar operaciones o para regularizarte.</p>
+                  <ul className="space-y-4">
+                    {[
+                      "Generación eléctrica — renovable, convencional y cogeneración",
+                      "Autoabasto y uso propio",
+                      "Comercialización y suministro eléctrico",
+                      "Importación y exportación de energía eléctrica",
+                    ].map((n) => (
+                      <li key={n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{n}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-amber-500" /> Cumplimiento y vigencia
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-6 italic">Lo que necesitas para mantener tu permiso activo y sin observaciones.</p>
+                  <ul className="space-y-4">
+                    {[
+                      { n: "Reporte de obligaciones periódicas ante CNE", t: "Continuo" },
+                      { n: "Cumplimiento de términos y condiciones del permiso vigente", t: "Permanente" },
+                      { n: "Seguimiento ante modificaciones regulatorias del sector", t: "Continuo" },
+                      { n: "Modificaciones y actualizaciones de permisos vigentes", t: "A solicitud" },
+                    ].map((i) => (
+                      <li key={i.n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{i.n}</span>
+                        <span className="text-[11px] font-bold text-amber-500 tracking-widest uppercase flex items-center gap-1">
+                          - Gestión: {i.t}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-14 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+                <p className="text-[13px] font-bold text-[#0B2341] max-w-xl">
+                  ¿Tienes un permiso CNE pendiente de resolución o una observación sin atender?
+                </p>
+                <Link href="/contacto" className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#0B2341] text-white group/btn hover:bg-amber-500 transition-all duration-300 shadow-lg shadow-amber-900/10">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
+                  <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </motion.div>
 
-            {/* Bloque B: Ejecución técnica */}
+            {/* BLOQUE 2: CENACE */}
             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: 0.1 }}
-               className="bg-[#0B2341] p-10 md:p-14 rounded-[3rem] shadow-2xl relative overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-transparent opacity-60" />
-              <div className="absolute bottom-0 right-0 p-8 opacity-10 text-white">
-                <TowerControl size={160} strokeWidth={1} />
+              <div className="absolute top-0 right-0 p-8 opacity-5 transition-opacity group-hover:opacity-10 text-[#0B2341]">
+                <TowerControl size={200} strokeWidth={1} />
               </div>
 
-              <div className="h-16 w-16 bg-white/10 border border-white/5 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm relative z-10">
-                 <HardHat className="text-amber-400" size={32} />
+              <div className="mb-10 flex flex-col md:flex-row md:items-center gap-6 justify-between relative z-10">
+                <div className="flex items-center gap-6">
+                  <div className="h-20 w-auto bg-white rounded-xl p-2 shadow-sm border border-slate-100 overflow-hidden">
+                    <img src="/Logo_CENACE.png" alt="CENACE" className="h-full object-contain" />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-black text-[#0B2341] uppercase tracking-tight leading-none mb-2">
+                      Interconexión & Mercado <span className="text-amber-500">CENACE</span>
+                    </h3>
+                    <p className="text-[12px] font-black uppercase tracking-[0.2em] text-slate-400">
+                      Acceso al Mercado Eléctrico Mayorista y gestión de interconexión al SEN
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-4 relative z-10">
-                 Ejecución Técnica<br/>Certificada
-              </h3>
-              <p className="text-blue-100/70 mb-6 leading-relaxed font-bold text-sm relative z-10">
-                 Ejecutado bajo dirección técnica de APEN con red de especialistas certificados. Padrón CFE No. 4493015 activo.
+              <p className="text-slate-500 text-sm md:text-base font-bold leading-relaxed mb-12 max-w-4xl relative z-10">
+                Representamos a generadores y usuarios calificados ante el CENACE para asegurar el acceso al Sistema Eléctrico Nacional y la participación en el Mercado Eléctrico Mayorista con pleno cumplimiento del Código de Red.
               </p>
 
-              <ul className="space-y-5 relative z-10">
-                {[
-                  "Subestaciones hasta 230 kV — obra integral.",
-                  "Tableros de control y distribución eléctrica.",
-                  "Montaje electromecánico y líneas de transmisión.",
-                  "Normas DCCSED01, DCCSET01 y PYCON-SE-01.",
-                  "Licitaciones CFE — estructura y seguimiento."
-                ].map(i =>(
-                   <li key={i} className="flex items-start gap-4">
-                     <ArrowRight className="text-amber-400 shrink-0 mt-0.5" size={18}/>
-                     <span className="text-sm font-black uppercase tracking-tight text-white">{i}</span>
-                   </li>
-                ))}
-              </ul>
+              <div className="grid md:grid-cols-2 gap-12 relative z-10">
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-amber-500" /> Gestión de interconexión
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-6 italic">Lo que necesitas para conectarte al Sistema Eléctrico Nacional.</p>
+                  <ul className="space-y-4">
+                    {[
+                      { n: "Estudios de interconexión y conexión al SEN", t: "A solicitud" },
+                      { n: "Contratos de Interconexión en Mediana y Alta Tensión", t: "Variable" },
+                      { n: "Coordinación con CFE Transmisión y Distribución", t: "Continuo" },
+                      { n: "Código de Red 2.0 — representación y cumplimiento", t: "Permanente" },
+                    ].map((i) => (
+                      <li key={i.n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{i.n}</span>
+                        <span className="text-[11px] font-bold text-amber-500 tracking-widest uppercase flex items-center gap-1">
+                          - Gestión: {i.t}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-amber-500" /> Mercado Eléctrico Mayorista
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-6 italic">Lo que necesitas para operar como participante del MEM.</p>
+                  <ul className="space-y-4">
+                    {[
+                      { n: "Registro y acceso al MEM como participante calificado", t: "15 a 30 días" },
+                      { n: "Estrategia de despacho y ofertas de energía", t: "Continuo" },
+                      { n: "Certificados de Energías Limpias (CELs) — gestión y seguimiento", t: "A solicitud" },
+                      { n: "Representación técnica ante CENACE en disputas y ajustes", t: "A solicitud" },
+                    ].map((i) => (
+                      <li key={i.n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{i.n}</span>
+                        <span className="text-[11px] font-bold text-amber-500 tracking-widest uppercase flex items-center gap-1">
+                          - Tiempo estimado: {i.t}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-14 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+                <p className="text-[13px] font-bold text-[#0B2341] max-w-xl">
+                  ¿Necesitas acceder al MEM, gestionar una interconexión o resolver un conflicto ante el CENACE?
+                </p>
+                <Link href="/contacto" className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#0B2341] text-white group/btn hover:bg-amber-500 transition-all duration-300 shadow-lg shadow-amber-900/10">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
+                  <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* BLOQUE 3: CFE */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 p-8 opacity-5 transition-opacity group-hover:opacity-10 text-[#0B2341]">
+                <HardHat size={200} strokeWidth={1} />
+              </div>
+
+              <div className="mb-10 flex flex-col md:flex-row md:items-center gap-6 justify-between relative z-10">
+                <div className="flex items-center gap-6">
+                  <div className="h-20 w-auto bg-white rounded-xl p-2 shadow-sm border border-slate-100 overflow-hidden shrink-0">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg"
+                      alt="CFE"
+                      className="h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-black text-[#0B2341] uppercase tracking-tight leading-none mb-2">
+                      Ingeniería, Obra & Licitaciones <span className="text-amber-500">CFE</span>
+                    </h3>
+                    <p className="text-[12px] font-black uppercase tracking-[0.2em] text-slate-400">
+                      Ejecución certificada — Padrón CFE No. 4493015 activo
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-slate-500 text-sm md:text-base font-bold leading-relaxed mb-12 max-w-4xl relative z-10">
+                Ejecutamos obras de infraestructura eléctrica hasta 230 kV bajo dirección técnica propia y normativas estrictas de la CFE. Con habilitación activa en el Padrón de Contratistas, participamos y ganamos licitaciones de obra pública eléctrica a nivel nacional.
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-12 relative z-10">
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-amber-500" /> Ingeniería & Obra Eléctrica
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-6 italic">Ejecución en campo bajo normativas CFE y dirección técnica certificada.</p>
+                  <ul className="space-y-4">
+                    {[
+                      "Subestaciones hasta 230 kV — obra integral",
+                      "Tableros de control y distribución eléctrica",
+                      "Montaje electromecánico y líneas de transmisión",
+                      "Normas DCCSED01 y DCCSET01 — apego normativo total",
+                    ].map((n) => (
+                      <li key={n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{n}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-amber-500" /> Habilitación & Licitaciones CFE
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-6 italic">Lo que necesitas para participar y adjudicarte contratos de obra pública eléctrica.</p>
+                  <ul className="space-y-4">
+                    {[
+                      { n: "Padrón CFE No. 4493015 — habilitación activa", t: "Vigente" },
+                      { n: "Normativa PYCON-SE-01 — cumplimiento certificado", t: "Vigente" },
+                      { n: "Licitaciones CFE — estructura, presentación y seguimiento", t: "A solicitud" },
+                      { n: "Dirección técnica con ingenieros certificados en campo", t: "Permanente" },
+                    ].map((i) => (
+                      <li key={i.n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{i.n}</span>
+                        <span className="text-[11px] font-bold text-amber-500 tracking-widest uppercase flex items-center gap-1">
+                          - Estado: {i.t}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-14 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+                <p className="text-[13px] font-bold text-[#0B2341] max-w-xl">
+                  ¿Tienes una obra eléctrica por ejecutar o una licitación CFE en puerta?
+                </p>
+                <Link href="/contacto" className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#0B2341] text-white group/btn hover:bg-amber-500 transition-all duration-300 shadow-lg shadow-amber-900/10">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
+                  <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </motion.div>
 
           </div>
         </div>
       </section>
 
-      {/* Listado Completo */}
-      <section className="bg-[#f8f9fc] py-24 border-y border-slate-100">
+      {/* Golpe de Autoridad — Scroll 4 */}
+      <section className="relative bg-[#0B2341] py-28 md:py-40 overflow-hidden">
+        <Image
+          src="/visual/imagenes/ener2.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-50"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2341] via-[#0B2341]/75 to-transparent" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-amber-500 mb-10">Más que consultoría</p>
+
+            <h2 className="text-5xl md:text-7xl lg:text-[90px] font-black text-white uppercase tracking-tighter leading-[0.88] mb-14 max-w-5xl">
+              Cuando el permiso está resuelto,{" "}
+              <span className="text-amber-500">APEN puede quedarse.</span>
+            </h2>
+
+            <div className="w-full h-px bg-white/10 mb-14" />
+
+            <div className="flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-0">
+
+              {/* Subtítulo */}
+              <p className="text-blue-100/60 text-sm md:text-base font-bold leading-relaxed max-w-md lg:pr-16 lg:border-r lg:border-white/10 shrink-0">
+                Ejecutamos proyectos de infraestructura eléctrica hasta 230 kV y participamos en licitaciones CFE con Padrón No. 4493015 activo. El empresario que llega por un permiso descubre que tiene un socio para todo el proyecto.
+              </p>
+
+              {/* Stats */}
+              <div className="flex flex-col sm:flex-row gap-8 lg:gap-0 lg:divide-x lg:divide-white/10 lg:pl-16 w-full">
+                {[
+                  { value: "230 kV", label: "Potencia máxima\nen obra eléctrica" },
+                  { value: "4493015", label: "Padrón CFE\nhabilitación activa" },
+                  { value: "Nacional", label: "Cobertura\nRepública Mexicana" },
+                ].map(({ value, label }) => (
+                  <div key={value} className="lg:px-10 first:lg:pl-0">
+                    <p className="text-amber-400 text-3xl md:text-4xl font-black tracking-tight mb-2">{value}</p>
+                    <p className="text-white/30 text-[10px] font-black uppercase tracking-widest leading-relaxed whitespace-pre-line">{label}</p>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="py-20 bg-white border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-             <div>
-                <h2 className="text-2xl md:text-3xl font-black uppercase text-[#0B2341] tracking-tighter">
-                  Listado Completo <span className="text-amber-500">de Servicios</span>
-                </h2>
-                <p className="mt-3 text-sm text-slate-500 font-bold max-w-xl">
-                  Catálogo íntegro de soluciones técnicas y regulatorias correspondientes a la unidad del Sector Energético.
-                </p>
-             </div>
-             <div className="shrink-0">
-                <span className="inline-flex items-center gap-2 px-4 py-2 border border-amber-200 bg-amber-50 text-amber-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
-                   <ShieldCheck size={14} /> Padrón CFE 4493015
-                </span>
-             </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-             {/* Regulacion CNE Electrica */}
-             <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
-                   <Zap className="text-amber-500" size={18} /> Mercado Eléctrico
-                </h3>
-                <div className="space-y-4 text-sm font-semibold text-slate-600">
-                   {["Generación eléctrica", "Transmisión eléctrica", "Distribución eléctrica", "Suministro e interconexión", "Comercialización"].map(i => (
-                     <div key={i} className="flex items-start gap-3">
-                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 relative top-2" /> {i}
-                     </div>
-                   ))}
-                </div>
-             </div>
-
-             {/* Evaluacion SENER */}
-             <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
-                   <FileSearch className="text-amber-500" size={18} /> Impacto Social y Permisos
-                </h3>
-                <div className="space-y-4 text-sm font-semibold text-slate-600">
-                   {["MISSE previa a EVIS", "Gestión de permisos de importación", "Ruta documental para nuevos desarrollos", "Alineación para evaluación social", "Acompañamiento en revisiones preventivas"].map(i => (
-                     <div key={i} className="flex items-start gap-3">
-                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 relative top-2" /> {i}
-                     </div>
-                   ))}
-                </div>
-             </div>
-
-             {/* Obra Civil Electrica CFE */}
-             <div className="bg-white rounded-[2rem] border border-slate-200 p-8 shadow-sm">
-                <h3 className="text-sm font-black uppercase text-[#0B2341] mb-6 border-b border-slate-100 pb-4 flex items-center gap-3">
-                   <TowerControl className="text-amber-500" size={18} /> Ingeniería Electromecánica
-                </h3>
-                <div className="space-y-4 text-sm font-semibold text-slate-600">
-                   {["Ingeniería y obra hasta 230 kV", "Licitaciones y cumplimiento CFE", "Montaje electromecánico", "Subestaciones y líneas de conducción", "Obra civil y mantenimiento asociado"].map(i => (
-                     <div key={i} className="flex items-start gap-3">
-                       <div className="w-1.5 h-1.5 bg-amber-500 rounded-full shrink-0 relative top-2" /> {i}
-                     </div>
-                   ))}
-                </div>
-             </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row md:items-center justify-between gap-8 p-8 md:p-12 rounded-[2.5rem] bg-slate-50 border border-slate-200/60"
+          >
+            <div className="max-w-3xl">
+              <h3 className="text-xl md:text-2xl font-black text-[#0B2341] uppercase tracking-tight mb-4">
+                ¿Tu proyecto requiere más que consultoría regulatoria?
+              </h3>
+              <p className="text-sm md:text-base font-medium text-slate-500 leading-relaxed">
+                APEN integra capacidad jurídica, financiera, tecnológica y de ejecución para proyectos del sector eléctrico de mayor escala.
+              </p>
+            </div>
+            <Link
+              href="/servicios"
+              className="inline-flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.3em] text-amber-500 hover:text-[#0B2341] transition-all group shrink-0"
+            >
+              Conoce nuestra capacidad completa
+              <div className="h-10 w-10 rounded-full border border-amber-500/30 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 transition-all">
+                <ArrowRight size={18} />
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

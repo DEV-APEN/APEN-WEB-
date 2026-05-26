@@ -28,11 +28,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       title: "Unidades Estratégicas",
       id: "01",
       links: [
-        { name: 'Nuestros Servicios', path: '/servicios', icon: LayoutGrid },
-        { name: 'Consultoría en Energía', path: '/servicios/energia', icon: Zap },
-        { name: 'Gestión de Hidrocarburos', path: '/servicios/hidrocarburos', icon: Droplet },
+        { name: 'Todos los Servicios', path: '/servicios', icon: LayoutGrid },
+        { name: 'Sector Eléctrico', path: '/servicios/energia', icon: Zap },
+        { name: 'Sector Hidrocarburos', path: '/servicios/hidrocarburos', icon: Droplet },
         { name: 'Project Finance', path: '/servicios/project-finance', icon: CircleDollarSign },
-        { name: 'Defensa Legal Técnica', path: '/servicios/legal', icon: Scale },
+        { name: 'Defensa Legal', path: '/servicios/legal', icon: Scale },
       ]
     },
     {
@@ -42,7 +42,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         { name: 'Nuestra Firma', path: '/nosotros' },
         { name: 'Ejecución de Proyectos', path: '/capacidad-ejecutiva' },
         { name: 'Certificaciones ISO', path: '/certificaciones' },
-        { name: 'Centro de FAQs', path: '/faqs', icon: FileText },
+        { name: 'Preguntas Frecuentes', path: '/faqs', icon: FileText },
       ]
     }
   ];

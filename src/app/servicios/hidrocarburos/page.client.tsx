@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, ArrowLeft, Droplets, ShieldCheck, FileText, BarChart3, Globe, Zap, Settings, Truck, ClipboardCheck, Microscope, Database, BadgeCheck, FileSearch, HardHat } from "lucide-react";
+import { ArrowRight, ArrowLeft, Droplets, ShieldCheck, FileText, BarChart3, Globe, Settings, Truck, ClipboardCheck, Microscope, Database, BadgeCheck, FileSearch, HardHat } from "lucide-react";
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
@@ -20,7 +20,7 @@ export default function HidrocarburosPage() {
       {/* Hero Sector */}
       <section className="relative min-h-[70vh] pt-40 pb-32 flex items-center overflow-hidden bg-[#0B2341]">
         <Image
-          src="/hidro.jpg"
+          src="/visual/imagenes/hidro.jpg"
           className="object-cover opacity-50 scale-105"
           fill
           sizes="100vw"
@@ -158,7 +158,7 @@ export default function HidrocarburosPage() {
                        <li key={i.n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
                          <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{i.n}</span>
                          <span className="text-[11px] font-bold text-[#008CDE] tracking-widest uppercase flex items-center gap-1">
-                           <Zap size={10} /> Tiempo estimado: {i.t}
+                           - Tiempo estimado: {i.t}
                          </span>
                        </li>
                      ))}
@@ -182,7 +182,7 @@ export default function HidrocarburosPage() {
                        <li key={i.n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
                          <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{i.n}</span>
                          <span className="text-[11px] font-bold text-[#008CDE] tracking-widest uppercase flex items-center gap-1">
-                           <Zap size={10} /> Tiempo estimado: {i.t}
+                           - Tiempo estimado: {i.t}
                          </span>
                        </li>
                      ))}
@@ -195,7 +195,7 @@ export default function HidrocarburosPage() {
                   ¿Tienes un procedimiento administrativo de sanción, una clausura ASEA pendiente o una autorización sin resolución?
                 </p>
                 <Link href="/contacto" className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#0B2341] text-white group/btn hover:bg-[#008CDE] transition-all duration-300 shadow-lg shadow-blue-900/10">
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express en 2 min</span>
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -239,7 +239,7 @@ export default function HidrocarburosPage() {
                    <div className="mb-6 pb-4 border-b border-slate-100">
                      <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight block mb-1">Pre-Registro ante la Oficialía de Partes Electrónicas (OPE)</span>
                      <span className="text-[11px] font-bold text-[#008CDE] tracking-widest uppercase flex items-center gap-1">
-                       <Zap size={10} /> Tiempo estimado: 5 días
+                       - Tiempo estimado: 5 días
                      </span>
                    </div>
 
@@ -298,7 +298,7 @@ export default function HidrocarburosPage() {
                        <li key={i.n} className="flex flex-col gap-1 pb-3 border-b border-slate-50 last:border-0">
                          <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight">{i.n}</span>
                          <span className="text-[11px] font-bold text-[#008CDE] tracking-widest uppercase flex items-center gap-1">
-                           <Zap size={10} /> Tiempo estimado: {i.t}
+                           - Tiempo estimado: {i.t}
                          </span>
                        </li>
                      ))}
@@ -311,7 +311,7 @@ export default function HidrocarburosPage() {
                   ¿Tienes un permiso CNE pendiente de resolución o una observación sin atender?
                 </p>
                 <Link href="/contacto" className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#0B2341] text-white group/btn hover:bg-[#008CDE] transition-all duration-300 shadow-lg shadow-blue-900/10">
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express en 2 min</span>
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -351,7 +351,7 @@ export default function HidrocarburosPage() {
                      <div className="h-2 w-2 rounded-full bg-[#008CDE]" /> Manifestación de Impacto Social (MISSE)
                    </h4>
                    <span className="inline-flex text-[11px] font-bold text-white bg-[#008CDE] tracking-widest uppercase items-center gap-1 px-3 py-1 rounded mb-4">
-                     <Zap size={10} /> Tiempo estimado: 10 a 20 días
+                     - Tiempo estimado: 10 a 20 días
                    </span>
                    
                    <p className="text-slate-500 text-[13px] font-bold leading-relaxed mb-6">
@@ -404,7 +404,7 @@ export default function HidrocarburosPage() {
                   ¿Necesitas asegurar la viabilidad social de tu proyecto o un permiso de importación urgente?
                 </p>
                 <Link href="/contacto" className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#0B2341] text-white group/btn hover:bg-[#008CDE] transition-all duration-300 shadow-lg shadow-blue-900/10">
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express en 2 min</span>
+                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>

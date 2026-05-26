@@ -14,7 +14,7 @@ export default function Footer() {
     { label: 'Servicios', href: '/servicios' },
     { label: 'Nosotros', href: '/nosotros' },
     { label: 'Certificaciones', href: '/certificaciones' },
-    { label: 'Centro de FAQs', href: '/faqs' },
+    { label: 'Preguntas frecuentes', href: '/faqs' },
   ];
 
   if (!mounted) return null;
@@ -45,7 +45,7 @@ export default function Footer() {
               />
             </div>
             <p className="max-w-sm text-sm font-bold leading-relaxed text-gray-400 md:text-base">
-              Especialistas en cumplimiento regulatorio e ingeniería de proyectos para la cadena de valor de hidrocarburos y electricidad en México.
+              Especialistas en cumplimiento regulatorio e ingeniería de proyectos para la cadena de valor del sector hidrocarburos y eléctrico en México.
             </p>
             <div className="flex gap-4">
               <div className="flex flex-col">
@@ -96,8 +96,7 @@ export default function Footer() {
                 'Consultoría CNE',
                 'Normatividad ASEA',
                 'Autorizaciones y permisos SENER',
-                'Capacidad ejecutiva',
-                'Proyect finance',
+                'Licitaciones y proyectos PEMEX y CFE',
               ].map((service) => (
                 <li
                   key={service}
@@ -159,7 +158,7 @@ export default function Footer() {
 
           <div className="text-center lg:text-right">
             <p className="mb-1 text-[10px] font-black uppercase tracking-widest text-gray-500">
-              &copy; {currentYear} APEN Group - Administradora de Proyectos Energéticos S.A. de C.V.
+              &copy; {currentYear} Grupo APEN S.A. de C.V. · Administradora de Proyectos Energéticos
             </p>
             <div className="mb-2 flex flex-wrap items-center justify-center gap-3 text-[9px] font-black uppercase tracking-[0.22em] text-gray-500 lg:justify-end">
               <Link href="/terminos-y-condiciones" className="transition-colors hover:text-white">

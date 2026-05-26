@@ -20,7 +20,7 @@ export default function LegalPage() {
       {/* Hero Sector */}
       <section className="relative min-h-[70vh] pt-40 pb-32 flex items-center overflow-hidden bg-[#0B2341]">
         <Image
-          src="/legal.jpg"
+          src="/visual/imagenes/legal.jpg"
           className="object-cover opacity-50 scale-105"
           fill
           sizes="100vw"
@@ -66,8 +66,9 @@ export default function LegalPage() {
                     <Scale className="text-rose-600" size={28} />
                  </div>
                  <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Contención Técnica</h3>
-                    <p className="text-lg font-black text-[#0B2341] tracking-tight">Impacto TFJA y CRE</p>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Casos Resueltos</h3>
+                    <p className="text-lg font-black text-[#0B2341] tracking-tight">+500 juicios</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">materia energética</p>
                  </div>
               </div>
 
@@ -76,8 +77,9 @@ export default function LegalPage() {
                     <ShieldCheck className="text-rose-600" size={28} />
                  </div>
                  <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Resolutivos</h3>
-                    <p className="text-lg font-black text-[#0B2341] tracking-tight">Levantamiento Inmediato</p>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Instancias de Litigio</h3>
+                    <p className="text-lg font-black text-[#0B2341] tracking-tight">PJF · TFJA</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">amparo y contencioso</p>
                  </div>
               </div>
 
@@ -86,147 +88,186 @@ export default function LegalPage() {
                     <Hammer className="text-rose-600" size={28} />
                  </div>
                  <div>
-                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Ingeniería Correctiva</h3>
-                    <p className="text-lg font-black text-[#0B2341] tracking-tight">Planos y Dictámenes</p>
+                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Autoridades Reguladoras</h3>
+                    <p className="text-lg font-black text-[#0B2341] tracking-tight">ASEA · CNE · SENER</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">defensa especializada</p>
                  </div>
               </div>
            </div>
         </div>
       </section>
-
-      {/* Main Content Blocks */}
-      <section className="py-24 md:py-32 bg-white relative z-20">
+      {/* Bloque principal — estilo hidrocarburos */}
+      <section className="py-24 md:py-32 bg-[#F8FAFC] relative z-20 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6">
+
           <div className="text-center mb-16 md:mb-24">
-             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-rose-600 mb-4">Intervención Especializada</p>
-             <h2 className="text-3xl md:text-5xl font-black text-[#0B2341] uppercase tracking-tighter leading-[0.95]">
-                Pilares de <span className="text-slate-400">Regularización</span>
-             </h2>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-rose-600 mb-4">Respuesta legal especializada ante actos de autoridad</p>
+            <h2 className="text-4xl md:text-6xl font-black text-[#0B2341] uppercase tracking-tighter leading-[0.9]">
+              Pilares de <span className="text-slate-400">Regularización</span>
+            </h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-5 transition-opacity group-hover:opacity-10 text-[#0B2341]">
+              <Scale size={200} strokeWidth={1} />
+            </div>
 
-            {/* Bloque 1: Defensa Legal */}
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               className="bg-[#f8f9fc] p-10 md:p-14 rounded-[3rem] border border-slate-200/60 relative overflow-hidden group hover:border-rose-200 transition-colors"
-            >
-              <div className="absolute top-0 right-0 p-8 opacity-5 transition-opacity group-hover:opacity-10 text-rose-600">
-                <Scale size={160} strokeWidth={1} />
+            <div className="mb-10 flex flex-col md:flex-row md:items-center gap-6 relative z-10">
+              <div className="flex items-center gap-6">
+                <div className="h-16 w-16 bg-rose-50 border border-rose-100 rounded-2xl flex items-center justify-center shrink-0">
+                  <Scale className="text-rose-600" size={32} />
+                </div>
+                <div>
+                  <h3 className="text-3xl md:text-4xl font-black text-[#0B2341] uppercase tracking-tight leading-none mb-2">
+                    Defensa Legal <span className="text-rose-600">Especializada</span>
+                  </h3>
+                  <p className="text-[12px] font-black uppercase tracking-[0.2em] text-slate-400">
+                    Ante ASEA · CNE · SENER · PJF · TFJA
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-slate-500 text-sm md:text-base font-bold leading-relaxed mb-12 max-w-4xl relative z-10">
+              Respuesta integral y multidisciplinaria ante actos de autoridad en el sector energético — desde la prevención hasta el litigio federal. Combinamos dominio regulatorio, estrategia jurídica y capacidad técnica en un solo equipo.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-12 relative z-10">
+
+              {/* Columna izquierda: Prevención + Crisis */}
+              <div className="space-y-10">
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-rose-500" /> Prevención y cumplimiento
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-5 italic">Antes de que llegue la sanción.</p>
+                  <ul className="space-y-4">
+                    {[
+                      "Autorización de impacto ambiental ante ASEA con garantía de resolución — informe preventivo, MIA y activación de afirmativa ficta cuando aplica",
+                      "Atención a prevenciones y requerimientos administrativos ante ASEA, CNE y SENER",
+                    ].map((n) => (
+                      <li key={n} className="flex flex-col gap-1 pb-4 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight leading-snug">{n}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-rose-500" /> Crisis activa
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-bold mb-5 italic">Cuando la autoridad ya actuó.</p>
+                  <ul className="space-y-4">
+                    {[
+                      { n: "Levantamiento de clausuras y regularización técnico-jurídica inmediata", t: "Urgente" },
+                      { n: "Solución y respuesta jurídica a emplazamientos de autoridad", t: "Inmediato" },
+                    ].map((i) => (
+                      <li key={i.n} className="flex flex-col gap-1 pb-4 border-b border-slate-50 last:border-0">
+                        <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight leading-snug">{i.n}</span>
+                        <span className="text-[11px] font-bold text-rose-500 tracking-widest uppercase flex items-center gap-1">
+                          - Respuesta: {i.t}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
-              <div className="h-16 w-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-                 <Scale className="text-rose-600" size={32} />
+              {/* Columna derecha: Defensa y litigio */}
+              <div className="md:border-l md:border-slate-100 md:pl-12">
+                <h4 className="text-sm font-black text-[#0B2341] uppercase tracking-widest mb-2 flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-rose-500" /> Defensa y litigio
+                </h4>
+                <p className="text-[11px] text-slate-400 font-bold mb-5 italic">Representación especializada ante instancias regulatorias y federales.</p>
+                <ul className="space-y-4">
+                  {[
+                    "Representación ante procedimientos administrativos de sanción — ASEA, CNE y SENER",
+                    "Defensa jurídica contra multas e impugnación de resoluciones ante ASEA, CNE y SENER",
+                    "Juicio de amparo contra actos de autoridad ante el Poder Judicial de la Federación",
+                    "Demanda de nulidad ante el Tribunal Federal de Justicia Administrativa",
+                  ].map((n) => (
+                    <li key={n} className="flex flex-col gap-1 pb-4 border-b border-slate-50 last:border-0">
+                      <span className="text-[13px] font-black text-slate-700 uppercase tracking-tight leading-snug">{n}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
+            </div>
 
-              <h3 className="text-2xl md:text-3xl font-black text-[#0B2341] uppercase tracking-tighter mb-4 relative z-10">
-                 Contención y<br/>Defensa Jurídica
-              </h3>
-              <p className="text-slate-500 mb-10 leading-relaxed font-bold text-sm relative z-10">
-                 Litigio y asesoría técnica ante actos de autoridad. Desarrollamos estrategias de defensa sólidas respaldadas por peritajes e ingeniería para garantizar la continuidad operativa.
+            <div className="mt-14 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+              <p className="text-[13px] font-bold text-[#0B2341] max-w-xl">
+                ¿Tienes una clausura activa, una sanción sin resolver o un procedimiento administrativo en curso?
               </p>
+              <Link href="/contacto" className="shrink-0 flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#0B2341] text-white group/btn hover:bg-rose-600 transition-all duration-300 shadow-lg shadow-rose-900/10">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
+                <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </motion.div>
 
-              <ul className="space-y-5 relative z-10">
-                {[
-                  "Levantamiento inmediato de clausuras.",
-                  "Demandas de Nulidad ante el TFJA.",
-                  "Solución y respuesta técnica a emplazamientos.",
-                  "Gestión de multas y requerimientos ante ASEA/CRE."
-                ].map(i =>(
-                   <li key={i} className="flex items-start gap-4">
-                     <CheckCircle2 className="text-rose-500 shrink-0 bg-white rounded-full" size={20}/>
-                     <span className="text-sm font-black uppercase tracking-tight text-[#0B2341]">{i}</span>
-                   </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Bloque 2: Ingeniería Correctiva */}
-            <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: 0.1 }}
-               className="bg-[#0B2341] p-10 md:p-14 rounded-[3rem] shadow-2xl relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-rose-900/20 via-transparent to-transparent opacity-60" />
-              <div className="absolute bottom-0 right-0 p-8 opacity-10 text-white">
-                <Hammer size={160} strokeWidth={1} />
-              </div>
-
-              <div className="h-16 w-16 bg-white/10 border border-white/5 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm relative z-10">
-                 <Hammer className="text-rose-400" size={32} />
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter mb-4 relative z-10">
-                 Ingeniería de<br/>Regularización
-              </h3>
-              <p className="text-blue-100/70 mb-10 leading-relaxed font-bold text-sm relative z-10">
-                 Desarrollo de levantamientos e ingeniería As-Built para subsanar omisiones operativas y cumplir al 100% con las Especificaciones Técnicas y Normas Oficiales Mexicanas.
-              </p>
-
-              <ul className="space-y-5 relative z-10">
-                {[
-                  "Ingeniería básica, extendida o de detalle.",
-                  "Levantamiento arquitectónico y diagramas unifilares.",
-                  "Integración de expedientes SASISOPA y ambientales.",
-                  "Elaboración de memorias de cálculo técnicas."
-                ].map(i =>(
-                   <li key={i} className="flex items-start gap-4">
-                     <ArrowRight className="text-rose-400 shrink-0 mt-0.5" size={18}/>
-                     <span className="text-sm font-black uppercase tracking-tight text-white">{i}</span>
-                   </li>
-                ))}
-              </ul>
-            </motion.div>
-
-          </div>
         </div>
       </section>
 
-      {/* Listado Completo */}
-      <section className="bg-[#f8f9fc] py-24 border-y border-slate-100">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-             <div>
-                <h2 className="text-2xl md:text-3xl font-black uppercase text-[#0B2341] tracking-tighter">
-                  Listado Completo <span className="text-rose-600">de Servicios</span>
-                </h2>
-                <p className="mt-3 text-sm text-slate-500 font-bold max-w-xl">
-                  Catálogo íntegro de soluciones de regularización y defensa disponibles en nuestro portafolio legal interinstitucional.
-                </p>
-             </div>
-             <div className="shrink-0">
-                <span className="inline-block px-4 py-2 border border-rose-200 bg-rose-50 text-rose-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
-                   Cobertura Nacional
-                </span>
-             </div>
-          </div>
+      {/* Diferenciador — Afirmativa Ficta */}
+      <section className="bg-[#0B2341] py-28 md:py-40 relative overflow-hidden">
+        <Image
+          src="/visual/imagenes/legal2.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover opacity-35"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B2341] via-[#0B2341]/85 to-[#0B2341]/50" />
 
-          <div className="bg-white rounded-[2rem] border border-slate-200 p-8 md:p-12 shadow-sm">
-             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-               {[
-                  "Gestión legal interdisciplinaria.",
-                  "Levantamiento de clausuras.",
-                  "Juicios y demandas de nulidad.",
-                  "Respuesta oficial a emplazamientos.",
-                  "Regularización integral ante ASEA.",
-                  "Regularización integral ante CNE.",
-                  "Regularización integral ante SENER.",
-                  "Ingeniería básica.",
-                  "Ingeniería extendida.",
-                  "Ingeniería de detalle orientada a normalización.",
-                  "Integración documental para autoridades."
-               ].map(i => (
-                 <div key={i} className="text-sm font-semibold text-[#0B2341]/80 flex items-start gap-3 py-2 border-b border-slate-50 last:border-0 md:last:border-b-0 pb-3">
-                   <div className="w-1.5 h-1.5 bg-rose-500 rounded-full shrink-0 relative top-2" />
-                   {i}
-                 </div>
-               ))}
-             </div>
-          </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-rose-400 mb-8">Ventaja procesal exclusiva</p>
+
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-10 max-w-5xl">
+              La única garantía legal en materia{" "}
+              <span className="text-rose-400">ambiental energética.</span>
+            </h2>
+
+            <div className="w-full h-px bg-white/10 mb-12" />
+
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+              <div>
+                <p className="text-blue-100/60 text-sm md:text-base font-bold leading-relaxed">
+                  La Ley Federal de Procedimiento Administrativo establece que si ASEA no resuelve una solicitud de autorización de impacto ambiental dentro del plazo legal, la autorización se tiene por otorgada por ministerio de ley — sin posibilidad de negativa posterior. Esto se llama <strong className="text-white">afirmativa ficta</strong>.
+                </p>
+                <p className="text-blue-100/60 text-sm md:text-base font-bold leading-relaxed mt-6">
+                  APEN domina este mecanismo. Con más de 200 autorizaciones gestionadas ante ASEA, conocemos los plazos exactos, los requisitos que activan el procedimiento y la forma de blindar el expediente para que la afirmativa ficta opere sin objeción de la autoridad.
+                </p>
+                <p className="text-white text-sm md:text-base font-black leading-relaxed mt-8 border-l-2 border-rose-500 pl-6">
+                  Para tu proyecto, eso significa una sola cosa: si el expediente entra bien, la autorización está garantizada por ley.
+                </p>
+              </div>
+
+              <div className="flex flex-col justify-center gap-0">
+                {[
+                  { value: "+200", label: "Autorizaciones ASEA\ngestionadas" },
+                  { value: "100%", label: "Tasa de resolución\nen casos gestionados" },
+                  { value: "Garantía", label: "Afirmativa ficta como\nherramienta procesal" },
+                ].map(({ value, label }) => (
+                  <div key={value} className="flex items-center gap-8 py-7 border-b border-white/10 last:border-0">
+                    <p className="text-rose-400 text-4xl font-black tracking-tight shrink-0 w-36">{value}</p>
+                    <p className="text-white/40 text-[10px] font-black uppercase tracking-widest leading-relaxed whitespace-pre-line">{label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

@@ -63,6 +63,21 @@ const FAQ_DATA = [
         type: "general"
       },
       {
+        q: "¿Qué es la afirmativa ficta en materia de impacto ambiental ante ASEA?",
+        a: "Es el mecanismo legal establecido en la Ley Federal de Procedimiento Administrativo por el cual, si ASEA no resuelve una solicitud de autorización dentro del plazo legal establecido, la autorización se tiene por otorgada automáticamente por ministerio de ley. Opera sin necesidad de resolución expresa de la autoridad.",
+        type: "general"
+      },
+      {
+        q: "¿Cómo se activa la afirmativa ficta ante ASEA en proyectos de hidrocarburos?",
+        a: "El solicitante debe presentar un expediente completo que cumpla con todos los requisitos técnicos y documentales. Una vez vencido el plazo legal sin resolución de ASEA, el interesado puede hacer valer la afirmativa ficta mediante el procedimiento correspondiente. La gestión correcta del expediente desde el inicio es determinante para que el mecanismo opere sin objeción.",
+        type: "critical"
+      },
+      {
+        q: "¿Cuánto tiempo tarda una autorización de impacto ambiental ante ASEA?",
+        a: "El plazo legal varía según el tipo de instrumento — informe preventivo o manifestación de impacto ambiental. Vencido ese plazo sin resolución expresa, opera la afirmativa ficta. Grupo APEN gestiona el proceso completo con más de 200 casos resueltos ante ASEA, garantizando que el expediente esté blindado desde el primer trámite.",
+        type: "critical"
+      },
+      {
         q: "¿Qué es el SASISOPA y quién está obligado a tenerlo?",
         a: "Es el Sistema de Administración de Seguridad Industrial, Seguridad Operativa y Protección al Medio Ambiente. Es obligatorio para cualquier empresa que realice actividades en el sector hidrocarburos: gasolineras, distribuidoras de Gas LP, almacenistas, transportistas, entre otros. Consta de 18 elementos interrelacionados. No tenerlo es la principal causa de clausura en México hoy.",
         type: "general"

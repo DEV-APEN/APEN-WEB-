@@ -114,23 +114,23 @@ export default function ServicesPage() {
   const portals = [
     {
       id: "01",
-      title: "Hidrocarburos",
+      title: "Sector Hidrocarburos",
       subtitle: "Gestión y Regulación",
       desc: "Cumplimiento normativo, infraestructura y logística Oil & Gas.",
       url: "/servicios/hidrocarburos",
       textColor: "text-[#008CDE]",
       icon: Droplets,
-      img: "/hidro.jpg"
+      img: "/visual/imagenes/hidro.jpg"
     },
     {
       id: "02",
-      title: "Sector Energético",
+      title: "Sector Eléctrico",
       subtitle: "Potencia e Infraestructura",
       desc: "Ingeniería eléctrica, subestaciones y gestión CFE.",
       url: "/servicios/energia",
       textColor: "text-amber-500",
       icon: Zap,
-      img: "/ener.jpg"
+      img: "/visual/imagenes/ener.jpg"
     },
     {
       id: "03",
@@ -140,7 +140,7 @@ export default function ServicesPage() {
       url: "/servicios/legal",
       textColor: "text-rose-600",
       icon: Gavel,
-      img: "/legal.jpg"
+      img: "/visual/imagenes/legal.jpg"
     },
     {
       id: "04",
