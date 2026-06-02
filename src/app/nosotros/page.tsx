@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import NosotrosPage from './page.client';
 
 export const metadata: Metadata = {
-  title: 'Nosotros | Identidad y Respaldo Técnico de APEN',
-  description: 'Conoce a APEN: empresa especializada en ingeniería energética, consultoría de hidrocarburos y cumplimiento normativo en México. Certificaciones ISO 9001, 14001, 45001, Padrón CFE 4493015 e ID Achilles 00249023.',
+  title: 'APEN Administradora de Proyectos Energéticos | Quiénes Somos — Consultoría Energética México',
+  description: 'Consultoría energética mexicana fundada en 2024: Grupo APEN, S.A. de C.V. tramita permisos CNE, implementa SASISOPA, ejecuta ingeniería eléctrica hasta 230 kV y defiende ante el TFJA. Padrón CFE 4493015 · Achilles PEMEX 00249023 · ISO 9001/14001/45001.',
   keywords: [
     'APEN empresa energética México',
     'consultoría ingeniería energética',
@@ -25,9 +25,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://apen.mx/nosotros',
   },
+  other: {
+    subject: 'Consultoría energética y regulatoria México',
+    classification: 'Energía, Consultoría, Regulación',
+  },
   openGraph: {
-    title: 'Nosotros | APEN — Identidad Corporativa y Certificaciones',
-    description: 'Más de una década de experiencia en el sector energético mexicano. ISO 9001/14001/45001, Padrón CFE 4493015 e ID Achilles 00249023. Conoce quiénes somos.',
+    title: 'APEN Administradora de Proyectos Energéticos | Quiénes Somos',
+    description: 'Grupo APEN, S.A. de C.V. — consultora energética mexicana especializada en permisos CNE, cumplimiento ASEA, ingeniería eléctrica CFE y defensa legal ante TFJA. Fundada 2024. CDMX.',
     url: 'https://apen.mx/nosotros',
     siteName: 'APEN',
     locale: 'es_MX',
