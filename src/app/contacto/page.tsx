@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import ContactoPage from './page.client';
 
 export const metadata: Metadata = {
-  title: 'Contacto | Consulta Técnica con Especialistas en Energía',
-  description: 'Comunícate directamente con el equipo técnico de APEN para proyectos de infraestructura eléctrica, permisos de hidrocarburos, regularización ante ASEA o CRE y soluciones de ingeniería energética en México.',
+  title: 'Contacto | APEN Administradora de Proyectos Energéticos — Especialistas CNE y ASEA',
+  description: 'Consultoría energética directa con especialistas de APEN: permisos CNE para generación y gasolineras, clausuras ASEA, SASISOPA, ingeniería eléctrica CFE y project finance energético en México. Respuesta técnica en 24 horas.',
   keywords: [
     'contacto APEN energía',
     'consulta técnica ingeniería energética',
@@ -23,8 +23,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://apen.mx/contacto',
   },
+  other: {
+    subject: 'Consultoría energética y regulatoria México',
+    classification: 'Energía, Consultoría, Regulación',
+  },
   openGraph: {
-    title: 'Contacto Técnico | APEN — Especialistas en Energía',
+    title: 'APEN Administradora de Proyectos Energéticos | Contacto',
     description: 'Enlace directo con especialistas en infraestructura energética, cumplimiento ASEA/CFE, permisos de hidrocarburos y defensa legal técnica en México.',
     images: [
       {

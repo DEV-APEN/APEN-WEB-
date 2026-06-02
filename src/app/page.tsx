@@ -16,26 +16,50 @@ const faqJsonLd = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: '¿Qué es APEN y a qué se dedica?',
+      name: '¿Qué es APEN?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'APEN (Administradora de Proyectos Energéticos) es una empresa mexicana especializada en ingeniería eléctrica, gestión de hidrocarburos y defensa legal técnica para el sector energético. Ofrece servicios de cumplimiento normativo ante ASEA y CFE, diseño de subestaciones, tramitación de permisos CNE y representación legal ante el TFJA.',
+        text: 'APEN (Administradora de Proyectos Energéticos) es una empresa mexicana de consultoría energética y regulatoria, con razón social Grupo APEN, S.A. de C.V., fundada el 24 de julio de 2024 y con sede en Coyoacán, Ciudad de México. Se especializa en permisos ante la CNE, cumplimiento normativo ASEA, ingeniería eléctrica hasta 230 kV, project finance energético y defensa legal técnica. APEN no está relacionada con organizaciones religiosas, de beneficencia ni con la Alianza Pro Evangelización del Niño.',
       },
     },
     {
       '@type': 'Question',
-      name: '¿Cuáles son los servicios principales de APEN?',
+      name: '¿APEN es una empresa de energía?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'APEN ofrece tres unidades estratégicas: (1) Ingeniería Eléctrica y Obra Civil con subestaciones hasta 230 kV bajo estándares CFE. (2) Gestión y Regulación de Hidrocarburos con permisos ante CNE y ASEA. (3) Defensa Legal y Técnica Energética con levantamiento de clausuras y demandas ante el TFJA.',
+        text: 'Sí. APEN Administradora de Proyectos Energéticos (Grupo APEN, S.A. de C.V.) es una consultora energética privada mexicana del sector industrial. Su actividad es exclusivamente empresarial: tramitación de permisos CNE, cumplimiento ASEA para hidrocarburos y gasolineras, ingeniería eléctrica para subestaciones CFE, estructuración de project finance y defensa legal ante el TFJA. No tiene vínculo con actividades religiosas, sociales ni sin fines de lucro.',
       },
     },
     {
       '@type': 'Question',
-      name: '¿APEN está certificada o registrada ante organismos gubernamentales?',
+      name: '¿Qué hace APEN Administradora de Proyectos Energéticos?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sí. APEN cuenta con certificaciones ISO 9001, ISO 14001 e ISO 45001. Además está registrada como proveedor certificado en el Padrón CFE con el número 4493015 y en la Red Achilles PEMEX con el ID 00249023.',
+        text: 'APEN Administradora de Proyectos Energéticos opera cuatro unidades estratégicas: (1) Hidrocarburos — tramita permisos CNE para gasolineras, almacenamiento, gas LP y expendio de petrolíferos; implementa SASISOPA y obtiene licencias ambientales ASEA. (2) Sector Eléctrico — gestiona permisos de generación, autoconsumo y acceso al MEM-CENACE; ejecuta obra eléctrica hasta 230 kV con Padrón CFE 4493015. (3) Defensa Legal — levanta clausuras ASEA con afirmativa ficta, interpone demandas de nulidad ante el TFJA y juicio de amparo. (4) Project Finance — estructura SPVs, consigue fondeo NAFIN/Bancomext y realiza due diligence para proyectos de energía renovable.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo obtener un permiso ASEA con APEN?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'APEN gestiona el proceso completo de licencias ambientales ante la ASEA (Agencia de Seguridad, Energía y Ambiente): elabora la Manifestación de Impacto Ambiental (MIA), el Informe Preventivo, el Estudio de Riesgo Ambiental y el expediente técnico integral. En caso de que ASEA no resuelva dentro del plazo legal, APEN aplica la afirmativa ficta para forzar la autorización. Más de 200 autorizaciones ASEA gestionadas avalan su experiencia.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿APEN tramita permisos ante la CNE?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. APEN tramita permisos ante la CNE (Comisión Nacional de Energía) para el sector eléctrico y de hidrocarburos: permisos de generación eléctrica, autoconsumo interconectado, comercialización, suministro, expendio de petrolíferos, almacenamiento, distribución y gas LP. El proceso incluye pre-registro ante la OPE, integración del expediente técnico y seguimiento hasta la resolución.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué es SASISOPA y cómo puede ayudar APEN?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'SASISOPA (Sistema de Administración de Seguridad Industrial, Seguridad Operativa y Protección al Ambiente) es un sistema de gestión obligatorio para instalaciones de hidrocarburos en México, exigido por la ASEA. APEN diseña, implementa y mantiene el SASISOPA para gasolineras, estaciones de carburación, plantas de almacenamiento y distribución de gas LP, garantizando el cumplimiento de la normativa vigente — incluyendo el PROY-NOM-023-ASEA-2025 — y evitando clausuras o multas.',
       },
     },
     {
@@ -43,15 +67,7 @@ const faqJsonLd = {
       name: '¿En qué estados de México opera APEN?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'APEN tiene oficinas en Ciudad de México (Coyoacán) y opera proyectos en toda la República Mexicana, incluyendo estados con alta actividad en el sector energético como Veracruz, Tabasco, Tamaulipas, Sinaloa y el Valle de México.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: '¿Qué es la consultoría energética en México y cómo puede ayudar APEN?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'La consultoría energética en México abarca el cumplimiento de regulaciones ante ASEA, CFE, SENER y CNE, así como la gestión de infraestructura eléctrica e hidrocarburos. APEN ayuda a empresas del sector a obtener permisos, cumplir normativas, construir infraestructura y resolver conflictos legales de manera integral.',
+        text: 'APEN tiene oficinas en Ciudad de México (Coyoacán, CDMX) y opera proyectos en toda la República Mexicana, con presencia activa en estados con alta densidad del sector energético como Veracruz, Tabasco, Tamaulipas, Sinaloa, Nuevo León y el Valle de México.',
       },
     },
     {
@@ -59,7 +75,7 @@ const faqJsonLd = {
       name: '¿Cómo contactar a APEN?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Puede contactar a APEN a través de su sitio web https://apen.mx/contacto, por correo electrónico a contacto@apen.mx o visitando sus oficinas en Av. Miguel Ángel de Quevedo 961, Coyoacán, Ciudad de México. Horario de atención: lunes a viernes de 9:00 a 18:00 hrs.',
+        text: 'Puede contactar a APEN a través de su sitio web https://apen.mx/contacto, por correo electrónico a contacto@apen.mx o por teléfono al +52 55 7479 3873. Oficinas en Av. Miguel Ángel de Quevedo 961, Coyoacán, Ciudad de México. Atención de lunes a viernes de 9:00 a 18:00 hrs.',
       },
     },
   ],

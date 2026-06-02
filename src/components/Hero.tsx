@@ -36,10 +36,13 @@ export default function Hero({ onVideoEnd, showIndicator }: HeroProps) {
         </video>
       </div>
       
-      {/* SEO Title - Visually Hidden */}
+      {/* SEO Headings - Visually Hidden */}
       <h1 className="sr-only">
-        Estructuración, ejecución y blindaje regulatorio de proyectos energéticos críticos en México.
+        APEN Administradora de Proyectos Energéticos — Consultoría energética regulatoria en México: permisos CNE, cumplimiento ASEA e ingeniería eléctrica.
       </h1>
+      <h2 className="sr-only">
+        Consultoría regulatoria ante CNE, ASEA y CFE para proyectos de energía eléctrica e hidrocarburos en México.
+      </h2>
 
       {/* Smooth transition to content */}
       <div className="absolute bottom-0 left-0 w-full h-16 md:h-40 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>

@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 # Optimización para AI Crawlers (AEO)
+# Google-Extended cubre: Google AI Overview, Gemini, NotebookLM y búsqueda generativa de Google
 User-agent: GPTBot
 Allow: /
 
@@ -27,6 +28,12 @@ User-agent: cohere-ai
 Allow: /
 
 User-agent: Bytespider
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: YouBot
 Allow: /
 
 # Sitemaps

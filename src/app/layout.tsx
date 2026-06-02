@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: 'APEN | Consultoría e Ingeniería Energética en México — CFE, ASEA y Hidrocarburos',
     template: '%s | APEN',
   },
-  description: 'APEN: expertos en infraestructura energética, ingeniería eléctrica e hidrocarburos. Cumplimiento normativo ASEA y CFE, gestión de proyectos industriales y defensa legal técnica para el sector energético en México.',
+  description: 'Consultoría energética regulatoria en México: permisos CNE para generación eléctrica e hidrocarburos, cumplimiento ASEA (SASISOPA, MIA, clausuras), ingeniería eléctrica hasta 230 kV con Padrón CFE 4493015 y defensa legal ante TFJA. Grupo APEN, S.A. de C.V.',
   keywords: [
     'administración de proyectos energéticos',
     'gestión de proyectos energéticos',
@@ -44,6 +44,10 @@ export const metadata: Metadata = {
   creator: 'APEN',
   publisher: 'APEN',
   category: 'Ingeniería y Consultoría Energética',
+  other: {
+    subject: 'Consultoría energética y regulatoria México',
+    classification: 'Energía, Consultoría, Regulación',
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -60,7 +64,7 @@ export const metadata: Metadata = {
     locale: 'es_MX',
     url: 'https://apen.mx',
     siteName: 'APEN — Administradora de Proyectos Energéticos',
-    title: 'APEN | Especialistas en Infraestructura Energética e Hidrocarburos en México',
+    title: 'APEN Administradora de Proyectos Energéticos | Permisos CNE, ASEA e Ingeniería Eléctrica México',
     description: 'Socio estratégico en ingeniería, gestión y cumplimiento normativo para el sector energético mexicano. Padrón CFE 4493015 · ID Achilles 00249023 · ISO 9001/14001/45001.',
     images: [
       {
@@ -98,7 +102,9 @@ const organizationJsonLd = {
   '@type': 'Organization',
   '@id': 'https://apen.mx/#organization',
   name: 'APEN — Administradora de Proyectos Energéticos',
-  alternateName: 'APEN',
+  legalName: 'Grupo APEN, S.A. de C.V.',
+  alternateName: ['APEN', 'APEN México', 'Administradora de Proyectos Energéticos'],
+  disambiguatingDescription: 'Empresa mexicana de consultoría energética regulatoria y técnica, especializada en permisos CNE, cumplimiento ASEA, ingeniería eléctrica e hidrocarburos. No es ni está relacionada con la Alianza Pro Evangelización del Niño ni con ninguna organización religiosa o sin fines de lucro.',
   url: 'https://apen.mx',
   logo: {
     '@type': 'ImageObject',
@@ -107,32 +113,42 @@ const organizationJsonLd = {
     height: 400,
   },
   image: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
-  description: 'Consultoría avanzada en cumplimiento normativo ASEA/CFE e ingeniería integral para infraestructura energética e hidrocarburos en México.',
-  foundingDate: '2024',
+  description: 'Grupo APEN, S.A. de C.V. es una consultora energética mexicana fundada en 2024 que tramita permisos CNE para generación eléctrica, autoconsumo interconectado, expendio de petrolíferos, almacenamiento y gas LP; implementa SASISOPA y obtiene licencias ambientales ASEA (MIA, RENAGAS, PROY-NOM-023-ASEA-2025); ejecuta obra eléctrica hasta 230 kV con Padrón CFE No. 4493015; estructura project finance con SPVs, fondeo NAFIN/Bancomext y due diligence técnico; y ejerce defensa legal ante el TFJA con afirmativa ficta y levantamiento de clausuras.',
+  foundingDate: '2024-07-24',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Av. Miguel Ángel de Quevedo 961, El Rosedal',
+    addressLocality: 'Coyoacán',
+    addressRegion: 'Ciudad de México',
+    postalCode: '04330',
     addressCountry: 'MX',
-    addressRegion: 'México',
   },
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
-    email: 'home@apen.mx',
+    telephone: '+52-55-7479-3873',
+    email: 'contacto@apen.mx',
     availableLanguage: 'Spanish',
     areaServed: 'MX',
   },
   areaServed: {
     '@type': 'Country',
     name: 'México',
+    identifier: 'MX',
   },
   knowsAbout: [
-    'Ingeniería Eléctrica',
-    'Infraestructura de Hidrocarburos',
-    'Cumplimiento Normativo ASEA',
-    'Proyectos CFE',
-    'Mercado Eléctrico Nacional',
-    'Gestión Ambiental Energética',
-    'Defensa Legal Energética',
+    'Permisos CNE de generación eléctrica y hidrocarburos',
+    'Cumplimiento ASEA — SASISOPA, MIA, licencias ambientales',
+    'Levantamiento de clausuras ASEA y afirmativa ficta',
+    'Ingeniería eléctrica — subestaciones hasta 230 kV',
+    'Mercado Eléctrico Mayorista MEM y CENACE',
+    'CELs — Certificados de Energías Limpias',
+    'Project Finance energético — SPVs y fondeo NAFIN/Bancomext',
+    'Defensa legal ante TFJA — nulidad y amparo',
+    'PROY-NOM-023-ASEA-2025 y RENAGAS',
+    'Control volumétrico y timbrado CFDI hidrocarburos',
+    'Padrón CFE 4493015 — licitaciones de transmisión',
+    'Registro Achilles PEMEX 00249023',
   ],
   hasCredential: [
     {
@@ -147,8 +163,67 @@ const organizationJsonLd = {
       credentialCategory: 'Registro de proveedor PEMEX',
       identifier: '00249023',
     },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'ISO 9001',
+      credentialCategory: 'Certificación de Calidad',
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'ISO 14001',
+      credentialCategory: 'Certificación Ambiental',
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      name: 'ISO 45001',
+      credentialCategory: 'Certificación de Seguridad y Salud',
+    },
   ],
-  sameAs: ['https://apen.mx'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de Consultoría Energética — APEN',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Permisos CNE para Hidrocarburos',
+          description: 'Tramitación de permisos CNE para gasolineras, almacenamiento, gas LP, distribución y expendio de petrolíferos. Implementación SASISOPA y licencias ambientales ASEA.',
+          url: 'https://apen.mx/servicios/hidrocarburos',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Permisos CNE para Sector Eléctrico e Ingeniería CFE',
+          description: 'Permisos de generación, autoconsumo interconectado y acceso al MEM-CENACE. Ingeniería y obra eléctrica hasta 230 kV. Padrón CFE 4493015.',
+          url: 'https://apen.mx/servicios/energia',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Defensa Legal Energética — Clausuras ASEA y TFJA',
+          description: 'Levantamiento de clausuras ASEA, afirmativa ficta, demandas de nulidad ante el TFJA y juicio de amparo. Más de 200 autorizaciones gestionadas.',
+          url: 'https://apen.mx/servicios/legal',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Project Finance Energético',
+          description: 'Estructuración financiera, SPVs, due diligence técnico-financiero y fondeo NAFIN/Bancomext para proyectos de energía renovable e infraestructura eléctrica.',
+          url: 'https://apen.mx/servicios/project-finance',
+        },
+      },
+    ],
+  },
+  sameAs: [
+    'https://apen.mx',
+  ],
 };
 
 const websiteJsonLd = {
