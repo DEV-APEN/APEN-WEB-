@@ -224,6 +224,7 @@ const organizationJsonLd = {
   sameAs: [
     'https://apen.mx',
     'https://share.google/Lvrfvagf3lUpIld0C',
+    'https://linkedin.com/company/apenmx',
   ],
 };
 
