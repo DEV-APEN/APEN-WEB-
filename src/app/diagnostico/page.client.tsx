@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 import { Send, CheckCircle2, Clock, Shield, Zap, FileText } from 'lucide-react';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const benefits = [
   { icon: Clock, text: 'Respuesta en 24 horas hábiles' },
@@ -247,6 +248,10 @@ export default function DiagnosticoClient() {
                         placeholder="Describa brevemente su proyecto: ubicación, estado actual, objetivo principal y plazo tentativo de ejecución..."
                         className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-[12px] font-medium text-white placeholder-slate-600 outline-none transition-all focus:border-[#008CDE]/50 focus:bg-white/8 focus:ring-1 focus:ring-[#008CDE]/30 leading-relaxed"
                       />
+                    </div>
+
+                    <div className="pt-2 flex justify-center">
+                      <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} />
                     </div>
 
                     <button

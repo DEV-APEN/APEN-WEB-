@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Send, CheckCircle } from 'lucide-react';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function AboutContact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -199,6 +200,10 @@ export default function AboutContact() {
                       <div className="space-y-2">
                         <label className="text-[10px] font-black text-[#0B2341] uppercase tracking-[0.2em]">Mensaje / Requerimiento</label>
                         <textarea name="message" required rows={4} className="w-full bg-slate-50 border border-slate-100 rounded-xl px-5 py-4 text-[12px] font-bold text-[#0B2341] outline-none focus:ring-2 focus:ring-[#008CDE] focus:bg-white transition-all shadow-inner resize-none" placeholder="Describa brevemente su proyecto o trámite..." />
+                      </div>
+
+                      <div className="pt-2 flex justify-center">
+                        <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} />
                       </div>
 
                       <button 

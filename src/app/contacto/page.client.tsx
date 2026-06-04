@@ -10,6 +10,7 @@ import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 import { MapPin, Phone, Mail, Clock, ArrowRight, ShieldCheck, Send } from 'lucide-react';
 import StoreLocator from '@/components/StoreLocator';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function ContactoPage() {
   const [showNav, setShowNav] = useState(false);
@@ -251,6 +252,10 @@ export default function ContactoPage() {
                     <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Detalle del Requerimiento *</label>
                       <textarea name="mensaje" required rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors resize-none" placeholder="Describa su proyecto o solicitud..."></textarea>
+                    </div>
+
+                    <div className="pt-4 flex justify-center">
+                      <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} />
                     </div>
 
                     <div className="pt-4">

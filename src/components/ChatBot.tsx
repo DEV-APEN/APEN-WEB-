@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, X, MessageSquare, ChevronRight, CornerDownRight } from 'lucide-react';
 import Image from 'next/image';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 // ─────────────────────────────────────────────
 //  SUBMENÚ — Unidades de Servicios
@@ -212,6 +213,9 @@ function ChatForm({ onSubmitSuccess }: { onSubmitSuccess: () => void }) {
       <div className="space-y-1">
         <label className="text-[9px] font-black uppercase text-slate-400 tracking-widest">Breve Requerimiento</label>
         <textarea name="message" required rows={2} className="w-full bg-gray-50 border border-gray-200 rounded px-3 py-2 text-xs outline-none focus:border-[#008CDE] resize-none" placeholder="¿En qué podemos ayudarle?"></textarea>
+      </div>
+      <div className="pt-2 flex justify-center">
+        <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} />
       </div>
       <button 
         type="submit" 
