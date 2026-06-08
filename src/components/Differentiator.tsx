@@ -13,12 +13,12 @@ import {
 } from 'lucide-react';
 
 const technicalModules = [
-  { id: '01', title: 'Socio Estratégico', detail: 'Integración en cadena de valor', icon: Maximize },
-  { id: '02', title: 'Cumplimiento Normativo', detail: 'Sincronización ASEA/CFE', icon: ShieldCheck },
-  { id: '03', title: 'Control de Riesgo', detail: 'Mitigación HSEQ 360°', icon: Activity },
-  { id: '04', title: 'Ingeniería Integral', detail: 'Diseño basado en ejecución', icon: Database },
-  { id: '05', title: 'Precisión Técnica', detail: 'Tolerancia cero desviaciones', icon: Settings },
-  { id: '06', title: 'Trazabilidad', detail: 'Auditoría interna continua', icon: Zap },
+  { id: '01', title: 'Un solo interlocutor para todo el proyecto', detail: 'Del permiso a la operación.', icon: Maximize },
+  { id: '02', title: 'Cumplimiento ante ASEA, CNE y SENER', detail: 'Sin lapsos ni observaciones.', icon: ShieldCheck },
+  { id: '03', title: 'Control preventivo del riesgo regulatorio', detail: 'Identificamos el riesgo antes de que se convierta en sanción.', icon: Activity },
+  { id: '04', title: 'Expedientes técnicos sólidos', detail: 'Diseñados para ser aprobados desde el primer intento.', icon: Database },
+  { id: '05', title: 'Precisión documental', detail: 'Plazos cumplidos, expedientes completos y sin requerimientos de prevención.', icon: Settings },
+  { id: '06', title: 'Seguimiento verificable', detail: 'Control y trazabilidad en cada etapa del trámite o proyecto.', icon: Zap },
 ];
 
 export default function Differentiator() {

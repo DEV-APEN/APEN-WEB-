@@ -20,11 +20,14 @@ export default function AboutWho() {
               ¿Quién es <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008CDE] to-[#0B2341]">APEN?</span>
             </h2>
+            <p className="text-base text-slate-500 font-medium leading-relaxed mb-6 italic">
+              La firma que conoce la norma porque la litiga — y puede ejecutar porque tiene los registros.
+            </p>
             <p className="text-base text-slate-500 font-medium leading-relaxed mb-6">
-              APEN es el operador integral del sector energético mexicano. No somos un despacho que asesora desde afuera, ni un contratista que ejecuta sin entender la norma. Somos el equipo que hace las dos cosas bajo el mismo techo.
+              No somos un despacho que asesora desde afuera, ni un contratista que ejecuta sin entender la norma. Somos el equipo que hace las dos cosas bajo el mismo techo. Nuestra práctica principal es la consultoría regulatoria: representamos y acompañamos a empresarios del sector ante ASEA, CNE y SENER para que sus proyectos, permisos y procesos administrativos se resuelvan a su favor. Con más de 3,000 trámites gestionados y 500 juicios ganados, somos la firma con mayor trayectoria verificable en consultoría regulatoria energética en México.
             </p>
             <p className="text-base text-slate-500 font-medium leading-relaxed">
-              Operamos con contratos ejecutados ante PEMEX, registro Achilles activo en más de 120 categorías, y Padrón CFE No. 4493015. Nuestra estructura está habilitada para participar en licitaciones, armar consorcios y ejecutar proyectos desde el permiso hasta la puesta en operación.
+              Además de nuestra práctica consultiva, participamos por cuenta propia en licitaciones ante CFE y PEMEX. Con Padrón CFE No. 4493015 y registro Achilles ID 00249023 activo en más de 120 categorías, tenemos la habilitación para armar consorcios y ejecutar proyectos de gran escala. El empresario que empieza con un permiso ASEA puede terminar con APEN como socio ejecutor de su proyecto completo — sin cambiar de firma.
             </p>
           </motion.div>
 

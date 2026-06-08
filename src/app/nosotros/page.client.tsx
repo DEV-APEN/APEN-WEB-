@@ -67,7 +67,7 @@ export default function NosotrosPage() {
               </span>
             </h1>
             <p className="mt-6 max-w-2xl border-l-4 border-[#00a6ff] pl-5 text-sm font-medium leading-relaxed text-[#d8e9ff] md:text-base">
-              APEN es un consorcio técnico 100% mexicano, registrado y precalificado como proveedor estratégico de PEMEX (ID Achilles 00249023), con presencia en eléctrico, hidrocarburos e ingeniería de procesos bajo una sola dirección ejecutiva.
+              Grupo APEN S.A. de C.V. es una firma mexicana de consultoría regulatoria energética. Representamos, asesoramos y acompañamos a empresarios del sector ante la ASEA, la CNE y la SENER — las tres autoridades que regulan la operación del sector energético en México. Además de nuestra práctica consultiva, participamos por cuenta propia en licitaciones CFE y PEMEX, con Padrón No. 4493015 y registro Achilles ID 00249023 activos. Somos el único equipo en México que hace las dos cosas bajo el mismo techo.
             </p>
           </div>
         </div>
@@ -97,10 +97,10 @@ export default function NosotrosPage() {
                   <h3 className="text-2xl font-black uppercase tracking-tighter text-white md:text-3xl">Izanami García Bravo</h3>
                 </div>
                 <div className="max-w-xl space-y-4 text-sm font-medium leading-relaxed text-slate-400 text-left">
+                  <p className="border-l-2 border-[#008CDE] pl-4 italic text-slate-300">"En energía, el que no entiende la norma pierde el permiso. El que no puede ejecutar, pierde el contrato. Nosotros hacemos las dos."</p>
                   <p>Abogado litigante especializado en derecho energético. Trayectoria en litigio complejo ante autoridades federales del sector energético e hidrocarburos en México.</p>
                   <p>Fundador de Grupo APEN, Dynavolt y ORMSA — tres empresas registradas como proveedores ante CFE, con presencia en hidrocarburos, infraestructura eléctrica y proyectos de inversión energética a escala nacional.</p>
                   <p>Candidato al grado de MEDEX en IPADE Business School, institución reconocida entre las escuelas de negocios líderes de América Latina.</p>
-                  <p className="border-l-2 border-[#008CDE] pl-4 italic text-slate-300">"En energía, el que no entiende la norma pierde el permiso. El que no puede ejecutar, pierde el contrato. Nosotros hacemos las dos."</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-3 pt-2">
                   {['CFE', 'ASEA', 'CNE', 'PEMEX', 'ISO 9001/14001/45001'].map((tag) => (

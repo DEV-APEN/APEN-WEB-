@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import NosotrosPage from './page.client';
 
 export const metadata: Metadata = {
-  title: 'APEN Administradora de Proyectos Energéticos | Quiénes Somos — Consultoría Energética México',
-  description: 'Consultoría energética mexicana fundada en 2024: Grupo APEN, S.A. de C.V. tramita permisos CNE, implementa SASISOPA, ejecuta ingeniería eléctrica hasta 230 kV y defiende ante el TFJA. Padrón CFE 4493015 · Achilles PEMEX 00249023 · ISO 9001/14001/45001.',
+  title: 'Nosotros | Consultoría Regulatoria Energética ante ASEA, CNE y SENER | Grupo APEN S.A. de C.V.',
+  description: 'Grupo APEN S.A. de C.V. — firma mexicana de consultoría regulatoria energética. Representamos empresarios del sector ante ASEA, CNE y SENER. Más de 3,000 trámites resueltos, 500 juicios ganados. Padrón CFE 4493015 · Achilles 00249023.',
   keywords: [
     'APEN empresa energética México',
     'consultoría ingeniería energética',

@@ -11,8 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 const advantages = [
   {
     number: "01",
-    title: "Dominio Normativo CFE",
-    desc: "Dominio experto de especificaciones institucionales: DCCSED01, DCCSET01, PYCON-SE-01. Garantizamos exito en las revisiones e inspecciones federales desde el primer intento.",
+    title: "Garantía de resolución ante ASEA",
+    desc: "Gestionamos autorizaciones de impacto ambiental con activación de afirmativa ficta cuando la ley lo permite. Si el expediente entra bien, la autorización está garantizada por ley. Más de 200 casos lo prueban.",
     icon: Ruler,
     image: "/visual/imagenes/v1.webp",
     activeOverlay:
@@ -22,8 +22,8 @@ const advantages = [
   },
   {
     number: "02",
-    title: "Integracion Multidisciplinaria",
-    desc: "Un unico interlocutor con control absoluto: fusionamos ingenieria civil, infraestructura electromecanica y gestion de permisos en un equipo operativo unico.",
+    title: "Cobertura de las tres autoridades",
+    desc: "Somos la única firma que representa clientes ante ASEA, CNE y SENER simultáneamente — las tres autoridades que regulan el sector energético en México. Sin cambiar de consultor entre trámites.",
     icon: Layout,
     image: "/visual/imagenes/v2.webp",
     activeOverlay:
@@ -33,8 +33,8 @@ const advantages = [
   },
   {
     number: "03",
-    title: "Certeza Internacional ISO",
-    desc: "Procesos auditados bajo los mas rigurosos estandares globales de calidad, ambiental y seguridad (ISO 9001, 14001, 45001).",
+    title: "Defensa jurídica con conocimiento técnico",
+    desc: "Más de 500 juicios ganados ante PJF y TFJA en materia energética. La diferencia: nuestros abogados entienden la norma técnica porque trabajan con los mismos ingenieros que hacen los expedientes.",
     icon: ShieldCheck,
     image: "/visual/imagenes/v3.webp",
     activeOverlay:
@@ -44,8 +44,8 @@ const advantages = [
   },
   {
     number: "04",
-    title: "Capacidad de Consorcio",
-    desc: "Participamos como lideres tecnico-juridicos en licitaciones CFE y PEMEX. Estructuramos SPVs y convenios de participacion para proyectos de gran escala.",
+    title: "Certeza internacional ISO",
+    desc: "Procesos auditados bajo ISO 9001, 14001 y 45001. Las mismas normas que exigen CFE y PEMEX a sus contratistas — aplicadas a nuestra práctica consultiva.",
     icon: Zap,
     image: "/visual/imagenes/v4.webp",
     activeOverlay:
@@ -55,8 +55,8 @@ const advantages = [
   },
   {
     number: "05",
-    title: "Operador habilitado PEMEX",
-    desc: "Operador habilitado ante PEMEX — con contratos ejecutados. Registro Extendido Achilles ID 00249023, vigente 2026. Proveedor activo, no aspirante.",
+    title: "Capacidad de escala",
+    desc: "Cuando el proyecto crece, APEN puede crecer con él. Participamos en licitaciones CFE y PEMEX con Padrón 4493015 y Achilles 00249023. El cliente no necesita cambiarse de firma al pasar de la consultoría a la ejecución.",
     icon: BadgeCheck,
     image: "/visual/imagenes/metricas.jpg",
     activeOverlay:
