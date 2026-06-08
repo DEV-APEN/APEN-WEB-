@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import CapacidadEjecutivaClient from './page.client';
 
 export const metadata: Metadata = {
-  title: 'Capacidad Ejecutiva | APEN Administradora de Proyectos Energéticos',
-  description: 'Consultoría energética con ejecución propia: subestaciones hasta 230 kV con Padrón CFE 4493015, infraestructura de hidrocarburos, ingeniería de puesta en marcha y mantenimiento industrial bajo dirección técnica certificada. Registro Achilles PEMEX 00249023.',
+  title: 'Capacidad Ejecutiva | Licitaciones CFE y PEMEX | Grupo APEN S.A. de C.V.',
+  description: 'APEN participa por cuenta propia en licitaciones CFE y PEMEX. Padrón No. 4493015 · Achilles ID 00249023. Infraestructura eléctrica hasta 230 kV, obra electromecánica y mantenimiento industrial. La misma firma que gestiona tus permisos regulatorios puede ejecutar el proyecto completo.',
   keywords: [
     'capacidad ejecutiva energía', 'consorcio ingeniería energética México',
     'tableros media alta tensión', 'infraestructura alta tensión', 'subestaciones eléctricas',

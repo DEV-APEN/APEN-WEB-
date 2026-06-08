@@ -23,7 +23,7 @@ const technicalModules = [
 
 export default function Differentiator() {
   const [view, setView] = useState<'apen' | 'tradicional'>('apen');
-  const radius = 250;
+  const radius = 270;
 
   return (
     <section className="relative min-h-screen bg-[#0B2341] py-16 md:py-24 flex flex-col justify-center overflow-x-clip">
@@ -194,7 +194,7 @@ export default function Differentiator() {
                           opacity: 0.4, x: x * 1.4, y: y * 0.5, scale: 0.7, z: -200, rotateX: 45
                         }}
                         transition={{ delay: idx * 0.05, type: 'spring', stiffness: 70 }}
-                        className="absolute left-1/2 top-1/2 -ml-24 -mt-14 w-48 h-28"
+                        className="absolute left-1/2 top-1/2 -ml-28 -mt-16 w-56 h-32"
                       >
                         <div className={`p-3 border rounded shadow-2xl backdrop-blur-md flex flex-col justify-between h-full group ${view === 'apen' ? 'bg-[#061528]/80 border-blue-500/20' : 'bg-red-950/20 border-red-500/20'}`}>
                             <div className="flex justify-between items-start">
@@ -203,7 +203,7 @@ export default function Differentiator() {
                             </div>
                             <div>
                                 <h4 className={`text-[9px] font-black uppercase tracking-tighter leading-tight ${view === 'apen' ? 'text-white' : 'text-slate-500'}`}>{mod.title}</h4>
-                                <p className={`text-[8px] font-bold uppercase tracking-widest leading-tight line-clamp-2 mt-1 ${view === 'apen' ? 'text-blue-300/40' : 'text-red-500/20'}`}>{view === 'apen' ? mod.detail : 'Signal Lost'}</p>
+                                <p className={`text-[8px] font-bold uppercase tracking-widest leading-tight mt-1 ${view === 'apen' ? 'text-blue-300/40' : 'text-red-500/20'}`}>{view === 'apen' ? mod.detail : 'Signal Lost'}</p>
                             </div>
                         </div>
                       </motion.div>

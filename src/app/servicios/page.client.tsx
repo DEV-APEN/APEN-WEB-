@@ -6,24 +6,12 @@ import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
-  Building2,
-  ChevronRight,
-  ClipboardCheck,
-  Gauge,
   Gavel,
   Globe2,
-  HardHat,
   Landmark,
-  Layers3,
-  Network,
-  Orbit,
   Scale,
   ShieldCheck,
   Sparkles,
-  TowerControl,
-  Workflow,
-  Wrench,
-  X,
   Zap,
   Droplets,
   Target,
@@ -48,38 +36,26 @@ const authorities = [
   ["06", "LEGAL", "Regularización interdisciplinaria y defensa", "Respuesta técnico-legal para proyectos detenidos, sancionados o en proceso de normalización.", Scale, "from-slate-700 to-slate-500", ["Gestión legal interdisciplinaria", "Levantamiento de clausuras y regularización", "Demandas de nulidad y respuesta a emplazamientos", "Ingeniería básica, extendida y de detalle"]],
 ] as const;
 
-const tracks = [
-  ["Energía y Potencia", "Subestaciones, tableros y líneas de alta tensión.", TowerControl],
-  ["Hidrocarburos y Gas", "Estaciones de servicio, almacenamiento y logística.", Network],
-  ["Cumplimiento y Defensa", "Gestión documental, clausuras y defensa legal.", ClipboardCheck],
-] as const;
-
-const metrics = [
-  ["Padrón CFE", "4493015", "Proveedor inscrito.", HardHat],
-  ["Achilles Pemex", "00249023", "Registro extendido.", BadgeCheck],
-  ["Cobertura", "230 kV", "Ingeniería en alta tensión.", Gauge],
-  ["Modelo", "360°", "Ingeniería y legal.", Workflow],
-] as const;
 
 const flowData = [
   {
     step: "01",
-    title: "Diagnóstico",
-    desc: "Mapeamos autoridad y estatus del proyecto.",
+    title: "Diagnóstico regulatorio",
+    desc: "Identificamos la autoridad competente, el trámite aplicable y el estatus actual del proyecto.",
     icon: Target,
     accent: "bg-[#008CDE]"
   },
   {
     step: "02",
-    title: "Ingeniería",
-    desc: "Integramos ingeniería y expedientes técnicos.",
+    title: "Integración y gestión",
+    desc: "Integramos el expediente técnico-jurídico y gestionamos el proceso ante ASEA, CNE o SENER hasta resolución.",
     icon: FileText,
     accent: "bg-[#00a2ff]"
   },
   {
     step: "03",
-    title: "Gestión",
-    desc: "Cierre operativo y seguimiento verificable.",
+    title: "Seguimiento y cumplimiento",
+    desc: "Acompañamos el cierre, los plazos de cumplimiento y las obligaciones periódicas de tu permiso o autorización.",
     icon: Activity,
     accent: "bg-[#4cc9ff]"
   }
@@ -88,28 +64,19 @@ const flowData = [
 export default function ServicesPage() {
   const [isHeaderVisible, setHeaderVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTrack, setActiveTrack] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => setHeaderVisible(true), 350);
     const handleScroll = () => {
       if (window.scrollY > 80) setHeaderVisible(true);
     };
-    
-    // Auto-cycle tracks
-    const interval = setInterval(() => {
-      setActiveTrack((prev) => (prev + 1) % tracks.length);
-    }, 4500);
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       clearTimeout(timer);
-      clearInterval(interval);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const [activeTrackTitle, activeTrackDescription] = tracks[activeTrack];
 
   const portals = [
     {
@@ -142,16 +109,6 @@ export default function ServicesPage() {
       icon: Gavel,
       img: "/visual/imagenes/legal.jpg"
     },
-    {
-      id: "04",
-      title: "Project Finance",
-      subtitle: "Capital & Fondeo",
-      desc: "Estructuración financiera y fondeo estratégico para proyectos.",
-      url: "/servicios/project-finance",
-      textColor: "text-emerald-500",
-      icon: Landmark,
-      img: "/visual/imagenes/project-finance.webp"
-    }
   ];
 
   return (
@@ -182,15 +139,12 @@ export default function ServicesPage() {
                 <span className="text-[10px] font-black uppercase tracking-[0.35em] text-blue-50/95">Portafolio técnico</span>
               </div>
 
-              <h1 className="max-w-[16ch] text-[1.8rem] font-black uppercase leading-[0.95] tracking-[-0.03em] text-white md:text-[2.6rem] lg:text-[3.2rem]">
-                Consultoría especializada y
-                <span className="block bg-gradient-to-r from-[#61d4ff] via-[#7ec8ff] to-white bg-clip-text text-transparent">
-                  ejecución de proyectos energéticos en México.
-                </span>
+              <h1 className="max-w-[25ch] text-[1.4rem] font-black uppercase leading-[1] tracking-[-0.02em] text-white md:text-[2rem] lg:text-[2.5rem]">
+                Somos la única firma en México que integra consultoría regulatoria ante ASEA, CNE y SENER con capacidad de ejecución propia en licitaciones CFE y PEMEX — bajo un mismo equipo.
               </h1>
 
               <p className="mt-6 max-w-lg border-l-4 border-[#00a6ff] pl-5 text-[12px] font-medium leading-relaxed text-[#d8e9ff] md:text-[14px]">
-                Somos el único operador en México que integra consultoría regulatoria, ejecución técnica y acceso directo al ecosistema CFE y PEMEX bajo un mismo equipo. No vendemos servicios aislados. Entregamos operaciones funcionando.
+                Somos el único operador en México que integra consultoría regulatoria, ejecución técnica y acceso directo al ecosistema CFE y PEMEX bajo un mismo equipo.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-2.5">
@@ -211,16 +165,16 @@ export default function ServicesPage() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.12),transparent_50%)]" />
               <div className="relative space-y-6">
                 {[
-                  { id: '01', label: 'CFE', value: 'Padrón No. 4493015 — activo' },
-                  { id: '02', label: 'PEMEX', value: 'Achilles ID 00249023 — contratos ejecutados' },
-                  { id: '03', label: 'CNE', value: 'Permisos de generación, transmisión y suministro' },
-                  { id: '04', label: 'ASEA', value: 'SASISOPA, MIA, auditorías ambientales' },
+                  { id: '01', label: 'CNE', value: 'Permisos de generación, transmisión y suministro' },
+                  { id: '02', label: 'ASEA', value: 'SASISOPA, MIA, auditorías ambientales' },
+                  { id: '03', label: 'SENER', value: 'MISSE previa a EVIS, permisos de importación' },
+                  { id: '04', label: 'CFE · PEMEX', value: 'Capacidad de ejecución propia\nPadrón CFE No. 4493015 · Achilles ID 00249023\nLicitaciones y ejecución de proyectos por cuenta propia.' },
                 ].map((item) => (
                   <div key={item.id} className="flex items-start gap-4 border-b border-white/5 pb-5 last:border-0 last:pb-0">
                     <span className="text-[10px] font-mono text-[#008CDE]/60 font-black tracking-widest shrink-0 pt-0.5">{item.id}</span>
                     <div>
                       <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#008CDE] block mb-1">{item.label}</span>
-                      <p className="text-[12px] font-bold text-slate-300 leading-tight">{item.value}</p>
+                      <p className="text-[12px] font-bold text-slate-300 leading-tight whitespace-pre-line">{item.value}</p>
                     </div>
                   </div>
                 ))}
@@ -228,25 +182,7 @@ export default function ServicesPage() {
             </motion.div>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-            {metrics.map(([label, value, note, Icon], index) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: index * 0.08 }}
-                className="relative overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-md"
-              >
-                <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-cyan-300/70 to-transparent" />
-                <div className="ml-2 flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/95">{label}</span>
-                  <Icon size={18} className="text-[#68d4ff]" />
-                </div>
-                <div className="ml-2 mt-3 text-[2rem] font-black uppercase tracking-tight text-white">{value}</div>
-              </motion.div>
-            ))}
-          </div>
+
         </div>
       </section>
 
@@ -258,7 +194,7 @@ export default function ServicesPage() {
               </h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                {portals.map((portal, i) => (
                  <Link href={portal.url} key={i}>
                    <motion.div 
@@ -285,6 +221,44 @@ export default function ServicesPage() {
                    </motion.div>
                 </Link>
               ))}
+            </div>
+            
+            {/* Capacidad Propia / Ejecución */}
+            <div className="mt-16 bg-white rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden">
+              <div className="flex flex-col md:flex-row">
+                {/* Imagen */}
+                <div className="relative h-56 md:h-auto md:w-80 shrink-0 overflow-hidden">
+                  <div className="absolute inset-0 bg-[#0B2341]/40 z-10" />
+                  <Image
+                    src="/visual/imagenes/project-finance.webp"
+                    alt="Project Finance"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 320px"
+                    className="object-cover"
+                  />
+                  <div className="absolute top-6 left-6 z-20 flex items-center justify-center w-12 h-12 rounded-2xl bg-white shadow-xl">
+                    <Landmark className="text-emerald-500" size={22} />
+                  </div>
+                </div>
+                {/* Contenido */}
+                <div className="p-8 md:p-12 flex flex-col justify-between flex-grow">
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.35em] text-slate-400 mb-3">Capacidad de Ejecución Propia</p>
+                    <h3 className="text-2xl font-black uppercase tracking-tighter text-[#0B2341] mb-2">Estructuración financiera de proyectos</h3>
+                    <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                      Para proyectos que requieren financiamiento estructurado, vehículos SPV, project finance y garantías. Este servicio complementa la consultoría regulatoria para clientes con proyectos de mayor escala.
+                    </p>
+                    <p className="mt-4 text-sm text-slate-600 font-bold italic">
+                      No vendemos servicios aislados. Entregamos operaciones funcionando.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                    <Link href="/servicios/project-finance" className="inline-flex items-center gap-2 rounded-full bg-[#0B2341] px-6 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-white hover:bg-[#008CDE] transition-colors duration-300">
+                      Ver Project Finance <ArrowRight size={14} className="text-emerald-400" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

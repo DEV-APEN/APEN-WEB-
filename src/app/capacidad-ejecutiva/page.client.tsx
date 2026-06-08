@@ -82,7 +82,7 @@ const pemexCapacities = [
   'Obra eléctrica en zonas clasificadas (ATEX)',
   'Instrumentación y sistemas de control industrial',
   'Integración de sistemas de seguridad (SIL)',
-  'Cumplimiento SASISOPA y normativas NOM en hidrocarburos',
+  'Cumplimiento normativo interno como proveedor PEMEX — SASISOPA, NOM-016 y normativas aplicables',
   'Gestión de contratistas en proyectos multisite',
 ];
 
@@ -121,7 +121,7 @@ export default function CapacidadEjecutivaClient() {
           <div className="max-w-4xl">
             <span className="inline-flex items-center gap-2 rounded-sm border border-[#008CDE]/30 bg-[#008CDE]/10 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE]">
               <Shield size={12} />
-              Consorcio Técnico
+              Línea 2 · Capacidad propia de ejecución
             </span>
             <h1 className="mt-8 max-w-[18ch] text-4xl font-black uppercase leading-[0.92] tracking-[-0.04em] text-white md:text-6xl lg:text-7xl">
               Capacidad de ejecución — infraestructura energética bajo dirección técnica
@@ -130,7 +130,7 @@ export default function CapacidadEjecutivaClient() {
               </span>
             </h1>
             <p className="mt-8 max-w-2xl border-l-2 border-[#008CDE] pl-5 text-sm font-medium leading-relaxed text-slate-300 md:text-base">
-              APEN opera como integrador de cadena completa: acceso a suministro con estructura habilitada ante PEMEX, coordinación logística, cumplimiento regulatorio y ejecución técnica bajo un mismo equipo. No vendemos servicios aislados. Entregamos operaciones funcionando. Nuestra red de especialistas certificados opera bajo nuestra dirección técnica y jurídica directa. El resultado — y la responsabilidad — son nuestros desde el primer día.
+              Cuando el permiso está resuelto, APEN puede quedarse para ejecutar. Operamos como integrador de cadena completa: estructura habilitada ante PEMEX y CFE, coordinación técnica, cumplimiento normativo y ejecución bajo un mismo equipo. No vendemos servicios aislados. Entregamos operaciones funcionando. Nuestra red de especialistas certificados opera bajo dirección técnica y jurídica directa. El resultado — y la responsabilidad — son nuestros desde el primer día.
             </p>
           </div>
         </div>
@@ -248,31 +248,76 @@ export default function CapacidadEjecutivaClient() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#061528] py-24 text-center md:py-32">
-        <div className="mx-auto max-w-4xl px-6">
-          <span className="mb-6 block text-[10px] font-black uppercase tracking-[0.5em] text-[#008CDE]">
+      <section className="bg-[#061528] py-24 md:py-32">
+        <div className="mx-auto max-w-5xl px-6">
+          <span className="mb-10 block text-center text-[10px] font-black uppercase tracking-[0.5em] text-[#008CDE]">
             Próximo Paso
           </span>
-          <h2 className="mb-8 text-3xl font-black uppercase leading-tight tracking-tighter text-white md:text-5xl">
-            Evalúe su proyecto <br />
-            <span className="text-[#008CDE]">con nuestros expertos</span>
-          </h2>
-          <p className="mx-auto mb-12 max-w-xl text-sm font-medium leading-relaxed text-slate-400">
-            Identifique la viabilidad técnica y normativa de su proyecto energético en 24 horas con nuestro equipo de ingeniería especializada.
-          </p>
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* CTA 1 — Permiso */}
+            <div className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10">
+              <div>
+                <h2 className="mb-4 text-xl font-black uppercase leading-tight tracking-tighter text-white md:text-2xl">
+                  ¿Tu proyecto necesita primero un <span className="text-[#008CDE]">permiso regulatorio?</span>
+                </h2>
+                <p className="mb-8 text-sm font-medium leading-relaxed text-slate-400">
+                  Diagnóstico regulatorio express.
+                </p>
+              </div>
+              <Link
+                href="/diagnostico"
+                className="group inline-flex items-center gap-4 rounded-full bg-[#008CDE] px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-white shadow-xl transition-all duration-300 hover:bg-white hover:text-[#0B2341]"
+              >
+                Solicitar diagnóstico
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
+              </Link>
+            </div>
+            {/* CTA 2 — Ejecución */}
+            <div className="flex flex-col justify-between rounded-3xl border border-[#008CDE]/30 bg-[#008CDE]/5 p-8 md:p-10">
+              <div>
+                <h2 className="mb-4 text-xl font-black uppercase leading-tight tracking-tighter text-white md:text-2xl">
+                  ¿Tienes el permiso y necesitas <span className="text-[#008CDE]">ejecutar?</span>
+                </h2>
+                <p className="mb-8 text-sm font-medium leading-relaxed text-slate-400">
+                  Cotiza tu proyecto con nuestro equipo técnico.
+                </p>
+              </div>
+              <Link
+                href="/contacto"
+                className="group inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-white transition-all duration-300 hover:border-[#008CDE] hover:bg-[#008CDE]/10"
+              >
+                Solicitar cotización
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Navegación cruzada — Servicios regulatorios */}
+      <section className="bg-white border-t border-slate-100 py-16 md:py-20">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <p className="mb-2 text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE]">¿Todavía no tienes el permiso?</p>
+          <p className="mb-8 text-sm font-medium text-slate-500 max-w-lg mx-auto">Antes de ejecutar, asegúrate de tener la autorización regulatoria correcta.</p>
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
-              href="/diagnostico"
-              className="group inline-flex items-center gap-4 rounded-full bg-[#008CDE] px-10 py-5 text-[11px] font-black uppercase tracking-[0.3em] text-white shadow-xl transition-all duration-300 hover:bg-white hover:text-[#0B2341]"
+              href="/servicios"
+              className="inline-flex items-center gap-3 rounded-full bg-[#0B2341] px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-white transition-all duration-300 hover:bg-[#008CDE]"
             >
-              Solicitar Diagnóstico
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
+              Ver servicios regulatorios
+              <ArrowRight size={14} />
             </Link>
             <Link
-              href="/contacto"
-              className="group inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/5 px-10 py-5 text-[11px] font-black uppercase tracking-[0.3em] text-white transition-all duration-300 hover:border-[#008CDE] hover:bg-[#008CDE]/10"
+              href="/servicios/hidrocarburos"
+              className="inline-flex items-center gap-3 rounded-full border border-slate-200 px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-slate-600 transition-all duration-300 hover:border-[#008CDE] hover:text-[#008CDE]"
             >
-              Contacto Directo
+              Hidrocarburos
+            </Link>
+            <Link
+              href="/servicios/energia"
+              className="inline-flex items-center gap-3 rounded-full border border-slate-200 px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-slate-600 transition-all duration-300 hover:border-[#008CDE] hover:text-[#008CDE]"
+            >
+              Sector Eléctrico
             </Link>
           </div>
         </div>
