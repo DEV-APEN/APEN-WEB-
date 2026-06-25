@@ -123,26 +123,7 @@ export default function CorporateMetrics() {
             ))}
           </div>
 
-          {/* Team Breakdown */}
-          <div className="space-y-8">
-            <h3 className="text-sm font-black text-[#4fc3ff] uppercase tracking-[0.4em] mb-8">Equipo Responsable</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                { name: 'Lic. Izanami', value: 2362, color: 'bg-orange-500' },
-                { name: 'Ing. Guillermo', value: 351, color: 'bg-cyan-400' },
-                { name: 'Ing. Carlos', value: 223, color: 'bg-lime-400' },
-                { name: 'Ing. Jessica', value: 64, color: 'bg-rose-500' }
-              ].map((member) => (
-                <div key={member.name} className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-2 h-2 rounded-full ${member.color}`} />
-                    <span className="text-[10px] font-black text-white uppercase tracking-widest">{member.name}</span>
-                  </div>
-                  <span className="text-xs font-black text-[#4fc3ff]">{member.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+
         </div>
 
         <div className="mt-24 flex flex-col md:flex-row justify-between items-center gap-10 border-t border-white/5 pt-12">

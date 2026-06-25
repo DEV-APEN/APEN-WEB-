@@ -23,8 +23,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AboutContact from "@/components/AboutContact";
 import ChatBot from "@/components/ChatBot";
-import Ecosystem from "@/components/Ecosystem";
-import OperationalArchitecture from "@/components/OperationalArchitecture";
+
 import MobileMenu from "@/components/MobileMenu";
 
 const authorities = [
@@ -291,11 +290,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <Ecosystem />
-
-      {/* 4. ARQUITECTURA OPERATIVA - MODELO APEN */}
-      <OperationalArchitecture />
 
       {/* 5. METODOLOGÍA */}
       <section className="relative overflow-hidden bg-[#eef3f8] py-24 md:py-32">
