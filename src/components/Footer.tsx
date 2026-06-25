@@ -47,17 +47,7 @@ export default function Footer() {
             <p className="max-w-sm text-sm font-bold leading-relaxed text-gray-400 md:text-base">
               Especialistas en cumplimiento regulatorio e ingeniería de proyectos para la cadena de valor del sector hidrocarburos y eléctrico en México.
             </p>
-            <div className="flex gap-4">
-              <div className="flex flex-col">
-                <span className="mb-1 text-[10px] font-black uppercase tracking-widest text-blue-400">Padrón CFE</span>
-                <span className="text-xs font-black">No. 4493015</span>
-              </div>
-              <div className="h-10 w-[1px] bg-white/10" />
-              <div className="flex flex-col">
-                <span className="mb-1 text-[10px] font-black uppercase tracking-widest text-blue-400">Achilles ID</span>
-                <span className="text-xs font-black">00249023</span>
-              </div>
-            </div>
+
           </div>
 
           <div className="lg:col-span-2">
