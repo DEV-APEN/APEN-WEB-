@@ -72,7 +72,7 @@ const regulatoryLogos = [
     id: 'sict',
     name: 'SICT',
     subtitle: 'Regulación en infraestructura, comunicaciones y transportes.',
-    image: '/visual/imagenes/sict.avif',
+    image: '/visual/imagenes/sict_2024.png',
     accent: 'from-indigo-500/20 to-sky-500/10',
     pdfFile: null
   }
@@ -483,14 +483,14 @@ export default function CertificacionesPage() {
                       <div className="h-2 w-2 rounded-full bg-[#008CDE]" />
                     </div>
 
-                    <div className="flex min-h-[84px] items-center rounded-[1.25rem] border border-slate-100 bg-white px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+                    <div className="flex min-h-[84px] items-center rounded-[1.25rem] border border-slate-100 bg-white px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] overflow-hidden">
                       <img
                         src={logo.image}
                         alt={`Logo ${logo.name}`}
                         width={200}
                         height={64}
                         loading="lazy"
-                        className="max-h-16 w-auto object-contain object-left"
+                        className={`w-auto object-contain object-left ${logo.id === 'sict' ? 'max-h-24 scale-[1.3] ml-4' : 'max-h-16'}`}
                       />
                     </div>
 

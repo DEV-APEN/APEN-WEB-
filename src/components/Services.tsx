@@ -155,7 +155,7 @@ export default function Services() {
                   {service.descLink ? (
                     <Link
                       href={service.descLink}
-                      className="text-[#008CDE] underline underline-offset-4 decoration-[#008CDE]/40 hover:decoration-[#008CDE] transition-all duration-200"
+                      className="text-slate-500 underline underline-offset-4 decoration-[#008CDE]/40 hover:text-[#008CDE] hover:decoration-[#008CDE] transition-all duration-200"
                     >
                       {service.description}
                     </Link>
