@@ -215,7 +215,7 @@ export default function LegalPage() {
       </section>
 
       {/* Diferenciador — Afirmativa Ficta */}
-      <section className="bg-[#0B2341] py-28 md:py-40 relative overflow-hidden">
+      <section id="garantia" className="bg-[#0B2341] py-28 md:py-40 relative overflow-hidden">
         <Image
           src="/visual/imagenes/legal2.jpg"
           alt=""

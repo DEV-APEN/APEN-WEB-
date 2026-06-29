@@ -11,7 +11,7 @@ const serviceSections = [
     label: "consultoría regulatoria",
     subtitle: "Ventanilla única de cumplimiento regulatorio para empresarios del sector.",
     description: "Garantizamos tu autorización ante ASEA — si el expediente entra bien, la ley la concede. Más de 200 juicios ganados lo prueban.",
-    descLink: "/servicios/legal",
+    descLink: "/servicios/legal#garantia",
     image: "/visual/imagenes/hidro.jpg",
     icon: Droplets,
     color: "#008CDE",
