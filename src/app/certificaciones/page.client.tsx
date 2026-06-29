@@ -69,10 +69,10 @@ const regulatoryLogos = [
     pdfFile: null
   },
   {
-    id: 'stps',
-    name: 'STPS',
-    subtitle: 'Cumplimiento laboral, seguridad y gestión preventiva.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/STPS_Logo_2019.svg/1280px-STPS_Logo_2019.svg.png',
+    id: 'sict',
+    name: 'SICT',
+    subtitle: 'Regulación en infraestructura, comunicaciones y transportes.',
+    image: '/visual/imagenes/sict.avif',
     accent: 'from-indigo-500/20 to-sky-500/10',
     pdfFile: null
   }

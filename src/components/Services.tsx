@@ -11,6 +11,7 @@ const serviceSections = [
     label: "consultoría regulatoria",
     subtitle: "Ventanilla única de cumplimiento regulatorio para empresarios del sector.",
     description: "Garantizamos tu autorización ante ASEA — si el expediente entra bien, la ley la concede. Más de 200 juicios ganados lo prueban.",
+    descLink: "/servicios/legal",
     image: "/visual/imagenes/hidro.jpg",
     icon: Droplets,
     color: "#008CDE",
@@ -150,8 +151,17 @@ export default function Services() {
                   "{service.subtitle}"
                 </p>
 
-                <p className="text-sm font-semibold text-slate-500 mb-10 leading-relaxed max-w-xl">
-                  {service.description}
+                <p className="text-sm font-semibold mb-10 leading-relaxed max-w-xl">
+                  {service.descLink ? (
+                    <Link
+                      href={service.descLink}
+                      className="text-[#008CDE] underline underline-offset-4 decoration-[#008CDE]/40 hover:decoration-[#008CDE] transition-all duration-200"
+                    >
+                      {service.description}
+                    </Link>
+                  ) : (
+                    <span className="text-slate-500">{service.description}</span>
+                  )}
                 </p>
 
                 {/* Lista de Puntos Estratégicos */}

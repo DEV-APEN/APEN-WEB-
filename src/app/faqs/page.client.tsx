@@ -305,9 +305,9 @@ export default function FAQsPageClient() {
                 </div>
                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#4fc3ff]">Centro de Soporte Técnico</span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9] mb-8">
+              <h1 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-tight mb-8">
                 Preguntas<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4fc3ff] to-[#008CDE] italic">Frecuentes</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4fc3ff] to-[#008CDE] italic inline-block pb-2 pr-4">Frecuentes</span>
               </h1>
               <p className="max-w-lg text-blue-100/60 text-lg font-medium leading-relaxed mb-10">
                 Información actualizada 2025-2026 sobre el nuevo marco regulatorio energético en México. Resolvemos sus dudas críticas sobre la CNE, ASEA y CFE.

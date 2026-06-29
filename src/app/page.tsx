@@ -8,7 +8,7 @@ import FAQ from '../components/FAQ';
 import AboutContact from '../components/AboutContact';
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
-import PemexBanner from '../components/PemexBanner';
+
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -111,7 +111,7 @@ export default function Home() {
 
       <FAQ />
 
-      <PemexBanner />
+
 
       <AboutContact />
 

@@ -175,19 +175,6 @@ export default function CapacidadEjecutivaClient() {
                 <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-[#008CDE]">Achilles PEMEX</p>
                 <p className="mb-8 text-4xl font-black italic tracking-widest text-white">00249023</p>
 
-                <div className="space-y-4 border-t border-white/10 pt-8">
-                  {[
-                    { label: 'Clasificación', value: 'Proveedor Estratégico Clase A' },
-                    { label: 'Alcance', value: 'Eléctrico, Electromecánico, Instrumentación' },
-                    { label: 'Vigencia', value: '2026' },
-                    { label: 'Evaluación HSEQ', value: 'Aprobada — Nivel Integral' },
-                  ].map((row) => (
-                    <div key={row.label} className="flex justify-between gap-4">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{row.label}</span>
-                      <span className="text-[11px] font-black uppercase tracking-tight text-white text-right">{row.value}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>
@@ -202,8 +189,8 @@ export default function CapacidadEjecutivaClient() {
               Bloques Técnicos
             </span>
             <h2 className="text-3xl font-black uppercase leading-tight tracking-tighter text-[#0B2341] md:text-5xl">
-              Cuatro Disciplinas. <br />
-              <span className="text-[#008CDE]">Un Sistema.</span>
+              Respaldo <br />
+              <span className="text-[#008CDE]">CFE</span>
             </h2>
           </div>
 

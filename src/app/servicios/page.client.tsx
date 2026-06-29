@@ -139,11 +139,11 @@ export default function ServicesPage() {
               </div>
 
               <h1 className="max-w-[25ch] text-[1.4rem] font-black uppercase leading-[1] tracking-[-0.02em] text-white md:text-[2rem] lg:text-[2.5rem]">
-                Somos la única firma en México que integra consultoría regulatoria ante ASEA, CNE y SENER con capacidad de ejecución propia en licitaciones CFE y PEMEX — bajo un mismo equipo.
+                Consultoría regulatoria y capacidad de ejecución para el sector energético.
               </h1>
 
               <p className="mt-6 max-w-lg border-l-4 border-[#00a6ff] pl-5 text-[12px] font-medium leading-relaxed text-[#d8e9ff] md:text-[14px]">
-                Somos el único operador en México que integra consultoría regulatoria, ejecución técnica y acceso directo al ecosistema CFE y PEMEX bajo un mismo equipo.
+                Somos el único operador en México que integra consultoría regulatoria, ejecución técnica y acceso directo al ecosistema CFE y PEMEX bajo un mismo equipo. Con due diligence aprobado y contratos adjudicados.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-2.5">
@@ -165,9 +165,9 @@ export default function ServicesPage() {
               <div className="relative space-y-6">
                 {[
                   { id: '01', label: 'CNE', value: 'Permisos de generación, transmisión y suministro' },
-                  { id: '02', label: 'ASEA', value: 'SASISOPA, MIA, auditorías ambientales' },
-                  { id: '03', label: 'SENER', value: 'MISSE previa a EVIS, permisos de importación' },
-                  { id: '04', label: 'CFE · PEMEX', value: 'Capacidad de ejecución propia\nPadrón CFE No. 4493015 · Achilles ID 00249023\nLicitaciones y ejecución de proyectos por cuenta propia.' },
+                  { id: '02', label: 'ASEA', value: 'MIA, IP, ERA, SASISOPA, auditorías ambientales' },
+                  { id: '03', label: 'SENER', value: 'MISSE (antes EVIS)' },
+                  { id: '04', label: 'CFE · PEMEX', value: 'Ejecución de proyectos por cuenta propia\nPadrón CFE No. 4493015 · Achilles ID 00249023' },
                 ].map((item) => (
                   <div key={item.id} className="flex items-start gap-4 border-b border-white/5 pb-5 last:border-0 last:pb-0">
                     <span className="text-[10px] font-mono text-[#008CDE]/60 font-black tracking-widest shrink-0 pt-0.5">{item.id}</span>
