@@ -37,7 +37,7 @@ export default function Footer() {
           <div className="flex flex-col gap-8 lg:col-span-4">
             <div className="relative h-16 w-48 origin-left scale-150 transform">
               <Image
-                src="https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png"
+                src="/visual/imagenes/apen-logo.png"
                 alt="APEN Logo"
                 fill
                 sizes="192px"

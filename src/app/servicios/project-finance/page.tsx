@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Project Finance Energético México',
@@ -47,10 +47,61 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Project Finance y Estructuración Financiera Energética | APEN',
     description: 'SPVs, due diligence técnico-financiero, NAFIN/Bancomext y levantamiento de capital para proyectos renovables en México.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Service", "FinancialService"],
+  "name": "Project Finance Energético",
+  "provider": {
+    "@id": "https://apen.mx/#organization"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "México"
+  },
+  "description": "Estructuración financiera, SPVs, due diligence técnico y levantamiento de capital Equity & Debt para proyectos de energía renovable e infraestructura eléctrica en México."
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://apen.mx"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Servicios",
+      "item": "https://apen.mx/servicios"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Project Finance Energético",
+      "item": "https://apen.mx/servicios/project-finance"
+    }
+  ]
+};
+
 export default function ProjectFinancePage() {
-  return <ProjectFinanceClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <ProjectFinanceClient />
+    </>
+  );
 }

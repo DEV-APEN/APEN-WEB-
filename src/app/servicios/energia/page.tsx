@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Permisos CNE e Ingeniería Eléctrica México',
@@ -53,10 +53,61 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Permisos CNE, Subestaciones CFE y MEM-CENACE | APEN',
     description: 'Permisos de generación, autoconsumo interconectado, obra eléctrica 230 kV y licitaciones CFE. Padrón CFE 4493015.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://apen.mx"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Servicios",
+      "item": "https://apen.mx/servicios"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ingeniería Eléctrica y Permisos CNE de Generación",
+      "item": "https://apen.mx/servicios/energia"
+    }
+  ]
+};
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Ingeniería Eléctrica y Permisos CNE de Generación",
+  "provider": {
+    "@id": "https://apen.mx/#organization"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "México"
+  },
+  "description": "Tramitación de permisos CNE de generación, autoconsumo interconectado y acceso al MEM-CENACE. Ingeniería y obra eléctrica hasta 230 kV. Padrón CFE 4493015."
+};
+
 export default function Page() {
-  return <EnergiaPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <EnergiaPage />
+    </>
+  );
 }
+

@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     description: 'Socio estratégico en ingeniería, gestión y cumplimiento normativo para el sector energético mexicano. Padrón CFE 4493015 · ID Achilles 00249023 · ISO 9001/14001/45001.',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Administradora de Proyectos Energéticos',
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'APEN | Ingeniería y Consultoría Energética — CFE, ASEA, PEMEX',
     description: 'Expertos en cumplimiento ASEA/CFE, subestaciones, hidrocarburos y defensa legal técnica. Trazabilidad total para proyectos de alto impacto en México.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
   robots: {
     index: true,
@@ -108,11 +108,11 @@ const organizationJsonLd = {
   url: 'https://apen.mx',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+    url: 'https://apen.mx/visual/imagenes/apen-logo.png',
     width: 400,
     height: 400,
   },
-  image: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+  image: 'https://apen.mx/visual/imagenes/apen-logo.png',
   description: 'Grupo APEN, S.A. de C.V. es una consultora energética mexicana fundada en 2024 que tramita permisos CNE para generación eléctrica, autoconsumo interconectado, expendio de petrolíferos, almacenamiento y gas LP; implementa SASISOPA y obtiene licencias ambientales ASEA (MIA, RENAGAS, PROY-NOM-023-ASEA-2025); ejecuta obra eléctrica hasta 230 kV con Padrón CFE No. 4493015; estructura project finance con SPVs, fondeo NAFIN/Bancomext y due diligence técnico; y ejerce defensa legal ante el TFJA con afirmativa ficta y levantamiento de clausuras.',
   foundingDate: '2024-07-24',
   address: {
@@ -256,8 +256,8 @@ const professionalServiceJsonLd = {
   '@id': 'https://apen.mx/#service',
   name: 'APEN — Administradora de Proyectos Energéticos',
   url: 'https://apen.mx',
-  logo: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
-  image: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+  logo: 'https://apen.mx/visual/imagenes/apen-logo.png',
+  image: 'https://apen.mx/visual/imagenes/apen-logo.png',
   description: 'Ingeniería integral, cumplimiento normativo ASEA/CFE y gestión de proyectos para infraestructura energética e hidrocarburos en México.',
   address: {
     '@type': 'PostalAddress',
@@ -317,7 +317,7 @@ const localBusinessJsonLd = {
   '@type': 'LocalBusiness',
   '@id': 'https://apen.mx/#localbusiness',
   name: 'APEN — Administradora de Proyectos Energéticos',
-  image: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+  image: 'https://apen.mx/visual/imagenes/apen-logo.png',
   url: 'https://apen.mx',
   telephone: '+52-55-7479-3873',
   email: 'contacto@apen.mx',

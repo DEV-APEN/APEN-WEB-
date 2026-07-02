@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: 'Consultoría energética integral: permisos CNE, cumplimiento ASEA, ingeniería eléctrica CFE, project finance y defensa legal ante TFJA. Grupo APEN, S.A. de C.V.',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Catálogo de Servicios Energéticos',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Servicios APEN | Energía, Hidrocarburos y Defensa Legal',
     description: 'Ingeniería eléctrica, gestión de permisos CNE/ASEA y defensa jurídica especializada para el sector energético en México.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
 

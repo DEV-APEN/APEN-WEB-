@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Permisos CNE y ASEA para Hidrocarburos México',
@@ -53,10 +53,61 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Permisos CNE, SASISOPA y Cumplimiento ASEA | APEN Hidrocarburos',
     description: 'Permisos CNE para gasolineras y gas LP, SASISOPA, licencias ASEA y RENAGAS. Achilles PEMEX 00249023. Cobertura nacional.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://apen.mx"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Servicios",
+      "item": "https://apen.mx/servicios"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Permisos CNE para Hidrocarburos y Cumplimiento ASEA",
+      "item": "https://apen.mx/servicios/hidrocarburos"
+    }
+  ]
+};
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Permisos CNE para Hidrocarburos y Cumplimiento ASEA",
+  "provider": {
+    "@id": "https://apen.mx/#organization"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "México"
+  },
+  "description": "Gestión completa de permisos CNE para gasolineras, gas LP y almacenamiento. SASISOPA, MIA, PROY-NOM-023-ASEA-2025 y RENAGAS. Registro Achilles PEMEX 00249023."
+};
+
 export default function Page() {
-  return <HidrocarburosPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <HidrocarburosPage />
+    </>
+  );
 }
+

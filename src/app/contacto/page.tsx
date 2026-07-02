@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: 'Enlace directo con especialistas en infraestructura energética, cumplimiento ASEA/CFE, permisos de hidrocarburos y defensa legal técnica en México.',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Contacto Técnico',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Contacto APEN | Ingeniería Energética en México',
     description: 'Escríbenos para proyectos de energía, hidrocarburos o regularización normativa. Respuesta técnica especializada.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
 

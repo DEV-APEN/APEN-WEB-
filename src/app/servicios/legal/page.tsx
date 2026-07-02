@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Defensa Legal Energética y Clausuras ASEA México',
@@ -52,10 +52,64 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Clausuras ASEA, Afirmativa Ficta y Defensa Legal Energética | APEN',
     description: 'Levantamiento de clausuras ASEA, afirmativa ficta, nulidad TFJA y amparo contra actos de autoridad. +200 autorizaciones. Cobertura nacional.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://apen.mx"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Servicios",
+      "item": "https://apen.mx/servicios"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Defensa Legal Energética",
+      "item": "https://apen.mx/servicios/legal"
+    }
+  ]
+};
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": [
+    "Service",
+    "LegalService"
+  ],
+  "name": "Defensa Legal Energética",
+  "provider": {
+    "@id": "https://apen.mx/#organization"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "México"
+  },
+  "description": "Levantamiento inmediato de clausuras, afirmativa ficta, demandas TFJA y juicio de amparo contra actos ASEA, CNE y SENER."
+};
+
 export default function Page() {
-  return <LegalPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <LegalPage />
+    </>
+  );
 }
+

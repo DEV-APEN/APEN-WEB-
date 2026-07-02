@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: 'ISO 9001/14001/45001, Padrón CFE 4493015, ID Achilles PEMEX 00249023 y registros ante ASEA, CNE y SENER. Trazabilidad y cumplimiento garantizado.',
     images: [
       {
-        url: 'https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png',
+        url: 'https://apen.mx/visual/imagenes/apen-logo.png',
         width: 1200,
         height: 630,
         alt: 'APEN - Certificaciones y Cumplimiento Normativo',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Certificaciones APEN | ISO, CFE, ASEA y PEMEX Achilles',
     description: 'Respaldo normativo completo: ISO 9001/14001/45001, Padrón CFE y registro Achilles PEMEX. Estándares internacionales para el sector energético.',
-    images: ['https://raw.githubusercontent.com/DEV-APEN/imagenes/refs/heads/main/apen/Logo%20de%20APEN%20fondo%20transparente.png'],
+    images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
 
