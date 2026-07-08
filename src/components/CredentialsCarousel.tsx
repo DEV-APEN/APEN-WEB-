@@ -6,27 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const credentialCards = [
   {
-    title: "Achilles / Pemex",
-    eyebrow: "Registro Extendido",
-    logo: "https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp",
-    logoAlt: "Logo Achilles",
-    accent: "bg-[#008CDE]",
-    stats: [
-      { label: "ID Registrado", value: "00249023", highlight: false },
-      { label: "Vigencia", value: "25 NOV 2026", highlight: true },
-    ],
-    body: "Cobertura en subestaciones, redes, tableros, electricidad e instrumental, montaje, mantenimiento civil e instalaciones de gas.",
-  },
-  {
-    title: "Padrón CFE",
-    eyebrow: "Proveedor Inscrito",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg",
-    logoAlt: "Logo CFE",
-    accent: "bg-[#008CDE]",
-    stats: [{ label: "Padrón Activo CFE", value: "4493015", highlight: false }],
-    body: "Reforzamos la capacidad técnica de APEN para la ejecución de obra, atención a especificaciones y licitaciones directas en CFE.",
-  },
-  {
     title: "ISO 9001:2015",
     eyebrow: "Calidad",
     logo: "/visual/imagenes/isologo.svg",
@@ -52,6 +31,27 @@ const credentialCards = [
     accent: "bg-[#008CDE]",
     stats: [{ label: "Registro", value: "CIE-SGSST-020/2026", highlight: false }],
     body: "Marco certificado de seguridad y salud ocupacional para ejecución técnica con enfoque preventivo.",
+  },
+  {
+    title: "Padrón CFE",
+    eyebrow: "Proveedor Inscrito",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg",
+    logoAlt: "Logo CFE",
+    accent: "bg-[#008CDE]",
+    stats: [{ label: "Padrón Activo CFE", value: "4493015", highlight: false }],
+    body: "Cobertura en subestaciones, redes, tableros, electricidad e instrumental, montaje, mantenimiento civil en media y alta tensión.",
+  },
+  {
+    title: "Achilles / Pemex",
+    eyebrow: "Registro Extendido",
+    logo: "https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp",
+    logoAlt: "Logo Achilles",
+    accent: "bg-[#008CDE]",
+    stats: [
+      { label: "ID Registrado", value: "00249023", highlight: false },
+      { label: "Vigencia", value: "25 NOV 2026", highlight: true },
+    ],
+    body: "Estamos habilitados en más de 120 códigos que permiten abarcar toda la cadena de valor de la empresa petrolera más grande de Latinoamérica.",
   },
 ] as const;
 
