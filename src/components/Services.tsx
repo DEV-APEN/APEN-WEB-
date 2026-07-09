@@ -18,7 +18,7 @@ const serviceSections = [
     accent: "from-blue-600 to-cyan-500",
     items: [
       "Cumplimiento ASEA — Sin multas, sin clausuras, sin proyectos frenados.",
-      "Permisos y cumplimiento CNE — Hidrocarburos y sector eléctrico.",
+      "Permisos y cumplimiento CNE — Hidrocarburos.",
       "Autorizaciones SENER — Viabilidad social y acceso a mercados de importación."
     ],
     reverse: false,
