@@ -8,7 +8,7 @@ const faqs = [
   {
     id: '01',
     question: "¿Sus procesos están acreditados ante CFE y ASEA?",
-    answer: "Sí, todos nuestros protocolos de ingeniería y gestión están alineados con las especificaciones técnicas vigentes de CFE y las normativas de seguridad industrial de ASEA, garantizando cumplimiento total y cero sanciones.",
+    answer: "Sí. ISO 9001, 14001 y 45001 certifican nuestros procesos. El Padrón CFE No. 4493015 certifica nuestra habilitación como proveedor. Y más de 200 autorizaciones resueltas ante ASEA certifican nuestra efectividad regulatoria.",
     icon: ShieldCheck
   },
   {
@@ -31,8 +31,8 @@ const faqs = [
   },
   {
     id: '05',
-    question: "¿En qué sectores energéticos tienen mayor experiencia?",
-    answer: "Nuestra especialización radica en infraestructura de media y alta tensión, modernización de subestaciones, y consultoría normativa para el sector eléctrico e hidrocarburos.",
+    question: "¿En qué sectores y ante qué autoridades tienen mayor experiencia?",
+    answer: "Nuestra mayor experiencia está en consultoría regulatoria ante las tres autoridades del sector energético mexicano: ASEA, CNE y SENER. Gestionamos permisos, autorizaciones e impacto social en hidrocarburos, petrolíferos y sector eléctrico — con más de 3,000 trámites resueltos. Como capacidad adicional, ejecutamos proyectos de infraestructura eléctrica hasta 230 kV y participamos en licitaciones CFE y PEMEX con Padrón No. 4493015 activo.",
     icon: Zap
   }
 ];
