@@ -146,19 +146,6 @@ export default function ContactoPage() {
                    </div>
                 </div>
 
-                {/* Info block 3 */}
-                <div className="space-y-4">
-                   <div className="w-10 h-10 rounded-lg bg-[#008CDE]/10 flex items-center justify-center text-[#008CDE]">
-                     <Phone size={20} />
-                   </div>
-                   <div>
-                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Contacto Telefónico</p>
-                     <p className="text-sm font-bold text-[#0B2341] leading-relaxed">
-                       55 7479 3873
-                     </p>
-                   </div>
-                </div>
-
                 {/* Info block 4 */}
                 <div className="space-y-4">
                    <div className="w-10 h-10 rounded-lg bg-[#008CDE]/10 flex items-center justify-center text-[#008CDE]">

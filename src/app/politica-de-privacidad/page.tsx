@@ -106,7 +106,7 @@ const sections = [
     ],
     bullets: [
       "Correo electrónico de contacto: contacto@apen.mx",
-      "Teléfono de atención institucional: +52 (55) 0000 0000",
+
       "Domicilio de referencia: Av. Miguel Ángel de Quevedo 961, El Rosedal, Coyoacán, C.P. 04330, Ciudad de México.",
     ],
   },

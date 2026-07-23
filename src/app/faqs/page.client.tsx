@@ -378,12 +378,12 @@ export default function FAQsPageClient() {
                      <p className="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-2">¿Duda Específica?</p>
                      <p className="text-sm font-bold mb-4">Consulte a nuestro gabinete técnico directo.</p>
                      <a 
-                       href="https://wa.me/525574793873?text=Hola,%20requiero%20asistencia%20técnica%20del%20gabinete%20APEN." 
+                       href="mailto:contacto@apen.mx?subject=Asistencia%20Técnica" 
                        target="_blank" 
                        rel="noopener noreferrer"
                        className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest bg-[#008CDE] px-5 py-3 rounded-xl hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20"
                      >
-                        <MessageSquare size={14} /> Chatear ahora
+                        <MessageSquare size={14} /> Contactar ahora
                      </a>
                    </div>
                    <AlertCircle className="absolute -bottom-4 -right-4 text-white/5 w-24 h-24" />
@@ -459,7 +459,7 @@ export default function FAQsPageClient() {
                                {q.type === 'critical' && (
                                  <div className="flex items-center gap-4">
                                     <a 
-                                      href={`https://wa.me/525574793873?text=${encodeURIComponent(`🚨 URGENTE: Requiero asistencia técnica sobre: "${q.q}"`)}`}
+                                      href={`mailto:contacto@apen.mx?subject=${encodeURIComponent(`🚨 URGENTE: Requiero asistencia técnica sobre: "${q.q}"`)}`}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest px-5 py-3 rounded-xl transition-all group bg-rose-500 text-white hover:bg-rose-600 shadow-lg shadow-rose-500/20"

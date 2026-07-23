@@ -75,7 +75,7 @@ const faqJsonLd = {
       name: '¿Cómo contactar a APEN?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Puede contactar a APEN a través de su sitio web https://apen.mx/contacto, por correo electrónico a contacto@apen.mx o por teléfono al +52 55 7479 3873. Oficinas en Av. Miguel Ángel de Quevedo 961, Coyoacán, Ciudad de México. Atención de lunes a viernes de 9:00 a 18:00 hrs.',
+        text: 'Puede contactar a APEN a través de su sitio web https://apen.mx/contacto o por correo electrónico a contacto@apen.mx. Oficinas en Av. Miguel Ángel de Quevedo 961, Coyoacán, Ciudad de México. Atención de lunes a viernes de 9:00 a 18:00 hrs.',
       },
     },
   ],

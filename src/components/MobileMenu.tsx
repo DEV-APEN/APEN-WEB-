@@ -148,15 +148,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     >
                       <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-8">Canales de Enlace</h4>
                       <div className="space-y-6">
-                        <div className="flex items-center gap-4 group cursor-pointer">
-                          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#008CDE] group-hover:text-white transition-all">
-                            <Phone size={18} />
-                          </div>
-                          <div>
-                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Atención_MX</p>
-                            <p className="text-sm font-bold text-white">55 7479 3873</p>
-                          </div>
-                        </div>
+
                         <div className="flex items-center gap-4 group cursor-pointer">
                           <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#008CDE] group-hover:text-white transition-all">
                             <Mail size={18} />

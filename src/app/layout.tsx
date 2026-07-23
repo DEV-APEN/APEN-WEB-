@@ -126,7 +126,7 @@ const organizationJsonLd = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
-    telephone: '+52-55-7479-3873',
+
     email: 'contacto@apen.mx',
     availableLanguage: 'Spanish',
     areaServed: 'MX',
@@ -319,7 +319,7 @@ const localBusinessJsonLd = {
   name: 'APEN — Administradora de Proyectos Energéticos',
   image: 'https://apen.mx/visual/imagenes/apen-logo.png',
   url: 'https://apen.mx',
-  telephone: '+52-55-7479-3873',
+
   email: 'contacto@apen.mx',
   priceRange: '$$$',
   address: {
