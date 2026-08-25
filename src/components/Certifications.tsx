@@ -9,35 +9,35 @@ const flowItems = [
     title: 'ISO 9001:2015', 
     label: 'Calidad', 
     reg: 'CIE-SGC-044/2026',
-    logo: 'https://1000marcas.net/wp-content/uploads/2020/11/ISO-Logo.png'
+    logo: '/visual/logos/iso.webp'
   },
   { 
     id: '02', 
     title: 'ISO 14001:2015', 
     label: 'Ambiental', 
     reg: 'CIE-SGA-022/2026',
-    logo: 'https://1000marcas.net/wp-content/uploads/2020/11/ISO-Logo.png'
+    logo: '/visual/logos/iso.webp'
   },
   { 
     id: '03', 
     title: 'ISO 45001:2018', 
     label: 'Seguridad', 
     reg: 'CIE-SGSST-020/2026',
-    logo: 'https://1000marcas.net/wp-content/uploads/2020/11/ISO-Logo.png'
+    logo: '/visual/logos/iso.webp'
   },
   { 
     id: '04', 
     title: 'Achilles PEMEX', 
     label: 'Registro Nacional', 
     reg: 'ID: 00249023 / 2026',
-    logo: 'https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp'
+    logo: '/visual/logos/achilles.webp'
   },
   { 
     id: '05', 
     title: 'Padrón de Proveedores CFE', 
     label: 'Registro Oficial', 
     reg: 'No: 4493015 / 2026',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg'
+    logo: '/visual/logos/cfe.svg'
   }
 ];
 
@@ -47,7 +47,7 @@ export default function Certifications() {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-22"
-          style={{ backgroundImage: "url('/visual/imagenes/certe.jpg')" }}
+          style={{ backgroundImage: "url('/visual/imagenes/certe.webp')" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,253,255,0.9)_0%,rgba(251,253,255,0.82)_28%,rgba(244,250,255,0.84)_62%,rgba(251,253,255,0.92)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_22%,rgba(0,140,222,0.08),transparent_30%),radial-gradient(circle_at_80%_68%,rgba(11,35,65,0.05),transparent_28%)]" />
@@ -57,7 +57,7 @@ export default function Certifications() {
         {/* HEADER: ELITE MINIMALISM */}
         <div className="mb-24 text-center max-w-xl mx-auto">
            <motion.div
-             initial={{ opacity: 0, y: -5 }}
+             initial={false}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              className="flex items-center justify-center gap-3 mb-2"
@@ -102,7 +102,7 @@ export default function Certifications() {
 
                    {/* THE CARD */}
                    <motion.div
-                     initial={{ opacity: 0, scale: 0.95 }}
+                     initial={false}
                      whileInView={{ opacity: 1, scale: 1 }}
                      viewport={{ once: true }}
                      transition={{ duration: 0.6, ease: "easeOut" }}

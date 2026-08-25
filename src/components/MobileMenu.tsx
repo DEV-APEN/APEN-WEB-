@@ -70,7 +70,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <div className="flex items-center gap-10">
                 <Link href="/" onClick={onClose} className="relative block h-[40px] w-[120px] md:h-[60px] md:w-[240px]">
                   <Image 
-                    src="/visual/imagenes/apen-logo.png" 
+                    src="/visual/imagenes/apen-logo.webp"
                     alt="APEN Logo" 
                     fill
                     sizes="(max-width: 768px) 120px, 240px"

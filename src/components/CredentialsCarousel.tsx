@@ -35,7 +35,7 @@ const credentialCards = [
   {
     title: "Padrón CFE",
     eyebrow: "Proveedor Inscrito",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg",
+    logo: "/visual/logos/cfe.svg",
     logoAlt: "Logo CFE",
     accent: "bg-[#008CDE]",
     stats: [{ label: "Padrón Activo CFE", value: "4493015", highlight: false }],
@@ -44,7 +44,7 @@ const credentialCards = [
   {
     title: "Achilles / Pemex",
     eyebrow: "Registro Extendido",
-    logo: "https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp",
+    logo: "/visual/logos/achilles.webp",
     logoAlt: "Logo Achilles",
     accent: "bg-[#008CDE]",
     stats: [
@@ -65,11 +65,11 @@ export default function CredentialsCarousel() {
   };
 
   return (
-    <section id="certificaciones" className="relative overflow-hidden py-24 md:py-32">
+    <section id="certificaciones" className="deferred-section relative overflow-hidden py-24 md:py-32">
       {/* Background with fixed overlay */}
       <div 
         className="absolute inset-0 bg-center bg-cover opacity-60 transition-transform duration-[15s] linear infinite"
-        style={{ backgroundImage: "url('/visual/imagenes/certifondo.jpg')" }}
+        style={{ backgroundImage: "url('/visual/imagenes/certifondo.webp')" }}
       />
       <div className="absolute inset-0 bg-white/75" />
 

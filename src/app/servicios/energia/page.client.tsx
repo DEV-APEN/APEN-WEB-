@@ -20,7 +20,7 @@ export default function EnergiaPage() {
       {/* Hero Sector */}
       <section className="relative min-h-[70vh] pt-40 pb-32 flex items-center overflow-hidden bg-[#0B2341]">
         <Image
-          src="/visual/imagenes/ener.jpg"
+          src="/visual/imagenes/ener.webp"
           className="object-cover opacity-50 scale-105"
           fill
           sizes="100vw"
@@ -36,7 +36,7 @@ export default function EnergiaPage() {
           </Link>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -113,7 +113,7 @@ export default function EnergiaPage() {
 
             {/* BLOQUE 1: CNE */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
@@ -126,7 +126,7 @@ export default function EnergiaPage() {
                 <div className="flex items-center gap-6">
                   <div className="h-20 w-auto bg-white rounded-xl p-2 shadow-sm border border-slate-100 overflow-hidden">
                     <img
-                      src="https://static.wixstatic.com/media/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg/v1/fill/w_568,h_210,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg"
+                      src="/visual/logos/cne.webp"
                       alt="CNE"
                       className="h-full object-contain mix-blend-multiply"
                     />
@@ -202,7 +202,7 @@ export default function EnergiaPage() {
 
             {/* BLOQUE 2: CENACE */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
@@ -290,7 +290,7 @@ export default function EnergiaPage() {
 
             {/* BLOQUE 3: CFE */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
@@ -303,7 +303,7 @@ export default function EnergiaPage() {
                 <div className="flex items-center gap-6">
                   <div className="h-20 w-auto bg-white rounded-xl p-2 shadow-sm border border-slate-100 overflow-hidden shrink-0">
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg"
+                      src="/visual/logos/cfe.svg"
                       alt="CFE"
                       className="h-full object-contain"
                     />
@@ -384,7 +384,7 @@ export default function EnergiaPage() {
       {/* Golpe de Autoridad — Scroll 4 */}
       <section className="relative bg-[#0B2341] py-28 md:py-40 overflow-hidden">
         <Image
-          src="/visual/imagenes/ener2.jpg"
+          src="/visual/imagenes/ener2.webp"
           alt=""
           fill
           className="object-cover opacity-50"
@@ -394,7 +394,7 @@ export default function EnergiaPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-6">
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
@@ -439,7 +439,7 @@ export default function EnergiaPage() {
       <section className="py-20 bg-white border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col md:flex-row md:items-center justify-between gap-8 p-8 md:p-12 rounded-[2.5rem] bg-slate-50 border border-slate-200/60"

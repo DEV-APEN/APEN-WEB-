@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
 
@@ -38,9 +38,33 @@ const CONFIGURATION = {
 export default function StoreLocator() {
   const containerRef = useRef<HTMLDivElement>(null);
   const initialized = useRef(false);
+  const [shouldInitialize, setShouldInitialize] = useState(false);
 
   useEffect(() => {
-    if (initialized.current || !containerRef.current || !API_KEY) return;
+    const container = containerRef.current;
+    if (!container || !API_KEY) return;
+
+    if (!("IntersectionObserver" in window)) {
+      setShouldInitialize(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldInitialize(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldInitialize || initialized.current || !containerRef.current || !API_KEY) return;
     initialized.current = true;
 
     const container = containerRef.current;
@@ -70,7 +94,7 @@ export default function StoreLocator() {
     };
 
     document.head.appendChild(script);
-  }, []);
+  }, [shouldInitialize]);
 
   if (!API_KEY) {
     return (

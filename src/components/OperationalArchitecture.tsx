@@ -69,7 +69,7 @@ export default function OperationalArchitecture() {
       num: "02",
       title: "Organizacion",
       text: "Estructuracion de equipos y calendarios.",
-      icon: <div className="relative h-14 w-14"><Image src="/visual/imagenes/fase2.png" alt="Fase 02" fill sizes="56px" className="object-contain" /></div>,
+      icon: <div className="relative h-14 w-14"><Image src="/visual/imagenes/fase2.webp" alt="Fase 02" fill sizes="56px" className="object-contain" /></div>,
     },
     {
       num: "03",
@@ -115,12 +115,11 @@ export default function OperationalArchitecture() {
                   <div className="relative flex w-full justify-center lg:w-[55%]">
                     <div className="relative w-full aspect-video md:aspect-square max-h-[400px]">
                       <Image 
-                        src="/visual/imagenes/diagrama servicios.jpeg" 
+                        src="/visual/imagenes/diagrama-servicios.webp"
                         alt="Diagrama" 
                         fill 
                         sizes="(max-width: 1024px) 100vw, 600px" 
                         className="object-contain"
-                        priority
                       />
                     </div>
                   </div>

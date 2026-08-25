@@ -437,7 +437,7 @@ export default function ChatBot({ visible = true }: { visible?: boolean }) {
               <div className="bg-[#0B2341] p-4 flex items-center gap-3 shrink-0">
                 <div className="w-9 h-9 bg-white/10 flex items-center justify-center rounded-full shrink-0 overflow-hidden border border-white/10">
                   <Image
-                    src="/visual/imagenes/bot.png"
+                    src="/visual/imagenes/bot.webp"
                     alt="Asistente APEN"
                     width={36}
                     height={36}

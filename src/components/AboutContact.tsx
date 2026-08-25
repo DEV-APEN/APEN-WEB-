@@ -6,11 +6,6 @@ import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function AboutContact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [mounted, setMounted] = useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,8 +34,6 @@ export default function AboutContact() {
     }
   };
 
-  if (!mounted) return null;
-
   const certs = [
     {
       logo: "/visual/imagenes/isologo.svg",
@@ -50,14 +43,14 @@ export default function AboutContact() {
       tag: "Certificado",
     },
     {
-      logo: "https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp",
+      logo: "/visual/logos/achilles.webp",
       alt: "Achilles",
       title: "Padrón Achilles",
       subtitle: "ID: 00249023 // PEMEX",
       tag: "Registrado",
     },
     {
-      logo: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg",
+      logo: "/visual/logos/cfe.svg",
       alt: "CFE",
       title: "Padrón de Proveedores",
       subtitle: "CFE // Registro 4493015 Vigente",
@@ -66,7 +59,7 @@ export default function AboutContact() {
   ];
 
   return (
-    <section id="nosotros" className="bg-[#071828] text-white pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden border-t border-white/5">
+    <section id="nosotros" className="deferred-section bg-[#071828] text-white pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden border-t border-white/5">
 
       {/* Gradient orb top-right */}
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#008CDE]/10 blur-[120px] pointer-events-none" />
@@ -80,7 +73,7 @@ export default function AboutContact() {
           <div className="space-y-10">
             {/* Header */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={false}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="space-y-5"
@@ -103,7 +96,7 @@ export default function AboutContact() {
               {certs.map((c, i) => (
                 <motion.div
                   key={c.alt}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={false}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
@@ -134,7 +127,7 @@ export default function AboutContact() {
           {/* RIGHT: THE CONVERSION CARD */}
           <motion.div
             id="contacto"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative"

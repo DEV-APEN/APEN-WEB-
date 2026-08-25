@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -22,7 +22,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AboutContact from "@/components/AboutContact";
-import ChatBot from "@/components/ChatBot";
 
 import MobileMenu from "@/components/MobileMenu";
 
@@ -61,21 +60,7 @@ const flowData = [
 ];
 
 export default function ServicesPage() {
-  const [isHeaderVisible, setHeaderVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setHeaderVisible(true), 350);
-    const handleScroll = () => {
-      if (window.scrollY > 80) setHeaderVisible(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const portals = [
     {
@@ -86,7 +71,7 @@ export default function ServicesPage() {
       url: "/servicios/hidrocarburos",
       textColor: "text-[#008CDE]",
       icon: Droplets,
-      img: "/visual/imagenes/hidro.jpg"
+      img: "/visual/imagenes/hidro.webp"
     },
     {
       id: "02",
@@ -96,7 +81,7 @@ export default function ServicesPage() {
       url: "/servicios/energia",
       textColor: "text-amber-500",
       icon: Zap,
-      img: "/visual/imagenes/ener.jpg"
+      img: "/visual/imagenes/ener.webp"
     },
     {
       id: "03",
@@ -106,19 +91,19 @@ export default function ServicesPage() {
       url: "/servicios/legal",
       textColor: "text-rose-600",
       icon: Gavel,
-      img: "/visual/imagenes/legal.jpg"
+      img: "/visual/imagenes/legal.webp"
     },
   ];
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-white">
-      <Header visible={isHeaderVisible} onOpenMenu={() => setIsMenuOpen(true)} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       {/* 1. HERO */}
       <section className="relative overflow-hidden bg-[#061528] pb-14 pt-32 md:pb-20 md:pt-40">
         <div className="absolute inset-0">
           <Image
-            src="/visual/imagenes/heroserv.jpg"
+            src="/visual/imagenes/heroserv.webp"
             alt="Fondo de servicios"
             fill
             sizes="100vw"
@@ -132,7 +117,7 @@ export default function ServicesPage() {
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-10 px-6">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-3xl">
+            <motion.div initial={false} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
               <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md">
                 <Sparkles size={14} className="text-[#4fc3ff]" />
                 <span className="text-[10px] font-black uppercase tracking-[0.35em] text-blue-50/95">Portafolio técnico</span>
@@ -156,7 +141,7 @@ export default function ServicesPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
               className="relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-white/5 p-8 backdrop-blur-sm"
@@ -197,7 +182,7 @@ export default function ServicesPage() {
                {portals.map((portal, i) => (
                  <Link href={portal.url} key={i}>
                    <motion.div 
-                     initial={{ opacity: 0, y: 30 }}
+                     initial={false}
                      whileInView={{ opacity: 1, y: 0 }}
                      viewport={{ once: true }}
                      transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -304,7 +289,7 @@ export default function ServicesPage() {
              {flowData.map((item, idx) => (
                <motion.div 
                  key={item.step}
-                 initial={{ opacity: 0, x: -20 }}
+                 initial={false}
                  whileInView={{ opacity: 1, x: 0 }}
                  viewport={{ once: true }}
                  transition={{ delay: idx * 0.2 }}
@@ -339,7 +324,6 @@ export default function ServicesPage() {
 
       <AboutContact />
       <Footer />
-      <ChatBot visible={isHeaderVisible} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );

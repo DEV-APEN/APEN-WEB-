@@ -45,7 +45,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="deferred-section py-24 bg-white relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#008CDE]/5 rounded-full blur-[100px] pointer-events-none" />
       
@@ -54,7 +54,7 @@ export default function FAQ() {
         {/* Header Block */}
         <div className="mb-16 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex items-center justify-center gap-4 mb-4"
@@ -77,7 +77,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
@@ -126,7 +126,7 @@ export default function FAQ() {
 
         {/* Bottom CTA for more questions */}
         <motion.div 
-          initial={{ opacity: 0 }}
+          initial={false}
           whileInView={{ opacity: 1 }}
           className="mt-16 text-center p-8 border border-dashed border-slate-200 rounded-3xl"
         >

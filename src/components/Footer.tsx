@@ -1,14 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, ShieldCheck, Award, Target } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Mail, MapPin, ShieldCheck, Award, Target } from 'lucide-react';
 
 export default function Footer() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const currentYear = new Date().getFullYear();
   const navItems = [
     { label: 'Servicios', href: '/servicios' },
@@ -16,8 +10,6 @@ export default function Footer() {
     { label: 'Certificaciones', href: '/certificaciones' },
     { label: 'Preguntas frecuentes', href: '/faqs' },
   ];
-
-  if (!mounted) return null;
 
   return (
     <footer className="relative overflow-hidden border-t border-white/5 bg-[#061427] pb-12 pt-10 text-white">
@@ -37,7 +29,7 @@ export default function Footer() {
           <div className="flex flex-col gap-8 lg:col-span-4">
             <div className="relative h-16 w-48 origin-left scale-150 transform">
               <Image
-                src="/visual/imagenes/apen-logo.png"
+                src="/visual/imagenes/apen-logo.webp"
                 alt="APEN Logo"
                 fill
                 sizes="192px"

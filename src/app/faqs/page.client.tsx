@@ -295,7 +295,7 @@ export default function FAQsPageClient() {
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={false}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
@@ -329,15 +329,17 @@ export default function FAQsPageClient() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
               className="relative aspect-square lg:aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl"
             >
               <Image 
-                src="/visual/imagenes/faqs-hero.jpg"
+                src="/visual/imagenes/faqs-hero.webp"
                 alt="FAQ Support"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061427] via-transparent to-transparent" />
@@ -396,7 +398,7 @@ export default function FAQsPageClient() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCategory + searchTerm}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}

@@ -20,7 +20,7 @@ export default function LegalPage() {
       {/* Hero Sector */}
       <section className="relative min-h-[70vh] pt-40 pb-32 flex items-center overflow-hidden bg-[#0B2341]">
         <Image
-          src="/visual/imagenes/legal.jpg"
+          src="/visual/imagenes/legal.webp"
           className="object-cover opacity-50 scale-105"
           fill
           sizes="100vw"
@@ -36,7 +36,7 @@ export default function LegalPage() {
           </Link>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -108,7 +108,7 @@ export default function LegalPage() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="bg-white p-10 md:p-14 rounded-[3rem] border border-slate-200 shadow-sm relative group hover:shadow-2xl transition-all duration-500 overflow-hidden"
@@ -217,7 +217,7 @@ export default function LegalPage() {
       {/* Diferenciador — Afirmativa Ficta */}
       <section id="garantia" className="bg-[#0B2341] py-28 md:py-40 relative overflow-hidden">
         <Image
-          src="/visual/imagenes/legal2.jpg"
+          src="/visual/imagenes/legal2.webp"
           alt=""
           fill
           sizes="100vw"
@@ -227,7 +227,7 @@ export default function LegalPage() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}

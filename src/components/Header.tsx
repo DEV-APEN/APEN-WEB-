@@ -22,7 +22,7 @@ export default function Header({ visible, onOpenMenu = () => {} }: HeaderProps) 
           <div className="flex items-center gap-10 z-20">
             <Link href="/" className="relative block h-[50px] w-[140px] md:h-[65px] md:w-[260px] transition-transform hover:scale-[1.02]">
               <Image 
-                src="/visual/imagenes/apen-logo.png" 
+                src="/visual/imagenes/apen-logo.webp"
                 alt="APEN Logo" 
                 fill
                 sizes="(max-width: 768px) 140px, 260px"

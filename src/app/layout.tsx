@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
-import dynamic from 'next/dynamic';
 import './globals.css';
 import CookieConsent from '../components/CookieConsent';
-
-const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false });
+import DeferredChatBot from '../components/DeferredChatBot';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -433,7 +431,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }}
         />
-        <ChatBot visible={true} />
+        <DeferredChatBot />
       </body>
     </html>
   );

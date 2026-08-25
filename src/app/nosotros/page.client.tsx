@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,37 +11,19 @@ import Certifications from '@/components/Certifications';
 import Capabilities from '@/components/Capabilities';
 import AboutContact from '@/components/AboutContact';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 
 export default function NosotrosPage() {
-  const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowNav(true), 250);
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setShowNav(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <main className="min-h-screen bg-white relative overflow-x-hidden w-full max-w-full">
-      <Header visible={showNav} onOpenMenu={() => setIsMenuOpen(true)} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-16 pt-32 md:pb-24 md:pt-40">
         <div className="absolute inset-0">
           <Image
-            src="/visual/imagenes/nosotros.jpg"
+            src="/visual/imagenes/nosotros.webp"
             alt="Oficinas corporativas de APEN"
             fill
             sizes="100vw"
@@ -118,8 +100,6 @@ export default function NosotrosPage() {
       <Certifications />
       <AboutContact />
       <Footer />
-      <ChatBot visible={showNav} />
-
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ShieldCheck, 
@@ -32,11 +32,10 @@ export default function Differentiator() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ backgroundImage: "url('/visual/imagenes/home dif.jpg')" }}
+          style={{ backgroundImage: "url('/visual/imagenes/home-dif.webp')" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(11,35,65,0.96)_0%,rgba(11,35,65,0.88)_38%,rgba(11,35,65,0.8)_68%,rgba(11,35,65,0.9)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_32%,rgba(0,91,181,0.16),transparent_38%),radial-gradient(circle_at_78%_42%,rgba(0,140,222,0.12),transparent_34%)]" />
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
         <motion.div 
           animate={{ x: ['-100%', '200%'] }}
@@ -55,7 +54,7 @@ export default function Differentiator() {
           
           {/* LADO IZQUIERDO: HUD TEXTUAL */}
           <motion.div
-             initial={{ opacity: 0, x: -50 }}
+             initial={false}
              whileInView={{ opacity: 1, x: 0 }}
              viewport={{ once: true }}
              className="space-y-8 md:space-y-12"
@@ -125,7 +124,7 @@ export default function Differentiator() {
                   {technicalModules.map((mod) => (
                     <motion.div
                       key={mod.id}
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={false}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       className={`p-5 rounded-lg border flex flex-col justify-between h-40 ${view === 'apen' ? 'bg-[#061528]/80 border-[#005BB5]/30' : 'bg-red-950/20 border-red-500/20'}`}

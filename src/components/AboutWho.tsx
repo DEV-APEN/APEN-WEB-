@@ -1,6 +1,5 @@
 "use client";
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 export default function AboutWho() {
   return (
@@ -8,12 +7,7 @@ export default function AboutWho() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-50 rounded-full blur-3xl opacity-60" />
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-4">Identidad Institucional</p>
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#0B2341] leading-[0.9] mb-8">
@@ -29,24 +23,19 @@ export default function AboutWho() {
             <p className="text-base text-slate-500 font-medium leading-relaxed">
               Además de nuestra práctica consultiva, participamos por cuenta propia en licitaciones ante CFE y PEMEX. Con Padrón CFE No. 4493015 y registro Achilles ID 00249023 activo en más de 120 categorías, tenemos la habilitación para armar consorcios y ejecutar proyectos de gran escala. El empresario que empieza con un permiso ASEA puede terminar con APEN como socio ejecutor de su proyecto completo — sin cambiar de firma.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="flex justify-center items-center"
-          >
+          <div className="flex justify-center items-center">
             <div className="relative w-full rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/3]">
               <Image
-                src="/visual/imagenes/quien-es-apen.png"
+                src="/visual/imagenes/quien-es-apen.webp"
                 alt="Equipo APEN"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function PemexBanner() {
     <section className="relative overflow-hidden bg-[#040D1D] py-24 md:py-32">
       <div className="absolute inset-0">
         <img
-          src="/visual/imagenes/metricas.jpg"
+          src="/visual/imagenes/metricas.webp"
           alt=""
           loading="lazy"
           decoding="async"
@@ -28,7 +28,7 @@ export default function PemexBanner() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
 
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
@@ -63,7 +63,7 @@ export default function PemexBanner() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}

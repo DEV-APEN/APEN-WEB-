@@ -11,3 +11,10 @@
     @apply text-apen-blue font-bold tracking-tight;
   }
 }
+
+@layer utilities {
+  .deferred-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}

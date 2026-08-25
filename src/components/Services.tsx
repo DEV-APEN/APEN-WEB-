@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Droplets, Gavel, ShieldCheck, Zap, Landmark } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const serviceSections = [
   {
@@ -12,7 +13,7 @@ const serviceSections = [
     subtitle: "Ventanilla única de cumplimiento regulatorio para empresarios del sector.",
     description: "Garantizamos tu autorización ante ASEA — si el expediente entra bien, la ley la concede. Más de 200 juicios ganados lo prueban.",
     descLink: "/servicios/legal#garantia",
-    image: "/visual/imagenes/hidro.jpg",
+    image: "/visual/imagenes/hidro.webp",
     icon: Droplets,
     color: "#008CDE",
     accent: "from-blue-600 to-cyan-500",
@@ -30,7 +31,7 @@ const serviceSections = [
     label: "Energía & Regulación eléctrica",
     subtitle: "Permisos, interconexión y cumplimiento regulatorio ante la CNE para participantes del mercado eléctrico mexicano.",
     description: "Gestionamos los permisos y obligaciones regulatorias que habilitan tu participación en el sector eléctrico — desde la autorización de generación hasta la interconexión con el CENACE y el cumplimiento continuo ante la CNE.",
-    image: "/visual/imagenes/ener.jpg",
+    image: "/visual/imagenes/ener.webp",
     icon: Zap,
     color: "#D97706",
     accent: "from-amber-400 to-orange-500",
@@ -48,7 +49,7 @@ const serviceSections = [
     label: "Certeza Jurídica",
     subtitle: "Dirección jurídica especializada en energía desde el origen.",
     description: "Garantizamos tu autorización ante ASEA — si el expediente entra bien, la ley la concede. Más de 200 juicios ganados lo prueban.",
-    image: "/visual/imagenes/legal.jpg",
+    image: "/visual/imagenes/legal.webp",
     icon: Gavel,
     color: "#EF4444",
     accent: "from-rose-600 to-red-500",
@@ -91,28 +92,29 @@ export default function Services() {
       {serviceSections.map((service, index) => (
         <div 
           key={service.id} 
-          className={`py-24 md:py-40 relative flex items-center overflow-hidden border-t border-slate-50 ${index === serviceSections.length - 1 ? 'border-b' : ''}`}
+          className={`deferred-section py-24 md:py-40 relative flex items-center overflow-hidden border-t border-slate-50 ${index === serviceSections.length - 1 ? 'border-b' : ''}`}
         >
           {/* Fondo Dinámico Sutil */}
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
           
-          <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto w-full max-w-7xl px-6">
             <div className={`flex flex-col gap-16 md:gap-24 items-center ${service.reverse ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
               
               {/* Contenido Visual (Columna Imagen) */}
               <motion.div 
-                initial={{ opacity: 0, x: service.reverse ? 40 : -40 }}
+                initial={false}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="w-full md:w-1/2 relative group"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[3rem] shadow-2xl">
-                   <img
+                   <Image
                      src={service.image}
                      alt={service.title}
-                     loading="lazy"
-                     decoding="async"
+                     fill
+                     sizes="(max-width: 768px) 100vw, 50vw"
+                     quality={80}
                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B2341]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -133,7 +135,7 @@ export default function Services() {
 
               {/* Contenido Texto (Columna Info) */}
               <motion.div 
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.6, delay: 0.2 }}

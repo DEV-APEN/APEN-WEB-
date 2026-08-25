@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 import { Zap, Wrench, FlaskConical, Building2, ArrowRight, CheckCircle2, Shield } from 'lucide-react';
 
@@ -87,25 +86,17 @@ const pemexCapacities = [
 ];
 
 export default function CapacidadEjecutivaClient() {
-  const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowNav(true), 250);
-    const handleScroll = () => { if (window.scrollY > 50) setShowNav(true); };
-    window.addEventListener('scroll', handleScroll);
-    return () => { clearTimeout(timer); window.removeEventListener('scroll', handleScroll); };
-  }, []);
 
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
-      <Header visible={showNav} onOpenMenu={() => setIsMenuOpen(true)} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-20 pt-32 md:pb-32 md:pt-48">
         <div className="absolute inset-0">
           <Image
-            src="/visual/imagenes/metricas.jpg"
+            src="/visual/imagenes/metricas.webp"
             alt="Capacidad Ejecutiva APEN"
             fill
             sizes="100vw"
@@ -198,7 +189,7 @@ export default function CapacidadEjecutivaClient() {
             {technicalBlocks.map((block, idx) => (
               <motion.div
                 key={block.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
@@ -311,7 +302,6 @@ export default function CapacidadEjecutivaClient() {
       </section>
 
       <Footer />
-      <ChatBot visible={showNav} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );

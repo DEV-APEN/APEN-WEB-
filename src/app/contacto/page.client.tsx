@@ -1,26 +1,19 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 import { MapPin, Phone, Mail, Clock, ArrowRight, ShieldCheck, Send } from 'lucide-react';
 import StoreLocator from '@/components/StoreLocator';
 import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function ContactoPage() {
-  const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -49,30 +42,15 @@ export default function ContactoPage() {
     }
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowNav(true), 250);
-    const handleScroll = () => {
-      if (window.scrollY > 50) setShowNav(true);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <main className="min-h-screen bg-slate-50 relative overflow-x-hidden w-full">
-      <Header visible={showNav} onOpenMenu={() => setIsMenuOpen(true)} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-16 pt-32 md:pb-24 md:pt-40">
         <div className="absolute inset-0">
           <Image 
-            src="/visual/imagenes/contact.jpg" 
+            src="/visual/imagenes/contact.webp"
             alt="Contacto APEN" 
             fill
             sizes="100vw"
@@ -226,8 +204,8 @@ export default function ContactoPage() {
 
                     <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Tipo de Consulta *</label>
-                      <select name="tipo-consulta" required className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
-                        <option value="" disabled selected>Seleccione área de interés</option>
+                      <select name="tipo-consulta" required defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
+                        <option value="" disabled>Seleccione área de interés</option>
                         <option value="ingenieria">Ingeniería y Construcción</option>
                         <option value="legal">Materia Regulatoria / Legal</option>
                         <option value="mantenimiento">Mantenimiento y Auditorías</option>
@@ -265,7 +243,6 @@ export default function ContactoPage() {
       </section>
 
       <Footer />
-      <ChatBot visible={showNav} />
 
       {/* MENÚ MÓVIL */}
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

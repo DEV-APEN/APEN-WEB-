@@ -36,11 +36,11 @@ const trustStats = [
 
 export default function CorporateMetrics() {
   return (
-    <section className="relative bg-[#040D1D] py-24 md:py-36 overflow-hidden">
+    <section className="deferred-section relative bg-[#040D1D] py-24 md:py-36 overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="/visual/imagenes/metricas.jpg"
+          src="/visual/imagenes/metricas.webp"
           alt="Métricas de fondo"
           loading="lazy"
           decoding="async"
@@ -61,7 +61,7 @@ export default function CorporateMetrics() {
           {trustStats.map((item, idx) => (
             <motion.div 
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}

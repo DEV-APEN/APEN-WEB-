@@ -36,7 +36,7 @@ export default function ProjectFinanceClient() {
           </Link>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
@@ -108,7 +108,7 @@ export default function ProjectFinanceClient() {
 
             {/* Bloque A: Estructuracion Financiera */}
             <motion.div
-               initial={{ opacity: 0, y: 20 }}
+               initial={false}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                className="bg-[#f8f9fc] p-10 md:p-14 rounded-[3rem] border border-slate-200/60 relative overflow-hidden group hover:border-emerald-200 transition-colors"
@@ -146,7 +146,7 @@ export default function ProjectFinanceClient() {
 
             {/* Bloque B: Fondeo y Enlace */}
             <motion.div
-               initial={{ opacity: 0, y: 20 }}
+               initial={false}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ delay: 0.1 }}

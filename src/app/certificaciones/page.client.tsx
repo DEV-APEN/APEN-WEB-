@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 import { ShieldCheck, Leaf, HeartPulse, Shield, FileCheck2, Fingerprint, ArrowRight, X, ExternalLink, FileText, ZoomIn, Zap, Building2, Scale } from 'lucide-react';
 
@@ -48,7 +47,7 @@ const regulatoryLogos = [
     id: 'asea',
     name: 'ASEA',
     subtitle: 'Seguridad industrial, operativa y protección ambiental.',
-    image: 'https://www.gob.mx/cms/uploads/article/main_image/16073/logo_asea.jpg',
+    image: '/visual/logos/asea.webp',
     accent: 'from-sky-500/20 to-cyan-500/10',
     pdfFile: null
   },
@@ -56,7 +55,7 @@ const regulatoryLogos = [
     id: 'cne',
     name: 'CNE',
     subtitle: 'Marco técnico para decisiones regulatorias y energía.',
-    image: 'https://static.wixstatic.com/media/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg/v1/fill/w_568,h_210,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/d7dd69_b17eb0aa35b74631b02ed91a303012f3~mv2.jpeg',
+    image: '/visual/logos/cne.webp',
     accent: 'from-slate-400/20 to-slate-200/10',
     pdfFile: null
   },
@@ -64,7 +63,7 @@ const regulatoryLogos = [
     id: 'sener',
     name: 'SENER',
     subtitle: 'Política energética, trazabilidad institucional y sectorial.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SENER_Logo_2019.svg/1280px-SENER_Logo_2019.svg.png',
+    image: '/visual/logos/sener.webp',
     accent: 'from-cyan-500/20 to-blue-500/10',
     pdfFile: null
   },
@@ -173,7 +172,6 @@ function PdfModal({ pdfUrl, label, onClose }: PdfModalProps) {
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
 export default function CertificacionesPage() {
-  const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activePdf, setActivePdf] = useState<{ url: string; label: string } | null>(null);
 
@@ -185,22 +183,9 @@ export default function CertificacionesPage() {
     setActivePdf(null);
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowNav(true), 250);
-    const handleScroll = () => {
-      if (window.scrollY > 50) setShowNav(true);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
-      <Header visible={showNav} onOpenMenu={() => setIsMenuOpen(true)} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       {/* PDF Modal */}
       {activePdf && (
@@ -214,7 +199,7 @@ export default function CertificacionesPage() {
       <section className="relative overflow-hidden bg-[#061528] px-6 pb-20 pt-32 md:pb-32 md:pt-48">
         <div className="absolute inset-0">
           <Image
-            src="/visual/imagenes/cer.jpg"
+            src="/visual/imagenes/cer.webp"
             alt="Certificaciones APEN"
             fill
             sizes="100vw"
@@ -268,7 +253,7 @@ export default function CertificacionesPage() {
               <motion.button
                 key={card.id}
                 onClick={() => openPdf(card.pdfFile, card.pdfLabel)}
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.15, duration: 0.6 }}
@@ -330,7 +315,7 @@ export default function CertificacionesPage() {
                     <FileCheck2 size={24} className="text-white" />
                   </div>
                   <div className="rounded-lg bg-white p-2">
-                    <img src="https://toroca.com.mx/wp-content/uploads/2025/12/Logo-Certificado-Achilles.webp" alt="Achilles" width={100} height={40} loading="lazy" className="h-10 w-auto object-contain" />
+                    <img src="/visual/logos/achilles.webp" alt="Achilles" width={100} height={40} loading="lazy" className="h-10 w-auto object-contain" />
                   </div>
                 </div>
                 <h3 className="mb-2 text-2xl font-black uppercase tracking-tight text-white">Red Achilles // PEMEX</h3>
@@ -384,7 +369,7 @@ export default function CertificacionesPage() {
                     <Fingerprint size={24} className="text-white" />
                   </div>
                   <div className="rounded-lg bg-white p-2">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Logo_neutral_de_la_Comisi%C3%B3n_Federal_de_Electricidad.svg" alt="CFE" width={100} height={40} loading="lazy" className="h-10 w-auto object-contain" />
+                    <img src="/visual/logos/cfe.svg" alt="CFE" width={100} height={40} loading="lazy" className="h-10 w-auto object-contain" />
                   </div>
                 </div>
                 <h3 className="mb-2 text-2xl font-black uppercase tracking-tight text-white">Proveeduría CFE</h3>
@@ -468,7 +453,7 @@ export default function CertificacionesPage() {
               {regulatoryLogos.map((logo, idx) => (
                 <motion.article
                   key={logo.id}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={false}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.08, duration: 0.55 }}
@@ -532,7 +517,6 @@ export default function CertificacionesPage() {
       </section>
 
       <Footer />
-      <ChatBot visible={showNav} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );

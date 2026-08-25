@@ -1,13 +1,11 @@
-"use client";
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import FAQ from '../components/FAQ';
 import AboutContact from '../components/AboutContact';
 import Footer from '../components/Footer';
-import MobileMenu from '../components/MobileMenu';
+import CredentialsCarousel from '../components/CredentialsCarousel';
+import CorporateMetrics from '../components/CorporateMetrics';
+import HomeShell from '../components/HomeShell';
 
 
 const faqJsonLd = {
@@ -81,43 +79,22 @@ const faqJsonLd = {
   ],
 };
 
-// Carga diferida — estos componentes no son necesarios en el primer render
-const CredentialsCarousel = dynamic(() => import('../components/CredentialsCarousel'), { ssr: false });
-const CorporateMetrics = dynamic(() => import('../components/CorporateMetrics'), { ssr: false });
-
 export default function Home() {
-  const [showNav, setShowNav] = useState(true);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    // Nav visibility is now persistent from start as requested
-  }, []);
-
   return (
-    <main className="min-h-screen bg-white relative overflow-x-hidden w-full max-w-full">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Header visible={showNav} onOpenMenu={() => setIsMenuOpen(true)} />
-
-      <Hero onVideoEnd={() => setShowNav(true)} showIndicator={showNav} />
-
-      <Services />
-
-      <CredentialsCarousel />
-
-      <CorporateMetrics />
-
-      <FAQ />
-
-
-
-      <AboutContact />
-
-      <Footer />
-
-      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
-    </main>
+      <HomeShell>
+        <Hero />
+        <Services />
+        <CredentialsCarousel />
+        <CorporateMetrics />
+        <FAQ />
+        <AboutContact />
+        <Footer />
+      </HomeShell>
+    </>
   );
 }

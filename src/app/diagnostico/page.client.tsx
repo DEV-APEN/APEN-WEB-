@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import ChatBot from '@/components/ChatBot';
 import MobileMenu from '@/components/MobileMenu';
 import { Send, CheckCircle2, Clock, Shield, Zap, FileText } from 'lucide-react';
 import { Turnstile } from '@marsidev/react-turnstile';
@@ -18,14 +17,8 @@ const benefits = [
 ];
 
 export default function DiagnosticoClient() {
-  const [showNav, setShowNav] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,18 +47,9 @@ export default function DiagnosticoClient() {
     }
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowNav(true), 250);
-    const handleScroll = () => { if (window.scrollY > 50) setShowNav(true); };
-    window.addEventListener('scroll', handleScroll);
-    return () => { clearTimeout(timer); window.removeEventListener('scroll', handleScroll); };
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-[#040D1D]">
-      <Header visible={showNav} onOpenMenu={() => setIsMenuOpen(true)} />
+      <Header visible={true} onOpenMenu={() => setIsMenuOpen(true)} />
 
       <section className="relative overflow-hidden px-6 pb-0 pt-32 md:pt-40">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,140,222,0.12),transparent_50%)]" />
@@ -110,7 +94,7 @@ export default function DiagnosticoClient() {
 
             {/* Right: Form */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#061528] p-8 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.6)] md:p-10"
@@ -271,7 +255,6 @@ export default function DiagnosticoClient() {
       </section>
 
       <Footer />
-      <ChatBot visible={showNav} />
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </main>
   );
