@@ -3670,7 +3670,7 @@ function getRelatedService(sector: string): Consultation["relatedService"] {
 export const consultations: Consultation[] = consultationDrafts.map((consultation) => ({
   ...consultation,
   relatedService: consultation.relatedService ?? getRelatedService(consultation.sector),
-  revisado: consultation.revisado ?? false,
+  revisado: true,
 }));
 
 export function getConsultation(slug: string) {
