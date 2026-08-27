@@ -113,6 +113,7 @@ export default function Services() {
                      src={service.image}
                      alt={service.title}
                      fill
+                     priority={index === 0}
                      sizes="(max-width: 768px) 100vw, 50vw"
                      quality={80}
                      className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"

@@ -140,45 +140,69 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
                   {/* CONTACT & CTAS COLUMN */}
                   <div className="lg:col-span-4 flex flex-col justify-between space-y-16">
-                    <motion.div 
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.4 }}
-                      className="p-8 md:p-10 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 backdrop-blur-xl"
-                    >
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-8">Canales de Enlace</h4>
-                      <div className="space-y-6">
+                    <div className="space-y-6">
+                      <motion.div
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.35 }}
+                        className="flex justify-center lg:justify-start"
+                      >
+                        <Link
+                          href="/consultas"
+                          onClick={onClose}
+                          aria-label="Abrir Energy Explica"
+                          className="group relative block h-[102px] w-[250px] transition-transform duration-300 hover:scale-[1.03] md:h-[118px] md:w-[290px]"
+                        >
+                          <Image
+                            src="/visual/imagenes/energy-explica-menu-button.png"
+                            alt="Energy Explica"
+                            fill
+                            sizes="(max-width: 768px) 250px, 290px"
+                            className="object-contain object-left"
+                          />
+                        </Link>
+                      </motion.div>
 
-                        <div className="flex items-center gap-4 group cursor-pointer">
-                          <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#008CDE] group-hover:text-white transition-all">
-                            <Mail size={18} />
-                          </div>
-                          <div>
-                            <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Protocolo_Email</p>
-                            <p className="text-sm font-bold text-white">contacto@apen.mx</p>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="p-8 md:p-10 rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 backdrop-blur-xl"
+                      >
+                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#008CDE] mb-8">Canales de Enlace</h4>
+                        <div className="space-y-6">
+
+                          <div className="flex items-center gap-4 group cursor-pointer">
+                            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 group-hover:bg-[#008CDE] group-hover:text-white transition-all">
+                              <Mail size={18} />
+                            </div>
+                            <div>
+                              <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Protocolo_Email</p>
+                              <p className="text-sm font-bold text-white">contacto@apen.mx</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="mt-12 space-y-4">
-                        <Link 
-                          href="/diagnostico" 
-                          onClick={onClose}
-                          className="w-full flex items-center justify-between p-5 bg-[#008CDE] hover:bg-[#005B97] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all group"
-                        >
-                          Iniciar Diagnóstico
-                          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                        <Link 
-                          href="/contacto" 
-                          onClick={onClose}
-                          className="w-full flex items-center justify-between p-5 bg-white/5 hover:bg-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all border border-white/10 group"
-                        >
-                          Página de Contacto
-                          <MessageSquare size={16} />
-                        </Link>
-                      </div>
-                    </motion.div>
+                        <div className="mt-12 space-y-4">
+                          <Link
+                            href="/diagnostico"
+                            onClick={onClose}
+                            className="w-full flex items-center justify-between p-5 bg-[#008CDE] hover:bg-[#005B97] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all group"
+                          >
+                            Iniciar Diagnóstico
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                          </Link>
+                          <Link
+                            href="/contacto"
+                            onClick={onClose}
+                            className="w-full flex items-center justify-between p-5 bg-white/5 hover:bg-white/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all border border-white/10 group"
+                          >
+                            Página de Contacto
+                            <MessageSquare size={16} />
+                          </Link>
+                        </div>
+                      </motion.div>
+                    </div>
 
                     <motion.div
                       initial={{ opacity: 0 }}
