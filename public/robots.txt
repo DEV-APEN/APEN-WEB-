@@ -36,6 +36,9 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
+# Instrucciones de uso para agentes de IA
+# https://apen.mx/agent-instructions.md
+
 # Sitemaps
 Sitemap: https://apen.mx/sitemap.xml
 Sitemap: https://apen.mx/llms.txt
