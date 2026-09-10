@@ -71,7 +71,7 @@ Representación jurídica especializada en el sector energético mexicano.
 ## Mapa de Páginas — URLs Canónicas
 - **Home:** https://apen.mx
 - **Energy Explica:** https://apen.mx/consultas — índice de fichas técnicas sobre regulación energética mexicana
-- **¿Qué es PRONAGAS?:** https://apen.mx/consultas/que-es-pronagas — El nuevo proceso de regularización ambiental de ASEA que reemplaza a RENAGAS.
+- **¿Qué es PRONAGAS?:** https://apen.mx/consultas/que-es-pronagas — Tres escenarios de regularización ambiental de ASEA, con calendario de actuaciones por estado hasta 2028.
 - **Lista L_CNE y timbrado:** https://apen.mx/consultas/lista-l-cne-timbrado — Sin un permiso activo en L_CNE, el Complemento de Hidrocarburos puede quedar bloqueado.
 - **¿Qué es el SASISOPA?:** https://apen.mx/consultas/que-es-el-sasisopa — El sistema de administración que integra seguridad industrial, operativa y protección ambiental.
 - **¿Cómo abrir una gasolinera?:** https://apen.mx/consultas/como-abrir-una-gasolinera — La ruta coordinada de predio, impacto social, ambiente, ingeniería y permiso de expendio.

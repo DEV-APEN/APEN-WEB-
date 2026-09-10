@@ -183,6 +183,60 @@ export default function ConsultaArticle({ consultation }: { consultation: Consul
                   ))}
                 </ul>
               )}
+              {section.table && (
+                <div
+                  className="mt-7 overflow-x-auto rounded-lg border border-slate-200"
+                  tabIndex={0}
+                  aria-label={`${section.table.caption} — tabla desplazable horizontalmente`}
+                >
+                  <table className="min-w-[640px] border-collapse text-left md:w-full">
+                    <caption className="border-b border-slate-200 bg-slate-50 px-5 py-3 text-left text-[10px] font-black uppercase tracking-[0.15em] text-[#0D3D8E]">
+                      {section.table.caption}
+                    </caption>
+                    <thead>
+                      <tr className="border-b border-slate-200">
+                        {section.table.headers.map((header) => (
+                          <th
+                            key={header}
+                            scope="col"
+                            className="px-5 py-3 text-[10px] font-black uppercase tracking-[0.15em] text-[#0D3D8E]"
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row) => (
+                        <tr
+                          key={row.cells.join("|")}
+                          className={`border-b border-slate-200 last:border-b-0 ${row.highlight ? "bg-[#F2FAFF]" : ""}`}
+                        >
+                          {row.cells.map((cell, cellIndex) => (
+                            <td
+                              key={`${row.cells.join("|")}-${cellIndex}`}
+                              className={`px-5 py-4 align-top text-sm leading-relaxed ${
+                                cellIndex === 0 ? "font-bold text-[#0D3D8E]" : "font-medium text-slate-600"
+                              }`}
+                            >
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {section.note && (
+                <div className="mt-6 flex gap-3 rounded-lg border border-amber-300 bg-amber-50 p-5 text-amber-950" role="note">
+                  <TriangleAlert aria-hidden="true" className="mt-0.5 shrink-0" size={20} />
+                  <div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.16em]">Dato por confirmar</p>
+                    <p className="mt-2 text-sm font-semibold leading-relaxed">{section.note}</p>
+                  </div>
+                </div>
+              )}
               {index === 1 && (
                 <div className="mt-9 flex flex-col justify-between gap-5 rounded-lg border border-sky-100 bg-[#F2FAFF] p-6 md:flex-row md:items-center">
                   <p className="font-black leading-snug text-[#0D3D8E]">{consultation.intermediateCta}</p>

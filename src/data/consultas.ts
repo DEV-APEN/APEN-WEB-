@@ -1,8 +1,23 @@
+export type ConsultationTableRow = {
+  cells: string[];
+  /** Resalta la fila (p. ej. las entidades del mes en curso). */
+  highlight?: boolean;
+};
+
+export type ConsultationTable = {
+  caption: string;
+  headers: string[];
+  rows: ConsultationTableRow[];
+};
+
 export type ConsultationSection = {
   id: string;
   title: string;
   paragraphs: string[];
   bullets?: string[];
+  table?: ConsultationTable;
+  /** Aviso visible para datos aún no confirmados contra la fuente oficial. */
+  note?: string;
 };
 
 export type ConsultationSource = {
@@ -58,6 +73,109 @@ type ConsultationDraft = Omit<Consultation, "relatedService" | "revisado"> & {
   revisado?: boolean;
 };
 
+/** Los tres escenarios de ordenamiento del Acuerdo PRONAGAS. */
+export type PronagasEscenario = "Inspección" | "Supervisión" | "Ordenamiento (EIA)";
+
+export type PronagasCalendarEntry = {
+  estado: string;
+  /** Periodo publicado: mes y año, o el bloque anual cuando ASEA solo publicó eso. */
+  periodo: string;
+  escenario: PronagasEscenario;
+};
+
+/**
+ * Calendario PRONAGAS por entidad federativa y escenario.
+ *
+ * Cada escenario tiene su PROPIO calendario, por eso una entidad puede
+ * aparecer en varios meses y en más de un escenario.
+ *
+ * Granularidad: ASEA publicó los programas calendarizados a nivel de MES (y
+ * de bloque anual para 2027-2028), no por día. La fecha concreta de cada
+ * instalación llega por notificación personal y se consulta en
+ * https://pronagas.asea.gob.mx. No inferir días exactos desde este arreglo.
+ *
+ * El calendario de inspección es el único desglosado mes a mes en la
+ * comunicación pública; de supervisión y ordenamiento (EIA) solo se han
+ * publicado el arranque, el detalle de septiembre de 2026 y el cierre.
+ *
+ * Dato reutilizable: alimenta el bloque de calendario de la ficha PRONAGAS y
+ * una eventual página dedicada por estado.
+ */
+export const pronagasCalendar: PronagasCalendarEntry[] = [
+  // Inspección — agosto 2026 a mayo 2028 (4,310 inspecciones)
+  ...["Ciudad de México", "Querétaro", "Aguascalientes", "Zacatecas"].map((estado) => ({
+    estado, periodo: "Agosto 2026", escenario: "Inspección" as const,
+  })),
+  ...["Zacatecas", "San Luis Potosí"].map((estado) => ({
+    estado, periodo: "Septiembre 2026", escenario: "Inspección" as const,
+  })),
+  ...["San Luis Potosí", "Tlaxcala", "Colima", "Nayarit", "Michoacán"].map((estado) => ({
+    estado, periodo: "Octubre 2026", escenario: "Inspección" as const,
+  })),
+  ...["Michoacán", "Sinaloa"].map((estado) => ({
+    estado, periodo: "Noviembre 2026", escenario: "Inspección" as const,
+  })),
+  ...["Sinaloa", "Sonora"].map((estado) => ({
+    estado, periodo: "Diciembre 2026", escenario: "Inspección" as const,
+  })),
+  ...[
+    "Sonora", "Baja California", "Baja California Sur", "Chihuahua", "Nuevo León",
+    "Guerrero", "Campeche", "Quintana Roo", "Estado de México", "Guanajuato",
+    "Hidalgo", "Morelos", "Puebla", "Jalisco", "Coahuila",
+  ].map((estado) => ({ estado, periodo: "2027", escenario: "Inspección" as const })),
+  ...["Coahuila", "Durango", "Tamaulipas", "Oaxaca", "Chiapas", "Tabasco", "Yucatán", "Veracruz"].map((estado) => ({
+    estado, periodo: "Enero–mayo 2028", escenario: "Inspección" as const,
+  })),
+
+  // Supervisión — agosto 2026 a enero 2028 (3,650 supervisiones)
+  ...["Ciudad de México", "Querétaro", "Aguascalientes"].map((estado) => ({
+    estado, periodo: "Agosto 2026", escenario: "Supervisión" as const,
+  })),
+  ...["Aguascalientes", "San Luis Potosí", "Tlaxcala", "Zacatecas"].map((estado) => ({
+    estado, periodo: "Septiembre 2026", escenario: "Supervisión" as const,
+  })),
+  { estado: "Veracruz", periodo: "Enero 2028", escenario: "Supervisión" },
+
+  // Ordenamiento por impacto ambiental — agosto 2026 a abril 2028 (1,729 instalaciones)
+  ...["Puebla", "Jalisco", "Veracruz"].map((estado) => ({
+    estado, periodo: "Agosto 2026", escenario: "Ordenamiento (EIA)" as const,
+  })),
+  { estado: "Puebla", periodo: "Septiembre 2026", escenario: "Ordenamiento (EIA)" },
+  ...["Chihuahua", "Zacatecas", "Nayarit"].map((estado) => ({
+    estado, periodo: "Cierre, hasta abril 2028", escenario: "Ordenamiento (EIA)" as const,
+  })),
+];
+
+/** Periodo que se resalta en la tabla del calendario. */
+const PRONAGAS_PERIODO_DESTACADO = "Septiembre 2026";
+
+const ESCENARIO_ORDEN: PronagasEscenario[] = ["Inspección", "Supervisión", "Ordenamiento (EIA)"];
+
+/** Agrupa el calendario por escenario y periodo para presentarlo como tabla. */
+function pronagasCalendarTable(): ConsultationTable {
+  const grupos = new Map<string, { escenario: PronagasEscenario; periodo: string; estados: string[] }>();
+
+  for (const entry of pronagasCalendar) {
+    const clave = `${entry.escenario}|${entry.periodo}`;
+    const grupo = grupos.get(clave) ?? { escenario: entry.escenario, periodo: entry.periodo, estados: [] };
+    grupo.estados.push(entry.estado);
+    grupos.set(clave, grupo);
+  }
+
+  const filas = Array.from(grupos.values()).sort(
+    (a, b) => ESCENARIO_ORDEN.indexOf(a.escenario) - ESCENARIO_ORDEN.indexOf(b.escenario)
+  );
+
+  return {
+    caption: "Calendario PRONAGAS por escenario y entidad federativa",
+    headers: ["Escenario", "Periodo", "Entidades"],
+    rows: filas.map((fila) => ({
+      cells: [fila.escenario, fila.periodo, fila.estados.join(", ")],
+      highlight: fila.periodo === PRONAGAS_PERIODO_DESTACADO,
+    })),
+  };
+}
+
 const consultationDrafts: ConsultationDraft[] = [
   {
     slug: "que-es-pronagas",
@@ -68,20 +186,32 @@ const consultationDrafts: ConsultationDraft[] = [
     badge: "Riesgo crítico",
     badgeTone: "critical",
     revisado: true,
-    extract: "El nuevo proceso de regularización ambiental de ASEA que reemplaza a RENAGAS.",
-    description: "Qué es PRONAGAS, a quién aplica y cómo prepararse ante la regularización ambiental de ASEA para gasolineras y plantas de Gas LP.",
-    keywords: ["qué es PRONAGAS", "PRONAGAS ASEA", "RENAGAS vs PRONAGAS", "regularización ambiental gasolineras"],
+    extract: "Tres escenarios de regularización ambiental de ASEA, con calendario de actuaciones por estado hasta 2028.",
+    description: "Qué es PRONAGAS, sus tres escenarios de regularización (inspección, impacto ambiental y supervisión) y el calendario de actuaciones por estado de ASEA para gasolineras y plantas de Gas LP.",
+    keywords: [
+      "qué es PRONAGAS",
+      "PRONAGAS ASEA",
+      "RENAGAS vs PRONAGAS",
+      "regularización ambiental gasolineras",
+      "calendario PRONAGAS por estado",
+      "escenarios PRONAGAS",
+      "PRONAGAS inspección supervisión",
+    ],
     energyLine: "Si tu estación todavía tiene pendientes ambientales, esta no es una sigla para dejar en la bandeja de entrada.",
-    quickAnswer: "PRONAGAS es el Programa de Ordenamiento Nacional de Instalaciones de Gasolinas y Gas Licuado de Petróleo de ASEA. Entró en vigor el 1 de mayo de 2026 y, desde agosto, organiza rutas calendarizadas de inspección, supervisión y regularización ambiental para instalaciones registradas en RENAGAS.",
+    quickAnswer: "PRONAGAS es el Programa de Ordenamiento Nacional de Instalaciones de Gasolinas y Gas LP de ASEA, publicado en el DOF el 30 de abril de 2026. Opera mediante tres escenarios —inspección, impacto ambiental y supervisión— con un calendario de actuaciones por estado que corre hasta 2028. Las visitas de verificación iniciaron en agosto de 2026.",
     regulatoryRows: [
       { label: "Autoridad", value: "ASEA — Agencia de Seguridad, Energía y Ambiente" },
       { label: "Objeto", value: "Regularización ambiental de gasolineras y plantas de Gas LP" },
       { label: "A quién aplica", value: "Estaciones de servicio y plantas de Gas LP con obligaciones ambientales pendientes" },
-      { label: "Inicio oficial", value: "1 de mayo de 2026" },
-      { label: "Escenarios", value: "Inspección, supervisión y ordenamiento mediante trámite de impacto ambiental" },
-      { label: "Cobertura anunciada", value: "~4,310 inspecciones y ~2,291 estaciones aún sin registro, con visitas de verificación iniciadas en agosto de 2026" },
+      { label: "Publicación", value: "DOF, 30 de abril de 2026 — en vigor desde el 1 de mayo de 2026" },
+      { label: "Escenarios", value: "Tres rutas con calendario propio cada una: ordenamiento por inspección, por supervisión y por trámite de impacto ambiental (EIA)" },
+      { label: "Horizonte", value: "Agosto de 2026 a 2028, según el escenario: supervisión hasta enero de 2028, impacto ambiental hasta abril de 2028 e inspección hasta mayo de 2028" },
+      { label: "Volumen", value: "4,310 inspecciones · 3,650 supervisiones · 1,729 instalaciones por trámite de impacto ambiental" },
+      { label: "Calendario", value: "Programado por entidad federativa a nivel de mes (bloques anuales en 2027 y 2028); el arranque 2026 se concentra en CDMX y el Bajío" },
+      { label: "Portal", value: "https://pronagas.asea.gob.mx — cada instalación consulta ahí su escenario y periodo con usuario y contraseña" },
+      { label: "Cobertura anunciada", value: "~2,291 estaciones aún sin registro, de ~18,665 instalaciones identificadas; visitas de verificación iniciadas en agosto de 2026" },
     ],
-    sanction: "El acuerdo contempla imposición reducida de sanciones económicas para instalaciones elegibles; cualquier sanción depende del procedimiento y del incumplimiento acreditado por ASEA.",
+    sanction: "El Acuerdo prevé multas reducidas conforme al artículo 171, fracción I, de la LGEEPA (Apartado I, Numeral Cuarto), bajo el principio de buena fe, siempre que la persona regulada no haya rechazado expresamente los beneficios del Acuerdo y medie allanamiento sobre las irregularidades detectadas. Durante una inspección, ASEA puede imponer clausura si detecta condiciones de peligro inminente.",
     sections: [
       {
         id: "que-cambio",
@@ -89,6 +219,54 @@ const consultationDrafts: ConsultationDraft[] = [
         paragraphs: [
           "PRONAGAS sustituye al esquema conocido como RENAGAS y concentra una nueva etapa de ordenamiento ambiental para instalaciones del sector hidrocarburos.",
           "El cambio relevante para el regulado no es solamente el nombre: desde el 1 de mayo de 2026 ASEA opera un proceso calendarizado con escenarios de inspección, supervisión y ordenamiento mediante trámites de impacto ambiental.",
+        ],
+      },
+      {
+        id: "tres-escenarios",
+        title: "Los tres escenarios de regularización",
+        paragraphs: [
+          "PRONAGAS no es un trámite único. ASEA clasifica cada instalación en uno de tres escenarios de ordenamiento, y esa clasificación define qué le van a revisar, con qué instrumento responde y hasta cuándo corre su ventana.",
+          "La diferencia práctica está en el punto de partida documental: no es lo mismo operar sin autorización ambiental, tenerla vigente y sin cambios, o tenerla vencida o desfasada respecto de la instalación real.",
+        ],
+        table: {
+          caption: "Escenarios de ordenamiento PRONAGAS, volumen y horizonte",
+          headers: ["Escenario", "A quién aplica", "Volumen", "Horizonte"],
+          rows: [
+            { cells: ["Ordenamiento por inspección", "Instalaciones sin autorización ambiental; ASEA realiza visita física", "4,310 inspecciones", "Agosto 2026 – mayo 2028 (~22 meses)"] },
+            { cells: ["Ordenamiento por supervisión", "Autorización vencida o modificaciones no reportadas", "3,650 supervisiones", "Agosto 2026 – enero 2028 (~18 meses)"] },
+            { cells: ["Ordenamiento por impacto ambiental (EIA)", "Instalaciones con autorización vigente y sin modificaciones", "1,729 instalaciones", "Agosto 2026 – abril 2028"] },
+          ],
+        },
+        bullets: [
+          "Quedan excluidas del programa las instalaciones que, a la entrada en vigor del Acuerdo, ya tuvieran abierto un procedimiento administrativo en materia de impacto ambiental ante ASEA (Apartado I, Numeral Primero).",
+          "Las notificaciones del programa se realizan de manera personal en la sede de ASEA.",
+        ],
+      },
+      {
+        id: "calendario-por-estado",
+        title: "Calendario por estado y escenario",
+        paragraphs: [
+          "Aquí está la confusión más común del sector: no hay un calendario, hay tres. Cada escenario tiene el suyo, y por eso una misma entidad aparece en varios meses. Aguascalientes, por ejemplo, entró en agosto de 2026 por inspección y en septiembre por supervisión; no es un error de lectura ni una doble visita, son dos programas distintos.",
+          "El calendario de inspección es el único desglosado mes a mes: arranca en agosto de 2026 con Ciudad de México, Querétaro, Aguascalientes y Zacatecas, avanza por el Bajío y el Pacífico durante el resto de 2026, cubre Occidente y Norte en 2027 y cierra entre enero y mayo de 2028 con el Sur y el Golfo —Veracruz al final.",
+          "De supervisión y de ordenamiento por impacto ambiental, ASEA publicó el arranque, el detalle de septiembre de 2026 y el cierre, pero no el desglose mensual completo. La supervisión termina en enero de 2028 con Veracruz; el ordenamiento por EIA corre hasta abril de 2028 y cierra con Chihuahua, Zacatecas y Nayarit.",
+        ],
+        table: pronagasCalendarTable(),
+        note: "ASEA publicó los programas calendarizados a nivel de mes —y de bloque anual para 2027 y 2028—, no por día. La fecha concreta de cada instalación no está en el calendario público: llega por notificación personal y se consulta en el portal con las credenciales de la instalación. Del calendario de supervisión y del de impacto ambiental solo es público el arranque, septiembre de 2026 y el cierre; los meses intermedios no se han desglosado.",
+      },
+      {
+        id: "que-escenario-me-aplica",
+        title: "¿Qué escenario me aplica y dónde lo consulto?",
+        paragraphs: [
+          "El escenario no se elige: ASEA lo asigna. Cada instalación lo consulta con su usuario y contraseña en https://pronagas.asea.gob.mx, el portal oficial del programa. Ahí es donde aparece el esquema aplicable y el periodo que corresponde.",
+          "Conviene no confundir ese portal con https://renagas.asea.gob.mx: son cosas distintas. El segundo es la liga que el TRANSITORIO TERCERO del Acuerdo habilitó de manera excepcional durante treinta días naturales a partir de la entrada en vigor —el 1 de mayo de 2026— para que quienes no se habían registrado antes inscribieran sus instalaciones en el RENAGAS. Esa ventana venció a finales de mayo de 2026.",
+          "Que haya vencido no deja a nadie fuera: quien no se registró entra igual por el escenario que ASEA le asigne. Lo que rige hoy no es aquel registro, sino el calendario de actuaciones. Y si la instalación ya estaba registrada en la Fase I del RENAGAS, lo que toca es ratificar en PRONAGAS, no volver a registrarse.",
+        ],
+        bullets: [
+          "Consultar en pronagas.asea.gob.mx el escenario asignado a la instalación.",
+          "Ubicar el periodo de actuación que corresponde a la entidad y a ese escenario.",
+          "Contrastar el escenario asignado contra la situación real del expediente ambiental.",
+          "Si hay discrepancia entre lo asignado y la realidad documental, atenderla antes de la actuación.",
+          "Dudas de acceso al portal: dudas.pronagas@asea.gob.mx.",
         ],
       },
       {
@@ -120,7 +298,8 @@ const consultationDrafts: ConsultationDraft[] = [
         id: "riesgo",
         title: "¿Por qué es un asunto urgente?",
         paragraphs: [
-          "ASEA informó que el proceso contempla ~4,310 inspecciones, partiendo de ~2,291 estaciones aún sin registro al arranque. Además del Acuerdo publicado el 1 de mayo de 2026, las visitas de verificación arrancaron oficialmente en agosto de 2026. Cada instalación debe consultar en la plataforma el escenario y calendario que le corresponde.",
+          "ASEA informó que el proceso contempla ~4,310 inspecciones, partiendo de ~2,291 estaciones aún sin registro de las ~18,665 instalaciones identificadas. El Acuerdo se publicó en el DOF el 30 de abril de 2026 y entró en vigor el 1 de mayo; las visitas de verificación arrancaron oficialmente en agosto de 2026.",
+          "La urgencia no es uniforme: depende del escenario asignado y del mes que le toque a la entidad. Una instalación en un estado del arranque 2026 tiene un margen muy distinto al de una que entra en la fase 2028, y el escenario de supervisión cierra antes —enero de 2028— que el de inspección.",
         ],
       },
     ],
@@ -130,25 +309,36 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "¿Qué es la MIA?", href: "/consultas/que-es-la-mia" },
       { label: "SASISOPA", href: "/consultas/que-es-el-sasisopa" },
       { label: "RENAGAS vs. PRONAGAS", href: "/consultas/renagas-vs-pronagas" },
+      { label: "Calendario PRONAGAS por estado", href: "#calendario-por-estado" },
       { label: "Permisos para Gas LP", href: "/consultas/permisos-gas-lp" },
       { label: "Lista L_CNE", href: "/consultas/lista-l-cne-timbrado" },
       { label: "Servicios de hidrocarburos", href: "/servicios/hidrocarburos" },
     ],
     faqs: [
+      { question: "¿En qué mes le toca a mi estado?", answer: "Depende del escenario, porque cada uno tiene su propio calendario. El de inspección es el único desglosado mes a mes: agosto de 2026 con Ciudad de México, Querétaro, Aguascalientes y Zacatecas; septiembre con Zacatecas y San Luis Potosí; octubre con San Luis Potosí, Tlaxcala, Colima, Nayarit y Michoacán; noviembre con Michoacán y Sinaloa; diciembre con Sinaloa y Sonora. En 2027 avanza por Occidente y Norte, y entre enero y mayo de 2028 cierra con el Sur y el Golfo, terminando en Veracruz. En septiembre de 2026 también hay supervisión en Aguascalientes, San Luis Potosí, Tlaxcala y Zacatecas, y ordenamiento por impacto ambiental en Puebla." },
+      { question: "¿Qué significa que me toque inspección, supervisión u ordenamiento por EIA?", answer: "Son los tres escenarios del programa, y cada uno tiene volumen y horizonte propios. El ordenamiento por inspección aplica a instalaciones sin autorización ambiental, con visita física de ASEA: 4,310 inspecciones de agosto de 2026 a mayo de 2028. El de supervisión aplica cuando la autorización está vencida o hay modificaciones no reportadas: 3,650 supervisiones, y es el que cierra antes, en enero de 2028. El ordenamiento por trámite de impacto ambiental aplica a quien tiene autorización vigente y sin modificaciones: 1,729 instalaciones, hasta abril de 2028." },
+      { question: "¿Dónde consulto qué escenario me asignó ASEA?", answer: "En https://pronagas.asea.gob.mx, el portal oficial del programa, con el usuario y contraseña de la instalación. Ahí aparece el esquema aplicable y el periodo correspondiente. No debe confundirse con https://renagas.asea.gob.mx, que fue la liga habilitada de forma temporal para el registro extemporáneo en el RENAGAS. Para problemas de acceso, ASEA atiende en dudas.pronagas@asea.gob.mx." },
+      { question: "¿Sigue habiendo prórroga para registrarse?", answer: "No. El TRANSITORIO TERCERO del Acuerdo habilitó la liga del RENAGAS por treinta días naturales contados a partir de la entrada en vigor, el 1 de mayo de 2026, para quienes no se hubieran registrado antes; esa ventana venció a finales de mayo de 2026 y no se ha publicado una nueva. No haberse registrado no excluye a la instalación: entra por el escenario que ASEA le asigne. Quien ya estaba en la Fase I del RENAGAS no debe registrarse otra vez, sino ratificar en PRONAGAS." },
+      { question: "¿ASEA publicó los días exactos de la visita?", answer: "No. Los programas calendarizados se publicaron a nivel de mes por entidad, y como bloques anuales para 2027 y 2028. La fecha concreta de cada instalación no está en el calendario público: se conoce por notificación —que conforme al Acuerdo se realiza de manera personal en la sede de ASEA— y consultando el portal PRONAGAS. Cualquier fecha exacta que circule por otra vía debe verificarse antes de planear con ella." },
+      { question: "¿Hay instalaciones excluidas del PRONAGAS?", answer: "Sí. Conforme al Apartado I, Numeral Primero del Acuerdo, quedan excluidas las personas reguladas cuyas instalaciones, a la entrada en vigor del Acuerdo, ya tuvieran abierto un procedimiento administrativo en materia de impacto ambiental ante ASEA. Es el caso, por ejemplo, de una estación que recibió visita de inspección y derivó en un Procedimiento Administrativo Sancionatorio aún no resuelto al 1 de mayo de 2026." },
       { question: "¿PRONAGAS reemplaza a RENAGAS?", answer: "Sí. La información sectorial proporcionada para esta ficha señala que PRONAGAS reemplaza a RENAGAS como esquema de regularización ambiental." },
-      { question: "¿Cuándo comenzó PRONAGAS?", answer: "El acuerdo entró en vigor el 1 de mayo de 2026. ASEA informó que los procesos calendarizados de inspección, supervisión y ordenamiento comenzaron en agosto de 2026." },
+      { question: "¿Cuándo comenzó PRONAGAS?", answer: "El Acuerdo se publicó en el DOF el 30 de abril de 2026 y entró en vigor el 1 de mayo de 2026. Las visitas de verificación y los procesos calendarizados de inspección, supervisión y ordenamiento comenzaron en agosto de 2026." },
       { question: "¿PRONAGAS aplica solamente a gasolineras?", answer: "No. El alcance informado incluye estaciones de servicio y plantas de Gas LP." },
-      { question: "¿Qué debo revisar primero?", answer: "La situación registral, las autorizaciones ambientales y la consistencia entre expediente, planos, dictámenes y operación real." },
+      { question: "¿Qué debo revisar primero?", answer: "La situación registral, las autorizaciones ambientales y la consistencia entre expediente, planos, dictámenes y operación real. Con eso puedes anticipar qué escenario te corresponde antes de que ASEA lo confirme." },
     ],
     sources: [
       { label: "ASEA, Programa de Ordenamiento Nacional de Instalaciones de Gasolinas y Gas LP", url: "https://www.gob.mx/asea/acciones-y-programas/programa-de-ordenamiento-nacional-de-instalaciones-de-gasolinas-y-gas-licuado-de-petroleo-pronagas" },
       { label: "DOF, Acuerdo del PRONAGAS (30 de abril de 2026)", url: "https://sidof.segob.gob.mx/notas/docFuente/5786354" },
       { label: "ASEA, inicio y cobertura del proceso PRONAGAS", url: "https://www.gob.mx/asea/articulos/la-asea-inicia-en-agosto-el-proceso-de-regularizacion-de-gasolineras-y-gaseras-del-pais-431061?idiom=es" },
+      { label: "Portal PRONAGAS — consulta del escenario y periodo asignado (requiere credenciales)", url: "https://pronagas.asea.gob.mx" },
+      { label: "ASEA, Taller Virtual ASEA-PRONAGAS — módulo de preguntas (22 de mayo de 2026)", url: "https://www.gob.mx/cms/uploads/attachment/file/1080286/Mo_dulo_de_preguntas_Taller_ASEA-PRONAGAS_220526.pdf" },
+      { label: "Energía a Debate, calendario de verificación PRONAGAS por entidad (27 de julio de 2026)", url: "https://energiaadebate.com/inicia-asea-en-agosto-verificacion-de-gasolinerias-y-estaciones-de-gas-lp-conforme-al-pronagas/" },
+      { label: "ASEA — publicación de los programas calendarizados", url: "https://www.gob.mx/asea" },
     ],
-    intermediateCta: "¿Tu expediente está listo para una revisión PRONAGAS?",
-    finalCta: "¿Tu estación necesita regularizarse antes de una visita PRONAGAS?",
+    intermediateCta: "¿Ya sabes qué escenario PRONAGAS te asignó ASEA?",
+    finalCta: "¿Tu estación necesita regularizarse antes de la actuación que le toca?",
     datePublished: "2026-08-26",
-    dateModified: "2026-08-27",
+    dateModified: "2026-09-10",
     visual: {
       image: "/visual/imagenes/hidro.webp",
       imageAlt: "Instalaciones de producción de hidrocarburos al atardecer",

@@ -372,6 +372,22 @@ function consultationMarkdown(slug: string): string | null {
       for (const bullet of section.bullets) lines.push(`- ${bullet}`);
       lines.push("");
     }
+    if (section.table) {
+      const cell = (value: string) => value.replace(/\|/g, "\\|");
+      lines.push(
+        `**${section.table.caption}**`,
+        "",
+        `| ${section.table.headers.map(cell).join(" | ")} |`,
+        `|${section.table.headers.map(() => "---").join("|")}|`
+      );
+      for (const row of section.table.rows) {
+        lines.push(`| ${row.cells.map(cell).join(" | ")} |`);
+      }
+      lines.push("");
+    }
+    if (section.note) {
+      lines.push(`> **Dato por confirmar:** ${section.note}`, "");
+    }
   }
 
   if (c.faqs.length) {
