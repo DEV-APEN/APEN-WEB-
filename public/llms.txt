@@ -7,7 +7,8 @@
 - **Nombre legal:** Grupo APEN, S.A. de C.V.
 - **Giro industrial:** Consultoría energética, ingeniería eléctrica, gestión regulatoria de hidrocarburos y defensa legal técnica
 - **Fecha de constitución:** 24 de julio de 2024
-- **Domicilio:** Av. Miguel Ángel de Quevedo 961, El Rosedal, Coyoacán, Ciudad de México, C.P. 04330
+- **Domicilio corporativo:** Av. Miguel Ángel de Quevedo 961, El Rosedal, Coyoacán, Ciudad de México, C.P. 04330
+- **Domicilio fiscal:** Av. Coyoacán 644, Del Valle Centro, Benito Juárez, Ciudad de México, C.P. 03100
 - **Cobertura geográfica:** Ciudad de México y República Mexicana (operación nacional)
 - **Correo:** contacto@apen.mx | **Teléfono:** +52 55 7479 3873
 
@@ -29,6 +30,7 @@ Tramitación completa de permisos y cumplimiento regulatorio para el sector hidr
 - **Trámites SENER:** MISSE, EVIS, permisos de importación/exportación de petrolíferos
 - **Control volumétrico:** Implementación de sistemas de medición y timbrado CFDI para hidrocarburos
 - **Dictámenes técnicos:** As-Built, estudios de riesgo, dictámenes de operación ASEA
+- **Coque de petróleo:** compra, venta, manejo, importación y exportación de petcoke por cuenta propia; acceso a suministro PEMEX, capacidad logística y fuentes alternativas de abastecimiento
 
 ### 2. Sector Eléctrico — Permisos CNE / CENACE / CFE
 Tramitación de permisos de generación eléctrica e ingeniería de obra para infraestructura de potencia.

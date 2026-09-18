@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
-import { MapPin, Phone, Mail, Clock, ArrowRight, ShieldCheck, Send } from 'lucide-react';
+import { MapPin, Building2, Mail, Clock, ArrowRight, ShieldCheck, Send } from 'lucide-react';
 import StoreLocator from '@/components/StoreLocator';
 import { Turnstile } from '@marsidev/react-turnstile';
 
@@ -101,11 +101,26 @@ export default function ContactoPage() {
                      <MapPin size={20} />
                    </div>
                    <div>
-                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Ubicación Central</p>
+                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Domicilio corporativo</p>
                      <p className="text-sm font-bold text-[#0B2341] leading-relaxed">
                        Av. Miguel Ángel de Quevedo 961,<br />
                        El Rosedal, Coyoacán, <br />
                        04330 Ciudad de México, CDMX
+                     </p>
+                   </div>
+                </div>
+
+                {/* Domicilio fiscal */}
+                <div className="space-y-4">
+                   <div className="w-10 h-10 rounded-lg bg-[#008CDE]/10 flex items-center justify-center text-[#008CDE]">
+                     <Building2 size={20} />
+                   </div>
+                   <div>
+                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1">Domicilio fiscal</p>
+                     <p className="text-sm font-bold text-[#0B2341] leading-relaxed">
+                       Av. Coyoacán 644,<br />
+                       Del Valle Centro, Benito Juárez,<br />
+                       03100 Ciudad de México, CDMX
                      </p>
                    </div>
                 </div>

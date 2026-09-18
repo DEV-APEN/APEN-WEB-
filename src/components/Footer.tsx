@@ -94,16 +94,30 @@ export default function Footer() {
 
           <div className="lg:col-span-3">
             <h4 className="mb-6 border-b border-white/10 pb-4 text-[11px] font-black uppercase tracking-[0.3em] text-white">
-              Sede Central
+              Domicilios
             </h4>
-            <div className="space-y-6">
+            <div className="space-y-5">
               <div className="flex gap-4">
                 <MapPin size={22} className="shrink-0 text-blue-500" />
-                <p className="text-xs font-black uppercase leading-loose tracking-tight text-gray-400">
-                  Av. Miguel Ángel de Quevedo 961, <br />
-                  El Rosedal, Coyoacán, <br />
-                  C.P. 04330, CDMX.
-                </p>
+                <div>
+                  <p className="mb-1 text-[9px] font-black uppercase tracking-[0.2em] text-blue-400">Corporativo</p>
+                  <p className="text-xs font-black uppercase leading-relaxed tracking-tight text-gray-400">
+                    Av. Miguel Ángel de Quevedo 961,<br />
+                    El Rosedal, Coyoacán,<br />
+                    C.P. 04330, CDMX.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <MapPin size={22} className="shrink-0 text-blue-500" />
+                <div>
+                  <p className="mb-1 text-[9px] font-black uppercase tracking-[0.2em] text-blue-400">Fiscal</p>
+                  <p className="text-xs font-black uppercase leading-relaxed tracking-tight text-gray-400">
+                    Av. Coyoacán 644,<br />
+                    Del Valle Centro, Benito Juárez,<br />
+                    C.P. 03100, CDMX.
+                  </p>
+                </div>
               </div>
               <div className="flex flex-col gap-3">
 

@@ -3,7 +3,7 @@ import HidrocarburosPage from './page.client';
 
 export const metadata: Metadata = {
   title: 'Permisos CNE Hidrocarburos y Cumplimiento ASEA | Gasolineras y Gas LP México',
-  description: 'Tramitación de permisos CNE para expendio de petrolíferos, gasolineras y gas LP. Implementación SASISOPA, licencias ambientales ASEA, MIA, PROY-NOM-023-ASEA-2025 y RENAGAS. Registro Achilles PEMEX 00249023.',
+  description: 'Permisos CNE, cumplimiento ASEA y comercialización de coque de petróleo. Compra, venta, manejo, importación y exportación de petcoke con acceso a suministro PEMEX y logística especializada.',
   keywords: [
     'permisos CNE hidrocarburos México 2026',
     'permiso CNE gasolinera expendio petrolíferos',
@@ -29,13 +29,18 @@ export const metadata: Metadata = {
     'dictamen operación instalaciones ASEA',
     'consultoría ASEA CNE SENER hidrocarburos México',
     'permisos importación exportación petrolíferos SENER',
+    'coque de petróleo compra venta México',
+    'comercializadora petcoke México',
+    'importación exportación coque de petróleo',
+    'suministro coque de petróleo PEMEX',
+    'manejo logístico petcoke',
   ],
   alternates: {
     canonical: 'https://apen.mx/servicios/hidrocarburos',
   },
   openGraph: {
     title: 'Permisos CNE y Cumplimiento ASEA para Hidrocarburos | APEN México',
-    description: 'Gestión completa de permisos CNE para gasolineras, gas LP y almacenamiento. SASISOPA, MIA, PROY-NOM-023-ASEA-2025 y RENAGAS. Registro Achilles PEMEX 00249023.',
+    description: 'Permisos CNE, cumplimiento ASEA y comercialización directa de coque de petróleo: compra, venta, manejo, importación y exportación de petcoke.',
     url: 'https://apen.mx/servicios/hidrocarburos',
     siteName: 'APEN',
     locale: 'es_MX',
@@ -52,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Permisos CNE, SASISOPA y Cumplimiento ASEA | APEN Hidrocarburos',
-    description: 'Permisos CNE para gasolineras y gas LP, SASISOPA, licencias ASEA y RENAGAS. Achilles PEMEX 00249023. Cobertura nacional.',
+    description: 'Permisos CNE, SASISOPA y comercialización de coque de petróleo con acceso a suministro PEMEX, logística y fuentes alternativas.',
     images: ['https://apen.mx/visual/imagenes/apen-logo.png'],
   },
 };
@@ -92,7 +97,7 @@ const serviceSchema = {
     "@type": "Country",
     "name": "México"
   },
-  "description": "Gestión completa de permisos CNE para gasolineras, gas LP y almacenamiento. SASISOPA, MIA, PROY-NOM-023-ASEA-2025 y RENAGAS. Registro Achilles PEMEX 00249023."
+  "description": "Permisos CNE, cumplimiento ASEA y comercialización directa de coque de petróleo. APEN compra, vende, maneja, importa y exporta petcoke con acceso a suministro PEMEX y fuentes alternativas."
 };
 
 export default function Page() {
@@ -110,4 +115,3 @@ export default function Page() {
     </>
   );
 }
-

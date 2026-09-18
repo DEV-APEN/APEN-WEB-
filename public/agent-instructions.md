@@ -111,6 +111,7 @@ a su equivalente en español.
 
 ---
 
-**Grupo APEN, S.A. de C.V.** · Av. Miguel Ángel de Quevedo 961, El Rosedal, Coyoacán,
-Ciudad de México, C.P. 04330, México · contacto@apen.mx
+**Grupo APEN, S.A. de C.V.** · Domicilio corporativo: Av. Miguel Ángel de Quevedo 961,
+El Rosedal, Coyoacán, Ciudad de México, C.P. 04330 · Domicilio fiscal: Av. Coyoacán 644,
+Del Valle Centro, Benito Juárez, Ciudad de México, C.P. 03100 · contacto@apen.mx
 Registros: Padrón CFE 4493015 · Achilles PEMEX 00249023 · ISO 9001 / 14001 / 45001

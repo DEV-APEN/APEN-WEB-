@@ -142,7 +142,8 @@ const KNOWLEDGE_BASE = [
     botMessage: "Puede comunicarse con nuestro equipo técnico directamente o visitarnos en nuestra sede en Ciudad de México:",
     details: [
       { t: "Correo Institucional", desc: "contacto@apen.mx" },
-      { t: "Sede", desc: "Av. Miguel Ángel de Quevedo 961, El Rosedal, Coyoacán, C.P. 04330, CDMX." }
+      { t: "Domicilio corporativo", desc: "Av. Miguel Ángel de Quevedo 961, El Rosedal, Coyoacán, C.P. 04330, CDMX." },
+      { t: "Domicilio fiscal", desc: "Av. Coyoacán 644, Del Valle Centro, Benito Juárez, C.P. 03100, CDMX." }
     ],
     actionLinks: [
       { label: "Ir al Formulario de Contacto", target: "/contacto" },

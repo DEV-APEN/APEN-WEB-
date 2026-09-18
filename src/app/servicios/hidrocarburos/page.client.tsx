@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, ArrowLeft, Droplets, ShieldCheck, FileText, BarChart3, Globe, Settings, Truck, ClipboardCheck, Microscope, Database, BadgeCheck, FileSearch, HardHat } from "lucide-react";
+import { ArrowRight, ArrowLeft, Droplets, ShieldCheck, FileText, BarChart3, Globe, Settings, Truck, ClipboardCheck, Microscope, Database, BadgeCheck, FileSearch, HardHat, Factory } from "lucide-react";
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
@@ -407,6 +407,74 @@ export default function HidrocarburosPage() {
                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">Diagnóstico Express</span>
                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
+              </div>
+            </motion.div>
+
+            {/* BLOQUE 4: COQUE DE PETRÓLEO */}
+            <motion.div
+               initial={false}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="relative overflow-hidden rounded-[3rem] border border-slate-200 bg-[#0B2341] p-10 shadow-sm transition-all duration-500 hover:shadow-2xl md:p-14"
+            >
+              <div className="absolute right-0 top-0 p-8 text-white opacity-5">
+                <Factory size={220} strokeWidth={1} />
+              </div>
+
+              <div className="relative z-10">
+                <div className="mb-10 flex flex-col gap-6 border-b border-white/10 pb-10 md:flex-row md:items-start md:justify-between">
+                  <div className="max-w-4xl">
+                    <div className="mb-5 flex items-center gap-4">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#008CDE] text-white">
+                        <Factory size={28} />
+                      </div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#4fc3ff]">Comercialización y suministro</span>
+                    </div>
+                    <h3 className="text-3xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-5xl">
+                      Coque de petróleo: compra, venta, manejo, importación y exportación
+                    </h3>
+                    <p className="mt-6 max-w-3xl text-base font-bold leading-relaxed text-blue-100 md:text-lg">
+                      APEN opera como comercializadora directa de petcoke — con acceso a suministro PEMEX, capacidad de manejo logístico y fuentes alternativas de abastecimiento.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,0.65fr)] lg:gap-14">
+                  <div className="space-y-5 text-sm font-medium leading-7 text-slate-300 md:text-base md:leading-8">
+                    <p>
+                      El coque de petróleo es un subproducto sólido del proceso de refinación con alta demanda industrial como combustible y materia prima. APEN participa en su cadena de valor como empresa comercializadora: compra, vende, maneja, importa y exporta petcoke por cuenta propia.
+                    </p>
+                    <p>
+                      Nuestro acceso directo a PEMEX — como proveedor registrado con ID Achilles 00249023 en más de 120 categorías — nos permite operar con el principal productor nacional. Complementamos con fuentes de suministro alternativas y capacidad de manejo logístico para garantizar disponibilidad y continuidad según el perfil de cada operación.
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+                    {[
+                      { icon: BadgeCheck, title: "Acceso PEMEX", detail: "Achilles ID 00249023" },
+                      { icon: Truck, title: "Manejo logístico", detail: "Coordinación según cada operación" },
+                      { icon: Globe, title: "Abasto flexible", detail: "Fuentes nacionales e internacionales" },
+                    ].map(({ icon: Icon, title, detail }) => (
+                      <div key={title} className="flex items-center gap-4 border-l-2 border-[#008CDE] bg-white/5 p-4">
+                        <Icon aria-hidden="true" className="shrink-0 text-[#4fc3ff]" size={22} />
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white">{title}</p>
+                          <p className="mt-1 text-xs font-semibold text-slate-400">{detail}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="relative z-10 mt-12 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center">
+                  <p className="max-w-xl text-sm font-bold text-white">
+                    ¿Necesitas suministro de petcoke o estructurar una operación de compra, importación o exportación?
+                  </p>
+                  <Link href="/contacto" className="group/btn flex shrink-0 items-center justify-center gap-3 rounded-full bg-[#008CDE] px-8 py-4 text-white shadow-lg shadow-blue-950/20 transition-all duration-300 hover:bg-white hover:text-[#0B2341]">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">Solicitar información</span>
+                    <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
+                  </Link>
+                </div>
               </div>
             </motion.div>
 
