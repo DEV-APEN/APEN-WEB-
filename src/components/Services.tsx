@@ -20,7 +20,8 @@ const serviceSections = [
     items: [
       "Cumplimiento ASEA — Sin multas, sin clausuras, sin proyectos frenados.",
       "Permisos y cumplimiento CNE — Hidrocarburos.",
-      "Autorizaciones SENER — Viabilidad social y acceso a mercados de importación."
+      "Autorizaciones SENER — Viabilidad social y acceso a mercados de importación.",
+      "Coque de petróleo — Compra, venta, manejo, importación y exportación."
     ],
     reverse: false,
     url: "/servicios/hidrocarburos"
