@@ -86,10 +86,6 @@ export default function Header({ visible, onOpenMenu }: HeaderProps) {
             onClick={event => { lastTrigger.current = event.currentTarget; setOpen(open === "apen" ? null : "apen"); }}>
             APEN<ChevronDown size={14} aria-hidden />
           </button>
-          <Link className={styles.energy} href="/consultas" aria-label="Energy Explica" onClick={close}>
-            <Image src="/visual/imagenes/energy-explica-menu-button.png" alt="Energy Explica" fill sizes="150px" />
-          </Link>
-          <Link href="/contacto" className={styles.contact} onClick={close}>Contacto<ArrowUpRight size={15} aria-hidden /></Link>
           {open && <div key={open} className={styles.dropdown} data-area={area?.id} id={"nav-" + open}>
             <div className={styles.dropInner}>
               <div className={styles.dropIntro}>
@@ -130,6 +126,13 @@ export default function Header({ visible, onOpenMenu }: HeaderProps) {
             </div>
           </div>}
         </nav>
+        {/* Acciones a la derecha: así los menús de sector quedan centrados en el header. */}
+        <div className={styles.actions}>
+          <Link className={styles.energy} href="/consultas" aria-label="Energy Explica" onClick={close}>
+            <Image src="/visual/imagenes/energy-explica-menu-button.png" alt="Energy Explica" fill sizes="150px" />
+          </Link>
+          <Link href="/contacto" className={styles.contact} onClick={close}>Contacto<ArrowUpRight size={15} aria-hidden /></Link>
+        </div>
         <button type="button" className={styles.mobileTrigger} aria-label="Abrir menú" onClick={() => { close(); if (onOpenMenu) onOpenMenu(); else setMobile(true); }}><Menu size={26} /></button>
       </div>
     </header>

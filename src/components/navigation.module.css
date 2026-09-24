@@ -7,6 +7,10 @@
 .brand { position:relative; width:140px; height:56px; flex-shrink:0; }
 .brand img { object-fit:contain; transform:scale(1.5); }
 .desktop { display:flex; gap:4px; align-items:center; }
+.actions { display:flex; align-items:center; justify-self:end; }
+/* Tres zonas: logo, menús centrados y acciones. Las columnas laterales miden lo mismo,
+   así el bloque central queda en el centro real del header y no corrido a la derecha. */
+@media(min-width:1280px) { .inner { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } .brand { justify-self:start; } }
 .trigger { position:relative; min-height:44px; display:flex; align-items:center; gap:7px; padding:10px 12px; font-size:14px; font-weight:700; border-radius:6px; white-space:nowrap; transition:background-color .18s ease,color .18s ease; }
 .trigger::after { content:""; position:absolute; bottom:3px; left:12px; right:12px; height:2px; background:var(--nav-accent); transform:scaleX(0); transform-origin:left; transition:transform .18s ease; }
 .trigger:hover,.trigger[aria-expanded=true] { background:var(--nav-soft); color:var(--nav-accent); }
@@ -79,6 +83,6 @@
 @keyframes veilIn { from { opacity:0; } to { opacity:1; } }
 @keyframes drawerIn { from { transform:translateX(24px); opacity:.6; } to { transform:translateX(0); opacity:1; } }
 @media(min-width:1280px) and (max-width:1439px) { .inner { gap:16px; padding:0 24px; } .brand { width:120px; } .trigger { font-size:13px; padding:10px 9px; } .energy { width:128px; } .dropInner { grid-template-columns:220px minmax(0,1fr) 210px; gap:24px; } .menuItem { gap:9px; padding:14px 8px; grid-template-columns:36px minmax(0,1fr) 16px; } .itemIcon { width:36px; height:36px; } }
-@media(max-width:1279px) { .desktop,.backdrop { display:none; } .mobileTrigger { display:flex; } .inner { height:80px; padding:0 24px; } }
+@media(max-width:1279px) { .desktop,.actions,.backdrop { display:none; } .mobileTrigger { display:flex; } .inner { height:80px; padding:0 24px; } }
 @media(max-width:380px) { .dialogBody { padding-left:16px; padding-right:16px; } .dialogBody details a { margin-left:24px; } }
 @media(prefers-reduced-motion:reduce) { .header *,.header *::after,.overlay,.overlay * { animation:none!important; transition:none!important; } }

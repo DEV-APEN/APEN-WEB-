@@ -11,7 +11,8 @@
     "verify:services": "node scripts/verify-service-catalog.cjs",
     "verify:navigation": "node scripts/verify-navigation.cjs",
     "verify:theme": "node scripts/verify-service-theme.cjs",
-    "verify:static": "npm run verify:services && npm run verify:navigation && npm run verify:theme"
+    "verify:assistant": "node scripts/verify-assistant.cjs",
+    "verify:static": "npm run verify:services && npm run verify:navigation && npm run verify:theme && npm run verify:assistant"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
