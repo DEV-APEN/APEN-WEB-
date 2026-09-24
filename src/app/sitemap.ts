@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { consultations } from '@/data/consultas';
+import { services, serviceHref } from '@/data/services';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://apen.mx';
@@ -11,9 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/servicios/hidrocarburos`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/servicios/energia`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/servicios/legal`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/servicios/project-finance`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/servicios/financiamiento-de-proyectos`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/nosotros`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${baseUrl}/capacidad-ejecutiva`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/certificaciones`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/diagnostico`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/contacto`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
@@ -33,5 +33,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  return routes;
+  return [...routes, ...services.map(service => ({ url: baseUrl + serviceHref(service), changeFrequency: 'monthly' as const, priority: 0.7 }))];
 }

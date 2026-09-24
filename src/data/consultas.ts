@@ -1402,7 +1402,7 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "Generación distribuida", href: "/consultas/generacion-distribuida" },
       { label: "¿Qué es la CNE?", href: "/consultas/que-es-la-cne" },
       { label: "Sector eléctrico", href: "/servicios/energia" },
-      { label: "Ejecución de proyectos", href: "/capacidad-ejecutiva" },
+      { label: "Ingeniería y ejecución", href: "/servicios/energia#ingenieria-y-ejecucion" },
     ],
     faqs: [
       { question: "¿CENACE otorga permisos de generación?", answer: "La autorización regulatoria corresponde a la CNE dentro de sus atribuciones. CENACE opera el sistema y atiende procesos de interconexión, registro y participación en el mercado." },
@@ -1594,7 +1594,7 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "Permiso CNE para gasolinera", href: "/consultas/permiso-cne-gasolinera" },
       { label: "¿Qué es la MIA?", href: "/consultas/que-es-la-mia" },
       { label: "¿Qué es SASISOPA?", href: "/consultas/que-es-el-sasisopa" },
-      { label: "Project Finance", href: "/servicios/project-finance" },
+      { label: "Financiamiento de proyectos", href: "/servicios/financiamiento-de-proyectos" },
     ],
     faqs: [
       { question: "¿Existe un precio oficial para abrir una gasolinera?", answer: "No. Las autoridades publican cuotas de trámites, pero no un costo total del proyecto. La inversión depende de la ubicación, capacidad, equipos, obra y operación." },
@@ -3071,8 +3071,8 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "Cómo ser proveedor de PEMEX", href: "/consultas/proveedor-pemex" },
       { label: "Servicios", href: "/servicios" },
       { label: "Certificaciones APEN", href: "/certificaciones" },
-      { label: "Capacidad ejecutiva", href: "/capacidad-ejecutiva" },
-      { label: "Project Finance", href: "/servicios/project-finance" },
+      { label: "Proyectos PEMEX", href: "/servicios/hidrocarburos#ingenieria-y-ejecucion" },
+      { label: "Financiamiento de proyectos", href: "/servicios/financiamiento-de-proyectos" },
       { label: "Contacto", href: "/contacto" },
     ],
     faqs: [
@@ -3680,7 +3680,7 @@ const consultationDrafts: ConsultationDraft[] = [
     code: "REF_FIN_GAS_41",
     title: "¿Cómo financiar la apertura o modernización de una gasolinera?",
     shortTitle: "Financiamiento para gasolinera",
-    sector: "Project Finance · Hidrocarburos",
+    sector: "Financiamiento de proyectos · Hidrocarburos",
     badge: "Viabilidad financiera",
     badgeTone: "current",
     extract: "El crédito depende de permisos, predio, inversión, demanda y flujos demostrables, no solamente del valor del terreno.",
@@ -3706,7 +3706,7 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "Cómo abrir una gasolinera", href: "/consultas/como-abrir-una-gasolinera" },
       { label: "Permiso CNE para gasolinera", href: "/consultas/permiso-cne-gasolinera" },
       { label: "Project finance para energía", href: "/consultas/project-finance-energia" },
-      { label: "Project Finance", href: "/servicios/project-finance" },
+      { label: "Financiamiento de proyectos", href: "/servicios/financiamiento-de-proyectos" },
     ],
     faqs: [
       { question: "¿Existe un crédito único para abrir gasolineras?", answer: "No. Los productos y condiciones cambian por institución, etapa, monto, garantías, flujos y perfil del solicitante." },
@@ -3734,7 +3734,7 @@ const consultationDrafts: ConsultationDraft[] = [
     code: "REF_FIN_ENE_42",
     title: "¿Cómo funciona el project finance para proyectos de energía?",
     shortTitle: "Project finance para energía",
-    sector: "Project Finance · Energía",
+    sector: "Financiamiento de proyectos · Energía",
     badge: "Estructuración",
     badgeTone: "current",
     extract: "La deuda se sustenta en la capacidad del proyecto para construirse, operar y generar flujos previsibles.",
@@ -3760,7 +3760,7 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "Almacenamiento de energía", href: "/consultas/almacenamiento-energia-permiso" },
       { label: "Interconexión ante CENACE", href: "/consultas/interconexion-cenace" },
       { label: "Permiso de generación eléctrica", href: "/consultas/permiso-generacion-electrica" },
-      { label: "Project Finance", href: "/servicios/project-finance" },
+      { label: "Financiamiento de proyectos", href: "/servicios/financiamiento-de-proyectos" },
     ],
     faqs: [
       { question: "¿Project finance significa deuda sin recurso?", answer: "No siempre. El recurso y las garantías dependen de la etapa, riesgos, contratos y negociación con los financiadores." },
@@ -3842,8 +3842,8 @@ const consultationDrafts: ConsultationDraft[] = [
 ];
 
 function getRelatedService(sector: string): Consultation["relatedService"] {
-  if (sector.includes("Project Finance") || sector.includes("Financiero")) {
-    return { label: "Project Finance", href: "/servicios/project-finance" };
+  if (sector.includes("Financiamiento de proyectos") || sector.includes("Financiero")) {
+    return { label: "Financiamiento de proyectos", href: "/servicios/financiamiento-de-proyectos" };
   }
 
   if (sector.includes("Eléctrico") || sector.includes("eléctrico")) {

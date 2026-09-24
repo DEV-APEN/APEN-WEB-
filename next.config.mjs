@@ -14,6 +14,8 @@ const nextConfig = {
   // (/about, /contact, /privacy). Se redirigen a la página real en español.
   async redirects() {
     return [
+      { source: '/capacidad-ejecutiva', destination: '/servicios', statusCode: 301 },
+      { source: '/servicios/project-finance', destination: '/servicios/financiamiento-de-proyectos', statusCode: 301 },
       { source: '/about', destination: '/nosotros', statusCode: 301 },
       { source: '/about-us', destination: '/nosotros', statusCode: 301 },
       { source: '/sobre-nosotros', destination: '/nosotros', statusCode: 301 },

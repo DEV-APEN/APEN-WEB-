@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ShieldCheck, X } from 'lucide-react';
@@ -8,6 +8,7 @@ export default function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
 
   const [mounted, setMounted] = useState(false);
+  const barra = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -17,6 +18,25 @@ export default function CookieConsent() {
       return () => clearTimeout(timer);
     }
   }, []);
+
+  // Publica la altura real del aviso para que los elementos flotantes (el
+  // asistente) se acomoden encima en vez de quedar tapados por él.
+  useEffect(() => {
+    const raiz = document.documentElement;
+    const barraActual = barra.current;
+    if (!isVisible || !barraActual) {
+      raiz.style.setProperty('--aviso-cookies', '0px');
+      return;
+    }
+    const medir = () => raiz.style.setProperty('--aviso-cookies', `${barraActual.offsetHeight}px`);
+    medir();
+    const observador = new ResizeObserver(medir);
+    observador.observe(barraActual);
+    return () => {
+      observador.disconnect();
+      raiz.style.setProperty('--aviso-cookies', '0px');
+    };
+  }, [isVisible]);
 
   const acceptCookies = () => {
     localStorage.setItem('apen-cookie-consent', 'true');
@@ -29,6 +49,7 @@ export default function CookieConsent() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          ref={barra}
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           exit={{ y: 100 }}

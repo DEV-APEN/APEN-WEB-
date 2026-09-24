@@ -12,7 +12,7 @@ const serviceSections = [
     label: "consultoría regulatoria",
     subtitle: "Ventanilla única de cumplimiento regulatorio para empresarios del sector.",
     description: "Garantizamos tu autorización ante ASEA — si el expediente entra bien, la ley la concede. Más de 200 juicios ganados lo prueban.",
-    descLink: "/servicios/legal#garantia",
+    descLink: "/servicios/legal/defensa-ante-falta-de-resolucion-de-autorizaciones-asea",
     image: "/visual/imagenes/hidro.webp",
     icon: Droplets,
     color: "#008CDE",
@@ -67,7 +67,7 @@ const serviceSections = [
   },
   {
     id: "04",
-    title: "Project Finance",
+    title: "Financiamiento de proyectos",
     label: "Capital & Fondeo",
     subtitle: "Estructuración financiera y fondeo para activos críticos.",
     description: "Modelado financiero, sindicación de deuda, SPVs y enlace con fondos de capital privado y banca de desarrollo.",
@@ -83,7 +83,7 @@ const serviceSections = [
       "Conexión con Fondos de Inversión Institucionales."
     ],
     reverse: true,
-    url: "/servicios/project-finance"
+    url: "/servicios/financiamiento-de-proyectos"
   }
 ];
 
@@ -147,7 +147,7 @@ export default function Services() {
                    <span className="text-[11px] font-black uppercase tracking-[0.5em] text-apen-blue">{service.label}</span>
                 </div>
                 
-                <h2 className="text-4xl font-black uppercase tracking-tighter text-[#0B2341] md:text-5xl lg:text-6xl mb-6">
+                <h2 className={`w-full break-words font-black uppercase tracking-normal text-[#0B2341] mb-6 ${service.id === "04" ? "text-3xl md:text-4xl lg:text-5xl" : "text-4xl md:text-5xl lg:text-6xl"}`}>
                   {service.title}
                 </h2>
 
@@ -174,9 +174,11 @@ export default function Services() {
                     <div key={i} className="flex items-start gap-4 group/item cursor-default">
                        <div className="h-2 w-2 rounded-full bg-slate-200 mt-1.5 transition-all duration-300 group-hover/item:bg-apen-blue group-hover/item:scale-150 shrink-0" />
                        <div className="flex flex-col gap-1 group-hover/item:translate-x-2 transition-transform duration-300">
-                          <span className="text-[12px] md:text-[13px] font-black uppercase tracking-tight text-[#0B2341]">
-                            {item.title || item}
-                          </span>
+                          {service.id === "01" && i === 3 ? (
+                            <Link href="/servicios/hidrocarburos/coque-de-petroleo-petcoke" className="text-[12px] md:text-[13px] font-black uppercase tracking-normal text-[#0B2341] underline underline-offset-4">{item.title || item}</Link>
+                          ) : (
+                            <span className="text-[12px] md:text-[13px] font-black uppercase tracking-tight text-[#0B2341]">{item.title || item}</span>
+                          )}
                        </div>
                     </div>
                   ))}

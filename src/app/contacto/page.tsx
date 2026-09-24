@@ -1,5 +1,16 @@
 import type { Metadata } from 'next';
 import ContactoPage from './page.client';
+import { getServiceById, getServiceCategory } from '@/data/services';
+import type { ServiceKind } from '@/data/service-areas';
+
+/** Área de interés del formulario que corresponde a cada tipo de servicio. */
+const AREA_INTERES_POR_TIPO: Record<ServiceKind, string> = {
+  regulatorio: 'legal',
+  legal: 'legal',
+  ejecucion: 'ingenieria',
+  financiamiento: 'ventas',
+  comercial: 'ventas',
+};
 
 export const metadata: Metadata = {
   title: 'Contacto | APEN Administradora de Proyectos Energéticos — Especialistas CNE y ASEA',
@@ -51,6 +62,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <ContactoPage />;
+export default function Page({ searchParams }: { searchParams: { servicio?: string } }) {
+  const service = typeof searchParams.servicio === 'string' ? getServiceById(searchParams.servicio) : undefined;
+  // Si la persona llega desde una ficha ya sabemos a qué área pertenece:
+  // el mantenimiento tiene su propia opción, el resto se deduce del tipo.
+  const category = service ? getServiceCategory(service) : undefined;
+  const areaInteres = category
+    ? category.id === 'mantenimiento-y-pruebas'
+      ? 'mantenimiento'
+      : AREA_INTERES_POR_TIPO[category.kind]
+    : undefined;
+
+  return (
+    <ContactoPage
+      selectedService={service ? { id: service.id, title: service.title } : undefined}
+      areaInteres={areaInteres}
+    />
+  );
 }

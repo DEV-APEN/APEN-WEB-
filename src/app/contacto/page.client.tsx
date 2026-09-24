@@ -11,7 +11,13 @@ import { MapPin, Building2, Mail, Clock, ArrowRight, ShieldCheck, Send } from 'l
 import StoreLocator from '@/components/StoreLocator';
 import { Turnstile } from '@marsidev/react-turnstile';
 
-export default function ContactoPage() {
+export default function ContactoPage({
+  selectedService,
+  areaInteres,
+}: {
+  selectedService?: { id: string; title: string };
+  areaInteres?: string;
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
@@ -160,7 +166,7 @@ export default function ContactoPage() {
             </div>
 
             {/* Lado Derecho: Formulario */}
-            <div className="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-slate-100">
+            <div id="solicitud" className="scroll-mt-28 bg-white p-10 md:p-14 rounded-[2.5rem] shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-slate-100">
               <h2 className="text-2xl font-black text-[#0B2341] uppercase tracking-tighter mb-8">
                 Formulario de Atención
               </h2>
@@ -194,7 +200,19 @@ export default function ContactoPage() {
                     <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
                     <input type="hidden" name="subject" value="Nuevo Contacto desde Página de Contacto" />
                     <input type="hidden" name="from_name" value="APEN Web Bot" />
-                    
+                    {/* Trampa para bots: Formspree descarta los envíos que llenan este campo. */}
+                    <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+                    {selectedService && (
+                      <>
+                        <input type="hidden" name="servicio-id" value={selectedService.id} />
+                        <div className="space-y-2">
+                          <p className="text-sm font-bold text-[#0B2341]">Servicio de interés</p>
+                          <input type="hidden" name="servicio" value={selectedService.title} />
+                          <p className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed">{selectedService.title}</p>
+                        </div>
+                      </>
+                    )}
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Nombre Completo *</label>
@@ -219,7 +237,7 @@ export default function ContactoPage() {
 
                     <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Tipo de Consulta *</label>
-                      <select name="tipo-consulta" required defaultValue="" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
+                      <select name="tipo-consulta" required defaultValue={areaInteres ?? ""} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
                         <option value="" disabled>Seleccione área de interés</option>
                         <option value="ingenieria">Ingeniería y Construcción</option>
                         <option value="legal">Materia Regulatoria / Legal</option>

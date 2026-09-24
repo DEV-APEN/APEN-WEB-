@@ -1,4 +1,6 @@
 import { consultations, getConsultation } from "@/data/consultas";
+import { services, serviceHref, getService } from "@/data/services";
+import { serviceAreas } from "@/data/service-areas";
 
 export const SITE_URL = "https://apen.mx";
 
@@ -7,6 +9,8 @@ export const SITE_URL = "https://apen.mx";
  * Se resuelven al equivalente canónico en español.
  */
 export const PATH_ALIASES: Record<string, string> = {
+  "/capacidad-ejecutiva": "/servicios",
+  "/servicios/project-finance": "/servicios/financiamiento-de-proyectos",
   "/about": "/nosotros",
   "/about-us": "/nosotros",
   "/sobre-nosotros": "/nosotros",
@@ -69,7 +73,7 @@ const STATIC_DOCS: Record<string, StaticDoc> = {
       "",
       "1. **Hidrocarburos — ASEA / CNE / SENER** (<https://apen.mx/servicios/hidrocarburos>): permisos de expendio de petrolíferos, gasolineras, gas LP, almacenamiento y distribución; SASISOPA, MIA, Informe Preventivo, Estudio de Riesgo Ambiental, RENAGAS/PRONAGAS, controles volumétricos.",
       "2. **Sector eléctrico — CNE / CENACE / CFE** (<https://apen.mx/servicios/energia>): permisos de generación, autoconsumo interconectado, comercialización, interconexión y acceso al MEM, Código de Red 2.0, CELs, subestaciones y líneas hasta 230 kV.",
-      "3. **Project finance energético** (<https://apen.mx/servicios/project-finance>): modelación financiera, SPVs, levantamiento de capital equity & debt, due diligence técnico-financiero, fondeo NAFIN / Bancomext.",
+      "3. **Financiamiento de proyectos energéticos** (<https://apen.mx/servicios/financiamiento-de-proyectos>): modelación financiera, SPVs, levantamiento de capital equity & debt, due diligence técnico-financiero, fondeo NAFIN / Bancomext.",
       "4. **Defensa legal técnica** (<https://apen.mx/servicios/legal>): levantamiento de clausuras ASEA, afirmativa ficta, PAS, demandas de nulidad ante el TFJA y juicio de amparo.",
       "",
       "## Para quién es",
@@ -81,90 +85,6 @@ const STATIC_DOCS: Record<string, StaticDoc> = {
       "- Diagnóstico regulatorio sin costo con ruta de ejecución en 24 horas: <https://apen.mx/diagnostico>",
       "- Contacto directo: contacto@apen.mx · <https://apen.mx/contacto>",
       "- Fichas técnicas (Energy Explica): <https://apen.mx/consultas>",
-    ].join("\n"),
-  },
-  "/servicios": {
-    title: "Servicios — Consultoría regulatoria energética",
-    description:
-      "Permisos CNE, cumplimiento ASEA, autorizaciones SENER, ingeniería eléctrica y defensa legal ante TFJA y PJF.",
-    body: [
-      "## Servicios",
-      "",
-      "APEN opera cuatro líneas que cubren el ciclo completo de un activo energético en México: permiso, cumplimiento, obra, financiamiento y defensa.",
-      "",
-      "- **Hidrocarburos (ASEA / CNE / SENER)** — <https://apen.mx/servicios/hidrocarburos>",
-      "- **Sector eléctrico (CNE / CENACE / CFE)** — <https://apen.mx/servicios/energia>",
-      "- **Project finance energético** — <https://apen.mx/servicios/project-finance>",
-      "- **Defensa legal técnica** — <https://apen.mx/servicios/legal>",
-      "",
-      "Más de 3,000 trámites resueltos y más de 200 autorizaciones ASEA gestionadas. Padrón CFE 4493015 · Achilles PEMEX 00249023.",
-      "",
-      "## Capacidad de ejecución",
-      "",
-      "La misma firma que gestiona el expediente regulatorio ejecuta la obra: infraestructura eléctrica hasta 230 kV, obra electromecánica y mantenimiento industrial (<https://apen.mx/capacidad-ejecutiva>).",
-    ].join("\n"),
-  },
-  "/servicios/energia": {
-    title: "Sector eléctrico — Permisos CNE, CENACE y obra CFE",
-    description:
-      "Permisos de generación y autoconsumo, interconexión ante CENACE, Código de Red y obra eléctrica hasta 230 kV.",
-    body: [
-      "## Sector eléctrico",
-      "",
-      "- **Permisos CNE:** generación eléctrica, autoconsumo interconectado (Ley del Sector Eléctrico 2025), comercialización, suministro, importación y exportación de energía.",
-      "- **Mercado y red:** solicitudes de interconexión ante CENACE, estudios de impacto, acceso al Mercado Eléctrico Mayorista, cumplimiento del Código de Red 2.0 y CELs.",
-      "- **Ingeniería y obra:** subestaciones hasta 230 kV, líneas de transmisión, tableros de control, cumplimiento PYCON-SE-01, DCCSED01 y DCCSET01.",
-      "- **Licitaciones CFE 2026–2027** con Padrón de proveedor No. 4493015.",
-      "",
-      "Fichas relacionadas: <https://apen.mx/consultas/permiso-generacion-electrica>, <https://apen.mx/consultas/permiso-autoconsumo-electrico>, <https://apen.mx/consultas/interconexion-cenace>.",
-    ].join("\n"),
-  },
-  "/servicios/hidrocarburos": {
-    title: "Hidrocarburos — Permisos CNE y cumplimiento ASEA",
-    description:
-      "Permisos de expendio de petrolíferos, gasolineras y gas LP; SASISOPA, MIA, licencias ambientales ASEA y controles volumétricos.",
-    body: [
-      "## Hidrocarburos",
-      "",
-      "- **Permisos CNE:** expendio de petrolíferos, estaciones de servicio, almacenamiento, distribución, comercialización, gas LP, autoconsumo y carburación.",
-      "- **Cumplimiento ASEA:** SASISOPA, MIA, Informe Preventivo, Estudio de Riesgo Ambiental, bitácoras, dictámenes As-Built y regularización de instalaciones.",
-      "- **Normatividad:** NOM-016-CRE, NOM-003-ASEA-2016, NOM-005-ASEA-2016, PROY-NOM-023-ASEA-2025.",
-      "- **Registros:** RENAGAS / PRONAGAS y controles volumétricos SAT con timbrado del Complemento de Hidrocarburos.",
-      "- **SENER:** MISSE, EVIS y permisos de importación/exportación de petrolíferos.",
-      "- **Coque de petróleo:** comercialización directa, compra, venta, manejo, importación y exportación de petcoke; acceso a suministro PEMEX, coordinación logística y fuentes alternativas de abastecimiento.",
-      "",
-      "Fichas relacionadas: <https://apen.mx/consultas/que-es-el-sasisopa>, <https://apen.mx/consultas/permiso-cne-gasolinera>, <https://apen.mx/consultas/que-es-pronagas>.",
-    ].join("\n"),
-  },
-  "/servicios/legal": {
-    title: "Defensa legal técnica — Clausuras ASEA, TFJA y amparo",
-    description:
-      "Levantamiento de clausuras ASEA, afirmativa ficta, defensa ante PAS, demandas de nulidad ante el TFJA y juicio de amparo.",
-    body: [
-      "## Defensa legal técnica",
-      "",
-      "- **Clausuras:** respuesta inmediata ante clausuras de ASEA, CNE y SENER, con corrección técnica y estrategia jurídica coordinadas desde el primer día.",
-      "- **Afirmativa ficta ASEA:** más de 200 autorizaciones gestionadas para forzar resolución de impacto ambiental dentro de los plazos de ley.",
-      "- **Procedimientos:** defensa en Procedimientos Administrativos de Sanción (PAS) ante ASEA y CNE.",
-      "- **Litigio:** demandas de nulidad ante el TFJA y juicio de amparo contra actos de autoridad.",
-      "- **Ingeniería correctiva:** As-Built, dictámenes técnicos y expedientes de regularización.",
-      "",
-      "Fichas relacionadas: <https://apen.mx/consultas/clausura-gasolinera-asea>, <https://apen.mx/consultas/amparo-multa-asea>, <https://apen.mx/consultas/juicio-tfja-energia>.",
-    ].join("\n"),
-  },
-  "/servicios/project-finance": {
-    title: "Project finance energético",
-    description:
-      "Estructuración financiera, SPVs, levantamiento de capital, due diligence técnico-financiero y fondeo NAFIN/Bancomext.",
-    body: [
-      "## Project finance",
-      "",
-      "- **Estructuración:** modelación financiera, constitución de SPVs y arquitectura de capital equity & debt.",
-      "- **Due diligence:** técnico-financiero de proyectos renovables e infraestructura eléctrica y de hidrocarburos.",
-      "- **Fondeo:** NAFIN, Bancomext, banca de desarrollo y fondos institucionales.",
-      "- **Bankabilidad:** evaluación de activos energéticos críticos — parques solares y eólicos, subestaciones, líneas de transmisión, estaciones de servicio y almacenamiento.",
-      "",
-      "Fichas relacionadas: <https://apen.mx/consultas/project-finance-energia>, <https://apen.mx/consultas/financiamiento-gasolinera>.",
     ].join("\n"),
   },
   "/nosotros": {
@@ -190,28 +110,11 @@ const STATIC_DOCS: Record<string, StaticDoc> = {
       "",
       "## Cómo trabajamos",
       "",
-      "Cada proyecto se aborda con un equipo mixto: ingeniería para el dictamen técnico, área regulatoria para el expediente ante la autoridad y área legal para la defensa. Ese cruce es lo que permite que la misma firma que obtiene el permiso pueda ejecutar la obra (<https://apen.mx/capacidad-ejecutiva>) y sostener la defensa si la autoridad sanciona.",
+      "Cada proyecto se aborda con un equipo mixto: ingeniería para el dictamen técnico, área regulatoria para el expediente ante la autoridad y área legal para la defensa. Ese cruce es lo que permite que la misma firma que obtiene el permiso pueda ejecutar la obra (<https://apen.mx/servicios>) y sostener la defensa si la autoridad sanciona.",
       "",
       "## Desambiguación",
       "",
       "APEN (apen.mx) es una empresa privada del sector energético industrial. No tiene relación con la Alianza Pro Evangelización del Niño ni con ninguna organización religiosa, educativa o de beneficencia.",
-    ].join("\n"),
-  },
-  "/capacidad-ejecutiva": {
-    title: "Capacidad ejecutiva — Licitaciones CFE y PEMEX",
-    description:
-      "APEN participa por cuenta propia en licitaciones CFE y PEMEX: infraestructura eléctrica hasta 230 kV, obra electromecánica y mantenimiento industrial.",
-    body: [
-      "## Capacidad ejecutiva",
-      "",
-      "APEN no solo gestiona permisos: participa por cuenta propia en licitaciones de CFE y PEMEX con Padrón No. 4493015 e ID Achilles 00249023.",
-      "",
-      "- Infraestructura eléctrica hasta 230 kV: subestaciones, líneas de transmisión y tableros de control.",
-      "- Obra electromecánica y mantenimiento industrial.",
-      "- Ingeniería correctiva y As-Built para regularización de instalaciones.",
-      "- Licitaciones de transmisión eléctrica CFE 2026–2027.",
-      "",
-      "Cómo ser proveedor de PEMEX: <https://apen.mx/consultas/proveedor-pemex> · Registro Achilles: <https://apen.mx/consultas/registro-achilles>.",
     ].join("\n"),
   },
   "/certificaciones": {
@@ -450,10 +353,10 @@ export function notFoundMarkdown(requestedPath: string): string {
     "- Servicios: <https://apen.mx/servicios>",
     "- Sector eléctrico: <https://apen.mx/servicios/energia>",
     "- Hidrocarburos: <https://apen.mx/servicios/hidrocarburos>",
-    "- Project finance: <https://apen.mx/servicios/project-finance>",
+    "- Financiamiento de proyectos: <https://apen.mx/servicios/financiamiento-de-proyectos>",
     "- Defensa legal: <https://apen.mx/servicios/legal>",
     "- Nosotros: <https://apen.mx/nosotros>",
-    "- Capacidad ejecutiva: <https://apen.mx/capacidad-ejecutiva>",
+    "- Ingeniería y ejecución: <https://apen.mx/servicios>",
     "- Certificaciones: <https://apen.mx/certificaciones>",
     "- Energy Explica (fichas técnicas): <https://apen.mx/consultas>",
     "- Preguntas frecuentes: <https://apen.mx/faqs>",
@@ -472,6 +375,22 @@ export type MarkdownResult = { status: 200 | 404; body: string };
 
 export function getMarkdownForPath(pathname: string): MarkdownResult {
   const path = normalizePath(pathname);
+  if (path === "/servicios" || serviceAreas.some(a => path === "/servicios/" + a.id)) {
+    const area = serviceAreas.find(a => path === "/servicios/" + a.id);
+    const entries = area ? services.filter(s => s.area === area.id) : services;
+    const lines = ["# " + (area?.title || "Servicios APEN"), "", "URL canónica: <" + SITE_URL + path + ">", "", area?.description || "Cumplimiento regulatorio, ingeniería, defensa legal, financiamiento y comercialización.", "", ...entries.map(s => "- [" + s.title + "](" + SITE_URL + serviceHref(s) + "): " + s.summary), "", FOOTER];
+    return { status: 200, body: lines.join("\n") };
+  }
+  const serviceMatch = path.match(/^\/servicios\/([^/]+)\/([^/]+)$/);
+  if (serviceMatch) {
+    const service = getService(serviceMatch[1], serviceMatch[2]);
+    if (service) return { status: 200, body: [
+      "# " + service.title, "", "URL canónica: <" + SITE_URL + serviceHref(service) + ">", "", service.summary, "", "## Información para iniciar", "",
+      ...service.inputs.map(input => "- " + input), "", "## Entregables", "", service.deliverable, "",
+      "El alcance, costo y calendario se acuerdan en la propuesta. La ficha no garantiza decisiones de autoridades o terceros.", "",
+      "Contacto: <" + SITE_URL + "/contacto?servicio=" + service.id + ">", "", FOOTER
+    ].join("\n") };
+  }
 
   if (path === "/consultas") {
     return {
@@ -494,8 +413,10 @@ export function getMarkdownForPath(pathname: string): MarkdownResult {
 
 /** Rutas con variante markdown — usado por el script de verificación. */
 export function markdownRoutes(): string[] {
-  return [
-    ...Object.keys(STATIC_DOCS),
+  return Array.from(new Set([
+    ...Object.keys(STATIC_DOCS).map(normalizePath),
+    ...serviceAreas.map(a => "/servicios/" + a.id),
+    ...services.map(serviceHref),
     ...consultations.filter((c) => c.revisado).map((c) => `/consultas/${c.slug}`),
-  ];
+  ]));
 }

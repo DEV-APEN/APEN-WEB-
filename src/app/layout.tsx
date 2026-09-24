@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Script from 'next/script';
 import './globals.css';
 import CookieConsent from '../components/CookieConsent';
 import DeferredChatBot from '../components/DeferredChatBot';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = localFont({
+  src: './fonts/inter-latin-variable.woff2',
+  weight: '100 900',
+  style: 'normal',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://apen.mx'),
@@ -153,7 +158,7 @@ const organizationJsonLd = {
     'Ingeniería eléctrica — subestaciones hasta 230 kV',
     'Mercado Eléctrico Mayorista MEM y CENACE',
     'CELs — Certificados de Energías Limpias',
-    'Project Finance energético — SPVs y fondeo NAFIN/Bancomext',
+    'Financiamiento de proyectos energéticos — SPVs y fondeo NAFIN/Bancomext',
     'Defensa legal ante TFJA — nulidad y amparo',
     'PROY-NOM-023-ASEA-2025 y RENAGAS',
     'Control volumétrico y timbrado CFDI hidrocarburos',
@@ -224,9 +229,9 @@ const organizationJsonLd = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Project Finance Energético',
+          name: 'Financiamiento de proyectos energéticos',
           description: 'Estructuración financiera, SPVs, due diligence técnico-financiero y fondeo NAFIN/Bancomext para proyectos de energía renovable e infraestructura eléctrica.',
-          url: 'https://apen.mx/servicios/project-finance',
+          url: 'https://apen.mx/servicios/financiamiento-de-proyectos',
         },
       },
     ],

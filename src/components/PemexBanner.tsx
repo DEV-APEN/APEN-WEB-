@@ -54,7 +54,7 @@ export default function PemexBanner() {
             </div>
 
             <Link
-              href="/capacidad-ejecutiva"
+              href="/servicios/hidrocarburos#ingenieria-y-ejecucion"
               className="group inline-flex items-center gap-4 rounded-full bg-[#008CDE] px-10 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-white shadow-xl transition-all duration-300 hover:bg-white hover:text-[#0B2341]"
             >
               Ver Capacidad Ejecutiva
