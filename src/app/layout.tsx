@@ -4,6 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 import CookieConsent from '../components/CookieConsent';
 import DeferredChatBot from '../components/DeferredChatBot';
+import { socialProfiles } from '@/data/social-profiles';
 
 const inter = localFont({
   src: './fonts/inter-latin-variable.woff2',
@@ -239,7 +240,7 @@ const organizationJsonLd = {
   sameAs: [
     'https://apen.mx',
     'https://share.google/Lvrfvagf3lUpIld0C',
-    'https://linkedin.com/company/apenmx',
+    ...socialProfiles.map(profile => profile.href),
   ],
 };
 

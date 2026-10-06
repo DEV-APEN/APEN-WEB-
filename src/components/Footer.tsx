@@ -10,6 +10,7 @@ export default function Footer() {
     { label: 'Certificaciones', href: '/certificaciones' },
     { label: 'Energy Explica', href: '/consultas' },
     { label: 'Preguntas frecuentes', href: '/faqs' },
+    { label: 'Redes sociales', href: '/redes' },
   ];
 
   return (

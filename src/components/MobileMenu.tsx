@@ -44,6 +44,7 @@ export default function MobileMenu({ isOpen, onClose }: { isOpen:boolean; onClos
           </details>;
         })}
         <details><summary><span className={styles.mobileSectorIcon}><Building2 size={20} aria-hidden /></span>APEN<ChevronDown className={styles.mobileChevron} size={17} aria-hidden /></summary><Link href="/nosotros" onClick={onClose}>Nuestra firma</Link><Link href="/certificaciones" onClick={onClose}>Certificaciones ISO</Link><Link href="/faqs" onClick={onClose}>Preguntas frecuentes</Link></details>
+        <Link href="/redes" onClick={onClose}>Redes sociales</Link>
         <Link href="/consultas" onClick={onClose} aria-label="Energy Explica"><Image src="/visual/imagenes/energy-explica-menu-button.png" alt="Energy Explica" width={200} height={64} className="object-contain" /></Link>
         <Link href="/contacto" onClick={onClose}>Contacto</Link><Link href="/diagnostico" onClick={onClose}>Iniciar diagnóstico</Link>
       </nav>

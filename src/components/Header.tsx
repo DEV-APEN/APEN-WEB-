@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } f
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, ArrowUpRight, BadgeCheck, Building2, ChevronDown, ClipboardCheck, Mail, Menu, MessageCircleQuestion } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BadgeCheck, Building2, ChevronDown, ClipboardCheck, Mail, Menu, MessageCircleQuestion, Share2 } from "lucide-react";
 import { serviceAreas, serviceKindLabels } from "@/data/service-areas";
 import { kindIcons, sectorIcons } from "@/data/service-icons";
 import MobileMenu from "./MobileMenu";
@@ -14,6 +14,7 @@ const corporateLinks = [
   { title: "Certificaciones ISO", href: "/certificaciones", description: "Estándares y acreditaciones", icon: BadgeCheck },
   { title: "Preguntas frecuentes", href: "/faqs", description: "Respuestas sobre nuestros servicios", icon: MessageCircleQuestion },
   { title: "Iniciar diagnóstico", href: "/diagnostico", description: "Cuéntanos qué necesita tu proyecto", icon: ClipboardCheck },
+  { title: "Redes sociales", href: "/redes", description: "Conecta con nuestra comunidad", icon: Share2 },
 ];
 
 interface HeaderProps { visible: boolean; onOpenMenu?: () => void; }
