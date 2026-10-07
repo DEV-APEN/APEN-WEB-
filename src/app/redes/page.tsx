@@ -41,8 +41,11 @@ export default function RedesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className={styles.container}>
         <header className={styles.intro}>
-          <span className={styles.eyebrow}><span aria-hidden />Nuestra comunidad</span>
-          <h1>APEN <span>en redes.</span></h1>
+          <Link href="/" className={styles.introBrand} aria-label="APEN, inicio">
+            <Image src="/visual/imagenes/apen-logo.webp" alt="APEN" fill priority sizes="(max-width: 600px) 280px, 360px" />
+          </Link>
+          <p className={styles.companyName}>Administradora de Proyectos Energéticos</p>
+          <h1>Conecta con <span>APEN.</span></h1>
           <p>La energía nos conecta. Encuéntranos donde empieza tu conversación.</p>
         </header>
 
