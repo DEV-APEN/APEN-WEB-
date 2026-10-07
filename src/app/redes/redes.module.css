@@ -1,54 +1,59 @@
 .page {
-  padding: 112px 24px 64px;
+  padding: 120px 24px 64px;
   background: #fff;
   color: #102746;
   letter-spacing: 0;
 }
 .page :is(h1, h2, a) { letter-spacing: 0; }
 .container { max-width: 1080px; margin: 0 auto; }
-.intro { text-align: center; margin-bottom: 38px; animation: arrive 420ms ease-out both; }
+.intro { text-align: center; margin-bottom: 24px; animation: arrive 550ms ease-out both; }
 .introBrand { display: block; position: relative; width: 360px; max-width: 100%; height: 110px; margin: 0 auto; overflow: hidden; }
 .introBrand img { object-fit: cover; object-position: 50% 46%; }
 .intro > .companyName { margin: 4px auto 20px; color: #102746; font-size: 13px; font-weight: 650; line-height: 1.5; }
 .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #52677d; font-size: 12px; font-weight: 700; }
 .eyebrow > span { width: 7px; height: 7px; border-radius: 50%; background: #008ac1; }
-.intro h1 { margin: 0 0 10px; font-size: 36px; line-height: 1.2; font-weight: 900; }
+.intro h1 { margin: 0 0 12px; font-size: 40px; line-height: 1.2; font-weight: 900; }
 .intro h1 span { color: #007eaf; }
 .intro > p { margin: 0 auto; max-width: 560px; color: #52677d; font-size: 16px; line-height: 1.7; }
 .grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.item { min-width: 0; animation: arrive 420ms ease-out both; animation-delay: var(--delay); }
+.item { min-width: 0; animation: arrive 600ms cubic-bezier(.22, 1, .36, 1) both; animation-delay: var(--delay); }
 .card {
-  display: flex; flex-direction: column; height: 100%; min-height: 248px;
-  padding: 24px; border: 1px solid #dfe5ec; border-radius: 8px;
-  background: #fff; text-decoration: none; position: relative;
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background 200ms ease;
+  display: flex; flex-direction: column; height: 100%; min-height: 280px;
+  padding: 26px; border: 1px solid transparent; border-radius: 8px;
+  background: var(--brand); color: #fff; text-decoration: none; position: relative; overflow: hidden; isolation: isolate;
+  box-shadow: 0 6px 14px #1027460c; transition: transform 250ms ease, box-shadow 250ms ease;
 }
-.card::before { content: ''; position: absolute; top: 24px; bottom: 24px; left: -1px; width: 3px; border-radius: 2px; background: var(--brand); }
-.cardTop { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-.logo { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 8px; background: var(--brand); flex-shrink: 0; }
-.logo img { width: 28px; height: 28px; filter: brightness(0) invert(1); }
-.arrow { color: #667487; transition: transform 200ms ease, color 200ms ease; }
-.cardCopy h2 { color: #102746; font-size: 21px; line-height: 1.3; font-weight: 800; margin: 0 0 4px; }
-.handle { display: block; color: var(--brand); font-size: 13px; line-height: 1.5; font-weight: 600; overflow-wrap: anywhere; }
-.cardCopy p { margin: 10px 0 20px; font-size: 14px; color: #526174; line-height: 1.6; }
-.action { display: inline-flex; align-items: center; gap: 8px; color: var(--brand); font-size: 13px; font-weight: 750; margin-top: auto; }
+.card::before { content: ''; position: absolute; width: 100%; height: 1px; background: #ffffff26; left: 0; top: 100px; z-index: -1; }
+.card::after { content: ''; position: absolute; inset: 0; background: #ffffff08; transform: translateX(-101%) skewX(-12deg); transition: transform 500ms ease; z-index: -1; }
+.cardTop { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+.logo { display: grid; place-items: center; width: 52px; height: 52px; flex-shrink: 0; }
+.logo img { width: 48px; height: 48px; filter: brightness(0) invert(1); transition: transform 250ms ease; }
+.arrow { color: #fff; width: 38px; height: 38px; padding: 8px; border: 1px solid #ffffff55; border-radius: 50%; transition: transform 250ms ease, background 250ms ease; }
+.cardCopy h2 { color: #fff; font-size: 26px; line-height: 1.3; font-weight: 850; margin: 0 0 4px; }
+.handle { display: block; color: #fff; font-size: 13px; line-height: 1.5; font-weight: 600; overflow-wrap: anywhere; }
+.cardCopy p { margin: 12px 0 24px; font-size: 14px; color: #fff; line-height: 1.6; }
+.action { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #fff; font-size: 13px; font-weight: 750; margin-top: auto; padding-top: 16px; border-top: 1px solid #ffffff40; }
 .action svg { transition: transform 200ms ease; }
-.card:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; background: var(--tint); }
-.page a:not(.card):focus-visible { outline: 3px solid #007eaf; outline-offset: 5px; border-radius: 4px; }
+.card:focus-visible { outline: 3px solid var(--brand); outline-offset: 4px; }
+.page :is(a:not(.card), button, input):focus-visible { outline: 3px solid #007eaf; outline-offset: 4px; }
 @media (hover: hover) {
-  .card:hover { transform: translateY(-4px); border-color: var(--brand); box-shadow: 0 12px 28px #1027460d; background: var(--tint); }
-  .card:hover .arrow { color: var(--brand); transform: translate(2px, -2px); }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 30px #10274626; }
+  .card:hover::after { transform: translateX(0) skewX(0); }
+  .card:hover .logo img { transform: rotate(-6deg) scale(1.08); }
+  .card:hover .arrow { transform: translate(2px, -2px); background: #ffffff20; }
   .card:hover .action svg { transform: translateX(4px); }
   .energyArt:hover img { transform: translateY(-3px); }
-  .energyCopy a:hover, .contact a:hover { color: #005d82; }
+  .tools button:hover { background: #e5f3fa; border-color: #007eaf; }
+  .energyCopy a:hover, .downloadQr:hover { background: #005d82; }
+  .contact a:hover { color: #005d82; }
 }
-.card:active { transform: scale(.985); background: var(--tint); }
+.card:active { transform: scale(.985); }
 .energy { display: flex; align-items: center; justify-content: center; gap: 44px; padding: 30px 0; margin-top: 40px; border-top: 1px solid #e2e8ef; border-bottom: 1px solid #e2e8ef; }
 .energyArt { display: block; width: 280px; flex-shrink: 0; }
 .energyArt img { width: 100%; height: auto; transition: transform 220ms ease; }
 .energyCopy h2 { margin: 6px 0 8px; font-size: 24px; line-height: 1.3; font-weight: 800; }
 .energyCopy p { font-size: 14px; line-height: 1.7; color: #526174; max-width: 400px; margin: 0 0 8px; }
-.energyCopy a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: #0074a4; font-size: 14px; font-weight: 750; text-decoration: none; }
+.energyCopy a, .downloadQr { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; padding: 12px 16px; background: #0074a4; color: #fff; border-radius: 6px; font-size: 14px; font-weight: 750; text-decoration: none; transition: background 180ms ease; }
 .contact { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin-top: 24px; font-size: 14px; color: #526174; }
 .contact a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #0074a4; font-weight: 750; text-decoration: none; }
 @keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -64,21 +69,36 @@
   .intro > p { font-size: 15px; margin: 0 auto; }
   .intro > .companyName { max-width: 280px; margin: 6px auto 18px; font-size: 12px; }
   .grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .card { min-height: 0; padding: 20px; display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 16px; }
-  .card::before { top: 18px; bottom: 18px; }
+  .card { min-height: 184px; padding: 22px; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 0 18px; }
+  .card::before { display: none; }
   .cardTop { display: contents; }
-  .logo { grid-column: 1; grid-row: 1 / 3; }
+  .logo { grid-column: 1; grid-row: 1; margin-top: 2px; }
   .arrow { display: none; }
   .cardCopy { grid-column: 2; grid-row: 1; }
-  .cardCopy h2 { font-size: 19px; }
-  .cardCopy p { margin: 7px 0 10px; font-size: 13px; }
-  .action { grid-column: 2; grid-row: 2; }
+  .cardCopy h2 { font-size: 23px; }
+  .cardCopy p { margin: 8px 0 18px; font-size: 13px; }
+  .action { grid-column: 1 / -1; grid-row: 2; }
   .energy { flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 28px; padding: 24px 0; }
   .energyArt { width: 230px; max-width: 100%; align-self: center; }
   .energyCopy h2 { font-size: 22px; }
   .contact { flex-direction: column; align-items: flex-start; gap: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .page *, .page *::before { animation: none !important; transition: none !important; }
-  .card:hover, .card:active { transform: none; }
+  .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; }
+  .card:hover, .card:active, .card:hover .logo img, .card:hover .arrow, .card:hover .action svg, .energyArt:hover img { transform: none; }
 }
+
+.toolsArea { margin-top: 22px; }
+.tools { display: inline-flex; align-items: center; gap: 8px; }
+.tools button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-width: 44px; min-height: 44px; padding: 10px 14px; background: #f3f7fa; border: 1px solid #dce6ee; border-radius: 6px; color: #102746; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 180ms ease, border-color 180ms ease; }
+.toolStatus { min-height: 20px; font-size: 12px; color: #52677d; line-height: 20px; margin: 6px 0 0; }
+.copyInput { padding: 12px; border: 1px solid #ccd9e2; border-radius: 4px; max-width: 100%; color: #102746; background: #fff; }
+.qrDialog { width: min(440px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid #dce6ee; border-radius: 8px; color: #102746; background: #fff; margin: auto; box-shadow: 0 24px 80px #0004; }
+.qrDialog::backdrop { background: #071523aa; backdrop-filter: blur(4px); }
+.qrDialog[open] { animation: arrive 220ms ease-out both; }
+.qrContent { position: relative; padding: 32px 24px 24px; text-align: center; }
+.closeDialog { position: absolute; top: 6px; right: 6px; display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: transparent; color: #52677d; cursor: pointer; border-radius: 4px; }
+.qrContent h2 { font-size: 26px; font-weight: 850; margin: 8px 0 0; line-height: 1.3; }
+.qrImage { display: block; width: 340px; max-width: 100%; height: auto; margin: 0 auto; }
+.qrContent p { color: #52677d; font-size: 14px; margin: 0 0 18px; }
+@media (max-width: 600px) { .qrContent { padding-inline: 16px; } }

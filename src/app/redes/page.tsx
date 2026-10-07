@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { socialProfiles } from '@/data/social-profiles';
 import styles from './redes.module.css';
+import SocialTools from './SocialTools';
 
 const title = 'Redes sociales';
 const description = 'Conecta con APEN en LinkedIn, TikTok, YouTube, X, Instagram y Facebook. Todos nuestros perfiles y Energy Explica en un solo lugar.';
@@ -47,6 +48,7 @@ export default function RedesPage() {
           <p className={styles.companyName}>Administradora de Proyectos Energéticos</p>
           <h1>Conecta con <span>APEN.</span></h1>
           <p>La energía nos conecta. Encuéntranos donde empieza tu conversación.</p>
+          <SocialTools />
         </header>
 
         <nav aria-label="Perfiles de redes sociales de APEN">
@@ -57,7 +59,7 @@ export default function RedesPage() {
                 aria-label={`${profile.name}: ${profile.handle} (abre en una pestaña nueva)`}>
                 <div className={styles.cardTop}>
                   <span className={styles.logo}>
-                    <Image src={`/visual/logos/social/${profile.id}.svg`} alt="" width={28} height={28} />
+                    <Image src={`/visual/logos/social/${profile.id}.svg`} alt="" width={48} height={48} />
                   </span>
                   <ArrowUpRight className={styles.arrow} size={22} aria-hidden />
                 </div>
@@ -66,7 +68,7 @@ export default function RedesPage() {
                   <span className={styles.handle}>{profile.handle}</span>
                   <p>{profile.description}</p>
                 </div>
-                <span className={styles.action}>{profile.action}<ArrowRight size={17} aria-hidden /></span>
+                <span className={styles.action}>{profile.action}<ArrowRight size={19} aria-hidden /></span>
               </a>
             </li>)}
           </ul>
