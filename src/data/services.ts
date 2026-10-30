@@ -674,13 +674,13 @@ export const services: Service[] = [
     "area": "hidrocarburos",
     "category": "proveedores",
     "slug": "registro-de-proveedor-pemex-achilles",
-    "title": "Registro de proveedor PEMEX / Achilles",
-    "summary": "Acompañamos la preparación de información para el registro de proveedores en el entorno PEMEX y Achilles. Revisamos documentación corporativa, capacidad técnica y categorías de interés para integrar el perfil.",
+    "title": "Registro de proveedor PEMEX / HIIP 2.0",
+    "summary": "Asesoramos en la preparación documental para el autorregistro de proveedores PEMEX en HIIP 2.0. Revisamos información corporativa y capacidades, distinguiendo antecedentes Achilles del estado actual del registro oficial gratuito.",
     "inputs": [
       "Documentación corporativa y financiera",
       "Oferta de productos, servicios y evidencias de experiencia"
     ],
-    "deliverable": "Expediente de registro y seguimiento de observaciones documentales."
+    "deliverable": "Carpeta documental y lista de verificación para el autorregistro del proveedor en los canales oficiales de PEMEX."
   },
   {
     "id": "H53",

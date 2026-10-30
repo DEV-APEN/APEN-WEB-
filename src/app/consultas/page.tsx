@@ -5,13 +5,14 @@ import { consultations } from "@/data/consultas";
 
 export const metadata: Metadata = {
   title: "Energy Explica | Consultas sobre ASEA, CNE y regulación energética",
-  description: "Respuestas claras sobre PRONAGAS, SASISOPA, Lista L_CNE, timbrado de gasolina y regulación energética en México.",
+  description: "Guías de ASEA, CNE y SENER: Gas LP, SASISOPA, LAU, COA, MISSE, permisos eléctricos y proveedores PEMEX. Conoce requisitos y servicios relacionados.",
   keywords: [
     "qué es PRONAGAS",
     "qué es el SASISOPA",
     "Lista L_CNE SAT",
     "no puedo timbrar mi gasolina",
     "regulación energética México",
+    "licencia ambiental ASEA", "MISSE SENER", "permiso Gas LP", "registro HIIP PEMEX",
   ],
   alternates: { canonical: "https://apen.mx/consultas" },
   openGraph: {

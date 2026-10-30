@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { consultations } from '@/data/consultas';
 import { services, serviceHref } from '@/data/services';
+import { serviceContent } from '@/data/service-content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://apen.mx';
@@ -34,5 +35,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  return [...routes, ...services.map(service => ({ url: baseUrl + serviceHref(service), changeFrequency: 'monthly' as const, priority: 0.7 }))];
+  return [...routes, ...services.map(service => ({
+    url: baseUrl + serviceHref(service),
+    ...(serviceContent[service.id] ? { lastModified: new Date('2026-10-29') } : {}),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))];
 }

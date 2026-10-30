@@ -1,4 +1,5 @@
-import { consultations, getConsultation } from "@/data/consultas";
+import { consultations, getConsultation, consultationContactHref, getConsultationsForService } from "@/data/consultas";
+import { serviceContent } from "@/data/service-content";
 import { services, serviceHref, getService } from "@/data/services";
 import { serviceAreas } from "@/data/service-areas";
 
@@ -318,7 +319,7 @@ function consultationMarkdown(slug: string): string | null {
   lines.push(
     "## Siguiente paso",
     "",
-    `${c.finalCta} — Servicio relacionado: [${c.relatedService.label}](${SITE_URL}${c.relatedService.href}) · Diagnóstico sin costo: <${SITE_URL}/diagnostico>`,
+    `${c.finalCta} — Servicio relacionado: [${c.relatedService.label}](${SITE_URL}${c.relatedService.href}) · Contacto: <${SITE_URL}${consultationContactHref(c)}>`,
     "",
     FOOTER
   );
@@ -387,6 +388,8 @@ export function getMarkdownForPath(pathname: string): MarkdownResult {
     if (service) return { status: 200, body: [
       "# " + service.title, "", "URL canónica: <" + SITE_URL + serviceHref(service) + ">", "", service.summary, "", "## Información para iniciar", "",
       ...service.inputs.map(input => "- " + input), "", "## Entregables", "", service.deliverable, "",
+      ...(serviceContent[service.id] ? ["## Alcance del servicio", "", ...serviceContent[service.id].steps.map(step => "- " + step), "", "## Preguntas frecuentes", "", ...serviceContent[service.id].faqs.map(faq => "### " + faq.question + "\n\n" + faq.answer), ""] : []),
+      ...getConsultationsForService(service.id).map(article => "- Energy Explica: [" + article.shortTitle + "](" + SITE_URL + "/consultas/" + article.slug + ")"), "",
       "El alcance, costo y calendario se acuerdan en la propuesta. La ficha no garantiza decisiones de autoridades o terceros.", "",
       "Contacto: <" + SITE_URL + "/contacto?servicio=" + service.id + ">", "", FOOTER
     ].join("\n") };

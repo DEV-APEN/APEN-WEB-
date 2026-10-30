@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Bot, BookOpenCheck, ClipboardCheck, ExternalLink, FileCheck2, FileSearch, Link2, Scale, ShieldCheck, TriangleAlert } from "lucide-react";
-import type { Consultation } from "@/data/consultas";
+import { type Consultation, consultationContactHref } from "@/data/consultas";
 
 const sectionIcons = [FileSearch, ClipboardCheck, ShieldCheck, BookOpenCheck];
 
@@ -15,6 +15,7 @@ function formatDate(date: string) {
 }
 
 export default function ConsultaArticle({ consultation }: { consultation: Consultation }) {
+  const contact = consultationContactHref(consultation);
   return (
     <article className="bg-white pb-20 pt-28 md:pb-28 md:pt-32">
       <header className="border-b border-slate-200 pb-12 md:pb-16">
@@ -240,7 +241,7 @@ export default function ConsultaArticle({ consultation }: { consultation: Consul
               {index === 1 && (
                 <div className="mt-9 flex flex-col justify-between gap-5 rounded-lg border border-sky-100 bg-[#F2FAFF] p-6 md:flex-row md:items-center">
                   <p className="font-black leading-snug text-[#0D3D8E]">{consultation.intermediateCta}</p>
-                  <Link href="/contacto" className="inline-flex shrink-0 items-center gap-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#0D3D8E] hover:text-[#00AEEF]">Solicitar diagnóstico <ArrowRight aria-hidden="true" size={15} /></Link>
+                  <Link href={contact} className="inline-flex shrink-0 items-center gap-2 text-[10px] font-black uppercase tracking-[0.18em] text-[#0D3D8E] hover:text-[#00AEEF]">Solicitar diagnóstico <ArrowRight aria-hidden="true" size={15} /></Link>
                 </div>
               )}
             </section>
@@ -293,7 +294,7 @@ export default function ConsultaArticle({ consultation }: { consultation: Consul
           <section className="mt-6 rounded-lg bg-[#0D3D8E] p-8 text-white md:p-10">
             <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#72D5FF]">Gabinete Técnico APEN</p>
             <h2 className="mt-3 max-w-3xl text-2xl font-black leading-tight text-white md:text-3xl">{consultation.finalCta}</h2>
-            <Link href="/contacto" className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-lg bg-[#00AEEF] px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#0D3D8E] transition-colors hover:bg-white hover:text-[#0D3D8E]">
+            <Link href={contact} className="mt-7 inline-flex min-h-12 items-center gap-3 rounded-lg bg-[#00AEEF] px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#0D3D8E] transition-colors hover:bg-white hover:text-[#0D3D8E]">
               Contactar al Gabinete Técnico <ArrowRight aria-hidden="true" size={16} />
             </Link>
           </section>

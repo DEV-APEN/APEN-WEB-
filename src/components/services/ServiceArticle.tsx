@@ -4,23 +4,11 @@ import { ArrowRight, ArrowUpRight, ChevronDown, Check, Plus, ClipboardList, File
 import ConsultasFrame from "@/components/ConsultasFrame";
 import { getServiceArea, serviceKindLabels } from "@/data/service-areas";
 import { type Service, getServiceCategory, getServicesForArea, serviceHref } from "@/data/services";
-import { getConsultation } from "@/data/consultas";
+import { getConsultationsForService } from "@/data/consultas";
+import { serviceContent } from "@/data/service-content";
 import { getServiceInstitutions } from "@/data/service-institutions";
 import styles from "./catalog.module.css";
 
-const relatedById: Record<string, string[]> = {
-  H03:["que-es-la-mia"], H04:["que-es-el-informe-preventivo"], H05:["estudio-riesgo-ambiental"],
-  H11:["que-es-el-sasisopa"], H13:["nom-005-asea-2016"], H14:["bitacoras-asea"],
-  H15:["que-es-pronagas","renagas-vs-pronagas"], H17:["permiso-cne-gasolinera"], H19:["permiso-carburacion-gas-lp"],
-  H23:["permiso-distribucion-gas-lp"], H28:["calidad-combustibles-cne"], H29:["calidad-combustibles-cne"],
-  H35:["cesion-permiso-cne"], H40:["controles-volumetricos-sat"], H41:["lista-l-cne-timbrado"],
-  H51:["proveedor-pemex"], H52:["registro-achilles"], H53:["registro-achilles"], H54:["proveedor-pemex"],
-  E01:["permiso-generacion-electrica"], E02:["permiso-autoconsumo-electrico"], E11:["interconexion-cenace"],
-  E12:["interconexion-cenace"], E14:["que-es-el-codigo-de-red","cumplimiento-codigo-de-red"],
-  E15:["cenace-y-mem"], E20:["generacion-distribuida"], E21:["almacenamiento-energia-permiso"],
-  J03:["clausura-gasolinera-asea","reabrir-gasolinera-clausurada"], J06:["amparo-multa-asea"],
-  J07:["amparo-multa-asea"], J08:["juicio-tfja-energia"], J09:["impugnar-resolucion-cne"],
-};
 const processByKind = {
   regulatorio: ["Revisión de la actividad, permisos existentes y documentación disponible.", "Integración del alcance técnico y documental aplicable al expediente.", "Gestión y seguimiento de observaciones dentro del alcance contratado."],
   ejecucion: ["Levantamiento de necesidades, condiciones del sitio y alcance del proyecto.", "Definición de ingeniería, recursos, programa y criterios de aceptación.", "Ejecución o supervisión del alcance contratado y entrega documental."],
@@ -32,11 +20,12 @@ export default function ServiceArticle({ service: s }: { service: Service }) {
   const area = getServiceArea(s.area)!;
   const category = getServiceCategory(s);
   const related = getServicesForArea(s.area).filter(v => v.category === s.category && v.id !== s.id).slice(0,3);
-  const relatedSlugs = relatedById[s.id] || (s.area === "financiamiento-de-proyectos" ? ["project-finance-energia","financiamiento-gasolinera"] : []);
-  const articles = relatedSlugs.map(getConsultation).filter(a => a?.revisado);
+  const articles = getConsultationsForService(s.id);
+  const content = serviceContent[s.id];
   const authorityList = getServiceInstitutions(s);
   const contact = "/contacto?servicio=" + s.id + "#solicitud";
   const faqs = [
+    ...(content?.faqs ?? []),
     { question: "¿Qué información necesito para iniciar?", answer: s.inputs.join(". ") + ". La revisión inicial permite identificar documentación adicional para el caso." },
     { question: "¿Qué entrega contempla este servicio?", answer: s.deliverable + " El alcance definitivo se establece en la propuesta." },
     { question: "¿Cómo se determinan el costo y el plazo?", answer: category.kind === "comercial" ? "La propuesta depende del volumen, especificación, disponibilidad y condiciones de entrega de la operación." : "Se definen después de revisar el proyecto, la documentación disponible y las actividades requeridas. Cuando interviene una autoridad o un tercero, sus tiempos y decisiones no dependen de APEN." },
@@ -80,12 +69,12 @@ export default function ServiceArticle({ service: s }: { service: Service }) {
               </nav>
               <section id="alcance">
                 <h2><ListChecks size={23} aria-hidden />Alcance del servicio</h2>
-                <ol className={styles.process}>{processByKind[category.kind].map((step, index) => (
+                <ol className={styles.process}>{(content?.steps ?? processByKind[category.kind]).map((step, index) => (
                   <li key={step}><span className={styles.stepNumber} aria-hidden>{String(index + 1).padStart(2, "0")}</span><p>{step}</p></li>
                 ))}</ol>
                 {s.id === "H54" && <div className={styles.prose}>
                   <p>El coque de petróleo es un subproducto sólido del proceso de refinación con demanda industrial como combustible y materia prima. APEN participa en su cadena de valor como empresa comercializadora por cuenta propia.</p>
-                  <p>Nuestro acceso a PEMEX, como proveedor registrado con ID Achilles 00249023 en más de 120 categorías, se complementa con fuentes alternativas de suministro y capacidad de manejo logístico según el perfil de cada operación.</p>
+                  <p>Evaluamos fuentes de abastecimiento y alternativas logísticas según el perfil de cada operación. El origen, disponibilidad y condiciones de suministro se confirman en la propuesta comercial; el registro de proveedor no acredita por sí solo un contrato de suministro.</p>
                 </div>}
               </section>
               <section id="requisitos">

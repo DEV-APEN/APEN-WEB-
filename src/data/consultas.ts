@@ -1,3 +1,8 @@
+import { getServiceById, serviceHref, services } from "./services";
+import { hydrocarbonConsultations } from "./consultas-nuevas/hidrocarburos";
+import { complianceConsultations } from "./consultas-nuevas/cumplimiento";
+import { projectConsultations } from "./consultas-nuevas/proyectos";
+
 export type ConsultationTableRow = {
   cells: string[];
   /** Resalta la fila (p. ej. las entidades del mes en curso). */
@@ -68,7 +73,7 @@ export type Consultation = {
   visual: ConsultationVisual;
 };
 
-type ConsultationDraft = Omit<Consultation, "relatedService" | "revisado"> & {
+export type ConsultationDraft = Omit<Consultation, "relatedService" | "revisado"> & {
   relatedService?: Consultation["relatedService"];
   revisado?: boolean;
 };
@@ -147,7 +152,7 @@ export const pronagasCalendar: PronagasCalendarEntry[] = [
 ];
 
 /** Periodo que se resalta en la tabla del calendario. */
-const PRONAGAS_PERIODO_DESTACADO = "Septiembre 2026";
+const PRONAGAS_PERIODO_DESTACADO = "Octubre 2026";
 
 const ESCENARIO_ORDEN: PronagasEscenario[] = ["Inspección", "Supervisión", "Ordenamiento (EIA)"];
 
@@ -456,7 +461,7 @@ const consultationDrafts: ConsultationDraft[] = [
     slug: "que-es-el-sasisopa",
     code: "REF_ASEA_03",
     title: "¿Qué es el SASISOPA y quién debe implementarlo?",
-    shortTitle: "¿Qué es el SASISOPA?",
+    shortTitle: "SASISOPA ASEA: qué es y quién debe implementarlo",
     sector: "Hidrocarburos · ASEA",
     badge: "Vigente 2026",
     badgeTone: "current",
@@ -943,7 +948,7 @@ const consultationDrafts: ConsultationDraft[] = [
     slug: "que-es-la-mia",
     code: "REF_ASEA_MIA_08",
     title: "¿Qué es la MIA y cuándo la exige ASEA?",
-    shortTitle: "¿Qué es la MIA?",
+    shortTitle: "MIA ASEA: qué es, cuándo aplica y requisitos",
     sector: "Hidrocarburos · Impacto ambiental",
     badge: "Prioridad alta",
     badgeTone: "current",
@@ -1131,7 +1136,7 @@ const consultationDrafts: ConsultationDraft[] = [
     slug: "bitacoras-asea",
     code: "REF_ASEA_BITACORAS_10",
     title: "¿Qué bitácoras ASEA debe llevar una gasolinera?",
-    shortTitle: "Bitácoras ASEA",
+    shortTitle: "Bitácoras ASEA para gasolineras: registros y requisitos",
     sector: "Hidrocarburos · Operación",
     badge: "Cumplimiento continuo",
     badgeTone: "current",
@@ -3026,28 +3031,28 @@ const consultationDrafts: ConsultationDraft[] = [
   {
     slug: "registro-achilles",
     code: "REF_PEMEX_ACH_31",
-    title: "¿Qué es el Registro Achilles para proveedores de PEMEX?",
-    shortTitle: "Registro Achilles para PEMEX",
+    title: "Registro Achilles y PEMEX: ¿qué cambió con HIIP 2.0?",
+    shortTitle: "Achilles y registro PEMEX HIIP 2.0",
     sector: "PEMEX · Proveedores",
     badge: "Acceso comercial",
     badgeTone: "current",
-    extract: "La plataforma que valida y administra información de proveedores dentro del proceso de abastecimiento de PEMEX.",
-    description: "Qué es Achilles en el registro de proveedores PEMEX, niveles de registro, documentos, vigencia y diferencia entre registrarse y obtener un contrato.",
-    keywords: ["qué es el registro Achilles", "Achilles PEMEX", "registro proveedor PEMEX", "constancia Achilles vigente"],
+    extract: "Achilles es un antecedente del registro de proveedores; PEMEX identifica HIIP 2.0 como la plataforma oficial actual.",
+    description: "Diferencias entre Achilles y el registro PEMEX HIIP 2.0: autorregistro gratuito, actualización documental y revisión del estado actual del proveedor.",
+    keywords: ["Achilles PEMEX registro", "registro HIIP PEMEX", "HIIP 2.0", "actualizar registro proveedor PEMEX"],
     energyLine: "Estar registrado mejora la visibilidad y habilita procesos; no sustituye la evaluación técnica ni garantiza una adjudicación.",
-    quickAnswer: "Achilles participa como tercero encargado de validar y gestionar información de proveedores dentro de la herramienta de PEMEX. El proveedor integra datos legales, comerciales, financieros y de cumplimiento, mantiene vigente su registro y obtiene la constancia correspondiente. El registro no garantiza contratos, pero puede ser requerido para formalizar relaciones o participar en procedimientos específicos.",
+    quickAnswer: "Achilles aparece en antecedentes del registro de proveedores PEMEX, pero la plataforma oficial actual es HIIP 2.0. El proveedor debe revisar su estado y preparar su autorregistro o actualización directamente en los canales de PEMEX. El trámite oficial es gratuito y una constancia histórica no garantiza vigencia, equivalencia ni adjudicación de contratos.",
     regulatoryRows: [
       { label: "Comprador", value: "Petróleos Mexicanos y sus empresas" },
-      { label: "Gestión de información", value: "Achilles como tercero de validación de proveedores" },
-      { label: "Niveles", value: "Registro inicial y registro extendido o suplementario, según el proceso" },
-      { label: "Actualización", value: "La información debe mantenerse vigente y actualizarse al menos anualmente" },
-      { label: "Credencial APEN", value: "Registro Achilles 00249023, con vigencia corporativa informada a noviembre de 2026" },
+      { label: "Plataforma actual", value: "Herramienta Integral de Información de Proveedores, HIIP 2.0" },
+      { label: "Costo oficial", value: "Registro gratuito, según el aviso de PEMEX" },
+      { label: "Responsable", value: "Autorregistro del proveedor en los canales oficiales" },
+      { label: "Antecedentes Achilles", value: "No acreditan por sí solos vigencia o equivalencia en HIIP 2.0" },
     ],
     sections: [
       {
         id: "funcion",
-        title: "¿Qué función cumple Achilles?",
-        paragraphs: ["PEMEX utiliza su registro para conocer la identidad, capacidades, oferta y situación de sus proveedores. Achilles valida y administra parte de esta información como tercero especializado, conforme al nivel y proceso aplicable."],
+        title: "¿Por qué todavía se busca Achilles PEMEX?",
+        paragraphs: ["Documentos históricos de PEMEX mencionan Achilles. Los avisos actuales remiten al registro oficial en HIIP 2.0: antes de iniciar o actualizar el expediente, el proveedor debe consultar esa plataforma y los canales de atención oficiales, sin asumir que una constancia anterior equivale al registro actual."],
       },
       {
         id: "informacion",
@@ -3058,7 +3063,7 @@ const consultationDrafts: ConsultationDraft[] = [
       {
         id: "vigencia",
         title: "¿Cómo se mantiene vigente?",
-        paragraphs: ["El proveedor debe renovar o actualizar su registro al menos una vez al año y cada vez que cambien datos relevantes. Los documentos con vencimiento deben sustituirse antes de que afecten una licitación o contratación."],
+        paragraphs: ["Debe consultarse el estado del expediente y atenderse la actualización requerida por HIIP 2.0 y el procedimiento concreto. Los documentos con vencimiento deben revisarse antes de participar; no debe trasladarse automáticamente una periodicidad histórica al esquema actual."],
       },
       {
         id: "alcance",
@@ -3076,21 +3081,22 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "Contacto", href: "/contacto" },
     ],
     faqs: [
-      { question: "¿Achilles es PEMEX?", answer: "No. Es la empresa que PEMEX utiliza para validar y gestionar información de proveedores dentro de su esquema registral." },
+      { question: "¿Achilles es la plataforma actual de PEMEX?", answer: "Los avisos actuales de PEMEX identifican HIIP 2.0 como la plataforma oficial de registro. Achilles aparece en antecedentes; debe confirmarse el estado del proveedor directamente en el sistema vigente." },
       { question: "¿Registrarse garantiza ganar una licitación?", answer: "No. La inscripción o constancia no implica adjudicación ni compromiso de contratación." },
-      { question: "¿Cada cuánto se actualiza el registro?", answer: "PEMEX indica que debe actualizarse al menos una vez al año y cuando cambie la información proporcionada." },
+      { question: "¿Se paga por registrarse en HIIP 2.0?", answer: "PEMEX informa que su registro es gratuito y que es un proceso de autorregistro. La asesoría documental privada, si se contrata, no es un pago de inscripción a PEMEX ni garantiza contratos." },
       { question: "¿Todos los concursos piden la misma constancia?", answer: "No necesariamente. Deben revisarse la convocatoria y bases de cada procedimiento, porque pueden exigir un nivel o documentación específicos." },
     ],
     sources: [
       { label: "PEMEX, Registro de proveedores", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Paginas/default.aspx" },
       { label: "PEMEX, Preguntas frecuentes para proveedores y contratistas", url: "https://www.pemex.com/ayuda/preguntas_frecuentes/Paginas/proveedores-contratistas.aspx" },
       { label: "PEMEX, Sistema de registro y evaluación de proveedores", url: "https://www.pemex.com/en/procurement/supplier_relationships/supplier_registration/Documents/suppliers-brochure-en.pdf" },
-      { label: "Achilles Network", url: "https://www.achilles.com/es/achilles-network/" },
+      { label: "PEMEX, registro actual HIIP 2.0", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Paginas/proceso-registro.aspx" },
+      { label: "PEMEX, aviso: gratuidad y autorregistro", url: "https://www.pemex.com/procura/Paginas/aviso-proveedores.aspx" },
     ],
     intermediateCta: "¿Tu expediente registral demuestra las capacidades que ofreces a PEMEX?",
-    finalCta: "¿Necesitas ordenar tu registro y carpeta de proveedor para una oportunidad PEMEX?",
+    finalCta: "¿Necesitas preparar tu carpeta documental para revisar o actualizar tu registro PEMEX?",
     datePublished: "2026-08-27",
-    dateModified: "2026-08-27",
+    dateModified: "2026-10-29",
     visual: {
       image: "/visual/imagenes/cer.webp",
       imageAlt: "Equipo técnico revisando documentación de un proveedor energético",
@@ -3102,7 +3108,7 @@ const consultationDrafts: ConsultationDraft[] = [
     slug: "permiso-distribucion-gas-lp",
     code: "REF_CNE_GLP_32",
     title: "¿Cómo obtener un permiso de distribución de Gas LP?",
-    shortTitle: "Permiso de distribución de Gas LP",
+    shortTitle: "Permiso de distribución de Gas LP: requisitos CNE",
     sector: "Hidrocarburos · Gas LP",
     badge: "Permiso CNE",
     badgeTone: "critical",
@@ -3857,11 +3863,48 @@ function getRelatedService(sector: string): Consultation["relatedService"] {
   return { label: "Servicios de hidrocarburos", href: "/servicios/hidrocarburos" };
 }
 
-export const consultations: Consultation[] = consultationDrafts.map((consultation) => ({
+const consultationServiceIds: Record<string, string> = {
+  "que-es-pronagas": "H15", "lista-l-cne-timbrado": "H41", "que-es-el-sasisopa": "H11",
+  "como-abrir-una-gasolinera": "H17", "permiso-cne-gasolinera": "H17", "que-es-la-cne": "H17",
+  "permiso-cre-sigue-vigente": "H34", "que-es-la-mia": "H03", "amparo-multa-asea": "J07",
+  "bitacoras-asea": "H14", "que-es-el-codigo-de-red": "E14", "cenace-y-mem": "E15",
+  "que-es-la-asea": "H01", "cuanto-cuesta-abrir-gasolinera": "P01", "cesion-permiso-cne": "H35",
+  "controles-volumetricos-sat": "H40", "clausura-gasolinera-asea": "J03",
+  "permiso-generacion-electrica": "E01", "checklist-cumplimiento-gasolinera": "H11",
+  "convocatoria-permisos-generacion-2026": "E01", "permiso-autoconsumo-electrico": "E02",
+  "que-es-la-sener": "H36", "que-es-el-informe-preventivo": "H04", "estudio-riesgo-ambiental": "H05",
+  "permiso-expendio-petroliferos": "H17", "reabrir-gasolinera-clausurada": "J03",
+  "calidad-combustibles-cne": "H29", "nom-005-asea-2016": "H13", "renagas-vs-pronagas": "H15",
+  "permisos-gas-lp": "H20", "registro-achilles": "H52", "permiso-distribucion-gas-lp": "H20",
+  "permiso-carburacion-gas-lp": "H19", "cogeneracion-permiso-cne": "E01",
+  "generacion-distribuida": "E20", "almacenamiento-energia-permiso": "E21",
+  "cumplimiento-codigo-de-red": "E14", "interconexion-cenace": "E11",
+  "impugnar-resolucion-cne": "J06", "juicio-tfja-energia": "J08",
+  "financiamiento-gasolinera": "P01", "project-finance-energia": "P11", "proveedor-pemex": "H52",
+};
+
+const allConsultations: Consultation[] = [...consultationDrafts, ...hydrocarbonConsultations, ...complianceConsultations, ...projectConsultations].map((consultation) => ({
   ...consultation,
-  relatedService: consultation.relatedService ?? getRelatedService(consultation.sector),
-  revisado: true,
+  relatedService: (() => {
+    const service = getServiceById(consultationServiceIds[consultation.slug]);
+    return service ? { label: service.title, href: serviceHref(service) } : consultation.relatedService ?? getRelatedService(consultation.sector);
+  })(),
+  revisado: consultation.revisado ?? true,
 }));
+
+// Drafts stay out of every public consumer, including static routes and markdown.
+export const pendingConsultations = allConsultations.filter((consultation) => !consultation.revisado);
+export const consultations = allConsultations.filter((consultation) => consultation.revisado);
+
+export function getConsultationsForService(serviceId: string) {
+  const service = getServiceById(serviceId);
+  return service ? consultations.filter((consultation) => consultation.relatedService.href === serviceHref(service)) : [];
+}
+
+export function consultationContactHref(consultation: Consultation) {
+  const linkedService = services.find((service) => serviceHref(service) === consultation.relatedService.href);
+  return linkedService ? `/contacto?servicio=${linkedService.id}#solicitud` : "/contacto#solicitud";
+}
 
 export function getConsultation(slug: string) {
   return consultations.find((consultation) => consultation.slug === slug);
