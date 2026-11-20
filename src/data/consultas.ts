@@ -2,6 +2,8 @@ import { getServiceById, serviceHref, services } from "./services";
 import { hydrocarbonConsultations } from "./consultas-nuevas/hidrocarburos";
 import { complianceConsultations } from "./consultas-nuevas/cumplimiento";
 import { projectConsultations } from "./consultas-nuevas/proyectos";
+import { novemberNewsConsultations } from "./consultas-nuevas/novedades-noviembre";
+import { novemberOperationsConsultations } from "./consultas-nuevas/operacion-noviembre";
 
 export type ConsultationTableRow = {
   cells: string[];
@@ -1173,6 +1175,7 @@ const consultationDrafts: ConsultationDraft[] = [
         paragraphs: [
           "La norma define registros específicos para distintas actividades. Como criterio de control, cada entrada debe ser legible, fechada y relacionarse con el equipo o zona intervenida, la persona responsable, el proveedor participante y la evidencia generada.",
           "Una fotografía o factura aislada no sustituye el registro técnico. Debe existir una cadena que conecte orden de trabajo, ejecución, resultado, corrección y cierre.",
+          "La revisión sistemática registrada el 3 de noviembre de 2026 confirmó la NOM-005-ASEA-2016. Por ello, no debe abandonarse el control de bitácoras con el argumento de que existe una norma sustituta ya publicada.",
         ],
       },
       {
@@ -1202,6 +1205,7 @@ const consultationDrafts: ConsultationDraft[] = [
     related: [
       { label: "SASISOPA", href: "/consultas/que-es-el-sasisopa" },
       { label: "NOM-005-ASEA-2016", href: "/consultas/nom-005-asea-2016" },
+      { label: "Dictamen de operación y mantenimiento", href: "/consultas/dictamen-operacion-mantenimiento-gasolinera" },
       { label: "¿Qué es la MIA?", href: "/consultas/que-es-la-mia" },
       { label: "PRONAGAS", href: "/consultas/que-es-pronagas" },
       { label: "Amparo contra multa ASEA", href: "/consultas/amparo-multa-asea" },
@@ -1215,13 +1219,14 @@ const consultationDrafts: ConsultationDraft[] = [
     ],
     sources: [
       { label: "DOF, NOM-005-ASEA-2016", url: "https://www.dof.gob.mx/nota_detalle.php?codigo=5459927&fecha=07/11/2016" },
+      { label: "Secretaría de Economía, revisión sistemática de noviembre de 2026", url: "https://platiica.economia.gob.mx/normalizacion/nom-005-asea-2016/" },
       { label: "ASEA, Estaciones de servicio", url: "https://www.gob.mx/asea/acciones-y-programas/estaciones-de-servicio?idiom=es" },
       { label: "ASEA, Guías para trámites y cumplimiento", url: "https://www.gob.mx/asea/acciones-y-programas/l3" },
     ],
     intermediateCta: "¿Tus bitácoras coinciden con el programa de mantenimiento y la instalación real?",
     finalCta: "¿Necesitas ordenar la evidencia operativa de tu estación antes de una inspección?",
     datePublished: "2026-08-26",
-    dateModified: "2026-08-26",
+    dateModified: "2026-11-19",
     visual: {
       image: "/visual/imagenes/metricas.webp",
       imageAlt: "Equipo revisando registros, indicadores y documentación operativa",
@@ -2114,19 +2119,19 @@ const consultationDrafts: ConsultationDraft[] = [
     title: "¿Qué pasó con la Segunda Convocatoria de permisos de generación 2026?",
     shortTitle: "Convocatoria de generación 2026",
     sector: "Sector eléctrico · SENER / CNE / CENACE",
-    badge: "Calendario vigente",
+    badge: "Resultados publicados",
     badgeTone: "current",
-    extract: "El registro cerró y el proceso sigue en evaluación; la tercera modificación llevó los resultados a octubre de 2026.",
-    description: "Estado y calendario vigente de la Segunda Convocatoria 2026 para permisos de generación eléctrica e interconexión al Sistema Eléctrico Nacional.",
+    extract: "La autoridad publicó los resultados el 6 de noviembre de 2026: seis permisos aprobados. El registro de esta convocatoria está cerrado.",
+    description: "Resultados de la Segunda Convocatoria de generación 2026: permisos aprobados, calendario final y seguimiento de proyectos que no obtuvieron autorización.",
     keywords: ["segunda convocatoria permisos generación 2026", "convocatoria CNE generación", "resultados permisos generación 2026", "VUPE generación eléctrica"],
     energyLine: "La convocatoria no fue una ventanilla ordinaria: alineó permiso e interconexión con capacidad disponible y planeación vinculante.",
-    quickAnswer: "La Segunda Convocatoria se publicó el 11 de mayo de 2026 para proyectos nuevos de generación de 0.7 MW o más que buscan interconectarse al SEN. El registro ya cerró. Tras tres modificaciones al calendario, la CNE prevé publicar resultados el 12 de octubre, notificar permisos el 13 y recibir desistimientos de trámites previos del 14 al 19 de octubre de 2026.",
+    quickAnswer: "La Segunda Convocatoria de generación 2026 ya publicó resultados. La Ventanilla Energía reporta seis permisos aprobados el 6 de noviembre. El registro está cerrado; participar no garantizaba autorización ni interconexión. Los proyectos sin aprobación deben revisar su expediente y las vías aplicables, sin asumir incorporación automática a otra convocatoria.",
     regulatoryRows: [
       { label: "Publicación original", value: "11 de mayo de 2026" },
       { label: "Sujetos", value: "Nuevos proyectos de generación de 0.7 MW o más con interconexión al SEN" },
       { label: "Coordinación", value: "SENER, CNE y CENACE mediante VUPE y OPE" },
-      { label: "Estado al 27 de agosto", value: "Registro cerrado; solicitudes en evaluación conforme al calendario modificado" },
-      { label: "Resultados vigentes", value: "Publicación prevista el 12 de octubre y notificación el 13 de octubre de 2026" },
+      { label: "Estado al 19 de noviembre", value: "Registro cerrado; resultados publicados" },
+      { label: "Resultados", value: "6 permisos aprobados; publicación del 6 de noviembre de 2026" },
     ],
     sections: [
       {
@@ -2139,16 +2144,15 @@ const consultationDrafts: ConsultationDraft[] = [
       },
       {
         id: "calendario",
-        title: "¿Cuál es el calendario vigente?",
+        title: "¿Qué calendario sustituyó las fechas de octubre?",
         paragraphs: [
-          "La convocatoria original fue modificada tres veces. La tercera modificación, publicada el 18 de junio de 2026, sustituyó las fechas de las etapas 3 a 17.",
+          "La cuarta modificación sustituyó el calendario previo. Sus etapas finales ya transcurrieron; no son una nueva ventana de registro ni una promesa de resolución para otros proyectos.",
         ],
         bullets: [
-          "Evaluación técnica y actuaciones coordinadas durante el calendario publicado.",
-          "Revisión y aprobación por el Comité Técnico de la CNE del 8 al 9 de octubre.",
-          "Publicación de resultados el 12 de octubre.",
-          "Notificación de permisos aprobados el 13 de octubre.",
-          "Desistimiento de solicitudes previas, cuando corresponda, del 14 al 19 de octubre.",
+          "Revisión y aprobación por el Comité Técnico: 4 y 5 de noviembre de 2026.",
+          "Publicación de resultados: 6 de noviembre de 2026.",
+          "Notificación prevista de permisos aprobados: 9 de noviembre de 2026.",
+          "Desistimientos de solicitudes previas, cuando correspondieran: del 10 al 13 de noviembre de 2026.",
         ],
       },
       {
@@ -2171,27 +2175,29 @@ const consultationDrafts: ConsultationDraft[] = [
     vision: "APEN sigue la convocatoria como un expediente único entre permiso, interconexión y financiamiento. El calendario importa, pero la decisión se sostiene en la consistencia técnica y documental del proyecto.",
     related: [
       { label: "Permiso de generación eléctrica", href: "/consultas/permiso-generacion-electrica" },
+      { label: "Proyecto no aprobado en la convocatoria", href: "/consultas/proyecto-no-aprobado-convocatoria-generacion" },
       { label: "Permiso de autoconsumo", href: "/consultas/permiso-autoconsumo-electrico" },
       { label: "CENACE y el MEM", href: "/consultas/cenace-y-mem" },
       { label: "Código de Red", href: "/consultas/que-es-el-codigo-de-red" },
       { label: "Sector eléctrico", href: "/servicios/energia" },
     ],
     faqs: [
-      { question: "¿Todavía puedo registrar un proyecto en esta convocatoria?", answer: "No. La etapa de registro concluyó. El proceso vigente se encuentra en evaluación conforme al calendario modificado." },
-      { question: "¿Cuándo se publican los resultados?", answer: "La tercera modificación prevé la publicación el 12 de octubre de 2026 y la notificación de permisos aprobados el 13 de octubre." },
+      { question: "¿Todavía puedo registrar un proyecto en esta convocatoria?", answer: "No. El registro concluyó y los resultados ya fueron publicados. Una eventual convocatoria posterior tendrá sus propios requisitos y etapas." },
+      { question: "¿Cuándo se publicaron los resultados?", answer: "El 6 de noviembre de 2026. La Ventanilla Energía muestra seis permisos aprobados; debe revisarse el folio y la notificación particular del proyecto." },
       { question: "¿Participar garantiza el permiso y la interconexión?", answer: "No. El proyecto debe cumplir los requisitos legales, técnicos y financieros, además de las condiciones y actuaciones de interconexión aplicables." },
-      { question: "¿Por qué aparecen fechas distintas en documentos anteriores?", answer: "Porque el calendario fue modificado tres veces. Debe consultarse la tercera modificación publicada el 18 de junio de 2026." },
+      { question: "¿Por qué aparecen fechas distintas en documentos anteriores?", answer: "El calendario tuvo modificaciones. La cuarta modificación desplazó las etapas finales a noviembre; debe leerse junto con los resultados y las notificaciones particulares." },
     ],
     sources: [
       { label: "DOF, Segunda Convocatoria del 11 de mayo de 2026", url: "https://sidof.segob.gob.mx/notas/5787117" },
-      { label: "DOF, tercera modificación a la Segunda Convocatoria", url: "https://sidof.segob.gob.mx/notas/docFuente/5790938" },
+      { label: "DOF, cuarta modificación a la Segunda Convocatoria", url: "https://sidof.segob.gob.mx/notas/5798361" },
+      { label: "Ventanilla Energía, resultados de la Segunda Convocatoria", url: "https://ventanilla.energia.gob.mx/resultados2daConv" },
       { label: "CNE, permisos de generación y calendario", url: "https://www.gob.mx/cne/acciones-y-programas/permisos-de-generacion-de-energia-electrica" },
       { label: "Ventanilla Energía, normativa de la convocatoria", url: "https://ventanilla.energia.gob.mx/normativa" },
     ],
-    intermediateCta: "¿Tu expediente y tus estudios reflejan las obras, capacidad y calendario que hoy evalúan las autoridades?",
+    intermediateCta: "¿Necesitas revisar el resultado, las obras aceptadas y la ruta aplicable a tu proyecto?",
     finalCta: "¿Necesitas seguimiento técnico-regulatorio de tu proyecto dentro o fuera de la convocatoria?",
     datePublished: "2026-08-27",
-    dateModified: "2026-08-27",
+    dateModified: "2026-11-19",
     visual: {
       image: "/visual/imagenes/ener.webp",
       imageAlt: "Proyecto de generación eléctrica sujeto a evaluación e interconexión al sistema",
@@ -2811,7 +2817,7 @@ const consultationDrafts: ConsultationDraft[] = [
     sector: "Hidrocarburos · Seguridad",
     badge: "Norma técnica",
     badgeTone: "current",
-    extract: "Diseño, construcción, operación y mantenimiento seguro para estaciones que almacenan y expenden gasolina o diésel.",
+    extract: "Diseño, construcción, operación y mantenimiento de gasolineras. La revisión sistemática de noviembre de 2026 confirmó la norma.",
     description: "Alcance de la NOM-005-ASEA-2016, dictámenes técnicos, evaluación anual y obligaciones de operación y mantenimiento para gasolineras.",
     keywords: ["NOM-005-ASEA-2016", "dictamen NOM-005 ASEA", "operación mantenimiento gasolinera", "unidad verificación estación servicio"],
     energyLine: "Cumplir la NOM no es archivar un dictamen: la estación debe sostener diariamente las condiciones que fueron verificadas.",
@@ -2822,12 +2828,13 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "Etapas", value: "Diseño, construcción, operación y mantenimiento" },
       { label: "Dictámenes", value: "Diseño, construcción y operación y mantenimiento, según la etapa aplicable" },
       { label: "Evaluación operativa", value: "Operación y mantenimiento se evalúan una vez al año o conforme al programa emitido por ASEA" },
+      { label: "Revisión sistemática", value: "3 de noviembre de 2026: confirmación; no es una norma sustituta" },
     ],
     sections: [
       {
         id: "alcance",
         title: "¿Qué materias cubre la NOM-005?",
-        paragraphs: ["La norma contiene especificaciones para proyectos, instalaciones, equipos, distancias, sistemas de seguridad, recepción de producto, operación, mantenimiento, señalización, gestión ambiental y evaluación de la conformidad."],
+        paragraphs: ["La norma contiene especificaciones para proyectos, instalaciones, equipos, distancias, sistemas de seguridad, recepción de producto, operación, mantenimiento, señalización, gestión ambiental y evaluación de la conformidad.", "El catálogo oficial de la Secretaría de Economía registra una revisión sistemática del 3 de noviembre de 2026 con resultado de confirmación. No equivale a la publicación de una norma sustituta ni elimina las obligaciones vigentes."],
       },
       {
         id: "dictamenes",
@@ -2849,6 +2856,7 @@ const consultationDrafts: ConsultationDraft[] = [
     vision: "APEN prepara la estación desde la evidencia real: revisa ingeniería, condición física, mantenimiento y documentos antes de coordinar la evaluación con un tercero aprobado.",
     related: [
       { label: "Bitácoras ASEA", href: "/consultas/bitacoras-asea" },
+      { label: "Preparar el dictamen de operación y mantenimiento", href: "/consultas/dictamen-operacion-mantenimiento-gasolinera" },
       { label: "Checklist regulatorio", href: "/consultas/checklist-cumplimiento-gasolinera" },
       { label: "Reabrir una gasolinera clausurada", href: "/consultas/reabrir-gasolinera-clausurada" },
       { label: "¿Qué es SASISOPA?", href: "/consultas/que-es-el-sasisopa" },
@@ -2862,13 +2870,14 @@ const consultationDrafts: ConsultationDraft[] = [
     ],
     sources: [
       { label: "DOF, NOM-005-ASEA-2016", url: "https://sidof.segob.gob.mx/notas/docFuente/5459927" },
+      { label: "Secretaría de Economía, vigencia y revisión sistemática de la NOM-005", url: "https://platiica.economia.gob.mx/normalizacion/nom-005-asea-2016/" },
       { label: "ASEA, Normas Oficiales Mexicanas", url: "https://www.gob.mx/asea/acciones-y-programas/normas-oficiales-mexicanas-419811" },
       { label: "ASEA, Terceros aprobados para la NOM-005-ASEA-2016", url: "https://www.gob.mx/asea/documentos/terceros-aprobados-para-la-nom-005-asea-2016" },
     ],
     intermediateCta: "¿Tu dictamen coincide con la condición actual de la estación?",
     finalCta: "¿Necesitas preparar la evaluación anual de la NOM-005-ASEA-2016?",
     datePublished: "2026-08-27",
-    dateModified: "2026-08-27",
+    dateModified: "2026-11-19",
     visual: {
       image: "/visual/imagenes/certifondo.webp",
       imageAlt: "Evaluación técnica de seguridad y mantenimiento en una instalación energética",
@@ -3057,8 +3066,8 @@ const consultationDrafts: ConsultationDraft[] = [
       {
         id: "informacion",
         title: "¿Qué información suele integrar el proveedor?",
-        paragraphs: ["El alcance cambia por nivel y perfil, pero debe existir coherencia entre la sociedad, representantes, capacidades declaradas y documentación vigente."],
-        bullets: ["Información legal, fiscal y de representación.", "Oferta de productos, servicios y obra.", "Instalaciones, experiencia y capacidad operativa.", "Estados financieros y documentación comercial cuando se solicite.", "Certificados de calidad, ambiente, seguridad y salud aplicables."],
+        paragraphs: ["El acuerdo del 14 de octubre de 2026 unificó los registros inicial y complementario en un Registro Único. Debe distinguirse el expediente de persona física o moral y separar requisitos de registro de los exigidos en una contratación concreta."],
+        bullets: ["Información legal, fiscal y de representación conforme al perfil.", "Cuestionario y carta de anuencia oficiales.", "Acta constitutiva y reformas aplicables para personas morales.", "Certificados de calidad, ambiente, seguridad y salud cuando correspondan.", "No tratar estados financieros ni comprobante de domicilio como requisitos generales del registro tras la simplificación."],
       },
       {
         id: "vigencia",
@@ -3084,7 +3093,7 @@ const consultationDrafts: ConsultationDraft[] = [
       { question: "¿Achilles es la plataforma actual de PEMEX?", answer: "Los avisos actuales de PEMEX identifican HIIP 2.0 como la plataforma oficial de registro. Achilles aparece en antecedentes; debe confirmarse el estado del proveedor directamente en el sistema vigente." },
       { question: "¿Registrarse garantiza ganar una licitación?", answer: "No. La inscripción o constancia no implica adjudicación ni compromiso de contratación." },
       { question: "¿Se paga por registrarse en HIIP 2.0?", answer: "PEMEX informa que su registro es gratuito y que es un proceso de autorregistro. La asesoría documental privada, si se contrata, no es un pago de inscripción a PEMEX ni garantiza contratos." },
-      { question: "¿Todos los concursos piden la misma constancia?", answer: "No necesariamente. Deben revisarse la convocatoria y bases de cada procedimiento, porque pueden exigir un nivel o documentación específicos." },
+      { question: "¿Todos los concursos piden la misma constancia?", answer: "No necesariamente. Las bases de cada contratación conservan sus requisitos propios; la simplificación del registro no los elimina." },
     ],
     sources: [
       { label: "PEMEX, Registro de proveedores", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Paginas/default.aspx" },
@@ -3092,11 +3101,12 @@ const consultationDrafts: ConsultationDraft[] = [
       { label: "PEMEX, Sistema de registro y evaluación de proveedores", url: "https://www.pemex.com/en/procurement/supplier_relationships/supplier_registration/Documents/suppliers-brochure-en.pdf" },
       { label: "PEMEX, registro actual HIIP 2.0", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Paginas/proceso-registro.aspx" },
       { label: "PEMEX, aviso: gratuidad y autorregistro", url: "https://www.pemex.com/procura/Paginas/aviso-proveedores.aspx" },
+      { label: "DOF, Registro Único y simplificación HIIP, 14 de octubre de 2026", url: "https://sidof.segob.gob.mx/notas/docFuente/5801172" },
     ],
     intermediateCta: "¿Tu expediente registral demuestra las capacidades que ofreces a PEMEX?",
     finalCta: "¿Necesitas preparar tu carpeta documental para revisar o actualizar tu registro PEMEX?",
     datePublished: "2026-08-27",
-    dateModified: "2026-10-29",
+    dateModified: "2026-11-19",
     visual: {
       image: "/visual/imagenes/cer.webp",
       imageAlt: "Equipo técnico revisando documentación de un proveedor energético",
@@ -3798,20 +3808,20 @@ const consultationDrafts: ConsultationDraft[] = [
     badge: "Registro HIIP",
     badgeTone: "current",
     extract: "El alta ordena la información del proveedor, pero cada contratación exige capacidad y propuesta propias.",
-    description: "Ruta 2026 para registrarse como proveedor de PEMEX en HIIP 2.0, documentos, vigencia, registro complementario y acceso comercial.",
-    keywords: ["cómo ser proveedor PEMEX", "registro proveedor PEMEX HIIP", "alta proveedores PEMEX", "licitaciones PEMEX proveedores"],
+    description: "Registro Único de proveedores PEMEX en HIIP 2.0: documentos por perfil, captura, vigencia y preparación de expedientes tras la simplificación de octubre de 2026.",
+    keywords: ["cómo ser proveedor PEMEX", "registro único proveedor PEMEX HIIP", "HIIP 2.0 requisitos", "alta proveedores PEMEX", "simplificación registro PEMEX 2026"],
     energyLine: "Registrarse abre la puerta documental; competir exige demostrar capacidad para una necesidad concreta de PEMEX.",
-    quickAnswer: "PEMEX opera un registro oficial de proveedores mediante la Herramienta Integral de Información de Proveedores, HIIP 2.0. El registro inicial está abierto a interesados y reúne información general, comercial, corporativa y documental. El nivel complementario se solicita a proveedores próximos a formalizar un acuerdo o que deben mantener ese nivel vigente.",
+    quickAnswer: "PEMEX unificó los registros inicial y complementario en un Registro Único mediante el acuerdo de octubre de 2026. HIIP 2.0 distingue requisitos de personas físicas y morales. El autorregistro oficial es gratuito; prepara la documentación vigente y conserva el control de tu cuenta. Registrarse no garantiza invitaciones ni adjudicación de contratos.",
     regulatoryRows: [
       { label: "Plataforma oficial", value: "HIIP 2.0 de Petróleos Mexicanos" },
-      { label: "Niveles", value: "Registro inicial y registro complementario" },
+      { label: "Modalidad", value: "Registro Único; requisitos según persona física o moral" },
       { label: "Requisito de acceso", value: "e.firma vigente para personas nacionales" },
       { label: "Plazo de captura", value: "30 días naturales para completar un registro iniciado" },
       { label: "Vigencia publicada", value: "1 año, con información y documentos actualizados" },
     ],
     sections: [
-      { id: "inicial", title: "¿Qué contiene el registro inicial?", paragraphs: ["El proveedor completa su perfil general y comercial, identifica productos o servicios y carga documentos corporativos, fiscales y de representación."], bullets: ["Acta constitutiva y poderes.", "Constancia de situación fiscal y domicilio.", "Identificación del representante legal.", "Oferta de productos o servicios.", "Cartas, manifiestos y políticas aplicables."] },
-      { id: "complementario", title: "¿Cuándo se pide el registro complementario?", paragraphs: ["PEMEX lo solicita a proveedores próximos a formalizar un acuerdo comercial o que ya cuentan con ese nivel y necesitan mantenerlo vigente. Añade información financiera, calidad, seguridad, ambiente y responsabilidad social."] },
+      { id: "inicial", title: "¿Cómo funciona el Registro Único?", paragraphs: ["La simplificación eliminó la separación entre inicial y complementario y redujo el cuestionario a 53 reactivos. La documentación depende de la personalidad jurídica; consulta el formulario y los anexos oficiales vigentes, no una lista histórica."], bullets: ["Personas físicas: identificación, constancia fiscal, carta de anuencia y poder cuando aplique.", "Personas morales: representación, acta constitutiva, constancia fiscal y carta de anuencia.", "Reformas y certificados de personas morales, cuando correspondan."] },
+      { id: "complementario", title: "¿Qué cambió y qué no cambia en una contratación?", paragraphs: ["El acuerdo retira del registro documentos como comprobante de domicilio y, para personas morales, estados financieros. Esto no exime los requisitos de una licitación concreta ni garantiza contratación. Los expedientes anteriores requieren revisar el transitorio Segundo.", "PEMEX mantiene publicados 30 días naturales para completar la captura y un año de vigencia. El primero no es un plazo garantizado de resolución; confirma el estado y la fecha de aprobación en tu expediente."] },
       { id: "competir", title: "¿El registro asegura contratos?", paragraphs: ["No. El alta mejora la visibilidad y disponibilidad de información, pero cada procedimiento de contratación conserva requisitos técnicos, legales y económicos. La empresa debe preparar su oferta para la categoría y necesidad específica."] },
     ],
     vision: "APEN organiza una carpeta de proveedor que conecta identidad, capacidades, certificaciones, experiencia y oferta comercial para responder con rapidez a procesos reales.",
@@ -3831,13 +3841,15 @@ const consultationDrafts: ConsultationDraft[] = [
     sources: [
       { label: "PEMEX, Registro de proveedores", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Paginas/default.aspx" },
       { label: "PEMEX, Proceso de registro en HIIP", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Paginas/proceso-registro.aspx" },
+      { label: "DOF, simplificación al Registro Único HIIP, 14 de octubre de 2026", url: "https://sidof.segob.gob.mx/notas/docFuente/5801172" },
+      { label: "PEMEX, manual HIIP: vigencia desde la aprobación", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Documents/Manual_de_registro_del_proveedor_HIIP-v2_1.pdf" },
       { label: "PEMEX, Pemex PASS", url: "https://www.pemex.com/procura/relacion-con-proveedores/Paginas/pemex-pass.aspx" },
       { label: "PEMEX, Asistencia y contactos HIIP", url: "https://www.pemex.com/procura/relacion-con-proveedores/registro-de-proveedores/Paginas/Atenci%C3%B3n-a-proveedores.aspx" },
     ],
     intermediateCta: "¿Tu perfil y documentación siguen vigentes para la categoría que quieres atender?",
     finalCta: "¿Necesitas organizar tu alta y carpeta comercial para PEMEX?",
     datePublished: "2026-08-27",
-    dateModified: "2026-08-27",
+    dateModified: "2026-11-19",
     visual: {
       image: "/visual/imagenes/cer.webp",
       imageAlt: "Documentación empresarial para registro y evaluación de proveedores",
@@ -3883,7 +3895,7 @@ const consultationServiceIds: Record<string, string> = {
   "financiamiento-gasolinera": "P01", "project-finance-energia": "P11", "proveedor-pemex": "H52",
 };
 
-const allConsultations: Consultation[] = [...consultationDrafts, ...hydrocarbonConsultations, ...complianceConsultations, ...projectConsultations].map((consultation) => ({
+const allConsultations: Consultation[] = [...consultationDrafts, ...hydrocarbonConsultations, ...complianceConsultations, ...projectConsultations, ...novemberNewsConsultations, ...novemberOperationsConsultations].map((consultation) => ({
   ...consultation,
   relatedService: (() => {
     const service = getServiceById(consultationServiceIds[consultation.slug]);

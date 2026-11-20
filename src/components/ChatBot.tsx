@@ -5,6 +5,9 @@ import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight, CheckCircle2, MessageSquare, RotateCcw, Send, X } from "lucide-react";
 import { Turnstile } from "@marsidev/react-turnstile";
+import LeadQualificationFields from "@/components/LeadQualificationFields";
+import { services } from "@/data/services";
+import { buildLeadPayload, trackLeadSuccess } from "@/lib/lead-context";
 import {
   buscarContenido, esAfirmacion, esNegacion, esPreguntaExplicativa, mejorIntencion, normalizar, partirNegritas,
   type Coincidencia, type Detalle, type Enlace, type EntradaIndice,
@@ -59,26 +62,30 @@ function FormularioContacto({ tema, pagina, onEnviado }: { tema: string | null; 
   const [estado, setEstado] = useState<"idle" | "enviando" | "error">("idle");
   const id = useId();
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const serviceId = tema === "Coque de petróleo" ? "H54" : services.find(service => service.title === tema)?.id;
 
   const enviar = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (estado === "enviando") return;
     setEstado("enviando");
-    const datos: Record<string, string> = Object.fromEntries(
-      Array.from(new FormData(event.currentTarget).entries()).map(([clave, valor]) => [clave, valor.toString()])
-    );
-    // El asunto conserva "CHAT BOT": la API lo usa para enrutar al formulario correcto.
-    datos.subject = "Nuevo Lead desde CHAT BOT - APEN";
-    datos.from_name = "Asistente ChatBot";
+    const formData = new FormData(event.currentTarget);
 
     try {
+      const datos = buildLeadPayload(formData, { source: "chat", serviceId, topic: tema ?? undefined });
       const respuesta = await fetch("/api/submit-protocol", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(datos),
       });
       const resultado = await respuesta.json();
-      if (resultado.success) onEnviado();
-      else setEstado("error");
+      if (resultado.success) {
+        onEnviado();
+        try {
+          trackLeadSuccess(datos, resultado.submission_id);
+        } catch {
+          // Un fallo de analítica no invalida la solicitud recibida.
+        }
+      } else setEstado("error");
     } catch {
       setEstado("error");
     }
@@ -88,7 +95,10 @@ function FormularioContacto({ tema, pagina, onEnviado }: { tema: string | null; 
   const etiqueta = "text-[12px] font-bold text-[#0b2341]";
 
   return (
-    <form onSubmit={enviar} className="w-full space-y-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+    <form onSubmit={enviar} aria-busy={estado === "enviando"} className="w-full min-w-0 space-y-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      {/* El asunto conserva "CHAT BOT" para el enrutamiento legacy de la API. */}
+      <input type="hidden" name="subject" value="Nuevo Lead desde CHAT BOT - APEN" />
+      <input type="hidden" name="from_name" value="APEN Asistente" />
       <div className="space-y-1.5">
         <label htmlFor={`${id}-nombre`} className={etiqueta}>Nombre completo</label>
         <input id={`${id}-nombre`} name="name" required type="text" autoComplete="name" className={campo} placeholder="Tu nombre" />
@@ -107,6 +117,8 @@ function FormularioContacto({ tema, pagina, onEnviado }: { tema: string | null; 
         <textarea id={`${id}-mensaje`} name="message" required rows={3} maxLength={1500}
           className={campo + " resize-none"} placeholder="Describe brevemente tu proyecto o situación" />
       </div>
+
+      <LeadQualificationFields serviceId={serviceId} topic={tema ?? undefined} compact />
 
       {/* Contexto para el equipo: de qué hablaba la persona y desde qué página escribió. */}
       <input type="hidden" name="tema" value={tema ?? "Sin tema específico"} />

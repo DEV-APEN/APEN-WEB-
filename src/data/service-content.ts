@@ -1,6 +1,7 @@
 type ServiceContent = {
   title: string;
   description: string;
+  dateModified?: string;
   steps: string[];
   faqs: Array<{ question: string; answer: string }>;
 };
@@ -63,13 +64,15 @@ export const serviceContent: Record<string, ServiceContent> = {
     ],
   },
   H52: {
+    dateModified: "2026-11-19",
     title: "Proveedor PEMEX: expediente para registro HIIP 2.0",
-    description: "Asesoría documental para proveedores PEMEX en HIIP 2.0. Revisamos antecedentes Achilles, información corporativa y capacidades, sin prometer contratos.",
-    steps: ["Revisamos el estado del registro y sus antecedentes, distinguiendo constancias Achilles históricas de la plataforma actual HIIP 2.0.", "Ordenamos información corporativa, oferta y evidencia de capacidades para que el proveedor prepare su propio registro o actualización.", "Acompañamos la revisión documental y los requisitos del procedimiento de contratación, sin acceder con credenciales ajenas ni sustituir el autorregistro."],
+    description: "Prepara el Registro Único de proveedores PEMEX en HIIP 2.0: expediente por perfil, actualización y antecedentes Achilles. Asesoría sin garantía de contratos.",
+    steps: ["Revisamos el estado del Registro Único y sus antecedentes, distinguiendo constancias Achilles históricas de la plataforma actual HIIP 2.0.", "Ordenamos el expediente de persona física o moral conforme a la simplificación de octubre de 2026, separando registro de requisitos de contratación.", "Acompañamos la revisión documental y los requisitos del procedimiento de contratación, sin acceder con credenciales ajenas ni sustituir el autorregistro."],
     faqs: [
       { question: "¿El registro oficial PEMEX tiene costo?", answer: "PEMEX informa que su registro es gratuito. Cualquier honorario de APEN corresponde únicamente a asesoría documental contratada, no a un pago por inscripción, activación o garantía de adjudicación." },
       { question: "¿APEN puede registrar a mi empresa por mí?", answer: "PEMEX identifica el proceso como autorregistro del proveedor. APEN puede asesorar en la preparación del expediente; el proveedor conserva el control de su cuenta y carga su información en los canales oficiales." },
       { question: "¿Un ID Achilles demuestra vigencia en HIIP 2.0?", answer: "No debe presumirse equivalencia ni vigencia automática. Se revisa directamente el estado actual y los requisitos publicados por PEMEX para la empresa y el procedimiento concreto." },
+      { question: "¿Siguen separados el registro inicial y el complementario?", answer: "El acuerdo del 14 de octubre de 2026 los unificó en un Registro Único. Se prepara la documentación del perfil correspondiente sin repetir requisitos históricos eliminados del registro." },
     ],
   },
   H54: {

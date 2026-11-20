@@ -4,6 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 import CookieConsent from '../components/CookieConsent';
 import DeferredChatBot from '../components/DeferredChatBot';
+import LeadAttribution from '../components/LeadAttribution';
 import { socialProfiles } from '@/data/social-profiles';
 
 const inter = localFont({
@@ -416,6 +417,7 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+        <LeadAttribution />
         <CookieConsent />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-YXR1JYJ5C4"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Header from '@/components/Header';
@@ -8,6 +8,8 @@ import Footer from '@/components/Footer';
 import MobileMenu from '@/components/MobileMenu';
 import { Send, CheckCircle2, Clock, Shield, Zap, FileText } from 'lucide-react';
 import { Turnstile } from '@marsidev/react-turnstile';
+import LeadQualificationFields from '@/components/LeadQualificationFields';
+import { buildLeadPayload, trackLeadSuccess } from '@/lib/lead-context';
 
 const benefits = [
   { icon: Clock, text: 'Respuesta en 24 horas hábiles' },
@@ -19,15 +21,17 @@ const benefits = [
 export default function DiagnosticoClient() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const formId = useId();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (formStatus === 'submitting') return;
     setFormStatus('submitting');
     
     const formData = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
 
     try {
+      const payload = buildLeadPayload(formData, { source: 'diagnostico' });
       const response = await fetch("/api/submit-protocol", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -37,12 +41,15 @@ export default function DiagnosticoClient() {
       const result = await response.json();
       if (result.success) {
         setFormStatus('success');
+        try {
+          trackLeadSuccess(payload, result.submission_id);
+        } catch {
+          // Un fallo de analítica no invalida la solicitud recibida.
+        }
       } else {
-        console.error("Error Web3Forms:", result);
         setFormStatus('error');
       }
-    } catch (error) {
-      console.error("Fallo de red en diagnóstico:", error);
+    } catch {
       setFormStatus('error');
     }
   };
@@ -102,7 +109,7 @@ export default function DiagnosticoClient() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,140,222,0.1),transparent_50%)]" />
 
               {formStatus === 'success' ? (
-                <div className="relative flex flex-col items-center justify-center py-16 text-center">
+                <div role="status" className="relative flex flex-col items-center justify-center py-16 text-center">
                   <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-green-500/30 bg-green-500/10">
                     <CheckCircle2 size={40} className="text-green-400" />
                   </div>
@@ -134,19 +141,22 @@ export default function DiagnosticoClient() {
 
                   <form
                     onSubmit={handleSubmit}
+                    aria-busy={formStatus === 'submitting'}
                     className="space-y-5"
                   >
                     <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
                     <input type="hidden" name="subject" value="Nuevo Diagnóstico de Proyecto - APEN" />
-                    <input type="hidden" name="from_name" value="APEN Diagnóstico Bot" />
+                    <input type="hidden" name="from_name" value="APEN Diagnóstico" />
                     
                     {/* Field 1: Name & Company */}
                     <div className="space-y-1.5">
-                      <label className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
+                      <label htmlFor={`${formId}-nombre`} className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
                         Nombre y Empresa <span className="text-[#008CDE]">*</span>
                       </label>
                       <input
                         name="nombre-empresa"
+                        id={`${formId}-nombre`}
+                        autoComplete="organization"
                         type="text"
                         required
                         placeholder="Ej: Ing. Ricardo Sánchez — Energía Industrial S.A."
@@ -156,11 +166,13 @@ export default function DiagnosticoClient() {
 
                     {/* Field 2: Email */}
                     <div className="space-y-1.5">
-                      <label className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
+                      <label htmlFor={`${formId}-email`} className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
                         Correo Corporativo <span className="text-[#008CDE]">*</span>
                       </label>
                       <input
                         name="email"
+                        id={`${formId}-email`}
+                        autoComplete="email"
                         type="email"
                         required
                         placeholder="correo@empresa.com"
@@ -170,12 +182,13 @@ export default function DiagnosticoClient() {
 
                     {/* Field 3: Project Type */}
                     <div className="space-y-1.5">
-                      <label className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
+                      <label htmlFor={`${formId}-proyecto`} className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
                         Tipo de Proyecto <span className="text-[#008CDE]">*</span>
                       </label>
                       <div className="relative">
                         <select
                           name="tipo-proyecto"
+                          id={`${formId}-proyecto`}
                           required
                           className="w-full appearance-none rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-[11px] font-black uppercase tracking-tight text-white outline-none transition-all focus:border-[#008CDE]/50 focus:ring-1 focus:ring-[#008CDE]/30"
                           defaultValue=""
@@ -197,12 +210,13 @@ export default function DiagnosticoClient() {
 
                     {/* Field 4: Project Scale */}
                     <div className="space-y-1.5">
-                      <label className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
+                      <label htmlFor={`${formId}-escala`} className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
                         Alcance Estimado
                       </label>
                       <div className="relative">
                         <select
                           name="escala"
+                          id={`${formId}-escala`}
                           className="w-full appearance-none rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 text-[11px] font-black uppercase tracking-tight text-white outline-none transition-all focus:border-[#008CDE]/50 focus:ring-1 focus:ring-[#008CDE]/30"
                           defaultValue=""
                         >
@@ -220,13 +234,16 @@ export default function DiagnosticoClient() {
                       </div>
                     </div>
 
+                    <LeadQualificationFields tone="dark" />
+
                     {/* Field 5: Description */}
                     <div className="space-y-1.5">
-                      <label className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
+                      <label htmlFor={`${formId}-mensaje`} className="block text-[9px] font-black uppercase tracking-[0.3em] text-slate-400">
                         Descripción del Requerimiento <span className="text-[#008CDE]">*</span>
                       </label>
                       <textarea
                         name="mensaje"
+                        id={`${formId}-mensaje`}
                         required
                         rows={4}
                         placeholder="Describa brevemente su proyecto: ubicación, estado actual, objetivo principal y plazo tentativo de ejecución..."
@@ -237,6 +254,12 @@ export default function DiagnosticoClient() {
                     <div className="pt-2 flex justify-center">
                       <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} />
                     </div>
+
+                    {formStatus === 'error' && (
+                      <p role="alert" className="rounded-lg border border-red-400/40 bg-red-950/40 p-3 text-sm leading-relaxed text-red-200">
+                        No se pudo enviar su diagnóstico. Sus datos se conservan; intente de nuevo o escriba a contacto@apen.mx.
+                      </p>
+                    )}
 
                     <button
                       type="submit"

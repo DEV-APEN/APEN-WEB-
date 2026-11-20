@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,6 +10,8 @@ import MobileMenu from '@/components/MobileMenu';
 import { MapPin, Building2, Mail, Clock, ArrowRight, ShieldCheck, Send } from 'lucide-react';
 import StoreLocator from '@/components/StoreLocator';
 import { Turnstile } from '@marsidev/react-turnstile';
+import LeadQualificationFields from '@/components/LeadQualificationFields';
+import { buildLeadPayload, trackLeadSuccess } from '@/lib/lead-context';
 
 export default function ContactoPage({
   selectedService,
@@ -20,15 +22,17 @@ export default function ContactoPage({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const formId = useId();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (formStatus === 'submitting') return;
     setFormStatus('submitting');
     
     const formData = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
 
     try {
+      const payload = buildLeadPayload(formData, { source: 'contacto', serviceId: selectedService?.id });
       const response = await fetch("/api/submit-protocol", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -38,12 +42,15 @@ export default function ContactoPage({
       const result = await response.json();
       if (result.success) {
         setFormStatus('success');
+        try {
+          trackLeadSuccess(payload, result.submission_id);
+        } catch {
+          // Un fallo de analítica no invalida la solicitud recibida.
+        }
       } else {
-        console.error("Error Web3Forms:", result);
         setFormStatus('error');
       }
-    } catch (error) {
-      console.error("Fallo de red en contacto:", error);
+    } catch {
       setFormStatus('error');
     }
   };
@@ -174,6 +181,7 @@ export default function ContactoPage({
               <AnimatePresence mode="wait">
                 {formStatus === 'success' ? (
                   <motion.div 
+                    role="status"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="py-20 text-center space-y-6"
@@ -195,11 +203,12 @@ export default function ContactoPage({
                 ) : (
                   <form
                     onSubmit={handleSubmit}
+                    aria-busy={formStatus === 'submitting'}
                     className="space-y-6"
                   >
                     <input type="hidden" name="access_key" value="b6daf502-85e9-44e5-a260-cc506e17a443" />
                     <input type="hidden" name="subject" value="Nuevo Contacto desde Página de Contacto" />
-                    <input type="hidden" name="from_name" value="APEN Web Bot" />
+                    <input type="hidden" name="from_name" value="APEN Formulario de contacto" />
                     {/* Trampa para bots: Formspree descarta los envíos que llenan este campo. */}
                     <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                     {selectedService && (
@@ -213,31 +222,33 @@ export default function ContactoPage({
                       </>
                     )}
 
+                    <LeadQualificationFields serviceId={selectedService?.id} />
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Nombre Completo *</label>
-                        <input name="nombre" required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su nombre" />
+                        <label htmlFor={`${formId}-nombre`} className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Nombre Completo *</label>
+                        <input id={`${formId}-nombre`} name="nombre" required type="text" autoComplete="name" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su nombre" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Empresa u Organización *</label>
-                        <input name="empresa" required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su empresa" />
+                        <label htmlFor={`${formId}-empresa`} className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Empresa u Organización *</label>
+                        <input id={`${formId}-empresa`} name="empresa" required type="text" autoComplete="organization" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="Su empresa" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Correo Institucional *</label>
-                        <input name="email" required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="correo@empresa.com" />
+                        <label htmlFor={`${formId}-email`} className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Correo Institucional *</label>
+                        <input id={`${formId}-email`} name="email" required type="email" autoComplete="email" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="correo@empresa.com" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Teléfono *</label>
-                        <input name="telefono" required type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="+52" />
+                        <label htmlFor={`${formId}-telefono`} className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Teléfono *</label>
+                        <input id={`${formId}-telefono`} name="telefono" required type="tel" autoComplete="tel" inputMode="tel" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors" placeholder="+52" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Tipo de Consulta *</label>
-                      <select name="tipo-consulta" required defaultValue={areaInteres ?? ""} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
+                      <label htmlFor={`${formId}-consulta`} className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Tipo de Consulta *</label>
+                      <select id={`${formId}-consulta`} name="tipo-consulta" required defaultValue={areaInteres ?? ""} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors appearance-none p-1">
                         <option value="" disabled>Seleccione área de interés</option>
                         <option value="ingenieria">Ingeniería y Construcción</option>
                         <option value="legal">Materia Regulatoria / Legal</option>
@@ -248,8 +259,8 @@ export default function ContactoPage({
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Detalle del Requerimiento *</label>
-                      <textarea name="mensaje" required rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors resize-none" placeholder="Describa su proyecto o solicitud..."></textarea>
+                      <label htmlFor={`${formId}-mensaje`} className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]">Detalle del Requerimiento *</label>
+                      <textarea id={`${formId}-mensaje`} name="mensaje" required rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#008CDE]/30 focus:border-[#008CDE] transition-colors resize-none" placeholder="Describa su proyecto o solicitud..."></textarea>
                     </div>
 
                     <div className="pt-4 flex justify-center">
@@ -257,6 +268,11 @@ export default function ContactoPage({
                     </div>
 
                     <div className="pt-4">
+                      {formStatus === 'error' && (
+                        <p role="alert" className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm leading-relaxed text-red-700">
+                          No se pudo enviar su solicitud. Sus datos se conservan; intente de nuevo o escriba a contacto@apen.mx.
+                        </p>
+                      )}
                       <button 
                         type="submit" 
                         disabled={formStatus === 'submitting'}

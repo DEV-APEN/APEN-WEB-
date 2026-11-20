@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...routes, ...services.map(service => ({
     url: baseUrl + serviceHref(service),
-    ...(serviceContent[service.id] ? { lastModified: new Date('2026-10-29') } : {}),
+    ...(serviceContent[service.id] ? { lastModified: new Date(serviceContent[service.id].dateModified ?? '2026-10-29') } : {}),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))];

@@ -13,7 +13,9 @@
     "verify:navigation": "node scripts/verify-navigation.cjs",
     "verify:theme": "node scripts/verify-service-theme.cjs",
     "verify:assistant": "node scripts/verify-assistant.cjs",
-    "verify:static": "npm run verify:services && npm run verify:consultations && npm run verify:navigation && npm run verify:theme && npm run verify:assistant"
+    "verify:leads": "node scripts/verify-lead-capture.cjs",
+    "verify:lead-forms": "node scripts/verify-lead-forms.cjs",
+    "verify:static": "npm run verify:services && npm run verify:consultations && npm run verify:navigation && npm run verify:theme && npm run verify:assistant && npm run verify:leads && npm run verify:lead-forms"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

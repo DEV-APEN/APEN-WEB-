@@ -21,13 +21,21 @@ const { detailMetadata } = require("../src/lib/service-metadata.ts");
 const { serviceContent } = require("../src/data/service-content.ts");
 const sitemap = require("../src/app/sitemap.ts").default();
 const llms = fs.readFileSync(path.join(root, "public/llms.txt"), "utf8");
-const additions = consultations.filter(article => article.code.startsWith("NEW_"));
-assert.equal(additions.length, 19, "19 new public consultations");
-assert.equal(consultations.length, 62);
+const october = consultations.filter(article => article.code.startsWith("NEW_"));
+const november = consultations.filter(article => article.code.startsWith("REF_NOV_"));
+const additions = [...october, ...november];
+assert.equal(october.length, 19, "19 October public consultations");
+assert.equal(november.length, 12, "12 November public consultations");
+assert.equal(consultations.length, 74);
 assert.equal(pendingConsultations.length, 1);
 assert.equal(pendingConsultations[0].slug, "formatos-biocombustibles-2026");
 assert.equal(new Set(consultations.map(article => article.slug)).size, consultations.length);
 assert.equal(new Set(consultations.map(article => article.code)).size, consultations.length);
+for (const slug of ["convocatoria-permisos-generacion-2026", "nom-005-asea-2016", "bitacoras-asea", "registro-achilles", "proveedor-pemex"]) {
+  assert.equal(getConsultation(slug).dateModified, "2026-11-19", slug + " editorial revision date");
+}
+assert.ok(getConsultation("proveedor-pemex").quickAnswer.includes("Registro Único"));
+assert.ok(getConsultation("convocatoria-permisos-generacion-2026").quickAnswer.includes("6 de noviembre"));
 for (const article of consultations) {
   const service = services.find(service => serviceHref(service) === article.relatedService.href);
   assert.ok(service, article.slug + " must link an existing specific service");
@@ -40,7 +48,7 @@ for (const article of additions) {
   assert.ok(article.sections.length >= 3 && article.faqs.length >= 3, article.slug);
   assert.ok(article.sources.length >= 2 && article.regulatoryRows.length >= 4, article.slug);
   assert.ok(!/\bTODO\s*:|\bplaceholder\b/i.test(JSON.stringify(article)), article.slug);
-  assert.equal(article.datePublished, "2026-10-29");
+  assert.equal(article.datePublished, article.code.startsWith("REF_NOV_") ? "2026-11-19" : "2026-10-29");
   assert.ok(article.description.length > 80 && article.description.length < 200, article.slug);
   assert.ok(fs.existsSync(path.join(root, "public", article.visual.image)), article.visual.image);
   for (const authority of article.visual.authorities) assert.ok(fs.existsSync(path.join(root, "public", authority.logo)), authority.logo);
@@ -69,7 +77,7 @@ for (const [id, content] of Object.entries(serviceContent)) {
   assert.equal(detailMetadata(service).description, content.description);
   assert.ok(getMarkdownForPath(serviceHref(service)).body.includes(content.steps[0]));
 }
-console.log("PASS: 19 nuevas + 43 existentes, 1 borrador excluido, servicios exactos, CTA contextual, respuestas, assets, fuentes, sitemap y Markdown.");
+console.log("PASS: 74 consultas (12 noviembre), 1 borrador excluido, servicios exactos, CTA contextual, respuestas, assets, fuentes, sitemap y Markdown.");
 
 async function verifyHttp(base) {
   for (const article of additions) {
@@ -84,6 +92,6 @@ async function verifyHttp(base) {
   }
   const draft = await fetch(base + "/consultas/formatos-biocombustibles-2026");
   assert.equal(draft.status, 404);
-  console.log("PASS HTTP: 19 fichas 200, canonical, schemas, CTA y metadatos; borrador 404.");
+  console.log("PASS HTTP: " + additions.length + " fichas 200, canonical, schemas, CTA y metadatos; borrador 404.");
 }
 if (process.env.CONSULTATION_TEST_BASE_URL) verifyHttp(process.env.CONSULTATION_TEST_BASE_URL).catch(error => { console.error(error); process.exitCode = 1; });

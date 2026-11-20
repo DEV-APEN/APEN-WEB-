@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { leadSource, normalizeLead, leadValidationError } from "@/lib/lead-schema";
+import { getServiceById } from "@/data/services";
 
 const FORMSPREE_CHATBOT  = "https://formspree.io/f/mykojkvj";
 const FORMSPREE_CONTACT  = "https://formspree.io/f/meenkedl";
@@ -68,7 +70,20 @@ export async function POST(req: NextRequest) {
       bruto = body;
     }
 
-    const payload = limpiar(bruto);
+    const payload = normalizeLead(limpiar(bruto));
+    if (payload._gotcha?.trim()) {
+      return NextResponse.json({ success: false, message: "Solicitud inválida" }, { status: 400 });
+    }
+    const validationError = leadValidationError(payload);
+    if (validationError) return NextResponse.json({ success: false, message: validationError }, { status: 400 });
+    if (payload.servicio_id) {
+      const service = getServiceById(payload.servicio_id);
+      if (!service) return NextResponse.json({ success: false, message: "Selecciona un servicio válido." }, { status: 400 });
+      payload.servicio = service.title;
+      payload["servicio-id"] = service.id;
+    }
+    const submissionId = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(payload.submission_id || "") ? payload.submission_id : crypto.randomUUID();
+    payload.submission_id = submissionId;
 
     const ip = req.headers.get("cf-connecting-ip") ?? req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
     const humano = await verificarTurnstile(payload["cf-turnstile-response"], ip);
@@ -79,8 +94,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const subject = (payload["subject"] || "").toLowerCase();
-    const endpoint = subject.includes("chat bot") ? FORMSPREE_CHATBOT : FORMSPREE_CONTACT;
+    const endpoint = leadSource(payload) === "chat" ? FORMSPREE_CHATBOT : FORMSPREE_CONTACT;
 
     // Formspree no usa access_key, y el token del captcha ya cumplió su función.
     delete payload["access_key"];
@@ -102,7 +116,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, message }, { status: 400 });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, submission_id: submissionId });
   } catch (err) {
     console.error("[/api/submit-protocol]", err);
     return NextResponse.json(
